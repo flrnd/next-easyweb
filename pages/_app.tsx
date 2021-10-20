@@ -1,14 +1,19 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config"; // Default Seo configuration options
+import "../styles/global.css";
+import Layout from "../components/Layout";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <ChakraProvider>
+    <Layout>
       <DefaultSeo {...SEO} />
+      <Header />
       <Component {...pageProps} />
-    </ChakraProvider>
+      <Footer />
+    </Layout>
   );
 }
 

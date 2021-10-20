@@ -1,12 +1,12 @@
 import { NextSeo } from "next-seo";
-import { Flex } from "@chakra-ui/react";
 
 export const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
-    <Flex height="100vh" alignItems="center" justifyContent="center">
+    <main className="bg-red-100 py-6">
       <h1>Hello there</h1>
-    </Flex>
+      <p>this is the main section</p>
+    </main>
   </>
 );
 
