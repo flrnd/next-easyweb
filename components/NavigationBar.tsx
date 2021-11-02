@@ -1,23 +1,11 @@
-interface Menu {
-  menu: string[];
+import { ReactNode } from "react";
+
+interface Prop {
+  children: ReactNode;
 }
 
-const NavigationBar = ({
-  menu = ["Home", "Services", "About"],
-}: Menu): JSX.Element => {
-  return (
-    <nav className="flex justify-between container p-4">
-      <div className="logo">Logotype</div>
-      <div className="flex">
-        {menu.map((item) => (
-          <div key={item} className="px-2">
-            {item}
-          </div>
-        ))}
-      </div>
-      <div className="cta">cta</div>
-    </nav>
-  );
+const NavigationBar = ({ children }: Prop): JSX.Element => {
+  return <nav className="flex justify-between p-4 mx-auto">{children}</nav>;
 };
 
 export default NavigationBar;
