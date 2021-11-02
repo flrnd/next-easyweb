@@ -14,7 +14,7 @@ const Content = ({
   buttonURL,
 }: Props): JSX.Element => {
   return (
-    <div className="content">
+    <>
       <h1 className="text-5xl">{title}</h1>
       <p className="text-lg">{description}</p>
       <button className="bg-gray-300 px-4 py-2">
@@ -22,7 +22,7 @@ const Content = ({
           <a>{buttonText}</a>
         </Link>
       </button>
-    </div>
+    </>
   );
 };
 
