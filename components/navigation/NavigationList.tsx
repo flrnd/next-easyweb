@@ -11,9 +11,7 @@ const NavigationList = ({ isVertical = false, list }: Props): JSX.Element => {
   return (
     <ul className={`flex ${isVertical && "flex-col"}`}>
       {navigationList.map((navItem) => (
-        <li key={navItem.name}>
-          <NavigationListItem item={navItem} />
-        </li>
+        <NavigationListItem key={navItem.name} item={navItem} />
       ))}
     </ul>
   );

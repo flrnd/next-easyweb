@@ -8,9 +8,11 @@ interface Props {
 
 const NavigationListItem = ({ item }: Props): JSX.Element => {
   return (
-    <Link href={item.href}>
-      <a className="px-2">{item.name}</a>
-    </Link>
+    <li>
+      <Link href={item.href}>
+        <a className="px-2">{item.name}</a>
+      </Link>
+    </li>
   );
 };
 
