@@ -14,7 +14,9 @@ describe("Navigation List Item", () => {
 
     const listItem = screen.getByRole("listitem");
     const { getByRole } = within(listItem);
-    const link = getByRole("link", { name: item.name }) as HTMLAnchorElement;
+    const link = getByRole("link", {
+      name: item.name,
+    }) as HTMLAnchorElement;
 
     expect(link.href).toBe(expetedHref);
   });
