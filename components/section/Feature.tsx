@@ -31,9 +31,9 @@ const Feature = ({
   }
 
   return (
-    <div className="feature flex flex-col-reverse lg:flex-row w-auto">
-      <div className="w-1/2 p-10 lg:p-20">{contentLeft}</div>
-      <div className="w-1/2 p-10 lg:p-20">{contentRight}</div>
+    <div className="feature">
+      <div className="content">{contentLeft}</div>
+      <div className="content">{contentRight}</div>
     </div>
   );
 };
