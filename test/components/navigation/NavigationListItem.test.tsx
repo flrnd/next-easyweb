@@ -1,5 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { NavigationListItem } from "../../../components/navigation";
+import mockUrl from "../../__mocks__/mockUrl";
 
 describe("Navigation List Item", () => {
   it("should render a <li> with link inside", () => {
@@ -7,8 +8,8 @@ describe("Navigation List Item", () => {
       name: "name",
       href: "/name",
     };
-    const URL = "http://localhost";
-    const expetedHref = `${URL}${item.href}`;
+
+    const expectedHref = mockUrl(item.href);
 
     render(<NavigationListItem item={item} />);
 
@@ -18,6 +19,6 @@ describe("Navigation List Item", () => {
       name: item.name,
     }) as HTMLAnchorElement;
 
-    expect(link.href).toBe(expetedHref);
+    expect(link.href).toBe(expectedHref);
   });
 });
