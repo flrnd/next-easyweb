@@ -1,14 +1,14 @@
 import NavigationBar from "./NavigationBar";
-import NavigationMenu from "./NavigationMenu";
+import NavigationList from "./NavigationList";
 
-const menu = ["home", "services", "about"];
+const list = ["home", "services", "about"];
 
 const Header = (): JSX.Element => {
   return (
-    <div className="header">
+    <div className="navigation-bar">
       <NavigationBar>
         <div className="logo">logo</div>
-        <NavigationMenu menu={menu} />
+        <NavigationList list={list} />
       </NavigationBar>
     </div>
   );
