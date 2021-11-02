@@ -1,6 +1,6 @@
-type Menu = {
+interface Menu {
   menu: string[];
-};
+}
 
 const NavigationBar = ({
   menu = ["Home", "Services", "About"],
