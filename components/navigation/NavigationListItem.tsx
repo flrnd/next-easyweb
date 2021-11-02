@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { INavigationListItem } from "../types/interfaces";
+import { INavigationListItem } from "../../types/interfaces";
 
 interface Props {
   item: INavigationListItem;

@@ -1,4 +1,4 @@
-import createNavigationList from "../util/createNavigationList";
+import createNavigationList from "../../util/createNavigationList";
 import NavigationListItem from "./NavigationListItem";
 
 interface Props {
