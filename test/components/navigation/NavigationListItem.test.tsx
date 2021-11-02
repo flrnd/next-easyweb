@@ -1,15 +1,21 @@
-import { render } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { NavigationListItem } from "../../../components/navigation";
 
 describe("Navigation List Item", () => {
-  const item = {
-    name: "name",
-    href: "/name",
-  };
+  it("should render a <li> with link inside", () => {
+    const item = {
+      name: "name",
+      href: "/name",
+    };
+    const URL = "http://localhost";
+    const expetedHref = `${URL}${item.href}`;
 
-  it("should render a <li>", () => {
-    const { getByRole } = render(<NavigationListItem item={item} />);
+    render(<NavigationListItem item={item} />);
 
-    expect(getByRole("listitem").nextSibling).toBe(item.name);
+    const listItem = screen.getByRole("listitem");
+    const { getByRole } = within(listItem);
+    const link = getByRole("link") as HTMLAnchorElement;
+
+    expect(link.href).toBe(expetedHref);
   });
 });
