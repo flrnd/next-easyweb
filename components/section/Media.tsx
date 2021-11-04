@@ -1,18 +1,19 @@
 import Image from "next/image";
 
 const mediaLoader = ({ source = "https://via.placeholder.com/", width }) => {
-  return `${source}${width}x${width}`;
+  return `${source}${width}`;
 };
 
 interface Props {
-  media: string;
+  source: string;
+  height: number;
   width: number;
 }
 
-const Media = ({ media, width }: Props): JSX.Element => {
+const Media = ({ source, height, width }: Props): JSX.Element => {
   return (
     <>
-      <Image loader={mediaLoader} src={media} width={width} height={width} />
+      <Image loader={mediaLoader} src={source} width={width} height={height} />
     </>
   );
 };
