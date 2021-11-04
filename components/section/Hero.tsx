@@ -1,3 +1,4 @@
+import Heading from "../elements/Heading";
 import Media from "./Media";
 
 interface Props {
@@ -13,7 +14,7 @@ const Hero = ({
 }: Props): JSX.Element => {
   return (
     <div className="hero">
-      <h1 className="heading">{valueProposition}</h1>
+      <Heading>{valueProposition}</Heading>
       <p>{valueDescription}</p>
       <div className="mt-8 md:mt-5 flex justify-center">
         <div className="rounded-md shadow">
