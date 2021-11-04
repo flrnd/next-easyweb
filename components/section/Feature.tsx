@@ -1,9 +1,5 @@
-import Image from "next/image";
 import { ReactNode } from "react";
-
-const myLoader = ({ width }) => {
-  return `https://via.placeholder.com/${width}x${width}`;
-};
+import Media from "./Media";
 
 interface Props {
   isMediaLeft?: boolean;
@@ -18,9 +14,7 @@ const Feature = ({
 }: Props): JSX.Element => {
   let contentLeft, contentRight;
 
-  const contentMedia = (
-    <Image loader={myLoader} src={media} width={500} height={500} />
-  );
+  const contentMedia = <Media source={media} width={600} height={400} />;
 
   if (isMediaLeft) {
     contentLeft = contentMedia;
