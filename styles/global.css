@@ -25,18 +25,18 @@
 
 /* Heading Responsive Styles */
 
-.xlarge-heading {
+.xlarge {
   @apply text-5xl md:text-6xl lg:text-7xl;
 }
 
-.large-heading {
+.large {
   @apply text-4xl md:text-5xl lg:text-6xl;
 }
 
-.medium-heading {
+.medium {
   @apply text-3xl md:text-4xl lg:text-5xl;
 }
 
-.small-heading {
+.small {
   @apply text-2xl md:text-3xl lg:text-4xl;
 }
