@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { NextSeo } from "next-seo";
 import Content from "../components/section/Content";
 import Feature from "../components/section/Feature";
 import Hero from "../components/section/Hero";
-import Media from "../components/section/Media";
 import placeholder from "../public/1920x1280.png";
 
 export const Index = (): JSX.Element => (
@@ -14,12 +14,13 @@ export const Index = (): JSX.Element => (
         valueDescription="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua."
       />
       <Feature
-        media={
-          <Media
-            source={placeholder}
+        image={
+          <Image
+            src={placeholder}
             height={1280}
             width={1920}
             alt="Placeholder image"
+            placeholder="empty"
           />
         }
       >
@@ -31,13 +32,14 @@ export const Index = (): JSX.Element => (
         />
       </Feature>
       <Feature
-        isMediaLeft={true}
-        media={
-          <Media
-            source={placeholder}
+        isImageLeft={true}
+        image={
+          <Image
+            src={placeholder}
             height={1280}
             width={1920}
             alt="Placeholder image"
+            placeholder="empty"
           />
         }
       >
