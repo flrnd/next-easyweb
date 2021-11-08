@@ -1,19 +1,29 @@
 import Image from "next/image";
 
-const mediaLoader = ({ source = "https://via.placeholder.com/", width }) => {
-  return `${source}${width}`;
-};
-
 interface Props {
-  source: string;
+  source: string | StaticImageData;
   height: number;
   width: number;
+  alt?: string;
+  placeholder?: "blur" | "empty";
 }
 
-const Media = ({ source, height, width }: Props): JSX.Element => {
+const Media = ({
+  source,
+  height,
+  width,
+  alt,
+  placeholder = "empty",
+}: Props): JSX.Element => {
   return (
     <>
-      <Image loader={mediaLoader} src={source} width={width} height={height} />
+      <Image
+        src={source}
+        width={width}
+        height={height}
+        alt={alt}
+        placeholder={placeholder}
+      />
     </>
   );
 };
