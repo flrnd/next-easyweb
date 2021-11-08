@@ -1,17 +1,17 @@
+import { ReactNode } from "react";
 import Button from "../elements/Button";
 import Heading from "../elements/Heading";
-import Media from "./Media";
 
 interface Props {
   valueProposition: string;
   valueDescription: string;
-  media?: string;
+  image?: ReactNode;
 }
 
 const Hero = ({
   valueProposition,
   valueDescription,
-  media,
+  image,
 }: Props): JSX.Element => {
   return (
     <div className="hero">
@@ -33,7 +33,7 @@ const Hero = ({
           text="Live Demo"
         />
       </div>
-      {media && <Media source={media} height={600} width={600} />}
+      {image && <div className="mt-5 md:mt-8">{image}</div>}
     </div>
   );
 };
