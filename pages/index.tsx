@@ -2,6 +2,8 @@ import { NextSeo } from "next-seo";
 import Content from "../components/section/Content";
 import Feature from "../components/section/Feature";
 import Hero from "../components/section/Hero";
+import Media from "../components/section/Media";
+import placeholder from "../public/1920x1280.png";
 
 export const Index = (): JSX.Element => (
   <>
@@ -11,7 +13,16 @@ export const Index = (): JSX.Element => (
         valueProposition="Data to enrich your online business"
         valueDescription="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua."
       />
-      <Feature media="feature">
+      <Feature
+        media={
+          <Media
+            source={placeholder}
+            height={1280}
+            width={1920}
+            alt="Placeholder image"
+          />
+        }
+      >
         <Content
           title="This is a title"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -19,7 +30,17 @@ export const Index = (): JSX.Element => (
           buttonURL="/more_info"
         />
       </Feature>
-      <Feature isMediaLeft={true} media="feature">
+      <Feature
+        isMediaLeft={true}
+        media={
+          <Media
+            source={placeholder}
+            height={1280}
+            width={1920}
+            alt="Placeholder image"
+          />
+        }
+      >
         <Content
           title="This is a title"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
