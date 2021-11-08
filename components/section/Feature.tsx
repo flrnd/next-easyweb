@@ -1,24 +1,24 @@
 import { ReactNode } from "react";
 
 interface Props {
-  isMediaLeft?: boolean;
-  media: ReactNode;
+  isImageLeft?: boolean;
+  image: ReactNode;
   children: ReactNode;
 }
 
 const Feature = ({
-  isMediaLeft = false,
-  media,
+  isImageLeft: isMediaLeft = false,
+  image,
   children,
 }: Props): JSX.Element => {
   let contentLeft, contentRight;
 
   if (isMediaLeft) {
-    contentLeft = media;
+    contentLeft = image;
     contentRight = children;
   } else {
     contentLeft = children;
-    contentRight = media;
+    contentRight = image;
   }
 
   return (
