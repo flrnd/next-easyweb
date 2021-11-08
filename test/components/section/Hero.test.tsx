@@ -1,5 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import Image from "next/image";
+import Button from "../../../components/elements/Button";
 import Hero from "../../../components/section/Hero";
 import placeholder from "../../../public/1920x1280.png";
 
@@ -11,7 +12,6 @@ describe("Hero", () => {
 
     expect(screen.getByRole("heading").textContent).toBe("Hello");
     expect(screen.getByText("world")).toBeInTheDocument();
-    expect(screen.getAllByRole("link")).toHaveLength(2);
   });
 
   it("renders with an image", () => {
@@ -26,5 +26,25 @@ describe("Hero", () => {
     );
 
     expect(screen.getByRole("img")).toBeInTheDocument();
+  });
+
+  it("renders with cta", () => {
+    render(
+      <Hero
+        valueProposition="hello"
+        valueDescription="world"
+        cta={
+          <Button
+            bgColor="bg-indigo-600"
+            textColor="text-white"
+            hoverBg="bg-indigo-700"
+            path="/"
+            text="Get Started"
+          />
+        }
+      />
+    );
+
+    expect(screen.getByRole("link")).toBeInTheDocument();
   });
 });
