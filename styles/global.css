@@ -13,29 +13,28 @@
   @apply text-center mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28;
 }
 
+.hero .cta {
+  @apply flex justify-center mb-4 md:mb-8 mt-8 md:mt-5;
+}
 /* TODO: create responsive text size classes */
 .hero p {
-  @apply my-3 text-base md:my-5 sm:text-lg md:text-xl;
+  @apply text-xl md:text-2xl mb-6 md:mb-8;
 }
 
 .btn {
   @apply flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md  md:py-4 md:text-lg md:px-10;
 }
 
+.text-button {
+  @apply font-semibold text-xl underline;
+}
+
 .service {
   @apply text-center p-8;
 }
 
-.service .icon-s {
-  @apply mx-auto mb-8 icon-small;
-}
-
-.service .icon-m {
-  @apply mx-auto mb-8 icon-medium;
-}
-
-.service .icon-l {
-  @apply mx-auto mb-8 icon-large;
+.service .icon {
+  @apply mx-auto mb-6 md:mb-8;
 }
 
 @tailwind utilities;
