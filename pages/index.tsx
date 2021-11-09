@@ -13,7 +13,7 @@ import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
 export const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
-    <main className="bg-red-100 py-6">
+    <main className="py-6">
       <Hero
         heading={placeholderData.heading}
         text={placeholderData.text}
