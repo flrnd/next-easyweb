@@ -22,15 +22,19 @@
   @apply flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md  md:py-4 md:text-lg md:px-10;
 }
 
-.service-icon {
+.service {
+  @apply p-6 text-center;
+}
+
+.service .icon-s {
   @apply mx-auto mb-4 icon-small;
 }
 
-.service-icon-medium {
+.service .icon-m {
   @apply mx-auto mb-4 icon-medium;
 }
 
-.service-icon-large {
+.service .icon-l {
   @apply mx-auto mb-4 icon-large;
 }
 
