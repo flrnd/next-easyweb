@@ -7,19 +7,26 @@ interface IProps {
   name: string;
   text: string;
   href: string;
+  linkText?: string;
 }
 
-const Service = ({ icon, name, text, href }: IProps): JSX.Element => {
+const Service = ({
+  icon,
+  name,
+  text,
+  href,
+  linkText = "Learn more",
+}: IProps): JSX.Element => {
   return (
     <>
-      <div id={stringToId(name)} className="container p-4 text-center">
-        {icon && <div className="icon">{icon}</div>}
+      <div id={stringToId(name)} className="service">
+        {icon && <div className="icon-s">{icon}</div>}
         <Heading level={5} size="xsmall" weight="font-normal">
           {name}
         </Heading>
-        <p className="text-lg">{text}</p>
+        <p className="text-lg p-4">{text}</p>
         <Link href={href}>
-          <a className="font-semibold">Learn more</a>
+          <a className="mt-5 font-semibold mb-4 underline">{linkText}</a>
         </Link>
       </div>
     </>
