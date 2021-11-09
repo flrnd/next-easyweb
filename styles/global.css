@@ -23,19 +23,19 @@
 }
 
 .service {
-  @apply p-6 text-center;
+  @apply text-center p-8;
 }
 
 .service .icon-s {
-  @apply mx-auto mb-4 icon-small;
+  @apply mx-auto mb-8 icon-small;
 }
 
 .service .icon-m {
-  @apply mx-auto mb-4 icon-medium;
+  @apply mx-auto mb-8 icon-medium;
 }
 
 .service .icon-l {
-  @apply mx-auto mb-4 icon-large;
+  @apply mx-auto mb-8 icon-large;
 }
 
 @tailwind utilities;
