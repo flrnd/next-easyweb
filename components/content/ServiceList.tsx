@@ -10,7 +10,7 @@ const ServiceList = ({ services }: IProps): JSX.Element => {
   const columns = calculateGridColumns(services.length);
 
   return (
-    <div className={`my-4 lg:grid lg:grid-cols-${columns} gap-4`}>
+    <div className={`my-4 lg:grid lg:grid-cols-${columns} lg:gap-2`}>
       {services.map((serviceItem) => (
         <Service
           key={serviceItem.name}
