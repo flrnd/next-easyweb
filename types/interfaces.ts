@@ -4,7 +4,7 @@ export interface INavigationListItem {
 }
 
 export interface IServiceListItem {
-  title: string;
+  name: string;
   description: string;
   icon: JSX.Element;
   href?: string;
