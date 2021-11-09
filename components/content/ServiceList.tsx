@@ -9,7 +9,7 @@ interface IProps {
 const ServiceList = ({ services }: IProps): JSX.Element => {
   return (
     <div
-      className={`my-4 grid grid-cols-${calculateGridColumns(
+      className={`my-4 lg:grid lg:grid-cols-${calculateGridColumns(
         services.length
       )} gap-4`}
     >
