@@ -9,7 +9,7 @@ describe("Calculate Grid Columns", () => {
     const result = calculateGridColumns(7);
     expect(result).toBe(3);
   });
-  it("returns 0 with undefined length", () => {
+  it("returns 0 with undefined/null length", () => {
     const undefinedResult = calculateGridColumns(undefined);
     const nullResult = calculateGridColumns(null);
 
