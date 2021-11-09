@@ -4,9 +4,10 @@ interface IProps {
   icon: ReactNode;
   heading: string;
   text: string;
+  href: string;
 }
 
-const Service = ({ icon, heading, text }: IProps): JSX.Element => {
+const Service = ({ icon, heading, text, href }: IProps): JSX.Element => {
   return (
     <>
       <div className="container p-4 text-center">
@@ -14,7 +15,10 @@ const Service = ({ icon, heading, text }: IProps): JSX.Element => {
         <Heading level={5} size="xsmall" weight="font-normal">
           {heading}
         </Heading>
-        <p>{text}</p>
+        <p className="text-lg">{text}</p>
+        <a href={href} className="btn btn-primary">
+          Learn More
+        </a>
       </div>
     </>
   );
