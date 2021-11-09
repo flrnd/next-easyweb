@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Heading from "../elements/Heading";
+import Heading from "../Heading";
 
 interface Props {
   valueProposition: string;

@@ -1,4 +1,4 @@
-import { NavigationBar, NavigationList } from "./navigation/";
+import { NavigationBar, NavigationList } from "../navigation";
 
 const list = ["home", "services", "about"];
 

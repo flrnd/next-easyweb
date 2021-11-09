@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import Content from "../components/section/Content";
-import Feature from "../components/section/Feature";
-import Hero from "../components/section/Hero";
+import { Feature, FeatureContent, Hero } from "../components/content";
 import placeholder from "../public/1920x1280.png";
-import Button from "../components/elements/Button";
+import Button from "../components/Button";
 
 export const Index = (): JSX.Element => (
   <>
@@ -48,7 +46,7 @@ export const Index = (): JSX.Element => (
           />
         }
       >
-        <Content
+        <FeatureContent
           title="This is a title"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
           buttonText="more info"
@@ -67,7 +65,7 @@ export const Index = (): JSX.Element => (
           />
         }
       >
-        <Content
+        <FeatureContent
           title="This is a title"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
           buttonText="more info"

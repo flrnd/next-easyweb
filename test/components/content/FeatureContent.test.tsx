@@ -1,10 +1,10 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import Content from "../../../components/section/Content";
+import FeatureContent from "../../../components/content/FeatureContent";
 import mockUrl from "../../__mocks__/mockUrl";
 
 afterAll(cleanup);
 
-describe("Content", () => {
+describe("Feature Content", () => {
   const title = "This is a title";
   const description =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -12,7 +12,7 @@ describe("Content", () => {
   const buttonURL = "/more_info";
 
   render(
-    <Content
+    <FeatureContent
       title={title}
       description={description}
       buttonText={buttonText}

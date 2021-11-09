@@ -7,7 +7,7 @@ interface Props {
   buttonURL: string;
 }
 
-const Content = ({
+const FeatureContent = ({
   title,
   description,
   buttonText,
@@ -26,4 +26,4 @@ const Content = ({
   );
 };
 
-export default Content;
+export default FeatureContent;

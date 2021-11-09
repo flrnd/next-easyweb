@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import Image from "next/image";
-import Button from "../../../components/elements/Button";
-import Hero from "../../../components/section/Hero";
+import Button from "../../../components/Button";
+import Hero from "../../../components/content/Hero";
 import placeholder from "../../../public/1920x1280.png";
 
 afterAll(cleanup);
