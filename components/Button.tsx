@@ -19,7 +19,7 @@ const Button = ({
   const hasHoverBg = (hoverBg && `hover:${hoverBg}`) || "";
 
   return (
-    <div className="rounded-md shadow">
+    <div className="rounded-md shadow mx-2">
       <a
         href={path}
         className={`btn ${bgColor} ${textColor} ${hasHover} ${hasHoverBg}`}
