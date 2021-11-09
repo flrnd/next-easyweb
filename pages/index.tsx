@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import { Feature, FeatureContent, Hero } from "../components/content";
+import {
+  Feature,
+  FeatureContent,
+  Hero,
+  ServiceList,
+} from "../components/content";
 import placeholder from "../public/1920x1280.png";
 import Button from "../components/Button";
-import ServiceList from "../components/content/ServiceList";
 import { services } from "../test/__mocks__/fakeData";
 
 export const Index = (): JSX.Element => (
