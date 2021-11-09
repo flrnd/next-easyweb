@@ -3,8 +3,8 @@ import { NextSeo } from "next-seo";
 import { Feature, FeatureContent, Hero } from "../components/content";
 import placeholder from "../public/1920x1280.png";
 import Button from "../components/Button";
-import Service from "../components/content/Service";
-import { ServerIcon } from "@heroicons/react/outline";
+import ServiceList from "../components/content/ServiceList";
+import { services } from "../test/__mocks__/fakeData";
 
 export const Index = (): JSX.Element => (
   <>
@@ -74,23 +74,8 @@ export const Index = (): JSX.Element => (
           buttonURL="/more_info"
         />
       </Feature>
-      <div className="grid grid-cols-3 gap-4">
-        <Service
-          icon={<ServerIcon className="mx-auto h-14 w-14 m-4" />}
-          heading="My Service"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Service
-          icon={<ServerIcon className="mx-auto h-14 w-14 m-4" />}
-          heading="My Service"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Service
-          icon={<ServerIcon className="mx-auto h-14 w-14 m-4" />}
-          heading="My Service"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-      </div>
+
+      <ServiceList services={services} />
     </main>
   </>
 );
