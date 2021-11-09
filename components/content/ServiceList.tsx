@@ -7,12 +7,10 @@ interface IProps {
 }
 
 const ServiceList = ({ services }: IProps): JSX.Element => {
+  const columns = calculateGridColumns(services.length);
+
   return (
-    <div
-      className={`my-4 lg:grid lg:grid-cols-${calculateGridColumns(
-        services.length
-      )} gap-4`}
-    >
+    <div className={`my-4 lg:grid lg:grid-cols-${columns} gap-4`}>
       {services.map((serviceItem) => (
         <Service
           key={serviceItem.name}
