@@ -15,8 +15,8 @@ const ServiceList = ({ services }: IProps): JSX.Element => {
     >
       {services.map((serviceItem) => (
         <Service
-          key={serviceItem.title}
-          heading={serviceItem.title}
+          key={serviceItem.name}
+          name={serviceItem.name}
           text={serviceItem.description}
           icon={serviceItem.icon}
           href={serviceItem.href}

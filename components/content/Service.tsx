@@ -1,24 +1,26 @@
+import Link from "next/link";
 import { ReactNode } from "react";
+import stringToId from "../../util/stringToId";
 import Heading from "../Heading";
 interface IProps {
   icon: ReactNode;
-  heading: string;
+  name: string;
   text: string;
   href: string;
 }
 
-const Service = ({ icon, heading, text, href }: IProps): JSX.Element => {
+const Service = ({ icon, name, text, href }: IProps): JSX.Element => {
   return (
     <>
-      <div className="container p-4 text-center">
-        {icon && icon}
+      <div id={stringToId(name)} className="container p-4 text-center">
+        {icon && <div className="icon">{icon}</div>}
         <Heading level={5} size="xsmall" weight="font-normal">
-          {heading}
+          {name}
         </Heading>
         <p className="text-lg">{text}</p>
-        <a href={href} className="btn btn-primary">
-          Learn More
-        </a>
+        <Link href={href}>
+          <a className="font-semibold">Learn more</a>
+        </Link>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import {
 } from "../components/content";
 import placeholder from "../public/1920x1280.png";
 import Button from "../components/Button";
-import { services } from "../test/__mocks__/fakeData";
+import { serviceList } from "../test/__mocks__/fakeData";
 
 export const Index = (): JSX.Element => (
   <>
@@ -79,7 +79,7 @@ export const Index = (): JSX.Element => (
         />
       </Feature>
 
-      <ServiceList services={services} />
+      <ServiceList services={serviceList} />
     </main>
   </>
 );
