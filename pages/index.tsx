@@ -55,8 +55,8 @@ export const Index = (): JSX.Element => (
         <FeatureContent
           title="This is a title"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          buttonText="more info"
-          buttonURL="/more_info"
+          buttonText="Learn more"
+          buttonURL="#"
         />
       </Feature>
       <Feature
@@ -74,8 +74,8 @@ export const Index = (): JSX.Element => (
         <FeatureContent
           title="This is a title"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          buttonText="more info"
-          buttonURL="/more_info"
+          buttonText="Learn more"
+          buttonURL="#"
         />
       </Feature>
 
