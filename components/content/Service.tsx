@@ -20,8 +20,8 @@ const Service = ({
   return (
     <>
       <div id={stringToId(name)} className="service">
-        {icon && <div className="icon-m">{icon}</div>}
-        <Heading level={5} size="xsmall" weight="font-normal">
+        {icon && <div className="icon icon-medium">{icon}</div>}
+        <Heading level={5} size="xsmall" weight="font-bold">
           {name}
         </Heading>
         <p className="text-lg mb-8">{text}</p>

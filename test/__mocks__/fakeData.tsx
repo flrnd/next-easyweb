@@ -45,4 +45,15 @@ const serviceList: IServiceListItem[] = [
   },
 ];
 
-export { serviceItem, serviceList };
+const placeholderData = {
+  heading: "We build websites that are fast, secure, and easy to use.",
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  cta: "Get Started",
+  cta2: "Live Demo",
+  featureTitle: "Feature Title",
+  featureText:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  buttonText: "Learn More",
+};
+
+export { serviceItem, serviceList, placeholderData };

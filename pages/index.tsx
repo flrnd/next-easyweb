@@ -8,15 +8,15 @@ import {
 } from "../components/content";
 import placeholder from "../public/1920x1280.png";
 import Button from "../components/Button";
-import { serviceList } from "../test/__mocks__/fakeData";
+import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
 
 export const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
-    <main className="bg-red-100 py-6">
+    <main className="py-6">
       <Hero
-        heading="Data to enrich your online business"
-        text="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua."
+        heading={placeholderData.heading}
+        text={placeholderData.text}
         cta={
           <>
             <Button
@@ -24,21 +24,21 @@ export const Index = (): JSX.Element => (
               textColor="text-white"
               hoverBg="bg-indigo-700"
               path="/"
-              text="Get Started"
+              text={placeholderData.cta}
             />
             <Button
               bgColor="bg-indigo-100"
               textColor="text-indigo-700"
               hoverBg="bg-indigo-200"
               path="#"
-              text="Live Demo"
+              text={placeholderData.cta2}
             />
           </>
         }
       />
       <Hero
-        heading="Data to enrich your online business"
-        text="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua."
+        heading={placeholderData.heading}
+        text={placeholderData.text}
         image={<Image src={placeholder} alt="placeholder" />}
       />
       <Feature
@@ -53,10 +53,10 @@ export const Index = (): JSX.Element => (
         }
       >
         <FeatureContent
-          title="This is a title"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          buttonText="more info"
-          buttonURL="/more_info"
+          title={placeholderData.featureTitle}
+          text={placeholderData.featureText}
+          buttonText={placeholderData.buttonText}
+          buttonURL="#"
         />
       </Feature>
       <Feature
@@ -72,10 +72,10 @@ export const Index = (): JSX.Element => (
         }
       >
         <FeatureContent
-          title="This is a title"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          buttonText="more info"
-          buttonURL="/more_info"
+          title={placeholderData.featureTitle}
+          text={placeholderData.featureText}
+          buttonText={placeholderData.buttonText}
+          buttonURL="#"
         />
       </Feature>
 
