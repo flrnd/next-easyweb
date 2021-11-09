@@ -1,14 +1,14 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import Image from "next/image";
-import Button from "../../../components/elements/Button";
-import Hero from "../../../components/section/Hero";
+import Button from "../../../components/Button";
+import Hero from "../../../components/content/Hero";
 import placeholder from "../../../public/1920x1280.png";
 
 afterAll(cleanup);
 
 describe("Hero", () => {
   it("renders a heading and subheading", () => {
-    render(<Hero valueProposition="Hello" valueDescription="world" />);
+    render(<Hero heading="Hello" text="world" />);
 
     expect(screen.getByRole("heading").textContent).toBe("Hello");
     expect(screen.getByText("world")).toBeInTheDocument();
@@ -17,8 +17,8 @@ describe("Hero", () => {
   it("renders with an image", () => {
     render(
       <Hero
-        valueProposition="hello"
-        valueDescription="world"
+        heading="hello"
+        text="world"
         image={
           <Image alt="test" src={placeholder} height={1280} width={1920} />
         }
@@ -31,8 +31,8 @@ describe("Hero", () => {
   it("renders with cta", () => {
     render(
       <Hero
-        valueProposition="hello"
-        valueDescription="world"
+        heading="hello"
+        text="world"
         cta={
           <Button
             bgColor="bg-indigo-600"

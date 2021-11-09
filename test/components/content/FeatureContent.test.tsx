@@ -1,20 +1,20 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import Content from "../../../components/section/Content";
+import FeatureContent from "../../../components/content/FeatureContent";
 import mockUrl from "../../__mocks__/mockUrl";
 
 afterAll(cleanup);
 
-describe("Content", () => {
+describe("Feature Content", () => {
   const title = "This is a title";
-  const description =
+  const text =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
   const buttonText = "more info";
   const buttonURL = "/more_info";
 
   render(
-    <Content
+    <FeatureContent
       title={title}
-      description={description}
+      text={text}
       buttonText={buttonText}
       buttonURL={buttonURL}
     />
@@ -24,7 +24,7 @@ describe("Content", () => {
     // heading
     expect(screen.getByRole("heading").textContent).toBe(title);
     // description
-    expect(screen.getByText(description).textContent).toBe(description);
+    expect(screen.getByText(text).textContent).toBe(text);
     // button && button link
     expect(screen.getByRole("button").textContent).toBe(buttonText);
     const link = screen.getByRole("link", {

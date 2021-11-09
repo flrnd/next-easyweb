@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Button from "../../../components/elements/Button";
+import Button from "../../components/Button";
 
 describe("Button", () => {
   it("should render a button with link and css classes", () => {
