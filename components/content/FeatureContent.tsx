@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Heading from "../Heading";
 
 interface Props {
   title: string;
@@ -15,13 +16,14 @@ const FeatureContent = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <h1 className="text-5xl">{title}</h1>
-      <p className="text-lg">{text}</p>
-      <button className="bg-gray-300 px-4 py-2">
-        <Link href={buttonURL}>
-          <a>{buttonText}</a>
-        </Link>
-      </button>
+      <Heading a11yTitle={title} level={2} size="large" weight="font-semibild">
+        {title}
+      </Heading>
+      <p className="text-xl mb-8 text-center md:text-left">{text}</p>
+
+      <Link href={buttonURL}>
+        <a className="text-button">{buttonText}</a>
+      </Link>
     </>
   );
 };
