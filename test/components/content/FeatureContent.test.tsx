@@ -25,8 +25,7 @@ describe("Feature Content", () => {
     expect(screen.getByRole("heading").textContent).toBe(title);
     // description
     expect(screen.getByText(text).textContent).toBe(text);
-    // button && button link
-    expect(screen.getByRole("button").textContent).toBe(buttonText);
+    // link
     const link = screen.getByRole("link", {
       name: buttonText,
     }) as HTMLAnchorElement;
