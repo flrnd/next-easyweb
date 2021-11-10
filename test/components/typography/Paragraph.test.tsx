@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Paragraph from "../../../components/typography/Paragraph";
+import { Paragraph } from "../../../components/typography";
 
 describe("Paragraph", () => {
   it("renders a paragraph with its props", () => {

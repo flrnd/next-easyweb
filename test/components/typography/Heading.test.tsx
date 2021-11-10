@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Heading from "../../../components/typography/Heading";
+import { Heading } from "../../../components/typography";
 
 describe("Heading", () => {
   it("should render a heading with its props", () => {

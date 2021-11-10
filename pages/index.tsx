@@ -7,7 +7,7 @@ import {
   ServiceList,
 } from "../components/elements";
 import placeholder from "../public/1920x1280.png";
-import Button from "../components/Button";
+import Button from "../components/controls/Button";
 import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
 
 export const Index = (): JSX.Element => (

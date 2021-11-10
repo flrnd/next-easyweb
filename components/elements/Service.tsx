@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import stringToId from "../../util/stringToId";
-import Heading from "../typography/Heading";
-import Paragraph from "../typography/Paragraph";
+import { Heading, Paragraph } from "../typography";
+
 interface IProps {
   icon: ReactNode;
   name: string;

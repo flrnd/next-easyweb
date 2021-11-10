@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import Heading from "../typography/Heading";
-import Paragraph from "../typography/Paragraph";
+import { Heading, Paragraph } from "../typography";
 
 interface Props {
   heading: string;
