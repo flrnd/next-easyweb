@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Heading from "../Heading";
+import Heading from "../typography/Heading";
 
 interface Props {
   title: string;
