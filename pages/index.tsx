@@ -1,14 +1,11 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import {
-  Feature,
-  FeatureContent,
-  Hero,
-  ServiceList,
-} from "../components/elements";
+import { SplitSide, Hero, ServiceList } from "../components/elements";
 import placeholder from "../public/1920x1280.png";
 import Button from "../components/controls/Button";
 import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
+import { Heading, Paragraph } from "../components/typography";
+import { Anchor } from "../components/controls";
 
 export const Index = (): JSX.Element => (
   <>
@@ -41,25 +38,7 @@ export const Index = (): JSX.Element => (
         text={placeholderData.text}
         image={<Image src={placeholder} alt="placeholder" />}
       />
-      <Feature
-        image={
-          <Image
-            src={placeholder}
-            height={1280}
-            width={1920}
-            alt="Placeholder image"
-            placeholder="empty"
-          />
-        }
-      >
-        <FeatureContent
-          title={placeholderData.featureTitle}
-          text={placeholderData.featureText}
-          label={placeholderData.buttonText}
-          href="/feature"
-        />
-      </Feature>
-      <Feature
+      <SplitSide
         isImageLeft={true}
         image={
           <Image
@@ -71,13 +50,27 @@ export const Index = (): JSX.Element => (
           />
         }
       >
-        <FeatureContent
-          title={placeholderData.featureTitle}
-          text={placeholderData.featureText}
+        <Heading
+          a11yTitle={placeholderData.featureTitle}
+          level={2}
+          size="large"
+          weight="font-semibild"
+        >
+          {placeholderData.heading}
+        </Heading>
+        <Paragraph margin="mb-2" textAlign="text-center lg:text-left">
+          {placeholderData.text}
+        </Paragraph>
+        <Paragraph margin="mb-6 md:mb-8" textAlign="text-center lg:text-left">
+          {placeholderData.text}
+        </Paragraph>
+        <Anchor
+          href="/some-link"
+          size="small"
+          weight="font-semibold"
           label={placeholderData.buttonText}
-          href="/feature"
         />
-      </Feature>
+      </SplitSide>
 
       <ServiceList services={serviceList} />
     </main>
