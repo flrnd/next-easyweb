@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Heading from "../Heading";
+import { Heading, Paragraph } from "../typography";
 
 interface Props {
   title: string;
@@ -19,7 +19,13 @@ const FeatureContent = ({
       <Heading a11yTitle={title} level={2} size="large" weight="font-semibild">
         {title}
       </Heading>
-      <p className="text-xl mb-8 text-center md:text-left">{text}</p>
+      <Paragraph
+        margin="mb-6 md:mb-8"
+        size="small"
+        textAlign="text-center lg:text-left"
+      >
+        {text}
+      </Paragraph>
 
       <Link href={buttonURL}>
         <a className="text-button">{buttonText}</a>

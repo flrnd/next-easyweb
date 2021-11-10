@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Container } from "../layout";
 
 interface Props {
   isImageLeft?: boolean;
@@ -22,10 +23,12 @@ const Feature = ({
   }
 
   return (
-    <div className="feature">
-      <div className="content">{contentLeft}</div>
-      <div className="content">{contentRight}</div>
-    </div>
+    <Container>
+      <div className="feature">
+        <div className="content">{contentLeft}</div>
+        <div className="content">{contentRight}</div>
+      </div>
+    </Container>
   );
 };
 

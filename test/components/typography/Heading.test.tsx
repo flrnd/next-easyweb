@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Heading from "../../components/Heading";
+import { Heading } from "../../../components/typography";
 
 describe("Heading", () => {
   it("should render a heading with its props", () => {
@@ -34,9 +34,9 @@ describe("Heading", () => {
     const text = "This is a heading";
 
     const defaults = {
-      size: "xlarge",
+      size: "xxxlarge",
       weight: "font-extrabold",
-      margin: "mb-4",
+      margin: "mb-6",
       tracking: "tracking-tight",
     };
 

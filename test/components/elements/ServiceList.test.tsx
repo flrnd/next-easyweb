@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { ServiceList } from "../../../components/content";
+import { ServiceList } from "../../../components/elements";
 import { serviceList } from "../../__mocks__/fakeData";
 
 describe("Service List", () => {
