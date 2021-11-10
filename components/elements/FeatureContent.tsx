@@ -22,7 +22,7 @@ const FeatureContent = ({
       <Paragraph
         margin="mb-6 md:mb-8"
         size="small"
-        textAlign="text-center md:text-left"
+        textAlign="text-center lg:text-left"
       >
         {text}
       </Paragraph>
