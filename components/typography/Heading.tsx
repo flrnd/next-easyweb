@@ -3,10 +3,10 @@ import { ReactNode } from "react";
 interface Props {
   a11yTitle?: string;
   level?: number;
-  size?: string; // tailwind class or custom css class
-  weight?: string; // tailwind class or custom css class
-  margin?: string; // tailwind class or custom css class
-  tracking?: string; // tailwind class or custom css class
+  size?: string; // small, normal, medium, large, xlarge, xxlarge, xxxlarge
+  weight?: string;
+  margin?: string;
+  tracking?: string;
   children: ReactNode;
 }
 
