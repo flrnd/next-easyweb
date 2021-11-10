@@ -5,7 +5,7 @@ import {
   FeatureContent,
   Hero,
   ServiceList,
-} from "../components/content";
+} from "../components/elements";
 import placeholder from "../public/1920x1280.png";
 import Button from "../components/Button";
 import { placeholderData, serviceList } from "../test/__mocks__/fakeData";

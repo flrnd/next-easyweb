@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import FeatureContent from "../../../components/content/FeatureContent";
+import { FeatureContent } from "../../../components/elements";
 import mockUrl from "../../__mocks__/mockUrl";
 
 afterAll(cleanup);
