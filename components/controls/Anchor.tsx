@@ -34,8 +34,14 @@ const Anchor = ({
       className={classNames(color, margin, size, weight)}
       onClick={onClick}
     >
-      <div className={`flex justify-center ${reverse && "flex-row-reverse"}`}>
-        {icon && <span className={`icon-small ${gap}`}>{icon}</span>}
+      <div
+        className={`flex justify-center items-center ${
+          reverse && "flex-row-reverse"
+        }`}
+      >
+        {icon && (
+          <span className={`icon-small flex items-center ${gap}`}>{icon}</span>
+        )}
         {label}
       </div>
     </a>
