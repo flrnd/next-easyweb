@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { render, screen } from "@testing-library/react";
-import { Feature } from "../../../components/elements/";
+import { SplitSide } from "../../../components/elements/";
 import placeholder from "../../../public/1920x1280.png";
 
 describe("Feature", () => {
   it("Should render a image with content", () => {
     render(
-      <Feature
+      <SplitSide
         image={
           <Image
             src={placeholder}
@@ -18,7 +18,7 @@ describe("Feature", () => {
         }
       >
         <div>Hello</div>
-      </Feature>
+      </SplitSide>
     );
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();

@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 
-.feature {
+.split-side {
   @apply flex flex-col-reverse lg:flex-row justify-center;
 }
 

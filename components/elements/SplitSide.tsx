@@ -7,14 +7,14 @@ interface Props {
   children: ReactNode;
 }
 
-const Feature = ({
-  isImageLeft: isMediaLeft = false,
+const SplitSide = ({
+  isImageLeft = false,
   image,
   children,
 }: Props): JSX.Element => {
   let contentLeft, contentRight;
 
-  if (isMediaLeft) {
+  if (isImageLeft) {
     contentLeft = image;
     contentRight = children;
   } else {
@@ -24,7 +24,7 @@ const Feature = ({
 
   return (
     <Container>
-      <div className="feature">
+      <div className="split-side">
         <div className="content">{contentLeft}</div>
         <div className="content">{contentRight}</div>
       </div>
@@ -32,4 +32,4 @@ const Feature = ({
   );
 };
 
-export default Feature;
+export default SplitSide;
