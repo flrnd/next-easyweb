@@ -15,7 +15,7 @@ const Heading = ({
   level = 1,
   size = "xxxlarge",
   weight = "font-extrabold",
-  margin = "mb-4",
+  margin = "mb-6",
   tracking = "tracking-tight",
   children,
 }: Props): JSX.Element => {

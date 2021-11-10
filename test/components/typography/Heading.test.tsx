@@ -34,9 +34,9 @@ describe("Heading", () => {
     const text = "This is a heading";
 
     const defaults = {
-      size: "xlarge",
+      size: "xxxlarge",
       weight: "font-extrabold",
-      margin: "mb-4",
+      margin: "mb-6",
       tracking: "tracking-tight",
     };
 
