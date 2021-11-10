@@ -1,6 +1,7 @@
-import SplitSide from "./SplitSide";
+import Card from "./Card";
 import Hero from "./Hero";
 import Service from "./Service";
 import ServiceList from "./ServiceList";
+import SplitSide from "./SplitSide";
 
-export { SplitSide, Hero, Service, ServiceList };
+export { Card, SplitSide, Hero, Service, ServiceList };
