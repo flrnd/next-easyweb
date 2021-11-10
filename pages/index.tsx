@@ -1,16 +1,18 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import { SplitSide, Hero, ServiceList } from "../components/elements";
+import { SplitSide, Hero, ServiceList, Card } from "../components/elements";
 import placeholder from "../public/1920x1280.png";
-import Button from "../components/controls/Button";
+import { Button } from "../components/controls";
 import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
+import { Container } from "../components/layout";
+import { HomeIcon } from "@heroicons/react/outline";
 
 export const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
-    <main className="py-6">
+    <main className="py-6 bg-indigo-50">
       <Hero
         heading={placeholderData.heading}
         text={placeholderData.text}
@@ -73,6 +75,14 @@ export const Index = (): JSX.Element => (
       </SplitSide>
 
       <ServiceList services={serviceList} />
+      <Container>
+        <Card icon={<HomeIcon />}>
+          <Heading level={3} size="small" margin="my-4" weight="font-semibold">
+            This is a card
+          </Heading>
+          <Paragraph margin="mb-2">{placeholderData.text}</Paragraph>
+        </Card>
+      </Container>
     </main>
   </>
 );
