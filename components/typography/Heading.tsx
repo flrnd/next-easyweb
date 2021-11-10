@@ -13,7 +13,7 @@ interface Props {
 const Heading = ({
   a11yTitle,
   level = 1,
-  size = "xlarge",
+  size = "xxxlarge",
   weight = "font-extrabold",
   margin = "mb-4",
   tracking = "tracking-tight",
