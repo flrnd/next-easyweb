@@ -1,6 +1,7 @@
 import { Service } from ".";
 import { IServiceListItem } from "../../types/interfaces";
 import calculateGridColumns from "../../util/calculateGridColumns";
+import { Container, Grid } from "../layout";
 
 interface IProps {
   services: IServiceListItem[];
@@ -10,17 +11,19 @@ const ServiceList = ({ services }: IProps): JSX.Element => {
   const columns = calculateGridColumns(services.length);
 
   return (
-    <div className={`my-4 lg:grid lg:grid-cols-${columns} lg:gap-2`}>
-      {services.map((serviceItem) => (
-        <Service
-          key={serviceItem.name}
-          name={serviceItem.name}
-          text={serviceItem.description}
-          icon={serviceItem.icon}
-          href={serviceItem.href}
-        />
-      ))}
-    </div>
+    <Container>
+      <Grid columns={columns} gap="gap-2">
+        {services.map((serviceItem) => (
+          <Service
+            key={serviceItem.name}
+            name={serviceItem.name}
+            text={serviceItem.description}
+            icon={serviceItem.icon}
+            href={serviceItem.href}
+          />
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
