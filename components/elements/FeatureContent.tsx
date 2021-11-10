@@ -1,19 +1,14 @@
-import Link from "next/link";
+import Anchor from "../controls/Anchor";
 import { Heading, Paragraph } from "../typography";
 
 interface Props {
   title: string;
   text: string;
-  buttonText: string;
-  buttonURL: string;
+  label: string;
+  href: string;
 }
 
-const FeatureContent = ({
-  title,
-  text,
-  buttonText,
-  buttonURL,
-}: Props): JSX.Element => {
+const FeatureContent = ({ title, text, label, href }: Props): JSX.Element => {
   return (
     <>
       <Heading a11yTitle={title} level={2} size="large" weight="font-semibild">
@@ -26,10 +21,7 @@ const FeatureContent = ({
       >
         {text}
       </Paragraph>
-
-      <Link href={buttonURL}>
-        <a className="text-button">{buttonText}</a>
-      </Link>
+      <Anchor href={href} size="normal" weight="font-semibold" label={label} />
     </>
   );
 };

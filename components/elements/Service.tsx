@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { ArrowRightIcon } from "@heroicons/react/outline";
 import { ReactNode } from "react";
 import stringToId from "../../util/stringToId";
+import Anchor from "../controls/Anchor";
 import { Heading, Paragraph } from "../typography";
 
 interface IProps {
@@ -28,9 +29,15 @@ const Service = ({
         <Paragraph margin="mb-6 md:mb-8" size="small">
           {text}
         </Paragraph>
-        <Link href={href}>
-          <a className="small mt-5 font-semibold mb-4 underline">{linkText}</a>
-        </Link>
+        <Anchor
+          href={href}
+          margin="mt-5"
+          weight="font-semibold"
+          label={linkText}
+          gap="px-2"
+          reverse={true}
+          icon={<ArrowRightIcon />}
+        />
       </div>
     </>
   );

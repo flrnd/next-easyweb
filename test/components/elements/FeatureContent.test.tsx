@@ -15,8 +15,8 @@ describe("Feature Content", () => {
     <FeatureContent
       title={title}
       text={text}
-      buttonText={buttonText}
-      buttonURL={buttonURL}
+      label={buttonText}
+      href={buttonURL}
     />
   );
 

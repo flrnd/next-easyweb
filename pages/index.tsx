@@ -55,8 +55,8 @@ export const Index = (): JSX.Element => (
         <FeatureContent
           title={placeholderData.featureTitle}
           text={placeholderData.featureText}
-          buttonText={placeholderData.buttonText}
-          buttonURL="#"
+          label={placeholderData.buttonText}
+          href="/feature"
         />
       </Feature>
       <Feature
@@ -74,8 +74,8 @@ export const Index = (): JSX.Element => (
         <FeatureContent
           title={placeholderData.featureTitle}
           text={placeholderData.featureText}
-          buttonText={placeholderData.buttonText}
-          buttonURL="#"
+          label={placeholderData.buttonText}
+          href="/feature"
         />
       </Feature>
 
