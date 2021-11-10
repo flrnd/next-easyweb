@@ -7,5 +7,8 @@ describe("Anchor", () => {
 
     expect(getByRole("link")).toHaveAttribute("href", "/link");
     expect(getByRole("link")).toHaveTextContent("link");
+    /**
+     * TODO: add test cases for the rest of the props
+     **/
   });
 });

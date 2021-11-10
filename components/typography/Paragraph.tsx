@@ -8,6 +8,9 @@ interface IProps {
   fontFamily?: string;
   children: React.ReactNode;
 }
+/**
+ * TODO: Add tests
+ */
 const Paragraph = ({
   margin = "m-2",
   size,
