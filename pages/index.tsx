@@ -12,7 +12,7 @@ import { HomeIcon } from "@heroicons/react/outline";
 export const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
-    <main className="py-6 bg-indigo-50">
+    <main className="py-6">
       <Hero
         heading={placeholderData.heading}
         text={placeholderData.text}
