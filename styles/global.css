@@ -9,6 +9,10 @@
   @apply lg:w-1/2 py-5 px-4 sm:px-6 lg:px-8  flex flex-wrap content-center lg:justify-start justify-center;
 }
 
+.card-icon {
+  @apply p-2 rounded-lg relative top-5 left-5 shadow-sm;
+}
+
 .hero {
   @apply text-center mt-10 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28;
 }
