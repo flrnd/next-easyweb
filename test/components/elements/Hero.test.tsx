@@ -35,11 +35,11 @@ describe("Hero", () => {
         text="world"
         cta={
           <Button
-            bgColor="bg-indigo-600"
+            background="bg-indigo-600"
             textColor="text-white"
             hoverBg="bg-indigo-700"
-            path="/"
-            text="Get Started"
+            href="/"
+            label="Get Started"
           />
         }
       />
