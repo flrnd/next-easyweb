@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { ReactNode } from "react";
 
 interface Props {
@@ -24,7 +25,7 @@ const Heading = ({
   return (
     <HeadingTag
       aria-label={a11yTitle}
-      className={`${size} ${weight} ${margin} ${tracking}`}
+      className={classNames(size, weight, margin, tracking)}
     >
       {children}
     </HeadingTag>
