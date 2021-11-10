@@ -8,10 +8,10 @@ describe("Button", () => {
     const path = "/get-started";
     render(
       <Button
-        text={text}
-        bgColor="bg-red-200"
+        label={text}
+        background="bg-red-200"
         textColor="text-white"
-        path={path}
+        href={path}
       />
     );
 

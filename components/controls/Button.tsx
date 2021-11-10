@@ -1,30 +1,35 @@
+import classNames from "classnames";
+
 interface IProps {
-  bgColor: string; // tailwindcss background color
+  background: string; // tailwindcss background color
   hoverBg?: string; // tailwindcss background color on hover
   textColor: string; // tailwindcss text-color
   hover?: string; // tailwindcss class for generic hover
-  path: string; // internal route or http url
-  text: string;
+  href: string; // internal route or http url
+  label: string;
 }
 
 const Button = ({
-  bgColor,
+  background,
   hoverBg,
   textColor,
   hover,
-  path,
-  text,
+  href,
+  label,
 }: IProps): JSX.Element => {
-  const hasHover = (hover && `hover:${hover}`) || "";
-  const hasHoverBg = (hoverBg && `hover:${hoverBg}`) || "";
-
   return (
     <div className="rounded-md shadow mx-2">
       <a
-        href={path}
-        className={`btn ${bgColor} ${textColor} ${hasHover} ${hasHoverBg}`}
+        href={href}
+        className={classNames(
+          "btn",
+          background,
+          textColor,
+          hover && `hover:${hover}`,
+          hoverBg && `hover:${hoverBg}`
+        )}
       >
-        {text}
+        {label}
       </a>
     </div>
   );

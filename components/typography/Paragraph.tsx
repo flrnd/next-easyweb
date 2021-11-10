@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 interface IProps {
   margin?: string;
   size?: string;
@@ -15,7 +17,7 @@ const Paragraph = ({
   children,
 }: IProps): JSX.Element => {
   return (
-    <p className={`${margin} ${size} ${weight} ${textAlign} ${fontFamily}`}>
+    <p className={classNames(margin, size, weight, textAlign, fontFamily)}>
       {children}
     </p>
   );

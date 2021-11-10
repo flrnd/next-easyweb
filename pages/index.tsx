@@ -20,18 +20,18 @@ export const Index = (): JSX.Element => (
         cta={
           <>
             <Button
-              bgColor="bg-indigo-600"
+              background="bg-indigo-600"
               textColor="text-white"
               hoverBg="bg-indigo-700"
-              path="/"
-              text={placeholderData.cta}
+              href="/"
+              label={placeholderData.cta}
             />
             <Button
-              bgColor="bg-indigo-100"
+              background="bg-indigo-100"
               textColor="text-indigo-700"
               hoverBg="bg-indigo-200"
-              path="#"
-              text={placeholderData.cta2}
+              href="#"
+              label={placeholderData.cta2}
             />
           </>
         }

@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import { ReactNode } from "react";
 import stringToId from "../../util/stringToId";
-import Anchor from "../controls/Anchor";
+import { Anchor } from "../controls";
 import { Heading, Paragraph } from "../typography";
 
 interface IProps {
