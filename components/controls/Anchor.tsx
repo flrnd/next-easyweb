@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 interface IProps {
   a11yTitle?: string;
   href?: string;
@@ -29,7 +31,7 @@ const Anchor = ({
     <a
       aria-label={a11yTitle}
       href={href}
-      className={`${color} ${size} ${weight} ${margin}`}
+      className={classNames(color, margin, size, weight)}
       onClick={onClick}
     >
       <div className={`flex justify-center ${reverse && "flex-row-reverse"}`}>
