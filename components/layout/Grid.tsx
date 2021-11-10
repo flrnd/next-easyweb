@@ -5,7 +5,7 @@ interface IProps {
   gap?: string;
   children: ReactNode;
 }
-const Grid = ({ columns, gap, children }: IProps): JSX.Element => {
+const Grid = ({ columns, gap = "gap-2", children }: IProps): JSX.Element => {
   return (
     <div className={`lg:grid lg:grid-cols-${columns} lg:${gap}`}>
       {children}
