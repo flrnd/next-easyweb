@@ -3,7 +3,7 @@ import Image from "next/image";
 import classNames from "classnames";
 
 interface IProps {
-  picture: string;
+  image: string;
   width?: string;
   height?: string;
   isRounded?: boolean;
@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const Avatar = ({
-  picture,
+  image,
   width = "w-64",
   height = "h-64",
   isRounded,
@@ -28,11 +28,11 @@ const Avatar = ({
   return (
     <div
       className={classNames(
-        "avatar",
         "flex",
         width,
         "h-full",
-        isVertical ? "flex-col" : "flex-row"
+        isVertical ? "flex-col" : "flex-row",
+        "mb-4"
       )}
     >
       <div
@@ -46,7 +46,7 @@ const Avatar = ({
         )}
       >
         <Image
-          src={picture}
+          src={image}
           layout="fill"
           objectFit="cover"
           className={classNames(isRounded ? "rounded-full" : "rounded-xl")}
@@ -57,7 +57,7 @@ const Avatar = ({
         <div className="small">{name}</div>
         <div className="small text-indigo-800">{jobTitle}</div>
         {excerpt && <div className="text-gray-500 mt-2">{excerpt}</div>}
-        {social && <div className="text-gray-500 mt-2">{social}</div>}
+        {social && <div className="mt-4 mb-6">{social}</div>}
       </div>
     </div>
   );
