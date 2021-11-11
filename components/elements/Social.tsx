@@ -1,7 +1,5 @@
-import { ReactNode } from "react";
-
 interface IProps {
-  icon: ReactNode;
+  icon: JSX.Element;
   href: string;
 }
 
@@ -11,7 +9,7 @@ const Social = ({ icon, href }: IProps): JSX.Element => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="icon-small mr-2"
+      className="icon-xsmall mr-3 text-gray-400"
     >
       {icon}
     </a>
