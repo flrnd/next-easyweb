@@ -155,6 +155,23 @@ const teamMembers = [
       },
     ],
   },
+  {
+    name: "Martha Doe",
+    jobTitle: "Junior Front-end Developer",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/martha.jpg",
+    social: [
+      {
+        href: "https://twitter.com/martha",
+        icon: getIcon("twitter"),
+      },
+      {
+        href: "https://linkedin.com/martha",
+        icon: getIcon("linkedin"),
+      },
+    ],
+  },
 ];
 
 export { serviceItem, serviceList, placeholderData, teamMembers };
