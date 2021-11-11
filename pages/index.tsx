@@ -91,18 +91,40 @@ export const Index = (): JSX.Element => (
       </Container>
       <div className="mt-6" />
       <Container>
-        <Grid columns={3}>
-          {teamMembers.map((member) => (
-            <Avatar
-              key={member.name}
-              name={member.name}
-              jobTitle={member.jobTitle}
-              image={member.image}
-              excerpt={member.excerpt}
-              social={<SocialList items={member.social} />}
-            />
-          ))}
-        </Grid>
+        <div className="flex">
+          <div className="w-1/3 p-2">
+            <Heading
+              level={2}
+              size="large"
+              weight="font-semibold"
+              margin="mb-4"
+            >
+              <span className="text-indigo-800">Meet our team</span>
+            </Heading>
+            <Paragraph margin="mb-6">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo.
+            </Paragraph>
+          </div>
+          <div className="w-2/3 p-2">
+            <Grid columns={3}>
+              {teamMembers.map((member) => (
+                <Avatar
+                  width="w-48"
+                  height="h-48"
+                  key={member.name}
+                  name={member.name}
+                  jobTitle={member.jobTitle}
+                  image={member.image}
+                  excerpt={member.excerpt}
+                  social={<SocialList items={member.social} />}
+                />
+              ))}
+            </Grid>
+          </div>
+        </div>
       </Container>
     </main>
   </>
