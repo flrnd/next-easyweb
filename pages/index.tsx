@@ -6,8 +6,10 @@ import { Button } from "../components/controls";
 import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
-import { Container } from "../components/layout";
-import { HomeIcon } from "@heroicons/react/outline";
+import { Container, Grid } from "../components/layout";
+import { BanIcon, CogIcon, HomeIcon } from "@heroicons/react/outline";
+import Avatar from "../components/elements/Avatar";
+import SocialList from "../components/elements/SocialList";
 
 export const Index = (): JSX.Element => (
   <>
@@ -82,6 +84,46 @@ export const Index = (): JSX.Element => (
           </Heading>
           <Paragraph margin="mb-2">{placeholderData.text}</Paragraph>
         </Card>
+      </Container>
+      <div className="mt-6" />
+      <Container>
+        <Grid columns={3}>
+          <Avatar
+            picture="/assets/pictures/team/kate.jpg"
+            isRounded={false}
+            name="Kate jhonsson"
+            jobTitle="Copywriter"
+            excerpt="Master in comunication columbus University"
+          />
+          <Avatar
+            picture="/assets/pictures/team/jane.jpg"
+            isRounded={false}
+            name="Jane blabla"
+            jobTitle="Senior Designer"
+            excerpt="Master design fu bla bla bl"
+          />
+          <Avatar
+            picture="/assets/pictures/team/pep.jpg"
+            isRounded={false}
+            name="Pep Guardiola"
+            jobTitle="Senior Designer"
+            excerpt="Master design fu bla bla bl"
+            social={
+              <SocialList
+                list={[
+                  {
+                    icon: <BanIcon />,
+                    href: "#",
+                  },
+                  {
+                    icon: <CogIcon />,
+                    href: "#",
+                  },
+                ]}
+              />
+            }
+          />
+        </Grid>
       </Container>
     </main>
   </>
