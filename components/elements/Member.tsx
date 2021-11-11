@@ -46,6 +46,7 @@ const Member = ({
         )}
       >
         <Image
+          priority={true}
           placeholder="empty"
           src={image}
           layout="fill"
