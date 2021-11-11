@@ -1,4 +1,5 @@
 import { ISocial } from "../../types/interfaces";
+import { getSocialIcon } from "../icons";
 import Social from "./Social";
 
 interface IProps {
@@ -9,7 +10,11 @@ const SocialList = ({ items }: IProps): JSX.Element => {
   return (
     <div className="flex">
       {items.map((item) => (
-        <Social key={item.href} icon={item.icon} href={item.href} />
+        <Social
+          key={item.href}
+          icon={getSocialIcon(item.icon)}
+          href={item.href}
+        />
       ))}
     </div>
   );
