@@ -14,7 +14,7 @@ interface IProps {
   social?: ReactNode;
 }
 
-const Avatar = ({
+const Member = ({
   image,
   width = "w-64",
   height = "h-64",
@@ -53,14 +53,25 @@ const Avatar = ({
         />
       </div>
 
-      <div className={classNames("py-2 mt-2")}>
+      <div className={classNames("py-2", "mt-2", isRounded && "text-center")}>
         <div className="small">{name}</div>
         <div className="small text-indigo-800">{jobTitle}</div>
         {excerpt && <div className="text-gray-500 mt-2">{excerpt}</div>}
-        {social && <div className="mt-4 mb-6">{social}</div>}
+        {social && (
+          <div
+            className={classNames(
+              "mt-4",
+              "mb-6",
+              "flex",
+              isRounded && "justify-center"
+            )}
+          >
+            {social}
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Avatar;
+export default Member;
