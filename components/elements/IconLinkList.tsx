@@ -6,7 +6,7 @@ interface IProps {
   items: ISocial[];
 }
 
-const SocialIconLinks = ({ items }: IProps): JSX.Element => {
+const IconLinkList = ({ items }: IProps): JSX.Element => {
   return (
     <div className="flex">
       {items.map((item) => (
@@ -20,4 +20,4 @@ const SocialIconLinks = ({ items }: IProps): JSX.Element => {
   );
 };
 
-export default SocialIconLinks;
+export default IconLinkList;
