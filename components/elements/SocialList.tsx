@@ -2,13 +2,13 @@ import { ISocial } from "../../types/interfaces";
 import Social from "./Social";
 
 interface IProps {
-  list: ISocial[];
+  items: ISocial[];
 }
 
-const SocialList = ({ list }: IProps): JSX.Element => {
+const SocialList = ({ items }: IProps): JSX.Element => {
   return (
     <div className="flex">
-      {list.map((item) => (
+      {items.map((item) => (
         <Social key={item.href} icon={item.icon} href={item.href} />
       ))}
     </div>
