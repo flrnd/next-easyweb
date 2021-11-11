@@ -12,7 +12,7 @@ import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
 import { Container, Grid } from "../components/layout";
 import { HomeIcon } from "@heroicons/react/outline";
-import { Member, IconLinkList } from "../components/elements";
+import { Member, SocialIconList } from "../components/elements";
 
 export const Index = (): JSX.Element => (
   <>
@@ -118,7 +118,7 @@ export const Index = (): JSX.Element => (
                   name={member.name}
                   jobTitle={member.jobTitle}
                   excerpt={member.excerpt}
-                  social={<IconLinkList items={member.social} />}
+                  social={<SocialIconList items={member.social} />}
                 />
               ))}
             </Grid>
