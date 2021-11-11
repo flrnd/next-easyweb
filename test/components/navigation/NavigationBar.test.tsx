@@ -11,6 +11,6 @@ describe("NavigationBar", () => {
       </NavigationBar>
     );
 
-    expect(screen.getByRole("navigation").textContent).toBe(expected);
+    expect(screen.getByRole("navigation")).toBeInTheDocument;
   });
 });

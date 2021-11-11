@@ -69,6 +69,10 @@
   @apply text-base md:text-lg lg:text-xl;
 }
 
+.icon-xsmall {
+  @apply h-5 w-5;
+}
+
 .icon-small {
   @apply w-8 h-8;
 }

@@ -3,11 +3,16 @@ import { NextSeo } from "next-seo";
 import { SplitSide, Hero, ServiceList, Card } from "../components/elements";
 import placeholder from "../public/1920x1280.png";
 import { Button } from "../components/controls";
-import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
+import {
+  placeholderData,
+  serviceList,
+  teamMembers,
+} from "../test/__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
-import { Container } from "../components/layout";
+import { Container, Grid } from "../components/layout";
 import { HomeIcon } from "@heroicons/react/outline";
+import { Member, SocialIconList } from "../components/elements";
 
 export const Index = (): JSX.Element => (
   <>
@@ -82,6 +87,43 @@ export const Index = (): JSX.Element => (
           </Heading>
           <Paragraph margin="mb-2">{placeholderData.text}</Paragraph>
         </Card>
+      </Container>
+      <div className="mt-6" />
+      <Container>
+        <div className="flex flex-col md:flex-row">
+          <div className="md:w-1/3 p-2">
+            <Heading
+              level={2}
+              size="large"
+              weight="font-semibold"
+              margin="mb-4"
+            >
+              <span className="text-indigo-800">Meet our team</span>
+            </Heading>
+            <Paragraph margin="mb-6">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo.
+            </Paragraph>
+          </div>
+          <div className="md:w-2/3 p-2">
+            <Grid columns={3} gap="gap-3">
+              {teamMembers.map((member) => (
+                <Member
+                  key={member.name}
+                  image={member.image}
+                  width="w-full"
+                  height="h-64"
+                  name={member.name}
+                  jobTitle={member.jobTitle}
+                  excerpt={member.excerpt}
+                  social={<SocialIconList items={member.social} />}
+                />
+              ))}
+            </Grid>
+          </div>
+        </div>
       </Container>
     </main>
   </>

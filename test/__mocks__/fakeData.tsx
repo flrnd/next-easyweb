@@ -56,4 +56,121 @@ const placeholderData = {
   buttonText: "Learn More",
 };
 
-export { serviceItem, serviceList, placeholderData };
+const teamMembers = [
+  {
+    name: "Jane Coslin",
+    jobTitle: "CEO",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/jane.jpg",
+    social: [
+      {
+        href: "https://twitter.com/jane_coslin",
+        icon: "twitter",
+      },
+      {
+        href: "https://linkedin.com/jane_coslin",
+        icon: "linkedin",
+      },
+    ],
+  },
+  {
+    name: "John Smith",
+    jobTitle: "CTO",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/jack.jpg",
+    social: [
+      {
+        href: "https://twitter.com/john_smith",
+        icon: "twitter",
+      },
+      {
+        href: "https://linkedin.com/john_smith",
+        icon: "linkedin",
+      },
+    ],
+  },
+  {
+    name: "Lisa Kan",
+    jobTitle: "Copywriter",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/lisa.jpg",
+    social: [
+      {
+        href: "https://twitter.com/lisa",
+        icon: "twitter",
+      },
+      {
+        href: "https://instagram.com/lisa",
+        icon: "instagram",
+      },
+      {
+        href: "https://linkedin.com/lisa",
+        icon: "linkedin",
+      },
+    ],
+  },
+  {
+    name: "Tyler Donan",
+    jobTitle: "Senior Designer",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/tyler.jpg",
+    social: [
+      {
+        href: "https://twitter.com/tyler",
+        icon: "twitter",
+      },
+      {
+        href: "https://instagram.com/tyler",
+        icon: "instagram",
+      },
+      {
+        href: "https://facebook.com/tyler",
+        icon: "facebook",
+      },
+    ],
+  },
+  {
+    name: "Kate Williams",
+    jobTitle: "Junior Marketing specialist",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/kate.jpg",
+    social: [
+      {
+        href: "https://twitter.com/kate",
+        icon: "twitter",
+      },
+      {
+        href: "https://instagram.com/kate",
+        icon: "instagram",
+      },
+      {
+        href: "https://linkedin.com/kate",
+        icon: "linkedin",
+      },
+    ],
+  },
+  {
+    name: "Martha Doe",
+    jobTitle: "Junior Front-end Developer",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/martha.jpg",
+    social: [
+      {
+        href: "https://twitter.com/martha",
+        icon: "twitter",
+      },
+      {
+        href: "https://linkedin.com/martha",
+        icon: "linkedin",
+      },
+    ],
+  },
+];
+
+export { serviceItem, serviceList, placeholderData, teamMembers };
