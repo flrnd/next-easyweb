@@ -4,7 +4,6 @@ import {
   DatabaseIcon,
   CloudIcon,
 } from "@heroicons/react/outline";
-import { getIcon } from "../../components/icons";
 import { IServiceListItem } from "../../types/interfaces";
 
 const serviceItem: IServiceListItem = {
@@ -67,11 +66,11 @@ const teamMembers = [
     social: [
       {
         href: "https://twitter.com/jane_coslin",
-        icon: getIcon("twitter"),
+        icon: "twitter",
       },
       {
         href: "https://linkedin.com/jane_coslin",
-        icon: getIcon("linkedin"),
+        icon: "linkedin",
       },
     ],
   },
@@ -84,11 +83,11 @@ const teamMembers = [
     social: [
       {
         href: "https://twitter.com/john_smith",
-        icon: getIcon("twitter"),
+        icon: "twitter",
       },
       {
         href: "https://linkedin.com/john_smith",
-        icon: getIcon("linkedin"),
+        icon: "linkedin",
       },
     ],
   },
@@ -101,15 +100,15 @@ const teamMembers = [
     social: [
       {
         href: "https://twitter.com/lisa",
-        icon: getIcon("twitter"),
+        icon: "twitter",
       },
       {
         href: "https://instagram.com/lisa",
-        icon: getIcon("instagram"),
+        icon: "instagram",
       },
       {
         href: "https://linkedin.com/lisa",
-        icon: getIcon("linkedin"),
+        icon: "linkedin",
       },
     ],
   },
@@ -122,15 +121,15 @@ const teamMembers = [
     social: [
       {
         href: "https://twitter.com/tyler",
-        icon: getIcon("twitter"),
+        icon: "twitter",
       },
       {
         href: "https://instagram.com/tyler",
-        icon: getIcon("instagram"),
+        icon: "instagram",
       },
       {
         href: "https://facebook.com/tyler",
-        icon: getIcon("facebook"),
+        icon: "facebook",
       },
     ],
   },
@@ -143,15 +142,15 @@ const teamMembers = [
     social: [
       {
         href: "https://twitter.com/kate",
-        icon: getIcon("twitter"),
+        icon: "twitter",
       },
       {
         href: "https://instagram.com/kate",
-        icon: getIcon("instagram"),
+        icon: "instagram",
       },
       {
         href: "https://linkedin.com/kate",
-        icon: getIcon("linkedin"),
+        icon: "linkedin",
       },
     ],
   },
@@ -164,11 +163,11 @@ const teamMembers = [
     social: [
       {
         href: "https://twitter.com/martha",
-        icon: getIcon("twitter"),
+        icon: "twitter",
       },
       {
         href: "https://linkedin.com/martha",
-        icon: getIcon("linkedin"),
+        icon: "linkedin",
       },
     ],
   },
