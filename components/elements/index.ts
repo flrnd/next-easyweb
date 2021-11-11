@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import Service from "./Service";
 import ServiceList from "./ServiceList";
 import IconLink from "./IconLink";
-import IconLinkList from "./IconLinkList";
+import SocialIconList from "./SocialIconList";
 import SplitSide from "./SplitSide";
 import Member from "./Member";
 
@@ -11,7 +11,7 @@ export {
   Card,
   Member,
   IconLink,
-  IconLinkList,
+  SocialIconList,
   SplitSide,
   Hero,
   Service,
