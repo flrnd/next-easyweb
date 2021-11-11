@@ -3,11 +3,15 @@ import { NextSeo } from "next-seo";
 import { SplitSide, Hero, ServiceList, Card } from "../components/elements";
 import placeholder from "../public/1920x1280.png";
 import { Button } from "../components/controls";
-import { placeholderData, serviceList } from "../test/__mocks__/fakeData";
+import {
+  placeholderData,
+  serviceList,
+  teamMembers,
+} from "../test/__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
 import { Container, Grid } from "../components/layout";
-import { BanIcon, CogIcon, HomeIcon } from "@heroicons/react/outline";
+import { HomeIcon } from "@heroicons/react/outline";
 import Avatar from "../components/elements/Avatar";
 import SocialList from "../components/elements/SocialList";
 
@@ -88,41 +92,16 @@ export const Index = (): JSX.Element => (
       <div className="mt-6" />
       <Container>
         <Grid columns={3}>
-          <Avatar
-            picture="/assets/pictures/team/kate.jpg"
-            isRounded={false}
-            name="Kate jhonsson"
-            jobTitle="Copywriter"
-            excerpt="Master in comunication columbus University"
-          />
-          <Avatar
-            picture="/assets/pictures/team/jane.jpg"
-            isRounded={false}
-            name="Jane blabla"
-            jobTitle="Senior Designer"
-            excerpt="Master design fu bla bla bl"
-          />
-          <Avatar
-            picture="/assets/pictures/team/pep.jpg"
-            isRounded={false}
-            name="Pep Guardiola"
-            jobTitle="Senior Designer"
-            excerpt="Master design fu bla bla bl"
-            social={
-              <SocialList
-                list={[
-                  {
-                    icon: <BanIcon />,
-                    href: "#",
-                  },
-                  {
-                    icon: <CogIcon />,
-                    href: "#",
-                  },
-                ]}
-              />
-            }
-          />
+          {teamMembers.map((member) => (
+            <Avatar
+              key={member.name}
+              name={member.name}
+              jobTitle={member.jobTitle}
+              image={member.image}
+              excerpt={member.excerpt}
+              social={<SocialList items={member.social} />}
+            />
+          ))}
         </Grid>
       </Container>
     </main>
