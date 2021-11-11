@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { SplitSide, Hero, ServiceList, Card } from "../components/elements";
-import placeholder from "../public/1920x1280.png";
 import { Button } from "../components/controls";
 import {
   placeholderData,
   serviceList,
   teamMembers,
+  placeholderImage,
 } from "../test/__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
@@ -43,13 +43,15 @@ export const Index = (): JSX.Element => (
       <Hero
         heading={placeholderData.heading}
         text={placeholderData.text}
-        image={<Image src={placeholder} alt="placeholder" />}
+        image={
+          <Image src={placeholderImage} alt="placeholder" placeholder="blur" />
+        }
       />
       <SplitSide
         isImageLeft={true}
         image={
           <Image
-            src={placeholder}
+            src={placeholderImage}
             height={1280}
             width={1920}
             alt="Placeholder image"

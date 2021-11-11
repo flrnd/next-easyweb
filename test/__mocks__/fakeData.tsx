@@ -5,6 +5,7 @@ import {
   CloudIcon,
 } from "@heroicons/react/outline";
 import { IServiceListItem } from "../../types/interfaces";
+import placeholderImage from "../../public/1920x1280.png";
 
 const serviceItem: IServiceListItem = {
   name: "Web Development",
@@ -173,4 +174,10 @@ const teamMembers = [
   },
 ];
 
-export { serviceItem, serviceList, placeholderData, teamMembers };
+export {
+  serviceItem,
+  serviceList,
+  placeholderData,
+  teamMembers,
+  placeholderImage,
+};

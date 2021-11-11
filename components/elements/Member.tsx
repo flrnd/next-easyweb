@@ -46,6 +46,7 @@ const Member = ({
         )}
       >
         <Image
+          placeholder="empty"
           src={image}
           layout="fill"
           objectFit="cover"
