@@ -4,6 +4,7 @@ import {
   DatabaseIcon,
   CloudIcon,
 } from "@heroicons/react/outline";
+import { getIcon } from "../../components/icons";
 import { IServiceListItem } from "../../types/interfaces";
 
 const serviceItem: IServiceListItem = {
@@ -56,4 +57,104 @@ const placeholderData = {
   buttonText: "Learn More",
 };
 
-export { serviceItem, serviceList, placeholderData };
+const teamMembers = [
+  {
+    name: "Jane Coslin",
+    jobTitle: "CEO",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/jane.jpg",
+    social: [
+      {
+        href: "https://twitter.com/jane_coslin",
+        icon: getIcon("twitter"),
+      },
+      {
+        href: "https://linkedin.com/jane_coslin",
+        icon: getIcon("linkedin"),
+      },
+    ],
+  },
+  {
+    name: "John Smith",
+    jobTitle: "CTO",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/jack.jpg",
+    social: [
+      {
+        href: "https://twitter.com/john_smith",
+        icon: getIcon("twitter"),
+      },
+      {
+        href: "https://linkedin.com/john_smith",
+        icon: getIcon("linkedin"),
+      },
+    ],
+  },
+  {
+    name: "Lisa Kan",
+    jobTitle: "Copywriter",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/lisa.jpg",
+    social: [
+      {
+        href: "https://twitter.com/lisa",
+        icon: getIcon("twitter"),
+      },
+      {
+        href: "https://instagram.com/lisa",
+        icon: getIcon("instagram"),
+      },
+      {
+        href: "https://linkedin.com/lisa",
+        icon: getIcon("linkedin"),
+      },
+    ],
+  },
+  {
+    name: "Tyler Donan",
+    jobTitle: "Senior Designer",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/tyler.jpg",
+    social: [
+      {
+        href: "https://twitter.com/tyler",
+        icon: getIcon("twitter"),
+      },
+      {
+        href: "https://instagram.com/tyler",
+        icon: getIcon("instagram"),
+      },
+      {
+        href: "https://facebook.com/tyler",
+        icon: getIcon("facebook"),
+      },
+    ],
+  },
+  {
+    name: "Kate Williams",
+    jobTitle: "Junior Marketing specialist",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/assets/pictures/team/kate.jpg",
+    social: [
+      {
+        href: "https://twitter.com/kate",
+        icon: getIcon("twitter"),
+      },
+      {
+        href: "https://instagram.com/kate",
+        icon: getIcon("instagram"),
+      },
+      {
+        href: "https://linkedin.com/kate",
+        icon: getIcon("linkedin"),
+      },
+    ],
+  },
+];
+
+export { serviceItem, serviceList, placeholderData, teamMembers };
