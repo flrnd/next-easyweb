@@ -91,8 +91,8 @@ export const Index = (): JSX.Element => (
       </Container>
       <div className="mt-6" />
       <Container>
-        <div className="flex">
-          <div className="w-1/3 p-2">
+        <div className="flex flex-col md:flex-row">
+          <div className="md:w-1/3 p-2">
             <Heading
               level={2}
               size="large"
@@ -108,16 +108,16 @@ export const Index = (): JSX.Element => (
               dicta sunt explicabo.
             </Paragraph>
           </div>
-          <div className="w-2/3 p-2">
+          <div className="md:w-2/3 p-2">
             <Grid columns={3}>
               {teamMembers.map((member) => (
                 <Avatar
-                  width="w-48"
-                  height="h-48"
                   key={member.name}
+                  image={member.image}
+                  width="w-full"
+                  height="h-48"
                   name={member.name}
                   jobTitle={member.jobTitle}
-                  image={member.image}
                   excerpt={member.excerpt}
                   social={<SocialList items={member.social} />}
                 />
