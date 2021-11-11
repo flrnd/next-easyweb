@@ -12,8 +12,7 @@ import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
 import { Container, Grid } from "../components/layout";
 import { HomeIcon } from "@heroicons/react/outline";
-import Avatar from "../components/elements/Avatar";
-import SocialList from "../components/elements/SocialList";
+import { Member, IconLinkList } from "../components/elements";
 
 export const Index = (): JSX.Element => (
   <>
@@ -109,17 +108,17 @@ export const Index = (): JSX.Element => (
             </Paragraph>
           </div>
           <div className="md:w-2/3 p-2">
-            <Grid columns={3}>
+            <Grid columns={3} gap="gap-3">
               {teamMembers.map((member) => (
-                <Avatar
+                <Member
                   key={member.name}
                   image={member.image}
                   width="w-full"
-                  height="h-48"
+                  height="h-64"
                   name={member.name}
                   jobTitle={member.jobTitle}
                   excerpt={member.excerpt}
-                  social={<SocialList items={member.social} />}
+                  social={<IconLinkList items={member.social} />}
                 />
               ))}
             </Grid>
