@@ -3,7 +3,7 @@ import InstagramIcon from "./social/InstagramIcon";
 import LinkedinIcon from "./social/LinkedinIcon";
 import TwitterIcon from "./social/TwitterIcon";
 
-const getIcon = (name: string): JSX.Element => {
+const getSocialIcon = (name: string): JSX.Element => {
   switch (name) {
     case "twitter":
       return <TwitterIcon />;
@@ -16,4 +16,4 @@ const getIcon = (name: string): JSX.Element => {
   }
 };
 
-export { getIcon };
+export { getSocialIcon };
