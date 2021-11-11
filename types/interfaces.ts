@@ -11,6 +11,6 @@ export interface IServiceListItem {
 }
 
 export interface ISocial {
-  icon: JSX.Element;
+  icon: string;
   href: string;
 }
