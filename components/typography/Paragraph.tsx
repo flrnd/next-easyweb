@@ -12,7 +12,7 @@ interface IProps {
  * TODO: Add tests
  */
 const Paragraph = ({
-  margin = "m-2",
+  margin = "mb-4",
   size,
   weight,
   textAlign,
