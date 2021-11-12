@@ -14,7 +14,7 @@ import { Container, Grid } from "../components/layout";
 import { HomeIcon } from "@heroicons/react/outline";
 import { Member, SocialIconList } from "../components/elements";
 
-export const Index = (): JSX.Element => (
+const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
     <main className="py-6">
