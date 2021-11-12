@@ -14,3 +14,10 @@ export interface ISocial {
   icon: string;
   href: string;
 }
+
+export interface IContact {
+  email: string;
+  phone: string;
+  address: string;
+  hours: string;
+}
