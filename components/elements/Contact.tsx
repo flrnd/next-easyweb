@@ -14,7 +14,9 @@ const Contact = ({ title, text, size, list }: IProps): JSX.Element => {
   return (
     <>
       <div className="border-b-2 mb-2">
-        <Heading level={2}>{title}</Heading>
+        <Heading level={2} size={size}>
+          {title}
+        </Heading>
         {text && <Paragraph size={size}>{text}</Paragraph>}
       </div>
       <ul className={classNames("p-2", size)}>
