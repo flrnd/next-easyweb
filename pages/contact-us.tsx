@@ -9,7 +9,7 @@ const ContactUs = (): JSX.Element => {
         <Container size="max-w-lg" margin="mx-5">
           <Contact
             title="Contacto"
-            description="Para cualquier duda no dude en contactar con nosotros"
+            text="Para cualquier duda no dude en contactar con nosotros"
             size="medium"
             list={contactDataList}
           />

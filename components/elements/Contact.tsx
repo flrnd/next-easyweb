@@ -5,16 +5,18 @@ import ContactItem from "./ContactItem";
 
 interface IProps {
   title: string;
-  description: string;
+  text?: string;
   size?: string;
   list: IList;
 }
 
-const Contact = ({ title, description, size, list }: IProps): JSX.Element => {
+const Contact = ({ title, text, size, list }: IProps): JSX.Element => {
   return (
     <>
-      <Heading level={2}>{title}</Heading>
-      <Paragraph size={size}>{description}</Paragraph>
+      <div className="border-b-2 mb-2">
+        <Heading level={2}>{title}</Heading>
+        {text && <Paragraph size={size}>{text}</Paragraph>}
+      </div>
       <ul className={classNames("p-2", size)}>
         {list.list.map((item: IListItem) => (
           <ContactItem

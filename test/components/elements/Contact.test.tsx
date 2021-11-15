@@ -4,10 +4,10 @@ import { contactDataList } from "../../__mocks__/fakeData";
 
 describe("Contact", () => {
   it("renders a contact information list", () => {
-    const { getByRole, getAllByRole } = render(
+    const { getByRole, getAllByRole, getByText } = render(
       <Contact
         title="Contact"
-        description="Lorem Ipsum"
+        text="Lorem Ipsum"
         size="large"
         list={contactDataList}
       />
@@ -15,6 +15,7 @@ describe("Contact", () => {
 
     expect(getByRole("heading")).toBeInTheDocument();
     expect(getByRole("list")).toBeInTheDocument();
+    expect(getByText("Lorem Ipsum")).toBeInTheDocument();
     expect(getAllByRole("listitem").length).toBe(contactDataList.list.length);
   });
 });
