@@ -1,9 +1,15 @@
+import {
+  ClockIcon,
+  LocationMarkerIcon,
+  MailIcon,
+  PhoneIcon,
+} from "@heroicons/react/outline";
 import FacebookIcon from "./social/FacebookIcon";
 import InstagramIcon from "./social/InstagramIcon";
 import LinkedinIcon from "./social/LinkedinIcon";
 import TwitterIcon from "./social/TwitterIcon";
 
-const getSocialIcon = (name: string): JSX.Element => {
+const getIcon = (name: string): JSX.Element => {
   switch (name) {
     case "twitter":
       return <TwitterIcon />;
@@ -13,7 +19,15 @@ const getSocialIcon = (name: string): JSX.Element => {
       return <InstagramIcon />;
     case "linkedin":
       return <LinkedinIcon />;
+    case "mail":
+      return <MailIcon />;
+    case "phone":
+      return <PhoneIcon />;
+    case "location-mark":
+      return <LocationMarkerIcon />;
+    case "clock":
+      return <ClockIcon />;
   }
 };
 
-export { getSocialIcon };
+export { getIcon };
