@@ -4,7 +4,7 @@ import {
   DatabaseIcon,
   CloudIcon,
 } from "@heroicons/react/outline";
-import { IContact, IServiceListItem } from "../../types/interfaces";
+import { IServiceListItem, IList } from "../../types/interfaces";
 import widePlaceholder from "../../public/1920x1280.png";
 import squarePlaceholder from "../../public/1280x1280.png";
 
@@ -12,11 +12,36 @@ export const wideImage = widePlaceholder;
 
 export const squareImage = squarePlaceholder;
 
-export const contactData: IContact = {
-  email: "hello@example.com",
-  phone: "123-456-7890",
-  address: "123 Main St, Anytown, CA 12345",
-  hours: "Mon-Fri: 9am-5pm",
+export const contactData = {
+  email: ["hello@example.com"],
+  phone: ["123-456-7890", "098-765-4321"],
+  address: ["123 Main St, Anytown, CA 12345"],
+  hours: ["Mon-Fri: 9am-5pm", "Sat: 10am-2pm"],
+};
+
+export const contactDataList: IList = {
+  list: [
+    {
+      title: "Email",
+      value: contactData.email,
+      icon: "mail",
+    },
+    {
+      title: "Phone",
+      value: contactData.phone,
+      icon: "phone",
+    },
+    {
+      title: "Address",
+      value: contactData.address,
+      icon: "location-marker",
+    },
+    {
+      title: "Hours",
+      value: contactData.hours,
+      icon: "clock",
+    },
+  ],
 };
 
 export const serviceItem: IServiceListItem = {
