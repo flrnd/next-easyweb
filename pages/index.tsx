@@ -6,7 +6,7 @@ import {
   placeholderData,
   serviceList,
   teamMembers,
-  placeholderImage,
+  wideImage,
 } from "../test/__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
@@ -14,7 +14,7 @@ import { Container, Grid } from "../components/layout";
 import { HomeIcon } from "@heroicons/react/outline";
 import { Member, SocialIconList } from "../components/elements";
 
-export const Index = (): JSX.Element => (
+const Index = (): JSX.Element => (
   <>
     <NextSeo title="This is a title" description="this is a description" />
     <main className="py-6">
@@ -43,15 +43,13 @@ export const Index = (): JSX.Element => (
       <Hero
         heading={placeholderData.heading}
         text={placeholderData.text}
-        image={
-          <Image src={placeholderImage} alt="placeholder" placeholder="blur" />
-        }
+        image={<Image src={wideImage} alt="placeholder" placeholder="blur" />}
       />
       <SplitSide
         isImageLeft={true}
         image={
           <Image
-            src={placeholderImage}
+            src={wideImage}
             height={1280}
             width={1920}
             alt="Placeholder image"
