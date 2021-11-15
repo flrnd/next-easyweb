@@ -1,6 +1,6 @@
 import { NavigationBar, NavigationList } from "../navigation";
 
-const list = ["home", "services", "about", "contact us"];
+const list = ["services", "about", "contact us"];
 
 const Header = (): JSX.Element => {
   return (
