@@ -1,6 +1,6 @@
 import Contact from "../components/elements/Contact";
 import { Container } from "../components/layout";
-import { contactData } from "../test/__mocks__/fakeData";
+import { contactDataList } from "../test/__mocks__/fakeData";
 
 const ContactUs = (): JSX.Element => {
   return (
@@ -11,7 +11,7 @@ const ContactUs = (): JSX.Element => {
             title="Contacto"
             description="Para cualquier duda no dude en contactar con nosotros"
             size="medium"
-            contactData={contactData}
+            list={contactDataList}
           />
         </Container>
       </main>
