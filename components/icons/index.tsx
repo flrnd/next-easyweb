@@ -23,7 +23,7 @@ const getIcon = (name: string): JSX.Element => {
       return <MailIcon />;
     case "phone":
       return <PhoneIcon />;
-    case "location-mark":
+    case "location-marker":
       return <LocationMarkerIcon />;
     case "clock":
       return <ClockIcon />;
