@@ -13,6 +13,10 @@
   @apply p-2 rounded-lg relative top-5 left-5 shadow-sm;
 }
 
+.footer {
+  @apply pt-4;
+}
+
 .hero {
   @apply text-center mt-10 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28;
 }
@@ -23,6 +27,10 @@
 
 .btn {
   @apply flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md  md:py-4 md:text-lg md:px-10;
+}
+
+.layout {
+  @apply flex flex-col justify-between h-screen;
 }
 
 .text-button {
@@ -67,6 +75,10 @@
 
 .small {
   @apply text-base md:text-lg lg:text-xl;
+}
+
+.footer-small {
+  @apply text-base;
 }
 
 .icon-xsmall {
