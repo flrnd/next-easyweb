@@ -21,3 +21,13 @@ export interface IContact {
   address: string;
   hours: string;
 }
+
+export interface IList {
+  list: Array<IListItem>;
+}
+
+export interface IListItem {
+  title: string;
+  value: string[];
+  icon: string;
+}
