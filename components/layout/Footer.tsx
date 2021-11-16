@@ -1,3 +1,4 @@
+import Logo from "../elements/Logo";
 import { NavigationList } from "../navigation";
 
 const list = ["services", "about", "contact us"];
@@ -7,16 +8,20 @@ const contact = ["Email: hello@example.com", "Phone: 123-456-789"];
 const Footer = (): JSX.Element => {
   return (
     <footer className="footer">
-      <div className="flex flex-col md:flex-row md:justify-between container mx-auto py-12">
-        <div id="logo" className="bg-yellow-300 p-5 w-1/4 mb-3 md:mb-0">
-          logo
+      <div className="flex flex-col md:flex-row md:justify-between py-12">
+        <div id="logo" className="footer-section logo">
+          <Logo
+            src="/assets/pictures/brand/vitary-logo.png"
+            width={237}
+            height={64}
+          />
         </div>
-        <div className="flex flex-col md:flex-row md:w-1/2">
-          <div id="nav" className="bg-green-400 p-5 mb-3 md:mb-0">
+        <div className="flex flex-col md:flex-row md:w-1/2 md:justify-end">
+          <div id="nav" className="footer-section">
             <div className="text-2xl mb-2">Enlaces</div>
             <NavigationList isVertical={true} list={list} />
           </div>
-          <div className="bg-blue-400 p-5 mb-3 md:mb-0">
+          <div className="footer-section">
             <div className="text-2xl mb-2">Horario</div>
             <div>
               {hours.map((h) => (
@@ -24,7 +29,7 @@ const Footer = (): JSX.Element => {
               ))}
             </div>
           </div>
-          <div className="bg-indigo-500 p-5 mb-3 md:mb-0">
+          <div className="footer-section">
             <div className="text-2xl mb-2">Contacto</div>
             <div>
               {contact.map((m) => (
