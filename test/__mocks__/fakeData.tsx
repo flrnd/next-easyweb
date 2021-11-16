@@ -7,10 +7,32 @@ import {
 import { IServiceListItem, IList } from "../../types/interfaces";
 import widePlaceholder from "../../public/1920x1280.png";
 import squarePlaceholder from "../../public/1280x1280.png";
+import clinicPlaceholder from "../../public/clinic.png";
 
 export const wideImage = widePlaceholder;
 
 export const squareImage = squarePlaceholder;
+
+export const clinicImage = clinicPlaceholder;
+
+export const companySocial = [
+  {
+    href: "https://twitter.com/vitary",
+    icon: "twitter",
+  },
+  {
+    href: "https://linkedin.com/vitary",
+    icon: "linkedin",
+  },
+  {
+    href: "https://facebook.com/vitary",
+    icon: "facebook",
+  },
+  {
+    href: "#",
+    icon: "instagram",
+  },
+];
 
 export const contactData = {
   email: ["hello@example.com"],
