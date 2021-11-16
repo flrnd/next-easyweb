@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Contact from "../components/elements/Contact";
 import { Container } from "../components/layout";
-import { contactDataList, wideImage } from "../test/__mocks__/fakeData";
+import { clinicImage, contactDataList } from "../test/__mocks__/fakeData";
 
 const ContactUs = (): JSX.Element => {
   return (
@@ -16,7 +16,7 @@ const ContactUs = (): JSX.Element => {
           />
         </Container>
         <div className="relative h-64 w-full mb-4 md:mb-0 md:h-auto">
-          <Image src={wideImage} layout="fill" objectFit="cover" />
+          <Image src={clinicImage} layout="fill" objectFit="cover" />
         </div>
       </main>
     </>
