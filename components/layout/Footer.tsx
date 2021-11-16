@@ -12,17 +12,18 @@ const Footer = (): JSX.Element => {
     <footer className="footer">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between py-12">
-          <div
-            id="logo"
-            className="footer-section logo flex flex-col items-center"
-          >
+          <div id="logo" className="footer-section logo flex flex-col">
             <Logo
               src="/assets/pictures/brand/vitary-logo.png"
               width={237}
               height={64}
             />
-            <div className="mt-2 w-full">
-              <SocialIconList items={companySocial} justify="between" />
+            <div className="mt-2 w-full ml-4">
+              <SocialIconList
+                items={companySocial}
+                justify="left"
+                margin="mr-3"
+              />
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:w-1/2 md:justify-end">
