@@ -1,3 +1,5 @@
+import { companySocial } from "../../test/__mocks__/fakeData";
+import { SocialIconList } from "../elements";
 import Logo from "../elements/Logo";
 import { NavigationList } from "../navigation";
 
@@ -10,12 +12,18 @@ const Footer = (): JSX.Element => {
     <footer className="footer">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between py-12">
-          <div id="logo" className="footer-section logo">
+          <div
+            id="logo"
+            className="footer-section logo flex flex-col items-center"
+          >
             <Logo
               src="/assets/pictures/brand/vitary-logo.png"
               width={237}
               height={64}
             />
+            <div className="mt-2 w-full">
+              <SocialIconList items={companySocial} justify="between" />
+            </div>
           </div>
           <div className="flex flex-col md:flex-row md:w-1/2 md:justify-end">
             <div id="nav" className="footer-section">
