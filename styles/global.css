@@ -17,6 +17,14 @@
   @apply pt-4;
 }
 
+.footer-section {
+  @apply p-5 mb-3 md:mb-0;
+}
+
+.footer-section .logo {
+  @apply w-1/4;
+}
+
 .hero {
   @apply text-center mt-10 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28;
 }
