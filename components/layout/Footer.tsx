@@ -6,6 +6,7 @@ import { NavigationList } from "../navigation";
 const list = ["services", "about", "contact us"];
 const hours = ["Mon-Fri: 9am-5pm", "Sat: 10am-2pm", "Sun: Closed"];
 const contact = ["Email: hello@example.com", "Phone: 123-456-789"];
+const year = new Date().getFullYear();
 
 const Footer = (): JSX.Element => {
   return (
@@ -51,7 +52,8 @@ const Footer = (): JSX.Element => {
         </div>
       </div>
       <div className="bg-red-800 text-center text-white py-2">
-        copyright(c) 2022 marca privacidad
+        {year} &copy; Vitary. All rights reserved. Designed by s&infin;mos
+        digital
       </div>
     </footer>
   );
