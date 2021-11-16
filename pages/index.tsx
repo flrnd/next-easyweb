@@ -118,7 +118,13 @@ const Index = (): JSX.Element => (
                   name={member.name}
                   jobTitle={member.jobTitle}
                   excerpt={member.excerpt}
-                  social={<SocialIconList items={member.social} />}
+                  social={
+                    <SocialIconList
+                      items={member.social}
+                      margin="mr-4"
+                      justify="left"
+                    />
+                  }
                 />
               ))}
             </Grid>
