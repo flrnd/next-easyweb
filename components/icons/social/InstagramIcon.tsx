@@ -2,7 +2,7 @@ interface IProps {
   color?: string;
 }
 
-const InstagramIcon = ({ color = "text-gray-500" }: IProps): JSX.Element => (
+const InstagramIcon = ({ color }: IProps): JSX.Element => (
   <svg
     role="img"
     viewBox="0 0 24 24"
