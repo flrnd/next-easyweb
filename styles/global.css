@@ -97,10 +97,18 @@
   @apply w-8 h-8;
 }
 
+.icon-normal {
+  @apply w-10 h-10;
+}
+
 .icon-medium {
   @apply w-14 h-14;
 }
 
 .icon-large {
+  @apply w-16 h-16;
+}
+
+.icon-xlarge {
   @apply w-20 h-20;
 }
