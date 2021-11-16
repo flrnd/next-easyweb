@@ -5,7 +5,7 @@ const list = ["services", "about", "contact us"];
 
 const Header = (): JSX.Element => {
   return (
-    <div className="navigation-bar">
+    <div className="container mx-auto">
       <NavigationBar>
         <div className="logo">
           <Logo
