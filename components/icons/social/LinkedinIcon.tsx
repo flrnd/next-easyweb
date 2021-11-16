@@ -2,7 +2,7 @@ interface IProps {
   color?: string;
 }
 
-const LinkedinIcon = ({ color = "text-gray-500" }: IProps): JSX.Element => (
+const LinkedinIcon = ({ color }: IProps): JSX.Element => (
   <svg
     role="icon"
     viewBox="0 0 24 24"
