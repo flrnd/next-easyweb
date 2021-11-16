@@ -39,7 +39,7 @@ const Footer = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className=" bg-red-500 text-center py-2">
+      <div className=" bg-red-800 text-center text-white py-2">
         copyright(c) 2022 marca privacidad
       </div>
     </footer>
