@@ -12,7 +12,7 @@ const Footer = (): JSX.Element => {
   return (
     <footer className="footer">
       <div className="container py-16 mx-auto">
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div id="logo" className="footer-section flex flex-col">
             <Logo
               src="/assets/pictures/brand/vitary-logo.png"
