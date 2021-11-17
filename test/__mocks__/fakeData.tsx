@@ -8,13 +8,23 @@ import { IServiceListItem, IList } from "../../types/interfaces";
 import widePlaceholder from "../../public/1920x1280.png";
 import squarePlaceholder from "../../public/1280x1280.png";
 import clinicPlaceholder from "../../public/clinic.png";
+import logo from "../../public/assets/pictures/brand/vitary-logo-64x237.png";
 
+/* Images */
 export const wideImage = widePlaceholder;
-
 export const squareImage = squarePlaceholder;
-
 export const clinicImage = clinicPlaceholder;
+export const logoImage = logo;
 
+export const logotype = {
+  src: logoImage,
+  dimensions: {
+    width: 237,
+    height: 64,
+  },
+};
+
+/* Social Icons */
 export const companySocial = [
   {
     href: "https://twitter.com/vitary",
@@ -34,6 +44,7 @@ export const companySocial = [
   },
 ];
 
+/* Contact */
 export const contactData = {
   email: ["hello@example.com"],
   phone: ["123-456-7890", "098-765-4321"],
@@ -66,6 +77,7 @@ export const contactDataList: IList = {
   ],
 };
 
+/* Services */
 export const serviceItem: IServiceListItem = {
   name: "Web Development",
   description:
@@ -105,6 +117,7 @@ export const serviceList: IServiceListItem[] = [
   },
 ];
 
+/* Placeholder data */
 export const placeholderData = {
   heading: "We build websites that are fast, secure, and easy to use.",
   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -116,6 +129,7 @@ export const placeholderData = {
   buttonText: "Learn More",
 };
 
+/* team members */
 export const teamMembers = [
   {
     name: "Jane Coslin",
