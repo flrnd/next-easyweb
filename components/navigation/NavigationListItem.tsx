@@ -1,16 +1,18 @@
+import classNames from "classnames";
 import Link from "next/link";
 
 import { INavigationListItem } from "../../types/interfaces";
 
 interface Props {
   item: INavigationListItem;
+  margin?: string;
 }
 
-const NavigationListItem = ({ item }: Props): JSX.Element => {
+const NavigationListItem = ({ item, margin }: Props): JSX.Element => {
   return (
     <li>
       <Link href={item.href}>
-        <a className="px-2">{item.name}</a>
+        <a className={classNames(margin)}>{item.name}</a>
       </Link>
     </li>
   );
