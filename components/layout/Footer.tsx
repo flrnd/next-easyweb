@@ -13,18 +13,20 @@ const Footer = (): JSX.Element => {
     <footer className="footer">
       <div className="container py-16 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div id="logo" className="footer-section flex flex-col">
-            <Logo
-              src={logotype.src}
-              width={logotype.dimensions.width}
-              height={logotype.dimensions.height}
-            />
-            <div className="mt-2 w-full ml-4">
-              <SocialIconList
-                items={companySocial}
-                justify="left"
-                margin="mr-3"
+          <div className="footer-section justify-items-center md:justify-items-start">
+            <div className="flex flex-col items-center lg:items-start">
+              <Logo
+                src={logotype.src}
+                width={logotype.dimensions.width}
+                height={logotype.dimensions.height}
               />
+              <div className="mt-2 ml-4">
+                <SocialIconList
+                  items={companySocial}
+                  justify="left"
+                  margin="mr-3"
+                />
+              </div>
             </div>
           </div>
 
