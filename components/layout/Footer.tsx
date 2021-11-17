@@ -11,9 +11,9 @@ const year = new Date().getFullYear();
 const Footer = (): JSX.Element => {
   return (
     <footer className="footer">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row md:justify-between py-12">
-          <div id="logo" className="footer-section logo flex flex-col">
+      <div className="container py-16 mx-auto">
+        <div className="grid grid-cols-4 gap-6">
+          <div id="logo" className="footer-section flex flex-col">
             <Logo
               src="/assets/pictures/brand/vitary-logo.png"
               width={237}
@@ -27,31 +27,30 @@ const Footer = (): JSX.Element => {
               />
             </div>
           </div>
-          <div className="flex flex-col md:flex-row md:w-1/2 md:justify-end">
-            <div id="nav" className="footer-section">
-              <div className="text-2xl mb-2">Enlaces</div>
-              <NavigationList isVertical={true} list={list} />
+
+          <div className="footer-section">
+            <div className="text-2xl mb-2">Enlaces</div>
+            <NavigationList isVertical={true} list={list} />
+          </div>
+          <div className="footer-section">
+            <div className="text-2xl mb-2">Horario</div>
+            <div>
+              {hours.map((h) => (
+                <div key={h}>{h}</div>
+              ))}
             </div>
-            <div className="footer-section">
-              <div className="text-2xl mb-2">Horario</div>
-              <div>
-                {hours.map((h) => (
-                  <div key={h}>{h}</div>
-                ))}
-              </div>
-            </div>
-            <div className="footer-section">
-              <div className="text-2xl mb-2">Contacto</div>
-              <div>
-                {contact.map((m) => (
-                  <div key={m}>{m}</div>
-                ))}
-              </div>
+          </div>
+          <div className="footer-section">
+            <div className="text-2xl mb-2">Contacto</div>
+            <div>
+              {contact.map((m) => (
+                <div key={m}>{m}</div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-red-800 text-center text-white py-2">
+      <div className="bg-indigo-800 text-center text-white py-2">
         {year} &copy; Vitary. All rights reserved. Designed by s&infin;mos
         digital
       </div>
