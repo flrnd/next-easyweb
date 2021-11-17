@@ -1,4 +1,4 @@
-import { companySocial } from "../../test/__mocks__/fakeData";
+import { companySocial, logotype } from "../../test/__mocks__/fakeData";
 import { SocialIconList } from "../elements";
 import Logo from "../elements/Logo";
 import { NavigationList } from "../navigation";
@@ -15,9 +15,9 @@ const Footer = (): JSX.Element => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div id="logo" className="footer-section flex flex-col">
             <Logo
-              src="/assets/pictures/brand/vitary-logo.png"
-              width={237}
-              height={64}
+              src={logotype.src}
+              width={logotype.dimensions.width}
+              height={logotype.dimensions.height}
             />
             <div className="mt-2 w-full ml-4">
               <SocialIconList
