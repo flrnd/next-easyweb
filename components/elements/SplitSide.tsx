@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { Container } from "../layout";
 
 interface Props {
   isImageLeft?: boolean;
@@ -23,12 +22,10 @@ const SplitSide = ({
   }
 
   return (
-    <Container>
-      <div className="split-side">
-        <div className="content">{contentLeft}</div>
-        <div className="content">{contentRight}</div>
-      </div>
-    </Container>
+    <div className="split-side">
+      <div className="w-full lg:w-1/2">{contentLeft}</div>
+      <div className="content">{contentRight}</div>
+    </div>
   );
 };
 
