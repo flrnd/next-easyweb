@@ -50,8 +50,8 @@ const Index = (): JSX.Element => (
         image={
           <Image
             src={wideImage}
-            height={1280}
-            width={1920}
+            layout="responsive"
+            objectFit="contain"
             alt="Placeholder image"
             placeholder="empty"
           />
