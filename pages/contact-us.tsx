@@ -16,13 +16,7 @@ const ContactUs = (): JSX.Element => {
           />
         </Container>
         <div className="w-full mb-4 md:mb-0">
-          <Image
-            src={clinicImage}
-            width={1920}
-            height={1280}
-            layout="responsive"
-            objectFit="contain"
-          />
+          <Image src={clinicImage} layout="responsive" objectFit="contain" />
         </div>
       </main>
     </>
