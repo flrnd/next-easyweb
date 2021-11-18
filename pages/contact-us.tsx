@@ -15,8 +15,14 @@ const ContactUs = (): JSX.Element => {
             list={contactDataList}
           />
         </Container>
-        <div className="relative h-64 w-full mb-4 md:mb-0 md:h-auto">
-          <Image src={clinicImage} layout="fill" objectFit="cover" />
+        <div className="w-full mb-4 md:mb-0">
+          <Image
+            src={clinicImage}
+            width={1920}
+            height={1280}
+            layout="responsive"
+            objectFit="contain"
+          />
         </div>
       </main>
     </>
