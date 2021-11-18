@@ -2,11 +2,11 @@
 @tailwind components;
 
 .split-side {
-  @apply flex flex-col-reverse lg:flex-row justify-center;
+  @apply flex flex-col lg:flex-row justify-center;
 }
 
 .content {
-  @apply lg:w-1/2 py-5 px-4 sm:px-6 lg:px-8  flex flex-wrap content-center lg:justify-start justify-center;
+  @apply w-full lg:w-1/2 py-5 px-4 sm:px-6 lg:px-8 flex flex-wrap content-center lg:justify-start justify-center;
 }
 
 .card-icon {
