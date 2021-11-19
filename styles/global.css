@@ -22,7 +22,7 @@
 }
 
 .hero {
-  @apply text-center mt-10 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28;
+  @apply text-center mt-10 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28;
 }
 
 .hero .cta {
