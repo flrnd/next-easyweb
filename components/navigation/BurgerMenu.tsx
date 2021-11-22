@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavigationList } from ".";
+
 interface IProps {
   menu: string[];
 }
