@@ -15,7 +15,6 @@ describe("Burger Menu", () => {
   it("render a button", () => {
     const { getByTitle } = render(<BurgerMenu menu={menu} />);
 
-    const menuButton = getByTitle("menu");
-    expect(menuButton).toBeInTheDocument();
+    expect(getByTitle("menu")).toBeInTheDocument();
   });
 });
