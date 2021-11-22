@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Logo } from "../elements";
-import { NavigationBar } from "../navigation";
-import BurgerMenu from "../navigation/BurgerMenu";
+import { BurgerMenu, NavigationBar } from "../navigation";
 
 const list = ["services", "about", "contact us"];
 
