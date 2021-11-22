@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavigationList } from ".";
+import { Button } from "../controls";
 
 interface IProps {
   menu: string[];
@@ -11,20 +12,16 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
   return (
     <>
       <div className="burger-menu">
-        <button
-          id="nav-toggle"
-          className="flex items-center"
-          onClick={handleClick}
-        >
+        <Button onClick={handleClick}>
           <svg
             className="fill-current h-6 w-6"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>Menu</title>
+            <title>menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
-        </button>
+        </Button>
       </div>
 
       <div className={isOpen ? "modal" : "hidden"} onClick={handleClick}>
