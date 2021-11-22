@@ -31,6 +31,9 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
           <NavigationList list={menu} isVertical={isOpen} />
         </div>
       </div>
+      <div className="hidden md:block">
+        <NavigationList list={menu} />
+      </div>
     </>
   );
 };
