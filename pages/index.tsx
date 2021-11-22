@@ -26,6 +26,9 @@ const Index = (): JSX.Element => (
             <Button
               background="bg-indigo-600"
               textColor="text-white"
+              rounded="rounded-md"
+              shadow="shadow-md"
+              margin="mr-4"
               hoverBg="bg-indigo-700"
               href="/"
               label={placeholderData.cta}
