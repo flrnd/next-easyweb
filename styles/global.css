@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 
-.split-side {
-  @apply flex flex-col lg:flex-row justify-center;
+.burger-menu {
+  @apply block md:hidden;
 }
 
 .content {
@@ -37,6 +37,21 @@
   @apply flex flex-col justify-between h-screen;
 }
 
+.modal {
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  @apply w-full pt-10 px-6 pb-6 rounded-t-none rounded-b bg-white;
+}
+
 .text-button {
   @apply font-semibold text-xl underline;
 }
@@ -47,6 +62,10 @@
 
 .service .icon {
   @apply mx-auto mb-6 md:mb-8;
+}
+
+.split-side {
+  @apply flex flex-col lg:flex-row justify-center;
 }
 
 @tailwind utilities;
