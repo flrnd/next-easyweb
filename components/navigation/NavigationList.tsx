@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import createNavigationList from "../../util/createNavigationList";
 import NavigationListItem from "./NavigationListItem";
 
@@ -9,7 +10,7 @@ const NavigationList = ({ isVertical = false, list }: Props): JSX.Element => {
   const navigationList = createNavigationList(list);
 
   return (
-    <ul className={`flex ${isVertical && "flex-col"}`}>
+    <ul className={classNames("flex", isVertical && "flex-col")}>
       {navigationList.map((navItem) => (
         <NavigationListItem
           key={navItem.name}
