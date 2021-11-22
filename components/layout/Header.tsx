@@ -1,8 +1,7 @@
 import Link from "next/link";
+import { siteMenu } from "../../test/__mocks__/fakeData";
 import { Logo } from "../elements";
 import { BurgerMenu, NavigationBar } from "../navigation";
-
-const list = ["services", "about", "contact us"];
 
 const Header = (): JSX.Element => {
   return (
@@ -18,7 +17,7 @@ const Header = (): JSX.Element => {
           </a>
         </Link>
 
-        <BurgerMenu menu={list} />
+        <BurgerMenu menu={siteMenu} />
       </NavigationBar>
     </div>
   );
