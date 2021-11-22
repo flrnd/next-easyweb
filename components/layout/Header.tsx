@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "../elements";
-import { NavigationBar, NavigationList } from "../navigation";
+import { NavigationBar } from "../navigation";
+import BurgerMenu from "../navigation/BurgerMenu";
 
 const list = ["services", "about", "contact us"];
 
@@ -18,7 +19,7 @@ const Header = (): JSX.Element => {
           </a>
         </Link>
 
-        <NavigationList list={list} />
+        <BurgerMenu menu={list} />
       </NavigationBar>
     </div>
   );
