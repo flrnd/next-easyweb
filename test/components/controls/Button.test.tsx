@@ -19,7 +19,7 @@ describe("Button", () => {
 
     expect(link.href).toBe(`${baseURL}${path}`);
     expect(screen.getByRole("link").textContent).toBe(text);
-    expect(screen.getByRole("link").classList).toContain("bg-red-200");
-    expect(screen.getByRole("link").classList).toContain("text-white");
+    expect(screen.getByRole("button").classList).toContain("bg-red-200");
+    expect(screen.getByRole("button").classList).toContain("text-white");
   });
 });
