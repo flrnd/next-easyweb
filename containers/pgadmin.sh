@@ -1,7 +1,7 @@
 #!/bin/sh
-podman run --pod=postgre-server \
--e 'PGADMIN_DEFAULT_EMAIL=flrnd@duck.com' \
--e PGADMIN_DEFAULT_PASSWORD='thoht9Zo' \
+podman run --pod=$PGADMIN_POD_NAME \
+-e PGADMIN_DEFAULT_EMAIL=$PGADMIN_DEFAULT_EMAIL \
+-e PGADMIN_DEFAULT_PASSWORD=$PGADMIN_DEFAULT_PASSWORD \
 --name pgadmin12 \
 -d dpage/pgadmin4 \
 
