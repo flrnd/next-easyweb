@@ -7,7 +7,7 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE public.user (
     id SERIAL PRIMARY KEY,
     realname TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE check (email ~* '^.+@.+\..+$'),
     password TEXT NOT NULL,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
