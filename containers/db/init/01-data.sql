@@ -17,7 +17,7 @@ accounts as (
   ('mikedot@got.com', '12345'))
   AS t(email, password)
 )
-INSERT INTO backend_private.user_account (user_id, email, password_hash)
+INSERT INTO backend_private.user_account (account_id, email, password_hash)
 SELECT ids.id, accounts.email, accounts.password FROM ids, accounts;
 
 /*Create some dummy websites*/
