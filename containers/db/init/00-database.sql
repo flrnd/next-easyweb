@@ -45,7 +45,6 @@ create table backend_private.user_account (
 
 comment on table backend_private.user_account is 'Private information about a user’s account.';
 comment on column backend_private.user_account.account_id is 'The primary unique identifier for the account.';
-comment on column backend_private.user_account.user_id is 'The id of the user associated with this account.';
 comment on column backend_private.user_account.email is 'The email address of the user.';
 comment on column backend_private.user_account.password_hash is 'An opaque hash of the user’s password.';
 
