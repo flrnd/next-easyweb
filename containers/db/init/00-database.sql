@@ -74,6 +74,3 @@ end;
 $$ language plpgsql strict security definer;
 
 comment on function backend.register_user(text, text, text, text) is 'Registers a single user and creates an account in our platform.';
-
-/* Role-based access control */
-create role backend_postgraphile login password 'xyz';
