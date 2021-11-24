@@ -27,7 +27,7 @@ CREATE TABLE backend.website (
     url TEXT,
     data JSONB,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    owner_id INTEGER NOT NULL REFERENCES backend.user(id)
+    owner_id uuid NOT NULL REFERENCES backend.user(id)
 );
 
 comment on table backend.website is 'A user website.';
@@ -38,7 +38,7 @@ comment on column backend.website.data is 'The website’s data.';
 comment on column backend.website.created_at is 'The time this website was created.';
 
 create table backend_private.user_account (
-  user_id integer primary key references backend.user(id) on delete cascade,
+  user_id uuid primary key references backend.user(id) on delete cascade,
   email text not null unique check (email ~* '^.+@.+\..+$'),
   password_hash text not null
 );
@@ -50,8 +50,8 @@ comment on column backend_private.user_account.password_hash is 'An opaque hash 
 
 /* FUNCTIONS */
 
-create function backend.user_full_name(user backend.user) returns text as $$
-  select user.first_name || ' ' || user.last_name
+create function backend.user_full_name(u backend.user) returns text as $$
+  select u.first_name || ' ' || u.last_name
 $$ language sql stable;
 
 comment on function backend.user_full_name(backend.user) is 'A user’s full name which is a concatenation of their first and last name.';
@@ -70,7 +70,7 @@ begin
     returning * into user;
 
   insert into backend_private.user_account (user_id, email, password_hash) values
-    (user.id, email, crypt(password, gen_salt('bf')));
+    (user_id, email, crypt(password, gen_salt('bf')));
 
   return user;
 end;
