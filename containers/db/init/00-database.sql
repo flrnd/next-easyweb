@@ -1,5 +1,8 @@
 \connect backend;
 
+create schema backend;
+create schema backend_private;
+
 /* enable PGCRYPTO */
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
