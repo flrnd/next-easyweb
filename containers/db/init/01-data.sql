@@ -1,10 +1,11 @@
 \connect backend;
 
 /*Create some dummy users*/
-INSERT INTO public.user (username) VALUES
-('Benjie'),
-('Singingwolfboy'),
-('Lexius');
+INSERT INTO public.user (realname, email, password) VALUES
+('Benjie', 'benji@email', crypt('password', gen_salt('bf'))),
+('Jenny', 'jenny@email', crypt('password', gen_salt('bf'))),
+('John', 'john@email', crypt('password', gen_salt('bf'))),
+('Jill', 'jill@email', crypt('password', gen_salt('bf')));
 
 /*Create some dummy websites*/
 INSERT INTO public.website (title, url, data, owner_id) VALUES
