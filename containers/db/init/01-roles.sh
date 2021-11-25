@@ -15,7 +15,7 @@ grant usage on schema website to website_anonymous, website_user;
 grant select on table website.user to website_anonymous, website_user;
 grant update, delete on table website.user to website_user;
 
-grant select on table website.site_config to website_anonymous, website_user;
+grant select on table website.site_config to website_user;
 grant insert, update, delete on table website.site_config to website_user;
 grant usage on sequence website.site_config_id_seq to website_user;
 
