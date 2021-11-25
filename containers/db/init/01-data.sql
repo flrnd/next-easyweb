@@ -2,25 +2,18 @@
 
 /*
  * Create some dummy data
+*/
 
-
-INSERT INTO backend.user (first_name, last_name) VALUES
-('John', 'Doe'), ('Jane', 'Doe'), ('Mike', 'Donovan');
-
-WITH ids as (
-  SELECT id FROM  backend.user
-),
-accounts as (
+WITH new_users AS (
   SELECT * FROM (VALUES
-  ('email@something.com', 'secret 1'),
-  ('jane@mydow.com', 'this is my pwd'),
-  ('mikedot@got.com', '12345'))
-  AS t(email, password)
+  ('John', 'Doe', 'email@something.com', 'secret 1'),
+  ('Jane', 'Doe', 'jane@dot.com', 'secret 2'),
+  ('Mike', 'Donovan', 'mike@my.es', 'pdw123'),
+  ('Carles', 'Puig', 'carles@del.net', '12345')) AS t (first_name, last_name, email, password)
 )
-SELECT backend_private.user_account (user_id, email, password_hash)
-SELECT ids.id, accounts.email, accounts.password FROM ids, accounts;
+SELECT backend.register_user(first_name, last_name, email, password) FROM new_users;
 
-
+/*
 Create some dummy websites
 INSERT INTO public.website (title, url, data, owner_id) VALUES
 ('Benji', 'http://benji.com', '{"seo": "benji personal blog", "contact": {"phone": "123-456-7890", "email": "benji@email.com"} }', 1),
