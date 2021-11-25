@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-alpine3.12
 LABEL description="Instant high-performance GraphQL API for your PostgreSQL database https://github.com/graphile/postgraphile"
 
 # Install PostGraphile and PostGraphile connection filter plugin
