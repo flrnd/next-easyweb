@@ -1,7 +1,5 @@
 \connect backend
 
-/* FUNCTIONS */
-
 /* function: user_full_name(user): text */
 create function website.user_full_name(u website.user) returns text as $$
   select u.first_name || ' ' || u.last_name
