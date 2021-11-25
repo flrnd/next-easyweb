@@ -1,5 +1,5 @@
 #!/bin/bash
-psql -U $site_configGRES_USER -d backend << EOF
+psql -U $POSTGRES_USER -d backend << EOF
 create role $W_ROLE login password '$W_ROLE_PASSWD';
 
 create role $W_ROLE_USER;
@@ -18,12 +18,6 @@ grant update, delete on table website.user to website_user;
 grant select on table website.site_config to website_anonymous, website_user;
 grant insert, update, delete on table website.site_config to website_user;
 grant usage on sequence website.site_config_id_seq to website_user;
-
-grant execute on function website.user_full_name(website.user) to website_anonymous, website_user;
-grant execute on function website.authenticate(text, text) to website_anonymous, website_user;
-grant execute on function website.current_user() to website_anonymous, website_user;
-
-grant execute on function website.register_user(text, text, text, text) to website_anonymous;
 
 alter table website.user enable row level security;
 alter table website.site_config enable row level security;
