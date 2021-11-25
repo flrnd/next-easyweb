@@ -1,6 +1,7 @@
 /*
  *
  * Create some dummy data
+*/
 
 \connect backend;
 
@@ -13,6 +14,6 @@ WITH new_users AS (
 )
 SELECT website.register_user(first_name, last_name, email, password) FROM new_users;
 
-
+/*
 Create some dummy websites
 */
