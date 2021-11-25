@@ -61,3 +61,10 @@ create function website.current_user() returns website.user as $$
 $$ language sql stable;
 
 comment on function website.current_user() is 'Gets the user who was identified by our JWT.';
+
+-- Grant access to the functions
+grant execute on function website.user_full_name(website.user) to website_anonymous, website_user;
+grant execute on function website.authenticate_user(text, text) to website_anonymous, website_user;
+grant execute on function website.current_user() to website_anonymous, website_user;
+
+grant execute on function website.register_user(text, text, text, text) to website_anonymous;
