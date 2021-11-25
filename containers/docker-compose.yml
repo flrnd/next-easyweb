@@ -30,13 +30,13 @@ services:
     ports:
         - 5433:5433
     command: >
-      --connection ${DATABASE_URL}
+      --connection "${DATABASE_URL}"
       --port 5433
       --schema website
       --default-role website_anonymous
       --append-plugins postgraphile-plugin-connection-filter
       --jwt-token-identifier website.jwt_token
-      --jwt-secret ${JWT_SECRET}
+      --jwt-secret "${JWT_SECRET}"
 
 networks:
   network:
