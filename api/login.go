@@ -7,8 +7,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	_ "github.com/lib/pg"
 )
 
 type User struct {
