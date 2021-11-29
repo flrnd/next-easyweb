@@ -1,4 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import { Client } from "pg";
 
 export default async function (
   request: VercelRequest,
@@ -7,10 +8,18 @@ export default async function (
   const { username, password } = request.body;
 
   try {
+    const client = new Client();
+    client.connect();
+    const queryRes = await client.query(
+      `SELECT website.authenticate_user(${username}, ${password})`
+    );
+
     return res.status(200).json({
-      message: `username: ${username} password: ${password}`,
+      message: queryRes,
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
+  } finally {
+    await client.end();
   }
 }
