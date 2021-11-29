@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { userService } from "../../services/user.service";
 import { Button } from "../controls";
 
 interface FormData {
@@ -14,23 +15,8 @@ const LoginForm = (): JSX.Element => {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    const res = await fetch("/api/login", {
-      body: JSON.stringify({
-        formData: data,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    const { error, message } = await res.json();
-    if (error) {
-      console.error("res: ", error);
-      return;
-    }
-
-    alert(JSON.stringify(message));
+    const message = userService.login(data.username, data.password);
+    alert(message);
   };
 
   return (
