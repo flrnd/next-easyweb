@@ -13,35 +13,34 @@ metadata:
   name: postgre-server
 spec:
   containers:
-  - image: docker.io/dpage/pgadmin4:latest
-    name: pgadmin12
-    ports:
-    - containerPort: 80
-      hostPort: 9876
-    resources: {}
-    securityContext:
-      capabilities: {}
-    volumeMounts:
-    - mountPath: /var/lib/pgadmin
-      name: 8b3180bdd738725a121f90b21cf5c20515982a8efc1a11a5827616f75f5f9c0b-pvc
-  - args:
-    - postgres
-    image: docker.io/library/postgres:latest
-    name: database
-    resources: {}
-    securityContext:
-      capabilities: {}
-    volumeMounts:
-    - mountPath: /var/lib/postgresql/data
-      name: home-mrfoo-.local-share-containers-volume-host-0
+    - image: docker.io/dpage/pgadmin4:latest
+      name: pgadmin12
+      ports:
+        - containerPort: 80
+          hostPort: 9876
+      resources: {}
+      securityContext:
+        capabilities: {}
+      volumeMounts:
+        - mountPath: /var/lib/pgadmin
+          name: 8b3180bdd738725a121f90b21cf5c20515982a8efc1a11a5827616f75f5f9c0b-pvc
+    - args:
+        - postgres
+      image: docker.io/library/postgres:latest
+      name: database
+      resources: {}
+      securityContext:
+        capabilities: {}
+      volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: home-mrfoo-.local-share-containers-volume-host-0
   restartPolicy: Never
   volumes:
-  - name: 8b3180bdd738725a121f90b21cf5c20515982a8efc1a11a5827616f75f5f9c0b-pvc
-    persistentVolumeClaim:
-      claimName: 8b3180bdd738725a121f90b21cf5c20515982a8efc1a11a5827616f75f5f9c0b
-  - hostPath:
-      path: /home/mrfoo/.local/share/containers/volume
-      type: Directory
-    name: home-mrfoo-.local-share-containers-volume-host-0
+    - name: 8b3180bdd738725a121f90b21cf5c20515982a8efc1a11a5827616f75f5f9c0b-pvc
+      persistentVolumeClaim:
+        claimName: 8b3180bdd738725a121f90b21cf5c20515982a8efc1a11a5827616f75f5f9c0b
+    - hostPath:
+        path: /home/mrfoo/.local/share/containers/volume
+        type: Directory
+      name: home-mrfoo-.local-share-containers-volume-host-0
 status: {}
-

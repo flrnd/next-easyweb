@@ -20,15 +20,15 @@ services:
     restart: always
     image: backend_graphql
     build:
-        context: ./graphql
+      context: ./graphql
     env_file:
-        - ./.env.local
+      - ./.env.local
     depends_on:
-        - db
+      - db
     networks:
-        - network
+      - network
     ports:
-        - 5433:5433
+      - 5433:5433
     command: >
       --connection "${DATABASE_URL}"
       --port 5433
