@@ -13,7 +13,7 @@ async function login(username: string, password: string): Promise<any> {
 
   const { error, message } = await res.json();
   if (error) {
-    console.error("res: ", error);
+    console.error("response: ", error);
     return;
   }
   return message;
