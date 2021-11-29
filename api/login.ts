@@ -6,9 +6,9 @@ export default async function (
   res: VercelResponse
 ): Promise<VercelResponse> {
   const { username, password } = request.body;
+  const client = new Client();
 
   try {
-    const client = new Client();
     client.connect();
     const queryRes = await client.query(
       `SELECT website.authenticate_user(${username}, ${password})`
