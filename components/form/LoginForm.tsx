@@ -15,7 +15,7 @@ const LoginForm = (): JSX.Element => {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    const message = userService.login(data.username, data.password);
+    const message = await userService.login(data.username, data.password);
     alert(message);
   };
 
