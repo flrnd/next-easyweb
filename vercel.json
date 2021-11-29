@@ -1,12 +1,8 @@
 {
-  "src": "api/login.go",
-  "config": {
-    "zeroConfig": true,
-    "functions": {
-      "api/*.go": {
-        "memory": 128,
-        "maxDuration": 10
-      }
+  "functions": {
+    "api/*.go": {
+      "memory": 128,
+      "maxDuration": 10
     }
   }
 }
