@@ -10,7 +10,7 @@ export default async function (
   const pgPool = new Pool({ connectionString });
 
   try {
-    const queryRes = pgPool.query(
+    const queryRes = await pgPool.query(
       `SELECT website.authenticate_user(${username}, ${password})`
     );
     return res.status(200).json({
