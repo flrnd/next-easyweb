@@ -8,15 +8,18 @@ interface IProps {
   rounded?: string;
   shadow?: string;
   margin?: string;
+  className?: string;
   hover?: string;
   href?: string;
   label?: string;
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
   children?: ReactNode;
 }
 
 const Button = ({
   background,
+  className,
   hoverBg,
   textColor,
   rounded,
@@ -25,12 +28,15 @@ const Button = ({
   hover,
   href,
   label,
+  type = "button",
   onClick,
   children,
 }: IProps): JSX.Element => {
   return (
     <button
+      type={type}
       className={classNames(
+        className,
         label && "btn",
         margin,
         background,
@@ -42,7 +48,7 @@ const Button = ({
       )}
       onClick={onClick}
     >
-      {href && <a href={href}>{label}</a>}
+      {href ? <a href={href}>{label}</a> : label}
       {children && <span>{children}</span>}
     </button>
   );
