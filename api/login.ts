@@ -15,8 +15,10 @@ export default async function (
     const queryRes = await pgPool.query(
       `SELECT website.authenticate_user('${username}', '${password}')`
     );
+    const authenticated = queryRes.rows[0].authenticate_user;
+
     return res.status(200).json({
-      message: JSON.stringify(queryRes),
+      message: JSON.stringify(authenticated),
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
