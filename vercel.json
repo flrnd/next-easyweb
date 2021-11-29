@@ -1,5 +1,4 @@
 {
-  "use": "@vercel/go@latest",
   "src": "api/login.go",
   "config": {
     "zeroConfig": true,
