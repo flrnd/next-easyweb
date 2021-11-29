@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Card, Logo } from "../../components/elements";
+import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
 
@@ -33,7 +34,12 @@ const Login = (): JSX.Element => {
             <Heading level={3} margin="mb-2" size="normal">
               Welcome back
             </Heading>
-            <p className="mt-2 text-sm">Sign in with your user ID.</p>
+            <p className="mt-2 text-sm">
+              Sign in with your user name and password.
+            </p>
+          </div>
+          <div className="mt-8">
+            <LoginForm />
           </div>
         </Card>
       </Container>
