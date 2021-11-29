@@ -7,6 +7,7 @@ interface IProps {
   padding?: string;
   margin?: string;
   width?: string;
+  height?: string;
   rounded?: string;
   icon?: ReactNode;
   iconColor?: string;
@@ -21,6 +22,7 @@ const Card = ({
   padding = "p-6",
   margin,
   width = "max-w-sm",
+  height,
   rounded = "rounded-md",
   icon,
   iconColor = "text-white",
@@ -50,6 +52,7 @@ const Card = ({
           padding,
           margin,
           width,
+          height,
           rounded
         )}
       >
