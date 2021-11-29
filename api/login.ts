@@ -7,9 +7,9 @@ export default async function (
 ): Promise<VercelResponse> {
   const { username, password } = request.body;
   const connectionString = process.env.DATABASE_URL;
+  const pgPool = new Pool({ connectionString });
 
   try {
-    const pgPool = new Pool({ connectionString });
     const queryRes = pgPool.query(
       `SELECT website.authenticate_user(${username}, ${password})`
     );
@@ -18,5 +18,7 @@ export default async function (
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
+  } finally {
+    pgPool.end();
   }
 }
