@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import { ReactNode } from "react";
-import stringToId from "../../util/stringToId";
+import stringToId from "../../helpers/stringToId";
 import { Anchor } from "../controls";
 import { Heading, Paragraph } from "../typography";
 

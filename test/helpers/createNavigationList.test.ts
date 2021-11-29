@@ -1,4 +1,4 @@
-import createNavigationList from "../../util/createNavigationList";
+import createNavigationList from "../../helpers/createNavigationList";
 
 describe("Create navigation List", () => {
   it("should return a Navigation List from a string list", () => {

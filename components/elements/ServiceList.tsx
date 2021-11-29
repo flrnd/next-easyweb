@@ -1,6 +1,6 @@
 import { Service } from ".";
 import { IServiceListItem } from "../../types/interfaces";
-import calculateGridColumns from "../../util/calculateGridColumns";
+import calculateGridColumns from "../../helpers/calculateGridColumns";
 import { Container, Grid } from "../layout";
 
 interface IProps {

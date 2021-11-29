@@ -1,4 +1,4 @@
-import calculateGridColumns from "../../util/calculateGridColumns";
+import calculateGridColumns from "../../helpers/calculateGridColumns";
 
 describe("Calculate Grid Columns", () => {
   it("returns 2 with even length", () => {
