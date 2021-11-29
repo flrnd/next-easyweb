@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import createNavigationList from "../../util/createNavigationList";
+import createNavigationList from "../../helpers/createNavigationList";
 import NavigationListItem from "./NavigationListItem";
 
 interface Props {
