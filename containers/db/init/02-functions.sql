@@ -7,7 +7,7 @@ $$ language sql stable;
 
 comment on function website.user_full_name(website.user) is 'A user’s full name which is a concatenation of their first and last name.';
 
-/* function: register_user(fist_name, last_name, email, password): user */
+/* function: register_user(fist_name, last_name, email, is_admin, password): user */
 create function website.register_user(
   first_name text,
   last_name text,
@@ -42,7 +42,7 @@ begin
   where a.email = $1;
 
   if account.password_hash = crypt(password, account.password_hash) then
-    return ('website_user', account.user_id, extract(epoch from (now() + interval '1 day')))::website.jwt_token;
+    return ('user_login', account.user_id, account.email, extract(epoch from (now() + interval '1 day')))::website.jwt_token;
   else
     return null;
   end if;
@@ -61,8 +61,8 @@ $$ language sql stable;
 comment on function website.current_user() is 'Gets the user who was identified by our JWT.';
 
 -- Grant access to the functions
-grant execute on function website.user_full_name(website.user) to website_anonymous, website_user;
-grant execute on function website.authenticate_user(text, text) to website_anonymous, website_user;
-grant execute on function website.current_user() to website_anonymous, website_user;
+grant execute on function website.user_full_name(website.user) to anonymous_login, user_login;
+grant execute on function website.authenticate_user(text, text) to anonymous_login, user_login;
+grant execute on function website.current_user() to anonymous_login, user_login;
 
-grant execute on function website.register_user(text, text, text, text) to website_anonymous;
+grant execute on function website.register_user(text, text, text, text) to anonymous_login;
