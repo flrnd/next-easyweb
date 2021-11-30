@@ -30,8 +30,7 @@ export default async function (
     const token = jwt.sign(
       {
         role: parsedPayload.role,
-        userId: parsedPayload.id,
-        userName: parsedPayload.email,
+        user_id: parsedPayload.id,
       },
       process.env.JWT_SECRET,
       { expiresIn: timestampToSeconds(parsedPayload.expireIn) }
@@ -56,11 +55,10 @@ export default async function (
     });
     const query = gql`
       {
-        allUsers {
+        allSiteConfigs {
           nodes {
             id
-            firstName
-            lastName
+            title
           }
         }
       }
