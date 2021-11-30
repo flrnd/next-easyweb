@@ -53,6 +53,5 @@ comment on column website_private.user_account.password_hash is 'An opaque hash 
 create type website.jwt_token as (
   role text,
   user_id uuid,
-  email text,
   expires_at bigint
 );
