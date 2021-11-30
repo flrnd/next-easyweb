@@ -1,15 +1,22 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { Pool } from "pg";
-import * as jwt from "jsonwebtoken";
-import { parseAuthPayload, timestampToSeconds } from "../helpers";
-import {
-  ApolloClient,
-  createHttpLink,
-  InMemoryCache,
-  gql,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
 import fetch from "cross-fetch";
+
+const getJwtToken = async (email: string, password: string) => {
+  const response = await fetch("http://0.0.0.0:5433/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      query: `mutation {\n  authenticateUser(input: {email: "${email}", password: "${password}"}) {\n    jwtToken\n  }\n}`,
+      variables: {},
+    }),
+  });
+
+  const data = await response.json();
+  return data.data.authenticateUser.jwtToken;
+};
 
 export default async function (
   request: VercelRequest,
@@ -17,62 +24,23 @@ export default async function (
 ): Promise<VercelResponse> {
   const { username, password } = request.body;
 
-  const pgPool = new Pool({ connectionString: process.env.DATABASE_URL });
-
   try {
-    await pgPool.connect();
-    const queryRes = await pgPool.query(
-      `SELECT website.authenticate_user('${username}', '${password}')`
-    );
-    const authenticated = queryRes.rows[0].authenticate_user;
-    const parsedPayload = parseAuthPayload(authenticated);
-
-    const token = jwt.sign(
-      {
-        role: parsedPayload.role,
-        user_id: parsedPayload.id,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: timestampToSeconds(parsedPayload.expireIn) }
-    );
-    const httpLink = createHttpLink({
-      uri: "http://0.0.0.0:5433/graphql",
-      fetch: fetch,
-    });
-
-    const authLink = setContext((_, { headers }) => {
-      return {
-        headers: {
-          ...headers,
-          ...(token ? { authorization: `Bearer ${token}` } : {}),
-        },
-      };
-    });
-
-    const client = new ApolloClient({
-      link: authLink.concat(httpLink),
-      cache: new InMemoryCache(),
-    });
-    const query = gql`
-      {
-        allSiteConfigs {
-          nodes {
-            id
-            title
-          }
-        }
-      }
-    `;
-    client.query({ query: query }).then((result) => {
-      return result;
-    });
-
-    return res.status(200).json({
-      message: JSON.stringify(token),
-    });
+    const token = await getJwtToken(username, password);
+    if (token) {
+      return res.status(200).json({
+        status: 200,
+        message: "Success",
+        token,
+      });
+    } else
+      return res.status(400).json({
+        message: JSON.stringify({
+          status: 400,
+          message: "Invalid username or password.",
+          token: null,
+        }),
+      });
   } catch (err) {
     return res.status(500).json({ message: err.message });
-  } finally {
-    pgPool.end();
   }
 }

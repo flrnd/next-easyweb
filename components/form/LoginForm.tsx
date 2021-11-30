@@ -1,23 +1,17 @@
 import { useForm } from "react-hook-form";
-import { userService } from "../../services/user.service";
+import { IFormData } from "../../types/interfaces";
 import { Button } from "../controls";
 
-interface FormData {
-  username: string;
-  password: string;
+interface IProps {
+  onSubmit(data: IFormData): void;
 }
 
-const LoginForm = (): JSX.Element => {
+const LoginForm = ({ onSubmit }: IProps): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
-
-  const onSubmit = async (data: FormData) => {
-    const message = await userService.login(data.username, data.password);
-    alert(message);
-  };
+  } = useForm<IFormData>();
 
   return (
     <form className="mt-4 mb-8" onSubmit={handleSubmit(onSubmit)}>

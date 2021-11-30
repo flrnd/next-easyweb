@@ -42,7 +42,7 @@ begin
   where a.email = $1;
 
   if account.password_hash = crypt(password, account.password_hash) then
-    return ('user_login', account.user_id, extract(epoch from (now() + interval '1 day')))::website.jwt_token;
+    return ('user_login', account.user_id, account.email, extract(epoch from (now() + interval '1 day')))::website.jwt_token;
   else
     return null;
   end if;
