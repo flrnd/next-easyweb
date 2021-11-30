@@ -1,7 +1,6 @@
 interface IParsedPayload {
   role: string;
   id: string;
-  email: string;
   expireIn: number;
 }
 
@@ -12,8 +11,7 @@ const parseAuthPayload = (payload: string): IParsedPayload => {
   return {
     role: parsed[0],
     id: parsed[1],
-    email: parsed[2],
-    expireIn: parseInt(parsed[3]),
+    expireIn: parseInt(parsed[2]),
   };
 };
 

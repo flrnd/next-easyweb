@@ -1,10 +1,24 @@
 import Link from "next/link";
+import { useState } from "react";
 import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
+import { userService } from "../../services/user.service";
+import { IFormData } from "../../types/interfaces";
 
 const Login = (): JSX.Element => {
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(0);
+  const [token, setToken] = useState("");
+
+  const onSubmit = async (data: IFormData) => {
+    const loginResponse = await userService.login(data.username, data.password);
+    setMessage(loginResponse.message);
+    setStatus(loginResponse.status);
+    setToken(loginResponse.token);
+  };
+
   return (
     <>
       <Container>
@@ -39,9 +53,12 @@ const Login = (): JSX.Element => {
             </p>
           </div>
           <div className="mt-8">
-            <LoginForm />
+            <LoginForm onSubmit={onSubmit} />
           </div>
         </Card>
+        {message}
+        {status}
+        {token}
       </Container>
     </>
   );

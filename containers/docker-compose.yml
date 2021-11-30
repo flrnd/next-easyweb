@@ -33,7 +33,7 @@ services:
       --connection "${DATABASE_URL}"
       --port 5433
       --schema website
-      --default-role anonymous_login
+      --default-role user_login
       --append-plugins postgraphile-plugin-connection-filter
       --jwt-token-identifier website.jwt_token
       --jwt-secret "${JWT_SECRET}"

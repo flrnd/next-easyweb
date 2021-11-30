@@ -31,3 +31,14 @@ export interface IListItem {
   value: string[];
   icon: string;
 }
+
+export interface IResponse {
+  status: number;
+  message?: string;
+  token?: string;
+}
+
+export interface IFormData {
+  username: string;
+  password: string;
+}
