@@ -42,3 +42,23 @@ export interface IFormData {
   username: string;
   password: string;
 }
+
+export interface IFormDataMagicMail {
+  email: string;
+}
+
+export interface IMessage {
+  type?: string;
+  content?: string;
+}
+
+export interface UserDetails {
+  id: string /* primary key */;
+  full_name?: string;
+}
+
+export interface SiteConfig {
+  id: string /* primary key */;
+  user_id: string;
+  data: JSON;
+}
