@@ -1,4 +1,4 @@
-import stringToId from "../../helpers/stringToId";
+import { stringToId } from "../../lib/helpers";
 
 describe("Name to ID", () => {
   it("returns an id", () => {

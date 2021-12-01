@@ -1,4 +1,4 @@
-import { INavigationListItem } from "../types/interfaces";
+import { INavigationListItem } from "../../types/interfaces";
 import stringToId from "./stringToId";
 
 const createNavigationList = (menu: string[]): INavigationListItem[] =>
