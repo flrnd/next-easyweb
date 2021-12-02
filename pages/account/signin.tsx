@@ -12,6 +12,7 @@ const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
   const { user, signIn } = useUser();
   const router = useRouter();
+
   const onSubmit = async (data: IFormData) => {
     const { error } = await signIn({
       email: data.username,
