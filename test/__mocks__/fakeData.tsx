@@ -9,14 +9,12 @@ import widePlaceholder from "../../public/1920x1280.png";
 import squarePlaceholder from "../../public/1280x1280.png";
 import clinicPlaceholder from "../../public/clinic.png";
 import logo from "../../public/assets/pictures/brand/vitary-logo-64x237.png";
-import avatar from "../../public/assets/pictures/team/bobkerman.png";
 
 /* Images */
 export const wideImage = widePlaceholder;
 export const squareImage = squarePlaceholder;
 export const clinicImage = clinicPlaceholder;
 export const logoImage = logo;
-export const avatarImage = avatar;
 
 export const logotype = {
   src: logoImage,
