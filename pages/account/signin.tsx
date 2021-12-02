@@ -6,15 +6,13 @@ import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
 import { useUser } from "../../lib/util/useUser";
-//import { userService } from "../../services/user.service";
 import { IFormData, IMessage } from "../../types/interfaces";
 
-const Login = (): JSX.Element => {
+const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
   const { user, signIn } = useUser();
   const router = useRouter();
   const onSubmit = async (data: IFormData) => {
-    //const loginResponse = await userService.login(data.username, data.password);
     const { error } = await signIn({
       email: data.username,
       password: data.password,
@@ -26,7 +24,7 @@ const Login = (): JSX.Element => {
   };
 
   useEffect(() => {
-    user && router.replace("/account");
+    user && router.replace("/user/account");
   }, [user]);
 
   if (!user) {
@@ -72,7 +70,20 @@ const Login = (): JSX.Element => {
               </div>
             )}
             <div className="mt-8">
-              <LoginForm onSubmit={onSubmit} />
+              <LoginForm onSubmit={onSubmit} submitLabel="Sign In" />
+            </div>
+            <div className="flex items-center justify-between">
+              <Link href="/account/forgot-password" passHref>
+                <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
+                  Forgot your Password?
+                </a>
+              </Link>
+              <span className="text-indigo-500">|</span>
+              <Link href="/account/register" passHref>
+                <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
+                  Sign Up
+                </a>
+              </Link>
             </div>
           </Card>
         </Container>
@@ -83,4 +94,4 @@ const Login = (): JSX.Element => {
   return <div className="m-6">LOADING...</div>;
 };
 
-export default Login;
+export default SignIn;
