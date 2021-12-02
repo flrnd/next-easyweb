@@ -43,6 +43,13 @@ export interface IFormData {
   password: string;
 }
 
+export interface IProfileData {
+  firstName: string;
+  lastName: string;
+  billingAddress: string;
+  avatar?: string;
+}
+
 export interface IFormDataMagicMail {
   email: string;
 }
