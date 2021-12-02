@@ -50,6 +50,7 @@ export const UserContext = createContext<UserContextType | undefined>(
   undefined
 );
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const UserContextProvider = (props: any): any => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
