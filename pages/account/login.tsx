@@ -63,11 +63,18 @@ const Login = (): JSX.Element => {
                 Sign in with your user name and password.
               </p>
             </div>
+            {message.type === "error" && (
+              <div
+                id="error"
+                className="mt-8 text-red-500 border border-red-600 p-4"
+              >
+                {message.content}
+              </div>
+            )}
             <div className="mt-8">
               <LoginForm onSubmit={onSubmit} />
             </div>
           </Card>
-          {message.content}
         </Container>
       </>
     );
