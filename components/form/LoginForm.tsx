@@ -4,9 +4,10 @@ import { Button } from "../controls";
 
 interface IProps {
   onSubmit(data: IFormData): void;
+  submitLabel: string;
 }
 
-const LoginForm = ({ onSubmit }: IProps): JSX.Element => {
+const LoginForm = ({ onSubmit, submitLabel }: IProps): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -57,24 +58,9 @@ const LoginForm = ({ onSubmit }: IProps): JSX.Element => {
           shadow="shadow-none"
           className="w-full"
           hoverBg="bg-indigo-700"
-          label="sign in"
+          label={submitLabel}
           type="submit"
         />
-      </div>
-      <div className="flex items-center justify-between">
-        <a
-          className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800"
-          href="#"
-        >
-          Forgot your Username or Password?
-        </a>
-        <span className="text-indigo-500">|</span>
-        <a
-          className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800"
-          href="#"
-        >
-          Sign Up
-        </a>
       </div>
     </form>
   );
