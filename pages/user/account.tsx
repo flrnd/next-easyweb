@@ -10,11 +10,12 @@ interface IProps {
 }
 
 const Account = ({ session }: IProps): JSX.Element => {
+  const [email, setEmail] = useState(null);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [billingAddress, setBillingAddress] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
-  const { getProfileDetails } = useUser();
+  const { user, getProfileDetails } = useUser();
 
   useEffect(() => {
     getProfile();
@@ -22,7 +23,7 @@ const Account = ({ session }: IProps): JSX.Element => {
 
   async function getProfile() {
     try {
-      const user = supabase.auth.user();
+      // const user = supabase.auth.user();
 
       const { data, error, status } = await getProfileDetails({
         userId: user.id,
@@ -32,6 +33,7 @@ const Account = ({ session }: IProps): JSX.Element => {
       }
 
       if (data) {
+        setEmail(user.email);
         setFirstName(data.first_name);
         setLastName(data.last_name);
         setBillingAddress(data.billing_address);
@@ -71,6 +73,7 @@ const Account = ({ session }: IProps): JSX.Element => {
       alert(error.message);
     }
   }
+
   return (
     <Container>
       <Card
@@ -81,7 +84,7 @@ const Account = ({ session }: IProps): JSX.Element => {
         height="h-screen"
       >
         <label htmlFor="email">Email</label>
-        {session.user.email}
+        {email}
         <div className="mt-8">
           <label htmlFor="first_name">First Name</label>
           <input

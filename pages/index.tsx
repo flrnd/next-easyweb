@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Container } from "../components/layout";
 import { supabase } from "../lib/util/supabaseClient";
-import SignIn from "./account/signin";
-import Account from "./user/account";
+import Example from "./example";
 
 export default function Index(): JSX.Element {
   const [session, setSession] = useState(null);
@@ -18,12 +16,9 @@ export default function Index(): JSX.Element {
   }, []);
 
   return (
-    <Container>
-      {!session ? (
-        <SignIn />
-      ) : (
-        <Account key={session.user.id} session={session} />
-      )}
-    </Container>
+    <>
+      {session && session.user.email}
+      <Example />
+    </>
   );
 }
