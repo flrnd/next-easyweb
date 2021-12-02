@@ -1,4 +1,5 @@
 import { Session } from "@supabase/gotrue-js";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Card } from "../../components/elements";
 import { Container } from "../../components/layout";
@@ -16,15 +17,18 @@ const Account = ({ session }: IProps): JSX.Element => {
   const [billingAddress, setBillingAddress] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const { user, getProfileDetails } = useUser();
+  const router = useRouter();
 
   useEffect(() => {
-    getProfile();
+    if (user) {
+      getProfile();
+    } else {
+      router.push("/account/signin");
+    }
   }, [session]);
 
   async function getProfile() {
     try {
-      // const user = supabase.auth.user();
-
       const { data, error, status } = await getProfileDetails({
         userId: user.id,
       });
