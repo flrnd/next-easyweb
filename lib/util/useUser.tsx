@@ -1,12 +1,12 @@
 import { Session, User, Provider } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
-import { SiteConfig, UserDetails } from "../../types/interfaces";
+import { SiteConfig, ProfileDetails } from "../../types/interfaces";
 import { supabase } from "./supabaseClient";
 
 type UserContextType = {
   session: Session;
   user: User;
-  userDetails: UserDetails;
+  profileDetails: ProfileDetails;
   userLoaded: boolean;
   siteConfig: SiteConfig;
   signIn: (options: SignInOptions) => Promise<{
@@ -24,6 +24,15 @@ type UserContextType = {
     data: Session | User | null;
   }>;
   signOut: () => void;
+  getProfileDetails: (options: ProfileDetailsOptions) => Promise<{
+    data: ProfileDetails | null;
+    error: Error | null;
+    status: number | null;
+  }>;
+};
+
+type ProfileDetailsOptions = {
+  userId: string;
 };
 
 type SignInOptions = {
@@ -45,7 +54,9 @@ export const UserContextProvider = (props: any): any => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+  const [profileDetails, setProfileDetails] = useState<ProfileDetails | null>(
+    null
+  );
   const [siteConfig, setSiteConfig] = useState<SiteConfig | null>(null);
 
   useEffect(() => {
@@ -64,44 +75,55 @@ export const UserContextProvider = (props: any): any => {
     };
   }, []);
 
-  const getUserDetails = () =>
-    supabase.from<UserDetails>("users").select("*").single();
-  const getSiteConfig = () =>
-    supabase.from<SiteConfig>("site_config").select("*").single();
+  const getProfileDetails = (userId: string) =>
+    supabase
+      .from("profiles")
+      .select("first_name, last_name, billing_address, avatar_url")
+      .eq("id", userId)
+      .single();
+
+  //const getSiteConfig = () =>
+  //  supabase.from<SiteConfig>("site_config").select("*").single();
 
   useEffect(() => {
     if (user) {
-      Promise.allSettled([getUserDetails(), getSiteConfig()]).then(
-        (results) => {
-          const userDetailsPromise = results[0];
-          const siteConfigPromise = results[1];
+      Promise.allSettled([getProfileDetails(user.id)]).then((results) => {
+        const profileDetailsPromise = results[0];
+        //const siteConfigPromise = results[1];
 
-          //console.log("site_config", siteConfigPromise);
-          if (userDetailsPromise.status === "fulfilled")
-            setUserDetails(userDetailsPromise.value.data);
+        //console.log("site_config", siteConfigPromise);
+        if (profileDetailsPromise.status === "fulfilled")
+          setProfileDetails(profileDetailsPromise.value.data);
 
+        /*
           if (siteConfigPromise.status === "fulfilled")
             setSiteConfig(siteConfigPromise.value.data);
+          */
 
-          setUserLoaded(true);
-        }
-      );
+        setUserLoaded(true);
+      });
     }
   }, [user]);
 
   const value = {
     session,
     user,
-    userDetails,
+    profileDetails: profileDetails,
     userLoaded,
     siteConfig,
     signIn: (options: SignInOptions) => supabase.auth.signIn(options),
     signUp: (options: SignUpOptions) => supabase.auth.signUp(options),
     signOut: () => {
-      setUserDetails(null);
+      setProfileDetails(null);
       setSiteConfig(null);
       return supabase.auth.signOut();
     },
+    getProfileDetails: (options: ProfileDetailsOptions) =>
+      supabase
+        .from("profiles")
+        .select("first_name, last_name, billing_address, avatar_url")
+        .eq("id", options.userId)
+        .single(),
   };
 
   return <UserContext.Provider value={value} {...props} />;
