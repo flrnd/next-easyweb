@@ -111,7 +111,7 @@ const SignUp = (): JSX.Element => {
     );
   }
 
-  return <div className="m-6">LOADING...</div>;
+  return <></>;
 };
 
 export default SignUp;
