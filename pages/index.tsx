@@ -31,8 +31,8 @@ const Index = (): JSX.Element => (
                 shadow="shadow-md"
                 margin="mr-4"
                 hoverBg="bg-indigo-700"
-                href="/account/login"
-                label="login"
+                href="/account/signin"
+                label="sign in"
               />
               <Button
                 background="bg-indigo-100"
