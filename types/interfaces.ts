@@ -52,9 +52,12 @@ export interface IMessage {
   content?: string;
 }
 
-export interface UserDetails {
+export interface ProfileDetails {
   id: string /* primary key */;
-  full_name?: string;
+  first_name: string;
+  last_name: string;
+  billing_address: string;
+  avatar_url?: string;
 }
 
 export interface SiteConfig {
