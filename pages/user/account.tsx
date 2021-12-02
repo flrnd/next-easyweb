@@ -48,7 +48,7 @@ const Account = (): JSX.Element => {
               >
                 <div className="w-8 h-8">
                   {button.icon}
-                  <span className="w-full">Profile</span>
+                  <span className="w-full">{button.name}</span>
                 </div>
               </a>
             </li>

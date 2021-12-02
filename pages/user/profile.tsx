@@ -6,7 +6,6 @@ import { Button } from "../../components/controls";
 import { Card } from "../../components/elements";
 import { supabase } from "../../lib/util/supabaseClient";
 import { useUser } from "../../lib/util/useUser";
-import { avatarImage } from "../../test/__mocks__/fakeData";
 import { IProfileData } from "../../types/interfaces";
 
 const Profile = (): JSX.Element => {
@@ -103,13 +102,13 @@ const Profile = (): JSX.Element => {
         <div className="flex flex-row mt-10">
           <div className="mr-5">
             <Image
-              src={`https://robohash.org/${avatarUrl}` || avatarImage}
+              src={`https://robohash.org/${avatarUrl}`}
               width={240}
               height={240}
               alt="placeholder"
             />
             <input
-              className="appearance-none w-full py-2 text-grey-darker"
+              className="appearance-none hiden w-full py-2 text-grey-darker"
               id="avatar"
               value={avatarUrl || ""}
               type="text"
