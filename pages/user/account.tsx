@@ -1,153 +1,71 @@
-import { Session } from "@supabase/gotrue-js";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Card } from "../../components/elements";
-import { Container } from "../../components/layout";
-import { supabase } from "../../lib/util/supabaseClient";
 import { useUser } from "../../lib/util/useUser";
+import { GoPerson, GoGear } from "react-icons/go";
+import classNames from "classnames";
+import Profile from "./profile";
 
-interface IProps {
-  session: Session;
-}
+const Account = (): JSX.Element => {
+  const { session } = useUser();
+  const [active, setActive] = useState("profile");
 
-const Account = ({ session }: IProps): JSX.Element => {
-  const [email, setEmail] = useState(null);
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [billingAddress, setBillingAddress] = useState(null);
-  const [avatarUrl, setAvatarUrl] = useState(null);
-  const { user, getProfileDetails } = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
-      getProfile();
-    } else {
+    if (!session) {
       router.push("/account/signin");
     }
   }, [session]);
 
-  async function getProfile() {
-    try {
-      const { data, error, status } = await getProfileDetails({
-        userId: user.id,
-      });
-      if (error && status !== 406) {
-        throw error;
-      }
+  const buttons = [
+    {
+      name: "profile",
+      icon: <GoPerson className="w-full h-full" />,
+    },
+    {
+      name: "settings",
+      icon: <GoGear className="w-full h-full" />,
+    },
+  ];
 
-      if (data) {
-        setEmail(user.email);
-        setFirstName(data.first_name);
-        setLastName(data.last_name);
-        setBillingAddress(data.billing_address);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }
-
-  async function updateProfile({
-    first_name,
-    last_name,
-    billing_address,
-    avatar_url,
-  }) {
-    try {
-      const user = supabase.auth.user();
-
-      const updates = {
-        id: user.id,
-        first_name,
-        last_name,
-        billing_address,
-        avatar_url,
-        updated_at: new Date(),
-      };
-
-      const { error } = await supabase
-        .from("profiles")
-        .upsert(updates, { returning: "minimal" });
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }
+  const handleClick = (active: string) => setActive(active);
 
   return (
-    <Container>
-      <Card
-        padding="px-4 pt-8"
-        shadow="shadow-none"
-        rounded="rounded-none"
-        margin="mx-auto"
-        height="h-screen"
+    <div className="flex h-screen bg-gray-100">
+      <div
+        id="sidebar"
+        className="h-screen w-16 menu bg-white text-white px-4 flex items-center fixed shadow"
       >
-        <label htmlFor="email">Email</label>
-        {email}
-        <div className="mt-8">
-          <label htmlFor="first_name">First Name</label>
-          <input
-            id="first_name"
-            type="text"
-            value={firstName || ""}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div className="mt-8">
-          <label htmlFor="last_name">Last Name</label>
-          <input
-            id="last_name"
-            type="text"
-            value={lastName || ""}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div className="mt-8">
-          <label htmlFor="billing_address">Billing Address</label>
-          <input
-            id="billing_address"
-            type="text"
-            value={billingAddress || ""}
-            onChange={(e) => setBillingAddress(e.target.value)}
-          />
-        </div>
-        <div className="mt-8">
-          <label htmlFor="avatar_url">Avatar URL</label>
-          <input
-            id="avatar_url"
-            type="text"
-            value={avatarUrl || ""}
-            onChange={(e) => setAvatarUrl(e.target.value)}
-          />
-        </div>
-        <button
-          className="button block primary"
-          onClick={() =>
-            updateProfile({
-              first_name: firstName,
-              last_name: lastName,
-              billing_address: billingAddress,
-              avatar_url: avatarUrl,
-            })
-          }
-        >
-          Update profile
-        </button>
-        <div className="mt-8">
-          <button
-            className="button block"
-            onClick={() => supabase.auth.signOut()}
-          >
-            Sign Out
-          </button>
-        </div>
-      </Card>
-    </Container>
+        <ul className="list-reset">
+          {buttons.map((button) => (
+            <li key={button.name} className="mb-10">
+              <a
+                onClick={() => handleClick(button.name.toLowerCase())}
+                className={classNames(
+                  button.name === active ? "text-indigo-600" : "text-gray-600",
+                  "hover:text-indigo-800"
+                )}
+              >
+                <div className="w-8 h-8">
+                  {button.icon}
+                  <span className="w-full">Profile</span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div
+        id="panel-content"
+        className="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16"
+      >
+        {active === "profile" && (
+          <div className="mx-auto">
+            <Profile />
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
