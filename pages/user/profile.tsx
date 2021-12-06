@@ -43,10 +43,10 @@ const Profile = (): JSX.Element => {
   }
 
   async function updateProfile({
-    first_name,
-    last_name,
-    billing_address,
-    avatar_url,
+    first_name = firstName,
+    last_name = lastName,
+    billing_address = billingAddress,
+    avatar_url = avatarUrl,
   }) {
     try {
       const user = supabase.auth.user();
@@ -79,12 +79,19 @@ const Profile = (): JSX.Element => {
   } = useForm<IProfileData>();
 
   const onSubmit = (data: IProfileData) => {
-    updateProfile({
-      first_name: data.firstName,
-      last_name: data.lastName,
-      billing_address: data.billingAddress,
-      avatar_url: user.id,
-    });
+    data.firstName && setFirstName(data.firstName);
+    data.lastName && setLastName(data.lastName);
+    data.billingAddress && setBillingAddress(data.billingAddress);
+    data.avatar && setAvatarUrl(data.avatar);
+
+    const updates = {
+      first_name: firstName,
+      last_name: lastName,
+      billing_address: billingAddress,
+      avatar_url: avatarUrl,
+    };
+
+    updateProfile(updates);
 
     setMessage({ type: "success", content: "Profile updated successfully" });
   };
