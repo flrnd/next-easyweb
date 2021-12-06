@@ -4,6 +4,7 @@ import classNames from "classnames";
 interface IProps {
   background?: string;
   hoverBg?: string;
+  disabled?: boolean;
   textColor?: string;
   rounded?: string;
   shadow?: string;
@@ -20,6 +21,7 @@ interface IProps {
 const Button = ({
   background,
   className,
+  disabled,
   hoverBg,
   textColor,
   rounded,
@@ -43,10 +45,11 @@ const Button = ({
         rounded,
         shadow,
         textColor,
-        hover && `hover:${hover}`,
-        hoverBg && `hover:${hoverBg}`
+        hover && !disabled && `hover:${hover}`,
+        hoverBg && !disabled && `hover:${hoverBg}`
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {href ? <a href={href}>{label}</a> : label}
       {children && <span>{children}</span>}
