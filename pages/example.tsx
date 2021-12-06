@@ -42,6 +42,15 @@ const Example = (): JSX.Element => {
                   href="#"
                   label={placeholderData.cta2}
                 />
+                <Button
+                  className="disabled:opacity-50"
+                  background="bg-indigo-100"
+                  textColor="text-indigo-700"
+                  hoverBg="bg-indigo-200"
+                  href="#"
+                  label="disabled"
+                  disabled={true}
+                />
               </>
             }
           />
