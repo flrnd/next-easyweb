@@ -1,9 +1,36 @@
+import Image from "next/image";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useUser } from "../../lib/util/useUser";
 
 const NavigationWithLogin = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+  const { user, session, getProfileDetails } = useUser();
+  const [profile, setProfile] = useState(null);
+
+  async function getProfile() {
+    try {
+      const { data, error, status } = await getProfileDetails({
+        userId: user.id,
+      });
+      if (error && status !== 200) {
+        throw error;
+      }
+
+      if (data) {
+        setProfile(data);
+      }
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
+
+  useEffect(() => {
+    if (session) {
+      getProfile();
+    }
+  }, [session]);
 
   return (
     <nav className="bg-gray-800">
@@ -116,11 +143,16 @@ const NavigationWithLogin = (): JSX.Element => {
                   onClick={() => setUserMenuIsOpen(!userMenuIsOpen)}
                 >
                   <span className="sr-only">Open user menu</span>
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
+
+                  {profile && (
+                    <Image
+                      className="h-8 w-8 rounded-full"
+                      src={`https://robohash.org/${profile.avatar_url}`}
+                      width={40}
+                      height={40}
+                      alt="placeholder"
+                    />
+                  )}
                 </button>
               </div>
 
