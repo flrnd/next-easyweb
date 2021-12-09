@@ -53,6 +53,7 @@ const NavigationWithLogin = (): JSX.Element => {
       name: "Settings",
       href: "/user/settings",
     },
+    { name: "Website", href: "/" },
   ];
 
   return (
