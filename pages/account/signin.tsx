@@ -25,7 +25,7 @@ const SignIn = (): JSX.Element => {
   };
 
   useEffect(() => {
-    user && router.replace("/user/account");
+    user && router.replace("/user/profile");
   }, [user]);
 
   if (!user) {

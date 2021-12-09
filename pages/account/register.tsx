@@ -36,7 +36,7 @@ const SignUp = (): JSX.Element => {
   };
 
   useEffect(() => {
-    (newUser || user) && router.replace("/user/account");
+    (newUser || user) && router.replace("/user/profile");
   }, [newUser, user]);
 
   if (!user) {
