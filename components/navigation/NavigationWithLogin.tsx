@@ -4,12 +4,14 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useUser } from "../../lib/util/useUser";
 import { supabase } from "../../lib/util/supabaseClient";
+import { useRouter } from "next/router";
 
 const NavigationWithLogin = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const { user, session, getProfileDetails } = useUser();
   const [profile, setProfile] = useState(null);
+  const router = useRouter();
 
   async function getProfile() {
     try {
@@ -34,8 +36,27 @@ const NavigationWithLogin = (): JSX.Element => {
     }
   }, [session]);
 
+  const isActiveLink = (href: string, currentPath: string): boolean => {
+    if (href === "/") {
+      return href === currentPath;
+    }
+
+    return currentPath.startsWith(href);
+  };
+
+  const navigationMenu = [
+    {
+      name: "Profile",
+      href: "/user/profile",
+    },
+    {
+      name: "Settings",
+      href: "/user/settings",
+    },
+  ];
+
   return (
-    <nav className="bg-gray-800">
+    <nav className="bg-gray-600">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -102,34 +123,20 @@ const NavigationWithLogin = (): JSX.Element => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  aria-current="page"
-                >
-                  Dashboard
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Team
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Projects
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Calendar
-                </a>
+                {navigationMenu.map((menuItem) => (
+                  <Link key={menuItem.name} href={menuItem.href} passHref>
+                    <a
+                      className={classNames(
+                        isActiveLink(menuItem.href, router.pathname)
+                          ? "dashboard-nav-active"
+                          : "dashboard-nav"
+                      )}
+                      aria-current="page"
+                    >
+                      {menuItem.name}
+                    </a>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -167,13 +174,13 @@ const NavigationWithLogin = (): JSX.Element => {
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
               >
-                <Link href="/user/account" passHref>
+                <Link href="/user/profile" passHref>
                   <a
                     className="block px-4 py-2 text-sm text-gray-700"
                     role="menuitem"
                     id="user-menu-item-0"
                   >
-                    Your Profile
+                    Profile
                   </a>
                 </Link>
                 <Link href="/" passHref>
