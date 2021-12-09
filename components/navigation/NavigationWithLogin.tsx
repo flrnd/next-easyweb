@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useUser } from "../../lib/util/useUser";
+import { supabase } from "../../lib/util/supabaseClient";
 
 const NavigationWithLogin = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
@@ -165,30 +167,27 @@ const NavigationWithLogin = (): JSX.Element => {
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
               >
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  id="user-menu-item-0"
-                >
-                  Your Profile
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  id="user-menu-item-1"
-                >
-                  Settings
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  id="user-menu-item-2"
-                >
-                  Sign out
-                </a>
+                <Link href="/user/account" passHref>
+                  <a
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    id="user-menu-item-0"
+                  >
+                    Your Profile
+                  </a>
+                </Link>
+                <Link href="/" passHref>
+                  <a
+                    onClick={() => {
+                      supabase.auth.signOut();
+                    }}
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    id="user-menu-item-2"
+                  >
+                    Sign out
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
