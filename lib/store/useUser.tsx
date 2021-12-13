@@ -1,7 +1,7 @@
 import { Session, User, Provider } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
 import { SiteConfig, ProfileDetails } from "../../types/interfaces";
-import { supabase } from "./supabaseClient";
+import { supabase } from "../util/supabaseClient";
 
 type UserContextType = {
   session: Session;

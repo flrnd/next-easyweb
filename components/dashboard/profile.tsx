@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "../controls";
 import { Card } from "../elements";
 import { supabase } from "../../lib/util/supabaseClient";
-import { useUser } from "../../lib/util/useUser";
+import { useUser } from "../../lib/store/useUser";
 import { IProfileData } from "../../types/interfaces";
 import profilePicture from "../../public/assets/placeholder/profile.png";
 

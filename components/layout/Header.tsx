@@ -2,7 +2,7 @@ import Link from "next/link";
 import { siteMenu } from "../../test/__mocks__/fakeData";
 import { Logo } from "../elements";
 import { BurgerMenu, NavigationBar } from "../navigation";
-import { useUser } from "../../lib/util/useUser";
+import { useUser } from "../../lib/store/useUser";
 import NavigationWithLogin from "../navigation/NavigationWithLogin";
 
 const Header = (): JSX.Element => {
