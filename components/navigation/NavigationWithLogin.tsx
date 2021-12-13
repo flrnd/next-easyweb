@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { useUser } from "../../lib/util/useUser";
+import { useUser } from "../../lib/store/useUser";
 import { supabase } from "../../lib/util/supabaseClient";
 import { useRouter } from "next/router";
 

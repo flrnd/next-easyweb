@@ -5,7 +5,7 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { useUser } from "../../lib/util/useUser";
+import { useUser } from "../../lib/store/useUser";
 import { IFormData, IMessage } from "../../types/interfaces";
 import { User } from "@supabase/gotrue-js";
 
