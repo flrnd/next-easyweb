@@ -96,16 +96,16 @@ const ProfileContainer = (): JSX.Element => {
   };
 
   return (
-    <div className="container mt-10">
+    <div className="container mt-10 mx-auto">
       <Card
         padding="p-8"
         shadow="shadow-sm"
         rounded="rounded-md"
         margin="mx-auto"
-        width="w-full"
+        width="max-w-2xl"
         height="h-full"
       >
-        <div className="flex flex-row mt-10">
+        <div className="flex flex-col sm:flex-row mt-10">
           <div className="mr-5">
             <Image
               src={`https://robohash.org/${avatarUrl}`}
