@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../lib/store/useUser";
 import { supabase } from "../../lib/util/supabaseClient";
 import { useRouter } from "next/router";
+import ProfileIcon from "../icons/dashboard/ProfileIcon";
 
 const NavigationWithLogin = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
@@ -160,7 +160,7 @@ const NavigationWithLogin = (): JSX.Element => {
               <div>
                 <button
                   type="button"
-                  className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  className="h-6 w-6 flex text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white p-1"
                   id="user-menu-button"
                   aria-expanded={userMenuIsOpen ? "true" : "false"}
                   aria-haspopup="true"
@@ -168,29 +168,25 @@ const NavigationWithLogin = (): JSX.Element => {
                 >
                   <span className="sr-only">Open user menu</span>
 
-                  {profile && (
-                    <Image
-                      className="h-8 w-8 rounded-full"
-                      src={`https://robohash.org/${profile.avatar_url}`}
-                      width={40}
-                      height={40}
-                      alt="placeholder"
-                    />
-                  )}
+                  {profile && <ProfileIcon />}
                 </button>
               </div>
 
               <div
                 className={classNames(
-                  "origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none",
+                  "origin-top-right absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none",
                   userMenuIsOpen ? "block" : "hidden"
                 )}
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
               >
+                <div className="block px-4 pt-2 pb-3 text-sm text-gray-700 border-b-2">
+                  Signed as <strong>{session?.user.email}</strong>
+                </div>
                 <Link href="/user/profile" passHref>
                   <a
+                    onClick={() => setUserMenuIsOpen(!userMenuIsOpen)}
                     className="block px-4 py-2 text-sm text-gray-700"
                     role="menuitem"
                     id="user-menu-item-0"
