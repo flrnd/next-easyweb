@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import Contact from "../../../components/elements/Contact";
-import { contactDataList } from "../../__mocks__/fakeData";
+import { contactDataList } from "../../../__mocks__/fakeData";
 
 describe("Contact", () => {
   it("renders a contact information list", () => {

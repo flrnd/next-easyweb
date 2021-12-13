@@ -1,4 +1,4 @@
-import { companySocial, logotype } from "../../test/__mocks__/fakeData";
+import { companySocial, logotype } from "../../__mocks__/fakeData";
 import { SocialIconList } from "../elements";
 import Logo from "../elements/Logo";
 import { NavigationList } from "../navigation";
