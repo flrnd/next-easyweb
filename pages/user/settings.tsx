@@ -2,7 +2,7 @@ import { Header } from "../../components/layout";
 
 const SideBar = (): JSX.Element => <div></div>;
 
-const Settings = () => {
+const Settings = (): JSX.Element => {
   return (
     <div className="dashboard">
       <Header />
