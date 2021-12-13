@@ -24,6 +24,13 @@
 .dashboard-nav {
   @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium;
 }
+.dashboard-nav-mobile-active {
+  @apply bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium;
+}
+
+.dashboard-nav-mobile {
+  @apply text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium;
+}
 
 .footer {
   @apply pt-4;
