@@ -1,10 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useUser } from "../../lib/util/useUser";
 import { supabase } from "../../lib/util/supabaseClient";
 import { useRouter } from "next/router";
+
+const closeOutsideClick = (
+  ref: MutableRefObject<any>,
+  closeMenus: () => void
+) => {
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        closeMenus();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+};
 
 const NavigationWithLogin = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
@@ -12,6 +29,12 @@ const NavigationWithLogin = (): JSX.Element => {
   const { user, session, getProfileDetails } = useUser();
   const [profile, setProfile] = useState(null);
   const router = useRouter();
+  const wrapperRef = useRef(null);
+
+  closeOutsideClick(wrapperRef, () => {
+    setUserMenuIsOpen(false);
+    setMobileMenuIsOpen(false);
+  });
 
   async function getProfile() {
     try {
@@ -57,7 +80,7 @@ const NavigationWithLogin = (): JSX.Element => {
   ];
 
   return (
-    <nav className="bg-gray-600">
+    <nav ref={wrapperRef} className="bg-gray-600">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -208,34 +231,19 @@ const NavigationWithLogin = (): JSX.Element => {
         style={{ display: mobileMenuIsOpen ? "" : "none" }}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <a
-            href="#"
-            className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-            aria-current="page"
-          >
-            Dashboard
-          </a>
-
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Team
-          </a>
-
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Projects
-          </a>
-
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Calendar
-          </a>
+          {navigationMenu.map((menuItem) => (
+            <Link key={menuItem.name} href={menuItem.href} passHref>
+              <a
+                className={classNames(
+                  isActiveLink(menuItem.href, router.pathname)
+                    ? "dashboard-nav-mobile-active"
+                    : "dashboard-nav-mobile"
+                )}
+              >
+                {menuItem.name}
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
