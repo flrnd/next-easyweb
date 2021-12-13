@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Contact from "../components/elements/Contact";
 import { Container, Layout } from "../components/layout";
-import { clinicImage, contactDataList } from "../test/__mocks__/fakeData";
+import { clinicImage, contactDataList } from "../__mocks__/fakeData";
 
 const ContactUs = (): JSX.Element => {
   return (

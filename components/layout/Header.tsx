@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteMenu } from "../../test/__mocks__/fakeData";
+import { siteMenu } from "../../__mocks__/fakeData";
 import { Logo } from "../elements";
 import { BurgerMenu, NavigationBar } from "../navigation";
 import { useUser } from "../../lib/store/useUser";

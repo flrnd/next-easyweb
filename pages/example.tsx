@@ -7,7 +7,7 @@ import {
   serviceList,
   teamMembers,
   wideImage,
-} from "../test/__mocks__/fakeData";
+} from "../__mocks__/fakeData";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
 import { Container, Grid, Layout } from "../components/layout";

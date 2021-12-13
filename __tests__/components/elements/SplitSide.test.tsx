@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { render, screen } from "@testing-library/react";
-import { SplitSide } from "../../../components/elements/";
+import { SplitSide } from "../../../components/elements";
 import placeholder from "../../../public/1920x1280.png";
 
 describe("Feature", () => {

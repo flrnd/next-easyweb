@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { Logo } from "../../../components/elements";
-import { logotype } from "../../__mocks__/fakeData";
+import { logotype } from "../../../__mocks__/fakeData";
 
 describe("Logo", () => {
   it("renders a logotype", () => {

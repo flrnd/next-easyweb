@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { NavigationListItem } from "../../../components/navigation";
-import mockUrl from "../../__mocks__/mockUrl";
+import mockUrl from "../../../__mocks__/mockUrl";
 
 describe("Navigation List Item", () => {
   it("should render a <li> with link inside", () => {

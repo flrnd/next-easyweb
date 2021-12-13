@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import ContactItem from "../../../components/elements/ContactItem";
 import { IListItem } from "../../../types/interfaces";
-import { contactDataList } from "../../__mocks__/fakeData";
+import { contactDataList } from "../../../__mocks__/fakeData";
 
 describe("Contact item", () => {
   it("Renders a contact item with icon, title and text", () => {
