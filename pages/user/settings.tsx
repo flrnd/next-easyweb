@@ -1,4 +1,4 @@
-import { Header } from "../../components/layout";
+import Header from "../../components/layout/Header";
 
 const SideBar = (): JSX.Element => <div></div>;
 
