@@ -1,6 +1,6 @@
 import { DefaultSeo } from "next-seo";
 import { ReactNode } from "react";
-import { Footer, Header } from ".";
+
 import SEO from "../../next-seo.config";
 
 interface Props {
@@ -11,9 +11,7 @@ const Layout = ({ children }: Props): JSX.Element => {
   return (
     <div className="layout">
       <DefaultSeo {...SEO} />
-      <Header />
       {children}
-      <Footer />
     </div>
   );
 };
