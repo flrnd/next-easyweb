@@ -5,10 +5,10 @@ import {
   CloudIcon,
 } from "@heroicons/react/outline";
 import { IServiceListItem, IList } from "../types/interfaces";
-import widePlaceholder from "../../public/1920x1280.png";
-import squarePlaceholder from "../../public/1280x1280.png";
-import clinicPlaceholder from "../../public/clinic.png";
-import logo from "../../public/assets/pictures/brand/vitary-logo-64x237.png";
+import widePlaceholder from "../public/1920x1280.png";
+import squarePlaceholder from "../public/1280x1280.png";
+import clinicPlaceholder from "../public/clinic.png";
+import logo from "../public/assets/pictures/brand/vitary-logo-64x237.png";
 
 /* Images */
 export const wideImage = widePlaceholder;
