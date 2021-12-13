@@ -6,6 +6,7 @@ import { Card } from "../elements";
 import { supabase } from "../../lib/util/supabaseClient";
 import { useUser } from "../../lib/util/useUser";
 import { IProfileData } from "../../types/interfaces";
+import profilePicture from "../../public/assets/placeholder/profile.png";
 
 const ProfileContainer = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -108,7 +109,7 @@ const ProfileContainer = (): JSX.Element => {
         <div className="flex flex-col sm:flex-row mt-10">
           <div className="mr-5">
             <Image
-              src={`https://robohash.org/${avatarUrl}`}
+              src={profilePicture}
               width={240}
               height={240}
               alt="placeholder"
