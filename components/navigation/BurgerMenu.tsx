@@ -9,6 +9,7 @@ interface IProps {
 const BurgerMenu = ({ menu }: IProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (): void => setIsOpen(!isOpen);
+
   return (
     <>
       <div className="burger-menu">
