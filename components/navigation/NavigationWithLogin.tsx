@@ -1,27 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../lib/util/useUser";
 import { supabase } from "../../lib/util/supabaseClient";
 import { useRouter } from "next/router";
-
-const closeOutsideClick = (
-  ref: MutableRefObject<any>,
-  closeMenus: () => void
-) => {
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        closeMenus();
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref]);
-};
 
 const NavigationWithLogin = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
@@ -29,12 +12,7 @@ const NavigationWithLogin = (): JSX.Element => {
   const { user, session, getProfileDetails } = useUser();
   const [profile, setProfile] = useState(null);
   const router = useRouter();
-  const wrapperRef = useRef(null);
-
-  closeOutsideClick(wrapperRef, () => {
-    setUserMenuIsOpen(false);
-    setMobileMenuIsOpen(false);
-  });
+  const mountedRef = useRef(null);
 
   async function getProfile() {
     try {
@@ -57,6 +35,19 @@ const NavigationWithLogin = (): JSX.Element => {
     if (session) {
       getProfile();
     }
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mountedRef.current && !mountedRef.current.contains(event.target)) {
+        setMobileMenuIsOpen(false);
+        setUserMenuIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      mountedRef.current = null;
+    };
   }, [session]);
 
   const isActiveLink = (href: string, currentPath: string): boolean => {
@@ -80,7 +71,7 @@ const NavigationWithLogin = (): JSX.Element => {
   ];
 
   return (
-    <nav ref={wrapperRef} className="bg-gray-600">
+    <nav ref={mountedRef} className="bg-gray-600">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
