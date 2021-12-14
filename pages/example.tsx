@@ -12,7 +12,7 @@ import {
   serviceList,
   teamMembers,
   wideImage,
-} from "../__mocks__/fakeData";
+} from "../__mocks__/fakeData/data";
 import { Heading, Paragraph } from "../components/typography";
 import { Anchor } from "../components/controls";
 import { Container, Grid, DefaultLayout } from "../components/layout";

@@ -4,7 +4,7 @@ import {
   DatabaseIcon,
   CloudIcon,
 } from "@heroicons/react/outline";
-import { IServiceListItem, IList } from "../types";
+import { IServiceListItem, IList } from "../../types";
 import widePlaceholder from "../public/1920x1280.png";
 import squarePlaceholder from "../public/1280x1280.png";
 import clinicPlaceholder from "../public/clinic.png";
