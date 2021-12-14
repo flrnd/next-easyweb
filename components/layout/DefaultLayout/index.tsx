@@ -1,13 +1,13 @@
 import { DefaultSeo } from "next-seo";
 import { ReactNode } from "react";
 
-import SEO from "../../next-seo.config";
+import SEO from "../../../next-seo.config";
 
 interface Props {
   children: ReactNode;
 }
 
-const Layout = ({ children }: Props): JSX.Element => {
+const DefaultLayout = ({ children }: Props): JSX.Element => {
   return (
     <div className="layout">
       <DefaultSeo {...SEO} />
@@ -16,4 +16,4 @@ const Layout = ({ children }: Props): JSX.Element => {
   );
 };
 
-export default Layout;
+export default DefaultLayout;
