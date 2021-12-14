@@ -1,12 +1,9 @@
 import Link from "next/link";
 import { siteMenu } from "../../../__mocks__/fakeData";
-import { useUser } from "../../../lib/store/useUser";
-import {
-  BurgerMenu,
-  NavigationBar,
-  NavigationBarWithLogin,
-} from "../../navigation";
+import { useUser } from "../../../lib/store/hooks/useUser";
+import { BurgerMenu, NavigationBar } from "../../navigation";
 import { Logo } from "../../elements";
+import NavigationBarWithLogin from "../../navigation/NavigationBarWIthLogin";
 
 const Header = (): JSX.Element => {
   const { session } = useUser();

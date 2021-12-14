@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { UserContextProvider } from "../lib/store/useUser";
+import { UserContextProvider } from "../lib/store/hooks/useUser";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
