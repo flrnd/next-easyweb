@@ -1,5 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
-import { NavigationListItem } from "..";
+import NavigationItem from ".";
+
 import mockUrl from "../../../__mocks__/mockUrl";
 
 describe("Navigation List Item", () => {
@@ -11,7 +12,7 @@ describe("Navigation List Item", () => {
 
     const expectedHref = mockUrl(item.href);
 
-    render(<NavigationListItem item={item} />);
+    render(<NavigationItem item={item} />);
 
     const listItem = screen.getByRole("listitem");
     const { getByRole } = within(listItem);

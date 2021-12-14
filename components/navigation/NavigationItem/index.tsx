@@ -8,7 +8,7 @@ interface Props {
   margin?: string;
 }
 
-const NavigationListItem = ({ item, margin }: Props): JSX.Element => {
+const NavigationItem = ({ item, margin }: Props): JSX.Element => {
   return (
     <li>
       <Link href={item.href}>
@@ -18,4 +18,4 @@ const NavigationListItem = ({ item, margin }: Props): JSX.Element => {
   );
 };
 
-export default NavigationListItem;
+export default NavigationItem;
