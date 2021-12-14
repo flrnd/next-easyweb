@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import { SplitSide, Hero, ServiceList, Card } from "../components/elements";
+import {
+  ImageWithParagraph,
+  Hero,
+  ServiceList,
+  Card,
+} from "../components/elements";
 import { Button } from "../components/controls";
 import {
   placeholderData,
@@ -64,7 +69,7 @@ const Example = (): JSX.Element => {
               <Image src={wideImage} alt="placeholder" placeholder="blur" />
             }
           />
-          <SplitSide
+          <ImageWithParagraph
             isImageLeft={true}
             image={
               <Image
@@ -99,7 +104,7 @@ const Example = (): JSX.Element => {
               weight="font-semibold"
               label={placeholderData.buttonText}
             />
-          </SplitSide>
+          </ImageWithParagraph>
 
           <ServiceList services={serviceList} />
           <Container>

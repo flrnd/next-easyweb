@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useUser } from "../../lib/store/useUser";
-import ProfileContainer from "../../components/dashboard/profile";
+import ProfileView from "../../components/dashboard/ProfileView";
 import Header from "../../components/layout/Header";
 
 const Profile = (): JSX.Element => {
@@ -22,7 +22,7 @@ const Profile = (): JSX.Element => {
       <Header />
       <main>
         <SideBar />
-        <ProfileContainer />
+        <ProfileView />
       </main>
     </div>
   );
