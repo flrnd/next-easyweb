@@ -2,24 +2,24 @@ import Card from "./Card";
 import Contact from "./Contact";
 import ContactItem from "./ContactItem";
 import Hero from "./Hero";
-import Service from "./Service";
-import ServiceList from "./ServiceList";
 import IconLink from "./IconLink";
-import SocialIconList from "./SocialIconList";
-import SplitSide from "./SplitSide";
-import Member from "./Member";
+import ImageWithParagraph from "./ImageWithParagraph";
 import Logo from "./Logo";
+import Member from "./Member";
+import ServiceItem from "./ServiceItem";
+import ServiceList from "./ServiceList";
+import SocialIconList from "./SocialIconList";
 
 export {
   Card,
   Contact,
   ContactItem,
-  Member,
-  IconLink,
-  SocialIconList,
-  SplitSide,
   Hero,
+  IconLink,
+  ImageWithParagraph,
   Logo,
-  Service,
+  Member,
+  ServiceItem,
   ServiceList,
+  SocialIconList,
 };

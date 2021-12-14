@@ -8,6 +8,7 @@ import FacebookIcon from "./social/FacebookIcon";
 import InstagramIcon from "./social/InstagramIcon";
 import LinkedinIcon from "./social/LinkedinIcon";
 import TwitterIcon from "./social/TwitterIcon";
+import ProfileIcon from "./dashboard/ProfileIcon";
 
 const getIcon = (name: string): JSX.Element => {
   switch (name) {
@@ -27,6 +28,8 @@ const getIcon = (name: string): JSX.Element => {
       return <LocationMarkerIcon />;
     case "clock":
       return <ClockIcon />;
+    case "profile":
+      return <ProfileIcon />;
   }
 };
 
