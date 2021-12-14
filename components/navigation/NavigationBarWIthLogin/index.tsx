@@ -61,11 +61,11 @@ const NavigationBarWithLogin = (): JSX.Element => {
   const navigationMenu = [
     {
       name: "Profile",
-      href: "/user/profile",
+      href: "/dashboard/profile",
     },
     {
       name: "Settings",
-      href: "/user/settings",
+      href: "/dashboard/settings",
     },
     { name: "Website", href: "/" },
   ];
