@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavigationList } from "..";
+import { NavigationItemList } from "..";
 import { Button } from "../../controls";
 
 interface IProps {
@@ -28,11 +28,11 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
       <div className={isOpen ? "modal" : "hidden"} onClick={handleClick}>
         <div className="modal-content">
           <div className="medium font-bold mb-5">Menu</div>
-          <NavigationList list={menu} isVertical={isOpen} />
+          <NavigationItemList list={menu} isVertical={isOpen} />
         </div>
       </div>
       <div className="hidden md:block">
-        <NavigationList list={menu} />
+        <NavigationItemList list={menu} />
       </div>
     </>
   );
