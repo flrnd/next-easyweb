@@ -1,4 +1,5 @@
-import Header from "../../components/layout/Header";
+import Header from "../../../components/layout/Header";
+import SettingsPanel from "../../../components/dashboard/SettingsPanel";
 
 const SideBar = (): JSX.Element => <div></div>;
 
@@ -8,7 +9,7 @@ const Settings = (): JSX.Element => {
       <Header />
       <main>
         <SideBar />
-        Settings
+        <SettingsPanel />
       </main>
     </div>
   );

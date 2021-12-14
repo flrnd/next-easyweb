@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useUser } from "../../lib/store/hooks/useUser";
-import ProfileView from "../../components/dashboard/ProfileView";
-import Header from "../../components/layout/Header";
+import { useUser } from "../../../lib/store/hooks/useUser";
+import ProfilePanel from "../../../components/dashboard/ProfilePanel";
+import Header from "../../../components/layout/Header";
 
 const Profile = (): JSX.Element => {
   const { session } = useUser();
@@ -11,7 +11,7 @@ const Profile = (): JSX.Element => {
 
   useEffect(() => {
     if (!session) {
-      router.push("/account/signin");
+      router.push("/signin");
     }
   }, [session]);
 
@@ -22,7 +22,7 @@ const Profile = (): JSX.Element => {
       <Header />
       <main>
         <SideBar />
-        <ProfileView />
+        <ProfilePanel />
       </main>
     </div>
   );
