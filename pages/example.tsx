@@ -34,16 +34,6 @@ const Example = (): JSX.Element => {
             cta={
               <>
                 <Button
-                  background="bg-indigo-600"
-                  textColor="text-white"
-                  rounded="rounded-md"
-                  shadow="shadow-md"
-                  margin="mr-4"
-                  hoverBg="bg-indigo-700"
-                  href="/account/signin"
-                  label="sign in"
-                />
-                <Button
                   background="bg-indigo-100"
                   textColor="text-indigo-700"
                   hoverBg="bg-indigo-200"
