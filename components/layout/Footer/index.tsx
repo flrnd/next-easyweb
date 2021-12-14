@@ -1,6 +1,6 @@
 import { companySocial, logotype } from "../../../__mocks__/fakeData/data";
 import { Logo, SocialIconList } from "../../elements";
-import { NavigationList } from "../../navigation";
+import { NavigationItemList } from "../../navigation";
 
 const list = ["services", "about", "contact us"];
 const hours = ["Mon-Fri: 9am-5pm", "Sat: 10am-2pm", "Sun: Closed"];
@@ -31,7 +31,7 @@ const Footer = (): JSX.Element => {
 
           <div className="footer-section">
             <div className="text-2xl mb-2">Enlaces</div>
-            <NavigationList isVertical={true} list={list} />
+            <NavigationItemList isVertical={true} list={list} />
           </div>
           <div className="footer-section">
             <div className="text-2xl mb-2">Horario</div>
