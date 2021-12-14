@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Image from "next/image";
 import { Button } from "../../controls";
 import { Hero } from "..";
 import placeholder from "../../../public/1920x1280.png";
-
-afterAll(cleanup);
 
 describe("Hero", () => {
   it("renders a heading and subheading", () => {
