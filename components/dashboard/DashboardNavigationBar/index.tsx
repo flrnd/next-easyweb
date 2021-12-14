@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { getIcon } from "../../icons";
 import { supabase } from "../../../lib/util/supabaseClient";
 
-const NavigationBarWithLogin = (): JSX.Element => {
+const DashboardNavigationBar = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const { user, session, getProfileDetails } = useUser();
@@ -237,4 +237,4 @@ const NavigationBarWithLogin = (): JSX.Element => {
   );
 };
 
-export default NavigationBarWithLogin;
+export default DashboardNavigationBar;
