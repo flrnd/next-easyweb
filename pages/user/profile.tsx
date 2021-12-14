@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useUser } from "../../lib/store/useUser";
+import { useUser } from "../../lib/store/hooks/useUser";
 import ProfileView from "../../components/dashboard/ProfileView";
 import Header from "../../components/layout/Header";
 

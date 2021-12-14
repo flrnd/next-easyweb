@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { useUser } from "../../../lib/store/useUser";
+import { useUser } from "../../../lib/store/hooks/useUser";
 import { useRouter } from "next/router";
 import { getIcon } from "../../icons";
 import { supabase } from "../../../lib/util/supabaseClient";
