@@ -14,19 +14,15 @@ const NavigationItemList = ({
   const navigationList = createNavigationList(list);
 
   return (
-    <div
-      className={classNames("flex", isVertical && "flex-col", "items-center")}
-    >
-      <ul className={classNames("flex", isVertical && "flex-col")}>
-        {navigationList.map((navItem) => (
-          <NavigationItem
-            key={navItem.name}
-            item={navItem}
-            margin={!isVertical && "ml-4"}
-          />
-        ))}
-      </ul>
-    </div>
+    <ul className={classNames("flex", isVertical && "flex-col")}>
+      {navigationList.map((navItem) => (
+        <NavigationItem
+          key={navItem.name}
+          item={navItem}
+          margin={!isVertical && "ml-4"}
+        />
+      ))}
+    </ul>
   );
 };
 
