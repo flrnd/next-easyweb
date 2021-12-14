@@ -6,9 +6,6 @@ interface IProps {
   children: ReactNode;
 }
 
-/**
- * TODO: Add tests
- */
 const Grid = ({ columns, gap = "gap-2", children }: IProps): JSX.Element => {
   return (
     <div className={`lg:grid lg:grid-cols-${columns} lg:${gap}`}>
