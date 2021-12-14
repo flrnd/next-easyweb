@@ -184,7 +184,7 @@ const DashboardNavigationBar = (): JSX.Element => {
                 <div className="block px-4 pt-2 pb-3 text-sm text-gray-700 border-b-2">
                   Signed as <strong>{session?.user.email}</strong>
                 </div>
-                <Link href="/user/profile" passHref>
+                <Link href="/dashboard/profile" passHref>
                   <a
                     onClick={() => setUserMenuIsOpen(!userMenuIsOpen)}
                     className="block px-4 py-2 text-sm text-gray-700"
