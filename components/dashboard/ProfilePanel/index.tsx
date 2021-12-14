@@ -4,7 +4,8 @@ import { supabase } from "../../../lib/util/supabaseClient";
 import { useUser } from "../../../lib/store/hooks/useUser";
 import { IProfileData } from "../../../lib/types";
 import { Heading } from "../../typography";
-import Button from "../../controls/Button";
+import { Anchor } from "../../controls";
+import { getIcon } from "../../icons";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -12,6 +13,7 @@ const ProfilePanel = (): JSX.Element => {
   const [billingAddress, setBillingAddress] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [message, setMessage] = useState({ type: "", content: "" });
+  const [edit, setEdit] = useState(false);
   const { user, session, getProfileDetails } = useUser();
 
   useEffect(() => {
@@ -90,17 +92,35 @@ const ProfilePanel = (): JSX.Element => {
     };
 
     updateProfile(updates);
-
+    setEdit(false);
     setMessage({ type: "success", content: "Profile updated successfully" });
   };
 
   return (
     <div className="mt-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="border-b-2">
-          <Heading level={4} size="medium" weight="font-bold">
+        <div className="border-b-2 flex items-baseline justify-between">
+          <Heading level={4} size="medium" margin="mb-0" weight="font-bold">
             Profile
           </Heading>
+          {!edit && (
+            <Anchor
+              icon={getIcon("edit")}
+              size="small"
+              gap="mr-1"
+              label="Edit"
+              onClick={() => setEdit(true)}
+            />
+          )}
+          {edit && (
+            <Anchor
+              icon={getIcon("save")}
+              size="small"
+              gap="mr-1"
+              label="Save"
+              onClick={handleSubmit(onSubmit)}
+            />
+          )}
         </div>
         <div className="my-4">
           <label className="block text-grey-darker text-sm font-bold mb-2">
@@ -119,6 +139,7 @@ const ProfilePanel = (): JSX.Element => {
             {...register("firstName", { required: false })}
             placeholder="Jane"
             onChange={(e) => setFirstName(e.target.value)}
+            disabled={!edit}
           />
         </div>
         <div className="mb-4">
@@ -138,6 +159,7 @@ const ProfilePanel = (): JSX.Element => {
             {...register("lastName", { required: false })}
             placeholder="Doe"
             onChange={(e) => setLastName(e.target.value)}
+            disabled={!edit}
           />
         </div>
         <div className="mb-4">
@@ -157,18 +179,7 @@ const ProfilePanel = (): JSX.Element => {
             {...register("billingAddress", { required: false })}
             placeholder="Sesame Street 5, corner square 44 street"
             onChange={(e) => setBillingAddress(e.target.value)}
-          />
-        </div>
-        <div className="mt-8 flex mb-8">
-          <Button
-            background="bg-indigo-600"
-            textColor="text-white"
-            rounded="rounded-none"
-            shadow="shadow-md"
-            margin="mr-4"
-            hoverBg="bg-indigo-700"
-            onClick={handleSubmit(onSubmit)}
-            label="Update profile"
+            disabled={!edit}
           />
         </div>
         {message.type === "success" && (

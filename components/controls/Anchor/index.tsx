@@ -1,3 +1,4 @@
+import Link from "next/link";
 import classNames from "classnames";
 
 interface IProps {
@@ -27,25 +28,41 @@ const Anchor = ({
   weight,
   onClick,
 }: IProps): JSX.Element => {
-  return (
-    <a
-      href={href}
-      aria-label={a11yTitle}
-      className={classNames(color, margin, size, weight)}
-      onClick={onClick}
+  const anchorInside = (
+    <div
+      className={`flex justify-center items-center ${
+        reverse && "flex-row-reverse"
+      }`}
     >
-      <div
-        className={`flex justify-center items-center ${
-          reverse && "flex-row-reverse"
-        }`}
-      >
-        {icon && (
-          <span className={classNames("flex items-center", gap)}>{icon}</span>
-        )}
-        {label}
-      </div>
-    </a>
+      {icon && (
+        <span className={classNames("flex items-center", gap)}>{icon}</span>
+      )}
+      {label}
+    </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} passHref>
+        <a
+          aria-label={a11yTitle}
+          className={classNames(color, margin, size, weight)}
+        >
+          {anchorInside}
+        </a>
+      </Link>
+    );
+  } else {
+    return (
+      <button
+        onClick={onClick}
+        aria-label={a11yTitle}
+        className={classNames(color, margin, size, weight)}
+      >
+        {anchorInside}
+      </button>
+    );
+  }
 };
 
 export default Anchor;
