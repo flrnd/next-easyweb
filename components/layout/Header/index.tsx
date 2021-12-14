@@ -3,13 +3,13 @@ import { siteMenu } from "../../../__mocks__/fakeData/data";
 import { useUser } from "../../../lib/store/hooks/useUser";
 import { BurgerMenu, NavigationBar } from "../../navigation";
 import { Logo } from "../../elements";
-import NavigationBarWithLogin from "../../navigation/NavigationBarWIthLogin";
+import DashboardNavigationBar from "../../dashboard/DashboardNavigationBar";
 
 const Header = (): JSX.Element => {
   const { session } = useUser();
 
   if (session) {
-    return <NavigationBarWithLogin />;
+    return <DashboardNavigationBar />;
   } else {
     return (
       <div className="container mx-auto">
