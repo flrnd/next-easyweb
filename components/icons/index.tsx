@@ -9,7 +9,7 @@ import InstagramIcon from "./social/InstagramIcon";
 import LinkedinIcon from "./social/LinkedinIcon";
 import TwitterIcon from "./social/TwitterIcon";
 import ProfileIcon from "./dashboard/ProfileIcon";
-
+import { MdEdit } from "react-icons/md";
 const getIcon = (name: string): JSX.Element => {
   switch (name) {
     case "twitter":
@@ -30,6 +30,8 @@ const getIcon = (name: string): JSX.Element => {
       return <ClockIcon />;
     case "profile":
       return <ProfileIcon />;
+    case "edit":
+      return <MdEdit />;
   }
 };
 
