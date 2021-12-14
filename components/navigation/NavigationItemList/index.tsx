@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { NavigationListItem } from "..";
+import { NavigationItem } from "..";
 import { useUser } from "../../../lib/store/hooks/useUser";
 import { createNavigationList } from "../../../lib/util";
 import { Button } from "../../controls";
@@ -8,15 +8,21 @@ interface Props {
   isVertical?: boolean;
   list: string[];
 }
-const NavigationList = ({ isVertical = false, list }: Props): JSX.Element => {
+
+const NavigationItemList = ({
+  isVertical = false,
+  list,
+}: Props): JSX.Element => {
   const navigationList = createNavigationList(list);
   const { session } = useUser();
 
   return (
-    <div className="flex items-center">
+    <div
+      className={classNames("flex", isVertical && "flex-col", "items-center")}
+    >
       <ul className={classNames("flex", isVertical && "flex-col")}>
         {navigationList.map((navItem) => (
-          <NavigationListItem
+          <NavigationItem
             key={navItem.name}
             item={navItem}
             margin={!isVertical && "ml-4"}
@@ -40,7 +46,7 @@ const NavigationList = ({ isVertical = false, list }: Props): JSX.Element => {
           textColor="text-white"
           rounded="rounded-md"
           shadow="shadow-md"
-          margin="ml-4"
+          margin={classNames(!isVertical && "ml-4")}
           hoverBg="bg-indigo-700"
           href="/signin"
           label="sign in"
@@ -50,4 +56,4 @@ const NavigationList = ({ isVertical = false, list }: Props): JSX.Element => {
   );
 };
 
-export default NavigationList;
+export default NavigationItemList;
