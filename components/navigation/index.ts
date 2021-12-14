@@ -1,6 +1,6 @@
 import BurgerMenu from "./BurgerMenu";
 import NavigationBar from "./NavigationBar";
-import NavigationList from "./NavigationList";
-import NavigationListItem from "./NavigationListItem";
+import NavigationItemList from "./NavigationItemList";
+import NavigationItem from "./NavigationItem";
 
-export { BurgerMenu, NavigationBar, NavigationList, NavigationListItem };
+export { BurgerMenu, NavigationBar, NavigationItemList, NavigationItem };
