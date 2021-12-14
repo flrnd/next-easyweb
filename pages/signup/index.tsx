@@ -70,7 +70,7 @@ const SignUp = (): JSX.Element => {
                 Sign up form
               </Heading>
               <p className="mt-2 text-sm">
-                Enter a valid email address as username and password.
+                Enter a valid email address as username and a password.
               </p>
             </div>
             {message.type === "error" && (
