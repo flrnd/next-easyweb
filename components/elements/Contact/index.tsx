@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { IList, IListItem } from "../../../types/interfaces";
+import { IList, IListItem } from "../../../types";
 import { Heading, Paragraph } from "../../typography";
 import ContactItem from "../ContactItem";
 

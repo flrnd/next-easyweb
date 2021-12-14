@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ISocial } from "../../../types/interfaces";
+import { ISocial } from "../../../types";
 import { getIcon } from "../../icons";
 import IconLink from "../IconLink";
 

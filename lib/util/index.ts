@@ -1,4 +1,4 @@
-import { INavigationListItem } from "../../types/interfaces";
+import { INavigationListItem } from "../../types";
 
 const stringToId = (myString: string): string => {
   return myString.toLocaleLowerCase().replace(/[^a-z0-9]/g, "-");
