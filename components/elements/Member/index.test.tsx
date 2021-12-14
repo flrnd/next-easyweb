@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { Member, SocialIconList } from "..";
-import { teamMembers } from "../../../__mocks__/fakeData";
+import { teamMembers } from "../../../__mocks__/fakeData/data";
 
 describe("Member", () => {
   it("renders a member card with props", () => {

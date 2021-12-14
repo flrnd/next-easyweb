@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { ServiceList } from "..";
-import { serviceList } from "../../../__mocks__/fakeData";
+import { serviceList } from "../../../__mocks__/fakeData/data";
 
 describe("Service List", () => {
   it("renders a list of N services", () => {
