@@ -6,7 +6,7 @@ import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
 import { useUser } from "../../lib/store/hooks/useUser";
-import { IFormData, IMessage } from "../../types";
+import { IFormData, IMessage } from "../../lib/types";
 
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });

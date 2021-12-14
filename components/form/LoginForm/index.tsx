@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { IFormData } from "../../../types";
+import { IFormData } from "../../../lib/types";
 import { Button } from "../../controls";
 
 interface IProps {
