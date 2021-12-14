@@ -1,4 +1,4 @@
-import { IServiceListItem } from "../../../types";
+import { IServiceListItem } from "../../../lib/types";
 import { calculateGridColumns } from "../../../lib/util";
 import { Container, Grid } from "../../layout";
 import ServiceItem from "../ServiceItem";

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabaseClient";
 import { useUser } from "../../../lib/store/hooks/useUser";
-import { IProfileData } from "../../../types";
+import { IProfileData } from "../../../lib/types";
 import { Heading } from "../../typography";
 import Button from "../../controls/Button";
 
