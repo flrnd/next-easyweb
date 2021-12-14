@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useUser } from "../../../lib/store/hooks/useUser";
 import ProfilePanel from "../../../components/dashboard/ProfilePanel";
-import Header from "../../../components/layout/Header";
+import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
 
 const Profile = (): JSX.Element => {
   const { session } = useUser();
@@ -19,7 +19,7 @@ const Profile = (): JSX.Element => {
 
   return (
     <div className="dashboard">
-      <Header />
+      <DashboardNavigationBar />
       <main>
         <SideBar />
         <ProfilePanel />
