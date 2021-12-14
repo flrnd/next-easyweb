@@ -18,13 +18,15 @@ const Profile = (): JSX.Element => {
   const SideBar = (): JSX.Element => <div></div>;
 
   return (
-    <div className="dashboard">
-      <DashboardNavigationBar />
-      <main>
-        <SideBar />
-        <ProfilePanel />
-      </main>
-    </div>
+    session && (
+      <div className="dashboard">
+        <DashboardNavigationBar />
+        <main>
+          <SideBar />
+          <ProfilePanel />
+        </main>
+      </div>
+    )
   );
 };
 
