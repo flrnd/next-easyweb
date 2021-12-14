@@ -9,7 +9,7 @@ import InstagramIcon from "./social/InstagramIcon";
 import LinkedinIcon from "./social/LinkedinIcon";
 import TwitterIcon from "./social/TwitterIcon";
 import ProfileIcon from "./dashboard/ProfileIcon";
-import { MdEdit } from "react-icons/md";
+import { MdEdit, MdSaveAlt } from "react-icons/md";
 const getIcon = (name: string): JSX.Element => {
   switch (name) {
     case "twitter":
@@ -32,6 +32,8 @@ const getIcon = (name: string): JSX.Element => {
       return <ProfileIcon />;
     case "edit":
       return <MdEdit />;
+    case "save":
+      return <MdSaveAlt />;
   }
 };
 
