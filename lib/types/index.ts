@@ -1,3 +1,48 @@
+import { Session, User, Provider } from "@supabase/supabase-js";
+
+export type UserContextType = {
+  session: Session;
+  user: User;
+  profileDetails: ProfileDetails;
+  userLoaded: boolean;
+  siteConfig: SiteConfig;
+  signIn: (options: SignInOptions) => Promise<{
+    session: Session | null;
+    user: User | null;
+    provider?: Provider;
+    url?: string | null;
+    error: Error | null;
+    data: Session | null;
+  }>;
+  signUp: (options: SignUpOptions) => Promise<{
+    user: User | null;
+    session: Session | null;
+    error: Error | null;
+    data: Session | User | null;
+  }>;
+  signOut: () => void;
+  getProfileDetails: (options: ProfileDetailsOptions) => Promise<{
+    data: ProfileDetails | null;
+    error: Error | null;
+    status: number | null;
+  }>;
+};
+
+export type ProfileDetailsOptions = {
+  userId: string;
+};
+
+export type SignInOptions = {
+  email?: string;
+  password?: string;
+  provider?: Provider;
+};
+
+export type SignUpOptions = {
+  email: string;
+  password: string;
+};
+
 export interface INavigationListItem {
   name: string;
   href: string;
