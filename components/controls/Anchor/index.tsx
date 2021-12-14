@@ -29,8 +29,8 @@ const Anchor = ({
 }: IProps): JSX.Element => {
   return (
     <a
-      aria-label={a11yTitle}
       href={href}
+      aria-label={a11yTitle}
       className={classNames(color, margin, size, weight)}
       onClick={onClick}
     >
@@ -40,7 +40,7 @@ const Anchor = ({
         }`}
       >
         {icon && (
-          <span className={`icon-small flex items-center ${gap}`}>{icon}</span>
+          <span className={classNames("flex items-center", gap)}>{icon}</span>
         )}
         {label}
       </div>

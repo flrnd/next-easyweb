@@ -1,5 +1,5 @@
-const ProfileForm = () => {
-  return <div>profile form</div>;
+const ProfileForm = (): JSX.Element => {
+  return <>form</>;
 };
 
 export default ProfileForm;
