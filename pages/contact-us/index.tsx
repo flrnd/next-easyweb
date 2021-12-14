@@ -1,12 +1,14 @@
 import Image from "next/image";
-import Contact from "../components/elements/Contact";
-import { Container, DefaultLayout } from "../components/layout";
-import { clinicImage, contactDataList } from "../__mocks__/fakeData/data";
+import Contact from "../../components/elements/Contact";
+import { Container, DefaultLayout } from "../../components/layout";
+import Header from "../../components/layout/Header";
+import { clinicImage, contactDataList } from "../../__mocks__/fakeData/data";
 
 const ContactUs = (): JSX.Element => {
   return (
     <>
       <DefaultLayout>
+        <Header />
         <main className="container mx-auto flex flex-col-reverse md:flex-row">
           <Container size="max-w-lg" margin="mx-5">
             <Contact

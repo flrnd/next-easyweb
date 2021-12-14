@@ -25,7 +25,7 @@ const SignIn = (): JSX.Element => {
   };
 
   useEffect(() => {
-    user && router.replace("/user/profile");
+    user && router.replace("/dashboard/profile");
   }, [user]);
 
   if (!user) {
@@ -74,13 +74,13 @@ const SignIn = (): JSX.Element => {
               <LoginForm onSubmit={onSubmit} submitLabel="Sign In" />
             </div>
             <div className="flex items-center justify-between">
-              <Link href="/account/forgot-password" passHref>
+              <Link href="/forgot-password" passHref>
                 <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
                   Forgot your Password?
                 </a>
               </Link>
               <span className="text-indigo-500">|</span>
-              <Link href="/account/register" passHref>
+              <Link href="/signup" passHref>
                 <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
                   Sign Up
                 </a>
