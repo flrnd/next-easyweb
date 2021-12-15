@@ -9,6 +9,7 @@ import { useUser } from "../../lib/store/hooks/useUser";
 import { IFormData, IMessage } from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
 import { validatePasswordStrength } from "../../lib/util";
+import { logotype } from "../../__mocks__/fakeData/data";
 
 const SignUp = (): JSX.Element => {
   const [newUser, setNewUser] = useState<User | null>(null);
@@ -66,12 +67,12 @@ const SignUp = (): JSX.Element => {
                 <a>
                   <Logo
                     responsive={false}
-                    boxWidth="w-40"
+                    boxWidth="w-auto"
                     margin="mx-auto"
-                    padding="py-2"
-                    src="/assets/pictures/brand/vitary-logo.png"
-                    width={237}
-                    height={64}
+                    padding="p-5"
+                    src={logotype.src}
+                    width={logotype.dimensions.width}
+                    height={logotype.dimensions.height}
                   />
                 </a>
               </Link>
