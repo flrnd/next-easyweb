@@ -75,6 +75,18 @@
   @apply font-bold;
 }
 
+.nav-menu {
+  @apply hidden md:flex md:justify-between  ml-6 w-full;
+}
+
+.nav-menu li {
+  @apply p-4;
+}
+
+.nav-menu li a:hover {
+  @apply text-indigo-700;
+}
+
 .text-button {
   @apply font-semibold text-xl underline;
 }
