@@ -74,7 +74,7 @@ const SignIn = (): JSX.Element => {
               <LoginForm onSubmit={onSubmit} submitLabel="Sign In" />
             </div>
             <div className="flex items-center">
-              Dont have an account yet?&nbsp;
+              Don&apos;t have an account yet?&nbsp;
               <Link href="/signup" passHref>
                 <a className="inline-block align-baseline text-indigo-500 hover:text-indigo-800">
                   Register now
