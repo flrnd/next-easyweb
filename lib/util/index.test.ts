@@ -1,4 +1,9 @@
-import { calculateGridColumns, createNavigationList, stringToId } from ".";
+import {
+  calculateGridColumns,
+  createNavigationList,
+  stringToId,
+  validatePasswordStrength,
+} from ".";
 
 describe("Name to ID", () => {
   it("returns an id", () => {
@@ -42,5 +47,24 @@ describe("Create navigation List", () => {
     ];
 
     expect(createNavigationList(list)).toEqual(expected);
+  });
+});
+
+describe("Validate password streng", () => {
+  it("Should return false", () => {
+    const passwords = [
+      "12345",
+      "123456789",
+      "12345678910",
+      "balderdash",
+      "Something1235",
+      "Mypassowrd-is-long12",
+      "My-PassWord-is-long-and#-%complex",
+    ];
+    const expected = [false, false, false, false, false, true, false];
+    const result = [];
+
+    passwords.forEach((p) => result.push(validatePasswordStrength(p)));
+    expect(result).toEqual(expected);
   });
 });
