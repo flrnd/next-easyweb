@@ -9,33 +9,11 @@ import { supabase } from "../../../lib/util/supabaseClient";
 const DashboardNavigationBar = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
-  const { user, session, getProfileDetails } = useUser();
-  const [setProfile] = useState(null);
+  const { session } = useUser();
   const router = useRouter();
   const mountedRef = useRef(null);
 
-  async function getProfile() {
-    try {
-      const { data, error, status } = await getProfileDetails({
-        userId: user.id,
-      });
-      if (error && status !== 200) {
-        throw error;
-      }
-
-      if (data) {
-        setProfile(data);
-      }
-    } catch (e) {
-      console.error(e.message);
-    }
-  }
-
   useEffect(() => {
-    if (session) {
-      getProfile();
-    }
-
     const handleClickOutside = (event: MouseEvent) => {
       if (mountedRef.current && !mountedRef.current.contains(event.target)) {
         setMobileMenuIsOpen(false);
