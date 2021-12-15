@@ -1,0 +1,40 @@
+<svg width="44" height="40" viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M32.6282 11.9739C34.3892 11.9739 35.8167 10.5463 35.8167 8.78537C35.8167 7.02442 34.3892 5.59689 32.6282 5.59689C30.8673 5.59689 29.4398 7.02442 29.4398 8.78537C29.4398 9.32633 29.5745 9.83582 29.8122 10.2821L22.843 17.2514L24.0869 18.4953L31.0345 11.5476C31.5034 11.8187 32.0477 11.9739 32.6282 11.9739Z" fill="url(#paint0_linear_119_33)"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M37.6859 26.4869C40.9042 26.4869 43.5131 23.8779 43.5131 20.6596C43.5131 17.4413 40.9042 14.8324 37.6859 14.8324C34.7825 14.8324 32.375 16.9558 31.9317 19.7344L23.2827 19.6701L23.2696 21.4292L31.9179 21.4935C32.3224 24.3168 34.7507 26.4869 37.6859 26.4869Z" fill="url(#paint1_linear_119_33)"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25.2618 33.3037L22.4032 23.6283L20.7161 24.1268L23.5541 33.7323C22.603 34.2841 21.9634 35.3135 21.9634 36.4922C21.9634 38.2531 23.3909 39.6807 25.1519 39.6807C26.9128 39.6807 28.3404 38.2531 28.3404 36.4922C28.3404 34.7661 26.9688 33.3604 25.2561 33.3054L25.2618 33.3037Z" fill="url(#paint2_linear_119_33)"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.6518 26.6289L17.3455 22.9687L16.3942 21.4889L10.7568 25.1129C9.68826 23.8042 8.06211 22.9686 6.2408 22.9686C3.02251 22.9686 0.413574 25.5776 0.413574 28.7959C0.413574 32.0142 3.02251 34.6231 6.2408 34.6231C9.45909 34.6231 12.068 32.0142 12.068 28.7959C12.068 28.0301 11.9203 27.2988 11.6518 26.6289Z" fill="url(#paint3_linear_119_33)"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.44981 16.32C7.45015 16.3007 7.45033 16.2813 7.45033 16.2618C7.45033 14.5009 6.0228 13.0734 4.26185 13.0734C2.5009 13.0734 1.07336 14.5009 1.07336 16.2618C1.07336 18.0228 2.5009 19.4503 4.26185 19.4503C5.38004 19.4503 6.3638 18.8747 6.93297 18.0036L16.0262 20.3298L16.4621 18.6255L7.44981 16.32Z" fill="url(#paint4_linear_119_33)"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.0574 10.6817C17.3795 9.61344 18.2251 7.97875 18.2251 6.14656C18.2251 2.92827 15.6162 0.319336 12.3979 0.319336C9.17962 0.319336 6.57068 2.92827 6.57068 6.14656C6.57068 9.36485 9.17962 11.9738 12.3979 11.9738C13.1534 11.9738 13.8754 11.83 14.5379 11.5683L17.7853 17.2513L19.3127 16.3785L16.0574 10.6817Z" fill="url(#paint5_linear_119_33)"/>
+<circle cx="20.0942" cy="19.7801" r="4.50785" fill="url(#paint6_radial_119_33)"/>
+<defs>
+<linearGradient id="paint0_linear_119_33" x1="35.8168" y1="4.6074" x2="22.843" y2="17.3613" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1D8448"/>
+<stop offset="0.708333" stop-color="#2DCC70"/>
+</linearGradient>
+<linearGradient id="paint1_linear_119_33" x1="49.6702" y1="22.1989" x2="24.7121" y2="20.7696" gradientUnits="userSpaceOnUse">
+<stop stop-color="#056F68"/>
+<stop offset="0.625" stop-color="#00A79D"/>
+</linearGradient>
+<linearGradient id="paint2_linear_119_33" x1="20.644" y1="23.6283" x2="26.0314" y2="42.9791" gradientUnits="userSpaceOnUse">
+<stop offset="0.219186" stop-color="#1C74BC"/>
+<stop offset="1" stop-color="#0D3556"/>
+</linearGradient>
+<linearGradient id="paint3_linear_119_33" x1="16.0261" y1="22.4189" x2="0.413575" y2="32.9739" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E600EB"/>
+<stop offset="1" stop-color="#68046A"/>
+</linearGradient>
+<linearGradient id="paint4_linear_119_33" x1="16.466" y1="19.0104" x2="-6.29306" y2="13.0733" gradientUnits="userSpaceOnUse">
+<stop offset="0.203125" stop-color="#F12929"/>
+<stop offset="1" stop-color="#9B0606"/>
+</linearGradient>
+<linearGradient id="paint5_linear_119_33" x1="6.57068" y1="-1.00004" x2="19.3246" y2="17.2513" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D17D00"/>
+<stop offset="1" stop-color="#FCB040"/>
+</linearGradient>
+<radialGradient id="paint6_radial_119_33" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20.0942 19.7801) rotate(90) scale(4.50785)">
+<stop stop-color="#4E4E4F"/>
+<stop offset="0.0001" stop-color="#686868"/>
+<stop offset="0.776042" stop-color="#303030"/>
+</radialGradient>
+</defs>
+</svg>
