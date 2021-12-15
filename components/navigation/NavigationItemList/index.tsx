@@ -19,7 +19,7 @@ const NavigationItemList = ({
         <NavigationItem
           key={navItem.name}
           item={navItem}
-          margin={!isVertical && "ml-4"}
+          margin={!isVertical && "ml-8"}
         />
       ))}
     </ul>
