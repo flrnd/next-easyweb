@@ -31,6 +31,9 @@ const Example = (): JSX.Element => {
           <Hero
             heading={placeholderData.heading}
             text={placeholderData.text}
+            image={
+              <Image src={wideImage} alt="placeholder" placeholder="blur" />
+            }
             cta={
               <>
                 <Button
@@ -52,13 +55,7 @@ const Example = (): JSX.Element => {
               </>
             }
           />
-          <Hero
-            heading={placeholderData.heading}
-            text={placeholderData.text}
-            image={
-              <Image src={wideImage} alt="placeholder" placeholder="blur" />
-            }
-          />
+
           <ImageWithParagraph
             isImageLeft={true}
             image={
