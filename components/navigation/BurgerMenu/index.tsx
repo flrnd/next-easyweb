@@ -31,7 +31,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
           <div className="medium font-bold mb-5">Menu</div>
           <NavigationItemList list={menu} isVertical={isOpen} />
           <Link href="/signin" passHref>
-            <a className=" medium font-bold text-indigo-500 hover:text-indigo-800">
+            <a className="medium font-bold text-indigo-500 hover:text-indigo-800">
               Login
             </a>
           </Link>
