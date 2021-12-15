@@ -10,7 +10,7 @@ const DashboardNavigationBar = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const { user, session, getProfileDetails } = useUser();
-  const [profile, setProfile] = useState(null);
+  const [setProfile] = useState(null);
   const router = useRouter();
   const mountedRef = useRef(null);
 
@@ -168,7 +168,7 @@ const DashboardNavigationBar = (): JSX.Element => {
                 >
                   <span className="sr-only">Open user menu</span>
 
-                  {profile && getIcon("profile")}
+                  {getIcon("profile")}
                 </button>
               </div>
 
