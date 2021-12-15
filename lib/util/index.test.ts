@@ -51,20 +51,54 @@ describe("Create navigation List", () => {
 });
 
 describe("Validate password streng", () => {
-  it("Should return false", () => {
-    const passwords = [
-      "12345",
-      "123456789",
-      "12345678910",
-      "balderdash",
-      "Something1235",
-      "Mypassowrd-is-long12",
-      "My-PassWord-is-long-and#-%complex",
-    ];
-    const expected = [false, false, false, false, false, true, false];
-    const result = [];
+  it("Should return false and empty password when no password passed", () => {
+    const result = validatePasswordStrength("");
+    expect(result.validation).toBe(false);
+    expect(result.errors).toEqual(["empty password"]);
+  });
 
-    passwords.forEach((p) => result.push(validatePasswordStrength(p)));
-    expect(result).toEqual(expected);
+  it("123456 Should return false and 4 error messages", () => {
+    const password = "123456";
+
+    const result = validatePasswordStrength(password);
+
+    expect(result.validation).toBe(false);
+    expect(result.errors.length).toBe(4);
+  });
+
+  it("12345678 Should return false and 3 error messages", () => {
+    const password = "12345678";
+
+    const result = validatePasswordStrength(password);
+
+    expect(result.validation).toBe(false);
+    expect(result.errors.length).toBe(3);
+  });
+
+  it("12345678a Should return false and 2 error messages", () => {
+    const password = "12345678a";
+
+    const result = validatePasswordStrength(password);
+
+    expect(result.validation).toBe(false);
+    expect(result.errors.length).toBe(2);
+  });
+
+  it("aA12345678 Should return false and 1 error message", () => {
+    const password = "aA12345678";
+
+    const result = validatePasswordStrength(password);
+
+    expect(result.validation).toBe(false);
+    expect(result.errors.length).toBe(1);
+  });
+
+  it("aA12345678# Should return true and 0 error messages", () => {
+    const password = "aA12345678#";
+
+    const result = validatePasswordStrength(password);
+
+    expect(result.validation).toBe(true);
+    expect(result.errors.length).toBe(0);
   });
 });
