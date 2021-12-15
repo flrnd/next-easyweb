@@ -8,6 +8,7 @@ import { Heading } from "../../components/typography";
 import { useUser } from "../../lib/store/hooks/useUser";
 import { IFormData, IMessage } from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
+import { validatePasswordStrength } from "../../lib/util";
 
 const SignUp = (): JSX.Element => {
   const [newUser, setNewUser] = useState<User | null>(null);
@@ -16,22 +17,31 @@ const SignUp = (): JSX.Element => {
   const router = useRouter();
 
   const onSubmit = async (data: IFormData) => {
-    const { error, user: createdUser } = await signUp({
-      email: data.username,
-      password: data.password,
-    });
+    const passwordStrength = validatePasswordStrength(data.password);
 
-    if (error) {
-      setMessage({ type: "error", content: error.message });
-    } else {
-      if (createdUser) {
-        setNewUser(createdUser);
+    if (passwordStrength.validation) {
+      const { error, user: createdUser } = await signUp({
+        email: data.username,
+        password: data.password,
+      });
+
+      if (error) {
+        setMessage({ type: "error", content: error.message });
       } else {
-        setMessage({
-          type: "note",
-          content: "Check your mail for instructions.",
-        });
+        if (createdUser) {
+          setNewUser(createdUser);
+        } else {
+          setMessage({
+            type: "note",
+            content: "Check your mail for instructions.",
+          });
+        }
       }
+    } else {
+      setMessage({
+        type: "error",
+        content: passwordStrength.errors.join(", "),
+      });
     }
   };
 
