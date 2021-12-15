@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteMenu } from "../../../__mocks__/fakeData/data";
+import { logotype, siteMenu } from "../../../__mocks__/fakeData/data";
 import { BurgerMenu, NavigationBar } from "../../navigation";
 import { Logo } from "../../elements";
 
@@ -10,9 +10,10 @@ const Header = (): JSX.Element => {
         <Link href="/" passHref>
           <a>
             <Logo
-              src="/assets/pictures/brand/vitary-logo.png"
-              width={237}
-              height={64}
+              responsive={false}
+              src={logotype.src}
+              width={logotype.dimensions.width}
+              height={logotype.dimensions.height}
             />
           </a>
         </Link>
