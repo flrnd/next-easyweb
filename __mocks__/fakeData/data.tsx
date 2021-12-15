@@ -8,7 +8,7 @@ import { IServiceListItem, IList } from "../../lib/types";
 import widePlaceholder from "../../public/1920x1280.png";
 import squarePlaceholder from "../../public/1280x1280.png";
 import clinicPlaceholder from "../../public/clinic.png";
-import logo from "../../public/assets/pictures/brand/vitary-logo-64x237.png";
+import logo from "../../public/assets/nextsites_logo.svg";
 
 /* Images */
 export const wideImage = widePlaceholder;
@@ -19,8 +19,8 @@ export const logoImage = logo;
 export const logotype = {
   src: logoImage,
   dimensions: {
-    width: 237,
-    height: 64,
+    width: 180,
+    height: 42,
   },
 };
 
@@ -29,15 +29,15 @@ export const siteMenu = ["Services", "Pricing", "Contact Us"];
 /* Social Icons */
 export const companySocial = [
   {
-    href: "https://twitter.com/vitary",
+    href: "https://twitter.com/nextsites",
     icon: "twitter",
   },
   {
-    href: "https://linkedin.com/vitary",
+    href: "https://linkedin.com/nextsites",
     icon: "linkedin",
   },
   {
-    href: "https://facebook.com/vitary",
+    href: "https://facebook.com/nextsites",
     icon: "facebook",
   },
   {
