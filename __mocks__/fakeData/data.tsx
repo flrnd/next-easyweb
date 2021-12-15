@@ -24,7 +24,7 @@ export const logotype = {
   },
 };
 
-export const siteMenu = ["Home", "Services", "About", "Contact Us", "SignUp"];
+export const siteMenu = ["Services", "Pricing", "Contact Us"];
 
 /* Social Icons */
 export const companySocial = [
