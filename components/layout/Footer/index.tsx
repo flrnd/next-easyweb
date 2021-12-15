@@ -52,7 +52,7 @@ const Footer = (): JSX.Element => {
         </div>
       </div>
       <div className="bg-indigo-800 text-center text-white py-2">
-        {year} &copy; Vitary. All rights reserved. Designed by Espinete & Don
+        {year} &copy; Nextsites. All rights reserved. Designed by Espinete & Don
         Pinpon digital
       </div>
     </footer>
