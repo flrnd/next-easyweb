@@ -16,11 +16,7 @@ const NavigationItemList = ({
   return (
     <ul className={classNames("flex", isVertical && "flex-col")}>
       {navigationList.map((navItem) => (
-        <NavigationItem
-          key={navItem.name}
-          item={navItem}
-          margin={!isVertical && "ml-8"}
-        />
+        <NavigationItem key={navItem.name} item={navItem} />
       ))}
     </ul>
   );
