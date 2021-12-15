@@ -25,7 +25,7 @@ const Welcome = (): JSX.Element => {
                 <PartyFaceEmoji />
               </div>
               <Heading level={3} margin="mb-2" size="normal">
-                Welcome to Vitary!{" "}
+                Welcome to Nextsites!{" "}
               </Heading>
               <Paragraph margin="mb-2" size="small">
                 We sent you an email with a link to verify your account. Please,
