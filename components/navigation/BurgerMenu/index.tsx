@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { NavigationItemList } from "..";
 import { Button } from "../../controls";
@@ -12,7 +13,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
 
   return (
     <>
-      <div className="burger-menu">
+      <div className="burger-menu ml-auto">
         <Button onClick={handleClick}>
           <svg
             className="fill-current h-6 w-6"
@@ -29,10 +30,20 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
         <div className="modal-content">
           <div className="medium font-bold mb-5">Menu</div>
           <NavigationItemList list={menu} isVertical={isOpen} />
+          <Link href="/signin" passHref>
+            <a className="inline-block align-baseline  medium font-bold text-indigo-500 hover:text-indigo-800">
+              Login
+            </a>
+          </Link>
         </div>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:flex md:justify-between w-full">
         <NavigationItemList list={menu} />
+        <Link href="/signin" passHref>
+          <a className="inline-block align-baseline font-bold text-indigo-500 hover:text-indigo-800">
+            Login
+          </a>
+        </Link>
       </div>
     </>
   );
