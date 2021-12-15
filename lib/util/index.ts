@@ -27,4 +27,18 @@ const createNavigationList = (menu: string[]): INavigationListItem[] =>
     }
   });
 
-export { stringToId, calculateGridColumns, createNavigationList };
+const validatePasswordStrength = (password: string): boolean => {
+  const hasLowerCase = /[a-z]/.test(password);
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSymbols = /[!@#$%^&*()--__+.]/.test(password);
+
+  return hasLowerCase && hasUpperCase && hasNumber && hasSymbols;
+};
+
+export {
+  stringToId,
+  calculateGridColumns,
+  createNavigationList,
+  validatePasswordStrength,
+};
