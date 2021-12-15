@@ -73,16 +73,11 @@ const SignIn = (): JSX.Element => {
             <div className="mt-8">
               <LoginForm onSubmit={onSubmit} submitLabel="Sign In" />
             </div>
-            <div className="flex items-center justify-between">
-              <Link href="/forgot-password" passHref>
-                <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
-                  Forgot your Password?
-                </a>
-              </Link>
-              <span className="text-indigo-500">|</span>
+            <div className="flex items-center">
+              Dont have an account yet?&nbsp;
               <Link href="/signup" passHref>
-                <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
-                  Sign Up
+                <a className="inline-block align-baseline text-indigo-500 hover:text-indigo-800">
+                  Register now
                 </a>
               </Link>
             </div>
