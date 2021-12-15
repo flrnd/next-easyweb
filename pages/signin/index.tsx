@@ -7,6 +7,7 @@ import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
 import { useUser } from "../../lib/store/hooks/useUser";
 import { IFormData, IMessage } from "../../lib/types";
+import { logotype } from "../../__mocks__/fakeData/data";
 
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
@@ -44,12 +45,12 @@ const SignIn = (): JSX.Element => {
                 <a>
                   <Logo
                     responsive={false}
-                    boxWidth="w-40"
+                    boxWidth="w-auto"
                     margin="mx-auto"
-                    padding="py-2"
-                    src="/assets/pictures/brand/vitary-logo.png"
-                    width={237}
-                    height={64}
+                    padding="p-5"
+                    src={logotype.src}
+                    width={logotype.dimensions.width}
+                    height={logotype.dimensions.height}
                   />
                 </a>
               </Link>
