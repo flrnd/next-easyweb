@@ -1,10 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../../lib/store/hooks/useUser";
 import { useRouter } from "next/router";
 import { getIcon } from "../../icons";
 import { supabase } from "../../../lib/util/supabaseClient";
+import logoIcon from "../../../public/assets/nextsites_icon.svg";
+import nextsitesLogo from "../../../public/assets/nextsites_logo.svg";
 
 const DashboardNavigationBar = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
@@ -103,16 +106,17 @@ const DashboardNavigationBar = (): JSX.Element => {
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
-              <img
-                className="block lg:hidden h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow"
-              />
-              <img
-                className="hidden lg:block h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                alt="Workflow"
-              />
+              <div className="block lg:hidden h-10 w-auto">
+                <Image width={43} height={40} src={logoIcon} alt="Nextsites" />
+              </div>
+              <div className="hidden lg:block h-10 w-auto">
+                <Image
+                  width={180}
+                  height={42}
+                  src={nextsitesLogo}
+                  alt="nextsites"
+                />
+              </div>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
