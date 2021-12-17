@@ -169,7 +169,7 @@ const DashboardNavigationBar = (): JSX.Element => {
                 <Link href="/dashboard/profile" passHref>
                   <a
                     onClick={() => setUserMenuIsOpen(!userMenuIsOpen)}
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
                     id="user-menu-item-0"
                   >
@@ -181,7 +181,7 @@ const DashboardNavigationBar = (): JSX.Element => {
                     onClick={() => {
                       supabase.auth.signOut();
                     }}
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
                     id="user-menu-item-2"
                   >
