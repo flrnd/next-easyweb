@@ -47,7 +47,8 @@ const ProfilePanel = (): JSX.Element => {
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      console.error("ProfilePanel - getProfile(): ", error.message);
+      notification({ type: "error", content: "Couldn't fetch profile." });
+      //console.error("ProfilePanel - getProfile(): ", error.message);
     }
   }
 
@@ -77,7 +78,7 @@ const ProfilePanel = (): JSX.Element => {
         throw error;
       }
     } catch (error) {
-      console.error("ProfilePanel - updateProfile(): ", error.message);
+      // console.error("ProfilePanel - updateProfile(): ", error.message);
       notification({
         type: "error",
         content: "Unable to update profile.",
