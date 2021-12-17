@@ -15,6 +15,7 @@ const ProfilePanel = (): JSX.Element => {
   const [message, setMessage] = useState({ type: "", content: "" });
   const [edit, setEdit] = useState(false);
   const { user, session, getProfileDetails } = useUser();
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     if (session) {
@@ -38,7 +39,7 @@ const ProfilePanel = (): JSX.Element => {
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      alert(error.message);
+      console.error("ProfilePanel - getProfile(): ", error.message);
     }
   }
 
@@ -68,9 +69,21 @@ const ProfilePanel = (): JSX.Element => {
         throw error;
       }
     } catch (error) {
-      alert(error.message);
+      console.error("ProfilePanel - updateProfile(): ", error.message);
+      notification({ type: "error", content: "Unable to update profile." });
     }
   }
+
+  const notification = (
+    message: { type: string; content: string },
+    time = 2000
+  ) => {
+    setShowNotification(true);
+    setMessage(message);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, time);
+  };
 
   const {
     register,
@@ -92,9 +105,11 @@ const ProfilePanel = (): JSX.Element => {
     };
 
     updateProfile(updates);
+    notification({ type: "success", content: "Profile updated." });
     setEdit(false);
-    setMessage({ type: "success", content: "Profile updated successfully" });
   };
+
+  const onPasswordChange = () => void 0;
 
   return (
     <div className="mt-10">
@@ -182,8 +197,18 @@ const ProfilePanel = (): JSX.Element => {
             disabled={!edit}
           />
         </div>
-        {message.type === "success" && (
+        {edit && (
+          <div className="mb-4">
+            <Anchor label="change password" onClick={onPasswordChange} />
+          </div>
+        )}
+        {showNotification && message.type === "success" && (
           <span className="text-sm text-green-500 font-normal italic ml-4">
+            {message.content}
+          </span>
+        )}
+        {showNotification && message.type === "error" && (
+          <span className="text-sm text-red-500 font-normal italic ml-4">
             {message.content}
           </span>
         )}
