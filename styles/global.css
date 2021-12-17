@@ -40,6 +40,14 @@
   @apply text-center p-2 lg:text-left md:p-5 mb-3 md:mb-0;
 }
 
+.form-entry {
+  @apply mb-4 grid grid-cols-2 sm:items-center;
+}
+
+.form-input {
+  @apply inline px-3 py-2 text-gray-600;
+}
+
 .hero {
   @apply text-center mt-10 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28;
 }
