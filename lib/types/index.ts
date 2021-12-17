@@ -113,6 +113,11 @@ export interface IMessage {
   content?: string;
 }
 
+export interface INotificationMessage {
+  type?: "error" | "success" | "";
+  content?: string;
+}
+
 export interface ProfileDetails {
   id: string /* primary key */;
   first_name: string;
