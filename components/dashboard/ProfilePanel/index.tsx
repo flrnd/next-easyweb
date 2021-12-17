@@ -178,70 +178,70 @@ const ProfilePanel = (): JSX.Element => {
             </div>
           )}
         </div>
-        <div className="my-4">
-          <label className="block text-grey-darker text-sm font-bold mb-2">
-            First name
-            {errors.firstName && (
-              <span className="text-sm text-red-500 font-normal italic ml-4">
-                * Missing First name
-              </span>
-            )}
-          </label>
-          <input
-            className="appearance-none inline w-full py-2 text-grey-darker"
-            id="first_name"
-            value={firstName || ""}
-            type="text"
-            {...register("firstName", { required: false })}
-            placeholder="Jane"
-            onChange={(e) => setFirstName(e.target.value)}
-            disabled={!edit}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-grey-darker text-sm font-bold mb-2">
-            Last name
-            {errors.firstName && (
-              <span className="text-sm text-red-500 font-normal italic ml-4">
-                * Missing Last name
-              </span>
-            )}
-          </label>
-          <input
-            className="appearance-none inline w-full py-2 text-grey-darker"
-            id="last_name"
-            value={lastName || ""}
-            type="text"
-            {...register("lastName", { required: false })}
-            placeholder="Doe"
-            onChange={(e) => setLastName(e.target.value)}
-            disabled={!edit}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-grey-darker text-sm font-bold mb-2">
-            Billing Address
-            {errors.billingAddress && (
-              <span className="text-sm text-red-500 font-normal italic ml-4">
-                * Missing Billing Address
-              </span>
-            )}
-          </label>
-          <input
-            className="appearance-none inline w-full py-2 text-grey-darker"
-            id="billing_address"
-            value={billingAddress || ""}
-            type="text"
-            {...register("billingAddress", { required: false })}
-            placeholder="Sesame Street 5, corner square 44 street"
-            onChange={(e) => setBillingAddress(e.target.value)}
-            disabled={!edit}
-          />
-        </div>
-        {edit && (
+        <div className="panel max-w-sm mt-8">
+          <div className="my-4">
+            <label className="block text-grey-darker text-sm font-bold mb-2">
+              First name
+              {errors.firstName && (
+                <span className="text-sm text-red-500 font-normal italic ml-4">
+                  * Missing First name
+                </span>
+              )}
+            </label>
+            <input
+              className="appearance-none inline w-full px-3 py-2 text-grey-darker"
+              id="first_name"
+              value={firstName || ""}
+              type="text"
+              {...register("firstName", { required: false })}
+              placeholder="Jane"
+              onChange={(e) => setFirstName(e.target.value)}
+              disabled={!edit}
+            />
+          </div>
           <div className="mb-4">
-            {!showChangePasswordForm && (
-              <div className="max-w-sm mt-8">
+            <label className="block text-grey-darker text-sm font-bold mb-2">
+              Last name
+              {errors.firstName && (
+                <span className="text-sm text-red-500 font-normal italic ml-4">
+                  * Missing Last name
+                </span>
+              )}
+            </label>
+            <input
+              className="appearance-none inline w-full px-3 py-2 text-grey-darker"
+              id="last_name"
+              value={lastName || ""}
+              type="text"
+              {...register("lastName", { required: false })}
+              placeholder="Doe"
+              onChange={(e) => setLastName(e.target.value)}
+              disabled={!edit}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-grey-darker text-sm font-bold mb-2">
+              Billing Address
+              {errors.billingAddress && (
+                <span className="text-sm text-red-500 font-normal italic ml-4">
+                  * Missing Billing Address
+                </span>
+              )}
+            </label>
+            <input
+              className="appearance-none inline w-full px-3 py-2 text-grey-darker"
+              id="billing_address"
+              value={billingAddress || ""}
+              type="text"
+              {...register("billingAddress", { required: false })}
+              placeholder="Sesame Street 5, corner square 44 street"
+              onChange={(e) => setBillingAddress(e.target.value)}
+              disabled={!edit}
+            />
+          </div>
+          {edit && (
+            <div className="mb-4">
+              {!showChangePasswordForm && (
                 <Button
                   textColor="text-black"
                   background="bg-white"
@@ -253,27 +253,27 @@ const ProfilePanel = (): JSX.Element => {
                   type="button"
                   onClick={handleChangePassword}
                 />
-              </div>
-            )}
-            {showChangePasswordForm && (
-              <>
-                <div className="max-w-sm">
-                  <ChangePasswordForm onSubmit={onSubmitChangePassword} />
-                </div>
-              </>
-            )}
-          </div>
-        )}
-        {showNotification && message.type === "success" && (
-          <span className="text-sm text-green-500 font-normal italic ml-4">
-            {message.content}
-          </span>
-        )}
-        {showNotification && message.type === "error" && (
-          <span className="text-sm text-red-500 font-normal italic ml-4">
-            {message.content}
-          </span>
-        )}
+              )}
+              {showChangePasswordForm && (
+                <>
+                  <div className="max-w-sm">
+                    <ChangePasswordForm onSubmit={onSubmitChangePassword} />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+          {showNotification && message.type === "success" && (
+            <span className="text-sm text-green-500 font-normal italic ml-4">
+              {message.content}
+            </span>
+          )}
+          {showNotification && message.type === "error" && (
+            <span className="text-sm text-red-500 font-normal italic ml-4">
+              {message.content}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
