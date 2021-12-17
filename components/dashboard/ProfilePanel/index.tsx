@@ -9,16 +9,18 @@ import { getIcon } from "../../icons";
 import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
+import { validatePasswordStrength } from "../../../lib/util";
+import useNotification from "../../../lib/store/hooks/useNotification";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [billingAddress, setBillingAddress] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
-  const [message, setMessage] = useState({ type: "", content: "" });
   const [edit, setEdit] = useState(false);
   const { user, session, getProfileDetails } = useUser();
-  const [showNotification, setShowNotification] = useState(false);
+  const [showNotification, notificationMessage, notification] =
+    useNotification();
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
 
   useEffect(() => {
@@ -76,20 +78,12 @@ const ProfilePanel = (): JSX.Element => {
       }
     } catch (error) {
       console.error("ProfilePanel - updateProfile(): ", error.message);
-      notification({ type: "error", content: "Unable to update profile." });
+      notification({
+        type: "error",
+        content: "Unable to update profile.",
+      });
     }
   }
-
-  const notification = (
-    message: { type: string; content: string },
-    time = 2000
-  ) => {
-    setShowNotification(true);
-    setMessage(message);
-    setTimeout(() => {
-      setShowNotification(false);
-    }, time);
-  };
 
   const {
     register,
@@ -118,20 +112,30 @@ const ProfilePanel = (): JSX.Element => {
 
   const onSubmitChangePassword = async (formData: IChangePasswordFormData) => {
     try {
-      const { data, error } = await supabase.rpc("change_user_password", {
-        current_plain_password: formData.currentPassword,
-        new_plain_password: formData.newPassword,
-      });
-      if (error) throw error;
-      if (data) {
-        setMessage({
-          type: "success",
-          content: "Password changed successfully",
+      const passwordStrength = validatePasswordStrength(formData.newPassword);
+
+      if (passwordStrength.validation) {
+        const { data, error } = await supabase.rpc("change_user_password", {
+          current_plain_password: formData.currentPassword,
+          new_plain_password: formData.newPassword,
+        });
+        if (error) throw error;
+        if (data) {
+          notification({
+            type: "success",
+            content: "Password changed successfully",
+          });
+          setShowChangePasswordForm(false);
+        }
+      } else {
+        notification({
+          type: "error",
+          content: passwordStrength.errors.join(", "),
         });
       }
     } catch (error) {
-      setMessage({ type: "error", content: error.message });
-      console.error("ChangePasswordForm - onSubmit(): ", error.message);
+      notification({ type: "error", content: error.message });
+      // console.error("ChangePasswordForm - onSubmit(): ", error.message);
     }
   };
   const handleChangePassword = () =>
@@ -289,11 +293,15 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </div>
           )}
-          {showNotification && message.type === "success" && (
-            <span className="notification-green">{message.content}</span>
+          {showNotification && notificationMessage.type === "success" && (
+            <span className="notification-green">
+              {notificationMessage.content}
+            </span>
           )}
-          {showNotification && message.type === "error" && (
-            <span className="notification-red">{message.content}</span>
+          {showNotification && notificationMessage.type === "error" && (
+            <span className="notification-red">
+              {notificationMessage.content}
+            </span>
           )}
         </div>
       </div>
