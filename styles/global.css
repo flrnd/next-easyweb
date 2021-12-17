@@ -53,7 +53,7 @@
 }
 
 .notification {
-  @apply text-sm font-normal italic ml-4;
+  @apply text-sm font-normal italic;
 }
 
 .notification-red {
