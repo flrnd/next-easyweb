@@ -7,6 +7,7 @@ import { Heading } from "../../typography";
 import { Anchor, Button } from "../../controls";
 import { getIcon } from "../../icons";
 import ChangePasswordForm from "../../form/ChangePasswordForm";
+import router from "next/router";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -22,6 +23,8 @@ const ProfilePanel = (): JSX.Element => {
   useEffect(() => {
     if (session) {
       getProfile();
+    } else {
+      router.replace("/signin");
     }
   }, [session]);
 
@@ -180,17 +183,15 @@ const ProfilePanel = (): JSX.Element => {
           )}
         </div>
         <div className="panel max-w-lg mt-8">
-          <div className="mb-4 flex justify-between items-center">
-            <label className="block text-grey-darker text-sm font-bold mb-2">
+          <div className="form-entry">
+            <label className="form-label">
               First name
               {errors.firstName && (
-                <span className="text-sm text-red-500 font-normal italic ml-4">
-                  * Missing First name
-                </span>
+                <span className="notification-red">* Missing First name</span>
               )}
             </label>
             <input
-              className="appearance-none inline px-3 py-2 text-grey-darker"
+              className="form-input"
               id="first_name"
               value={firstName || ""}
               type="text"
@@ -200,17 +201,15 @@ const ProfilePanel = (): JSX.Element => {
               disabled={!edit}
             />
           </div>
-          <div className="mb-4 flex justify-between items-center">
-            <label className="block text-grey-darker text-sm font-bold mb-2">
+          <div className="form-entry">
+            <label className="form-label">
               Last name
               {errors.firstName && (
-                <span className="text-sm text-red-500 font-normal italic ml-4">
-                  * Missing Last name
-                </span>
+                <span className="notification-red">* Missing Last name</span>
               )}
             </label>
             <input
-              className="appearance-none inline px-3 py-2 text-grey-darker"
+              className="form-input"
               id="last_name"
               value={lastName || ""}
               type="text"
@@ -220,17 +219,17 @@ const ProfilePanel = (): JSX.Element => {
               disabled={!edit}
             />
           </div>
-          <div className="mb-4 flex justify-between items-center">
-            <label className="block text-grey-darker text-sm font-bold mb-2">
+          <div className="form-entry">
+            <label className="form-label">
               Billing Address
               {errors.billingAddress && (
-                <span className="text-sm text-red-500 font-normal italic ml-4">
+                <span className="notification-red">
                   * Missing Billing Address
                 </span>
               )}
             </label>
             <input
-              className="appearance-none inline px-3 py-2 text-grey-darker"
+              className="form-input"
               id="billing_address"
               value={billingAddress || ""}
               type="text"
@@ -240,13 +239,13 @@ const ProfilePanel = (): JSX.Element => {
               disabled={!edit}
             />
           </div>
-          <div className="mb-4 flex items-center justify-between">
-            <label className="block text-grey-darker text-sm font-bold mb-2">
-              Password
-            </label>
+          <div className="form-entry">
+            {!showChangePasswordForm && (
+              <label className="form-label">Password</label>
+            )}
             {!edit && (
               <input
-                className="appearance-none inline px-3 py-2 text-grey-darker"
+                className="form-input"
                 id="password"
                 value={"*****************"}
                 type="text"
@@ -278,14 +277,10 @@ const ProfilePanel = (): JSX.Element => {
             </div>
           )}
           {showNotification && message.type === "success" && (
-            <span className="text-sm text-green-500 font-normal italic ml-4">
-              {message.content}
-            </span>
+            <span className="notification-green">{message.content}</span>
           )}
           {showNotification && message.type === "error" && (
-            <span className="text-sm text-red-500 font-normal italic ml-4">
-              {message.content}
-            </span>
+            <span className="notification-red">{message.content}</span>
           )}
         </div>
       </div>
