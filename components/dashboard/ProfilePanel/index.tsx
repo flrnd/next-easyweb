@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabaseClient";
 import { useUser } from "../../../lib/store/hooks/useUser";
-import { IProfileData } from "../../../lib/types";
+import { IChangePasswordFormData, IProfileData } from "../../../lib/types";
 import { Heading } from "../../typography";
-import { Anchor } from "../../controls";
+import { Anchor, Button } from "../../controls";
 import { getIcon } from "../../icons";
+import ChangePasswordForm from "../../form/ChangePasswordForm";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -16,6 +17,7 @@ const ProfilePanel = (): JSX.Element => {
   const [edit, setEdit] = useState(false);
   const { user, session, getProfileDetails } = useUser();
   const [showNotification, setShowNotification] = useState(false);
+  const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
 
   useEffect(() => {
     if (session) {
@@ -107,34 +109,73 @@ const ProfilePanel = (): JSX.Element => {
     updateProfile(updates);
     notification({ type: "success", content: "Profile updated." });
     setEdit(false);
+    setShowChangePasswordForm(false);
   };
 
-  const onPasswordChange = () => void 0;
+  const onSubmitChangePassword = async (formData: IChangePasswordFormData) => {
+    try {
+      const { data, error } = await supabase.rpc("change_user_password", {
+        current_plain_password: formData.currentPassword,
+        new_plain_password: formData.newPassword,
+      });
+      if (error) throw error;
+      if (data) {
+        setMessage({
+          type: "success",
+          content: "Password changed successfully",
+        });
+      }
+    } catch (error) {
+      setMessage({ type: "error", content: error.message });
+      console.error("ChangePasswordForm - onSubmit(): ", error.message);
+    }
+  };
+  const handleChangePassword = () =>
+    setShowChangePasswordForm(!showChangePasswordForm);
 
   return (
     <div className="mt-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="border-b-2 flex items-baseline justify-between">
-          <Heading level={4} size="medium" margin="mb-0" weight="font-bold">
+          <Heading level={4} size="medium" margin="mb-4" weight="font-bold">
             Profile
           </Heading>
           {!edit && (
-            <Anchor
-              icon={getIcon("edit")}
-              size="small"
-              gap="mr-1"
-              label="Edit"
-              onClick={() => setEdit(true)}
-            />
+            <div className="px-4 py-1 border-solid border-2 border-grey-100 shadow-sm hover:shadow-md rounded-md">
+              <Anchor
+                icon={getIcon("edit")}
+                size="xsmall"
+                gap="ml-1"
+                reverse={true}
+                label="Edit"
+                onClick={() => setEdit(true)}
+              />
+            </div>
           )}
           {edit && (
-            <Anchor
-              icon={getIcon("save")}
-              size="small"
-              gap="mr-1"
-              label="Save"
-              onClick={handleSubmit(onSubmit)}
-            />
+            <div className="flex">
+              <Button
+                textColor="text-white"
+                background="bg-indigo-600"
+                rounded="rounded-md"
+                shadow="shadow-none"
+                hoverBg="bg-indigo-700"
+                className="px-4 border-none mr-2"
+                onClick={() => setEdit(false)}
+              >
+                Cancel
+              </Button>
+              <div className="px-4 py-1 border-solid border-2 border-grey-100 shadow-sm hover:shadow-md rounded-md">
+                <Anchor
+                  icon={getIcon("save")}
+                  size="xsmall"
+                  gap="ml-1"
+                  reverse={true}
+                  label="Save"
+                  onClick={handleSubmit(onSubmit)}
+                />
+              </div>
+            </div>
           )}
         </div>
         <div className="my-4">
@@ -199,7 +240,28 @@ const ProfilePanel = (): JSX.Element => {
         </div>
         {edit && (
           <div className="mb-4">
-            <Anchor label="change password" onClick={onPasswordChange} />
+            {!showChangePasswordForm && (
+              <div className="max-w-sm mt-8">
+                <Button
+                  textColor="text-black"
+                  background="bg-white"
+                  rounded="rounded-md"
+                  shadow="shadow-sm"
+                  className="w-full border-solid border-2 border-indigo-600"
+                  hoverBg="shadow-md"
+                  label="Change password"
+                  type="button"
+                  onClick={handleChangePassword}
+                />
+              </div>
+            )}
+            {showChangePasswordForm && (
+              <>
+                <div className="max-w-sm">
+                  <ChangePasswordForm onSubmit={onSubmitChangePassword} />
+                </div>
+              </>
+            )}
           </div>
         )}
         {showNotification && message.type === "success" && (
