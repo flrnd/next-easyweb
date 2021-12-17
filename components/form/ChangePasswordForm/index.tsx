@@ -16,16 +16,14 @@ const ChangePasswordForm = ({ onSubmit }: IProps): JSX.Element => {
   return (
     <form className="mt-4 mb-8" onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
-        <label className="block text-grey-darker text-sm font-bold mb-2">
+        <label className="form-label">
           Current password
           {errors.currentPassword && (
-            <span className="text-sm text-red-500 font-normal italic ml-4">
-              * You must enter your current password
-            </span>
+            <span className="notification-red">* Empty</span>
           )}
         </label>
         <input
-          className="shadow appearance-none border rounded-sm w-full py-2 px-3 text-grey-darker"
+          className="form-input border"
           id="currentPassword"
           type="password"
           {...register("currentPassword", { required: true })}
@@ -33,16 +31,14 @@ const ChangePasswordForm = ({ onSubmit }: IProps): JSX.Element => {
         />
       </div>
       <div className="mb-6">
-        <label className="block text-grey-darker text-sm font-bold mb-2">
+        <label className="form-label">
           New Password
           {errors.newPassword && (
-            <span className="text-sm text-red-500 font-normal italic ml-4">
-              * You must enter a new password
-            </span>
+            <span className="notification-red">* Empty</span>
           )}
         </label>
         <input
-          className="shadow appearance-none border border-red rounded-sm w-full py-2 px-3 text-grey-darker mb-3"
+          className="form-input border"
           id="newPassword"
           type="password"
           {...register("newPassword", { required: true })}
@@ -55,7 +51,7 @@ const ChangePasswordForm = ({ onSubmit }: IProps): JSX.Element => {
           background="bg-indigo-600"
           rounded="rounded-sm"
           shadow="shadow-none"
-          className="w-full"
+          className=""
           hoverBg="bg-indigo-700"
           label="Change password"
           type="submit"
