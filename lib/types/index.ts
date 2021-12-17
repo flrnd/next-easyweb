@@ -1,5 +1,7 @@
 import { Session, User, Provider } from "@supabase/supabase-js";
 
+// Types.
+
 export type UserContextType = {
   session: Session;
   user: User;
@@ -42,6 +44,8 @@ export type SignUpOptions = {
   email: string;
   password: string;
 };
+
+// Interfaces.
 
 export interface INavigationListItem {
   name: string;
@@ -86,6 +90,11 @@ export interface IResponse {
 export interface IFormData {
   username: string;
   password: string;
+}
+
+export interface IChangePasswordFormData {
+  currentPassword: string;
+  newPassword: string;
 }
 
 export interface IProfileData {
