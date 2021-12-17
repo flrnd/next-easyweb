@@ -155,17 +155,18 @@ const ProfilePanel = (): JSX.Element => {
           {edit && (
             <div className="flex">
               <Button
-                textColor="text-white"
-                background="bg-indigo-600"
                 rounded="rounded-md"
-                shadow="shadow-none"
-                hoverBg="bg-indigo-700"
-                className="px-4 border-none mr-2"
-                onClick={() => setEdit(false)}
+                shadow="shadow-sm"
+                hover="shadow-md"
+                className="px-4 border-solid border-2 border-gray-100 mr-2"
+                onClick={() => {
+                  setEdit(false);
+                  setShowChangePasswordForm(false);
+                }}
               >
                 Cancel
               </Button>
-              <div className="px-4 py-1 border-solid border-2 border-grey-100 shadow-sm hover:shadow-md rounded-md">
+              <div className="px-4 py-1 shadow-sm bg-indigo-600 text-white hover:bg-indigo-700 rounded-md">
                 <Anchor
                   icon={getIcon("save")}
                   size="xsmall"
@@ -178,8 +179,8 @@ const ProfilePanel = (): JSX.Element => {
             </div>
           )}
         </div>
-        <div className="panel max-w-sm mt-8">
-          <div className="my-4">
+        <div className="panel max-w-lg mt-8">
+          <div className="mb-4 flex justify-between items-center">
             <label className="block text-grey-darker text-sm font-bold mb-2">
               First name
               {errors.firstName && (
@@ -189,7 +190,7 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </label>
             <input
-              className="appearance-none inline w-full px-3 py-2 text-grey-darker"
+              className="appearance-none inline px-3 py-2 text-grey-darker"
               id="first_name"
               value={firstName || ""}
               type="text"
@@ -199,7 +200,7 @@ const ProfilePanel = (): JSX.Element => {
               disabled={!edit}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 flex justify-between items-center">
             <label className="block text-grey-darker text-sm font-bold mb-2">
               Last name
               {errors.firstName && (
@@ -209,7 +210,7 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </label>
             <input
-              className="appearance-none inline w-full px-3 py-2 text-grey-darker"
+              className="appearance-none inline px-3 py-2 text-grey-darker"
               id="last_name"
               value={lastName || ""}
               type="text"
@@ -219,7 +220,7 @@ const ProfilePanel = (): JSX.Element => {
               disabled={!edit}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 flex justify-between items-center">
             <label className="block text-grey-darker text-sm font-bold mb-2">
               Billing Address
               {errors.billingAddress && (
@@ -229,7 +230,7 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </label>
             <input
-              className="appearance-none inline w-full px-3 py-2 text-grey-darker"
+              className="appearance-none inline px-3 py-2 text-grey-darker"
               id="billing_address"
               value={billingAddress || ""}
               type="text"
@@ -239,27 +240,40 @@ const ProfilePanel = (): JSX.Element => {
               disabled={!edit}
             />
           </div>
+          <div className="mb-4 flex items-center justify-between">
+            <label className="block text-grey-darker text-sm font-bold mb-2">
+              Password
+            </label>
+            {!edit && (
+              <input
+                className="appearance-none inline px-3 py-2 text-grey-darker"
+                id="password"
+                value={"*****************"}
+                type="text"
+                disabled={true}
+              />
+            )}
+            {edit && !showChangePasswordForm && (
+              <Button
+                textColor="text-black"
+                background="bg-white"
+                rounded="rounded-md"
+                shadow="shadow-sm"
+                className="px-4 py-1 border-solid border-2 border-grey-200"
+                hoverBg="shadow-md"
+                type="button"
+                onClick={handleChangePassword}
+              >
+                Change password
+              </Button>
+            )}
+          </div>
           {edit && (
             <div className="mb-4">
-              {!showChangePasswordForm && (
-                <Button
-                  textColor="text-black"
-                  background="bg-white"
-                  rounded="rounded-md"
-                  shadow="shadow-sm"
-                  className="w-full border-solid border-2 border-indigo-600"
-                  hoverBg="shadow-md"
-                  label="Change password"
-                  type="button"
-                  onClick={handleChangePassword}
-                />
-              )}
               {showChangePasswordForm && (
-                <>
-                  <div className="max-w-sm">
-                    <ChangePasswordForm onSubmit={onSubmitChangePassword} />
-                  </div>
-                </>
+                <div className="max-w-sm">
+                  <ChangePasswordForm onSubmit={onSubmitChangePassword} />
+                </div>
               )}
             </div>
           )}
