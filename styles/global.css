@@ -49,7 +49,7 @@
 }
 
 .form-input {
-  @apply inline px-3 py-2 text-gray-600;
+  @apply inline px-3 py-2 text-gray-600 rounded appearance-none disabled:opacity-80 bg-transparent;
 }
 
 .notification {
