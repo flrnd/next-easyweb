@@ -8,6 +8,7 @@ import { Anchor, Button } from "../../controls";
 import { getIcon } from "../../icons";
 import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
+import classNames from "classnames";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -191,7 +192,11 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </label>
             <input
-              className="form-input"
+              className={classNames(
+                "form-input",
+                edit && "border border-gray-200 shadow",
+                !edit && "border border-transparent"
+              )}
               id="first_name"
               value={firstName || ""}
               type="text"
@@ -209,7 +214,11 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </label>
             <input
-              className="form-input"
+              className={classNames(
+                "form-input",
+                edit && "border border-gray-200 shadow",
+                !edit && "border border-transparent"
+              )}
               id="last_name"
               value={lastName || ""}
               type="text"
@@ -229,7 +238,11 @@ const ProfilePanel = (): JSX.Element => {
               )}
             </label>
             <input
-              className="form-input"
+              className={classNames(
+                "form-input",
+                edit && "border border-gray-200 shadow",
+                !edit && "border border-transparent"
+              )}
               id="billing_address"
               value={billingAddress || ""}
               type="text"
