@@ -7,7 +7,7 @@ import {
   SignUpOptions,
   ProfileDetailsOptions,
 } from "../../types";
-import { supabase } from "../../util/supabaseClient";
+import { supabase } from "../../util/supabase/supabase-client";
 import { UserContext } from "./UserContext";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
