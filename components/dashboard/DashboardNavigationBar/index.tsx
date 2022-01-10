@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../../lib/store/hooks/useUser";
 import { useRouter } from "next/router";
 import { getIcon } from "../../icons";
-import { supabase } from "../../../lib/util/supabaseClient";
+import { supabase } from "../../../lib/util/supabase/supabase-client";
 import logoIcon from "../../../public/assets/nextsites_icon.svg";
 import nextsitesLogo from "../../../public/assets/nextsites_logo.svg";
 
