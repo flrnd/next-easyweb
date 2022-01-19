@@ -18,15 +18,13 @@ import { Anchor } from "../components/controls";
 import { Container, Grid, DefaultLayout } from "../components/layout";
 import { HomeIcon } from "@heroicons/react/outline";
 import { Member, SocialIconList } from "../components/elements";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
 
 const Example = (): JSX.Element => {
   return (
     <>
       <DefaultLayout>
         <NextSeo title="This is a title" description="this is a description" />
-        <Header />
+
         <main className="py-6">
           <Hero
             heading={placeholderData.heading}
@@ -151,7 +149,6 @@ const Example = (): JSX.Element => {
             </div>
           </Container>
         </main>
-        <Footer />
       </DefaultLayout>
     </>
   );
