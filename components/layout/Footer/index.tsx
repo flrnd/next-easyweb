@@ -15,6 +15,7 @@ const Footer = (): JSX.Element => {
           <div className="footer-section justify-items-center md:justify-items-start">
             <div className="flex flex-col items-center lg:items-start">
               <Logo
+                responsive={false}
                 src={logotype.src}
                 width={logotype.dimensions.width}
                 height={logotype.dimensions.height}
