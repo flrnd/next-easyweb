@@ -9,6 +9,8 @@ import Member from "./Member";
 import ServiceItem from "./ServiceItem";
 import ServiceList from "./ServiceList";
 import SocialIconList from "./SocialIconList";
+import Portfolio from "./Portfolio";
+import PortfolioItem from "./PortfolioItem";
 
 export {
   Card,
@@ -22,4 +24,6 @@ export {
   ServiceItem,
   ServiceList,
   SocialIconList,
+  Portfolio,
+  PortfolioItem,
 };
