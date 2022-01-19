@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { logotype, siteMenu } from "../../../__mocks__/fakeData/data";
-import { BurgerMenu, NavigationBar } from "../../navigation";
 import { Logo } from "../../elements";
+import { BurgerMenu, NavigationBar } from "../../navigation";
 
 const Header = (): JSX.Element => {
   return (
