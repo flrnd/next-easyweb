@@ -47,6 +47,29 @@ export type SignUpOptions = {
 
 // Interfaces.
 
+export interface Item {
+  [key: string]: string;
+}
+
+export interface IProject {
+  slug: string;
+  title: string;
+  client: string;
+  year: string;
+  description: string;
+  ogImage: {
+    url: string;
+  };
+  url: string;
+  content: string;
+}
+
+export interface IPagination {
+  current: number;
+  items: IProject[];
+  path: string;
+}
+
 export interface INavigationListItem {
   name: string;
   href: string;
