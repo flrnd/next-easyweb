@@ -52,7 +52,6 @@ export const UserContextProvider = (props: any): any => {
         const profileDetailsPromise = results[0];
         //const siteConfigPromise = results[1];
 
-        //console.log("site_config", siteConfigPromise);
         if (profileDetailsPromise.status === "fulfilled")
           setProfileDetails(profileDetailsPromise.value.data);
 
