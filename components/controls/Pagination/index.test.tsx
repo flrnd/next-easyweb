@@ -37,6 +37,7 @@ describe("Pagination", () => {
         content: "empty",
       },
     ];
+
     const currentItem = 1; // array position
     const expectedPrevious = `http://localhost/${path}/${items[0].slug}`;
     const expectedNext = `http://localhost/${path}/${items[2].slug}`;
