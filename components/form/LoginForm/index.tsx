@@ -20,14 +20,17 @@ const LoginForm = ({ onSubmit, submitLabel }: IProps): JSX.Element => {
         <label className="block text-grey-darker text-sm font-bold mb-2">
           Username
           {errors.username && (
-            <span className="text-sm text-red-500 font-normal italic ml-4">
+            <span
+              role="alert"
+              className="text-sm text-red-500 font-normal italic ml-4"
+            >
               * Missing username
             </span>
           )}
         </label>
         <input
           className="shadow appearance-none border rounded-sm w-full py-2 px-3 text-grey-darker"
-          id="username"
+          aria-label="username-input"
           type="text"
           {...register("username", { required: true })}
           placeholder="john.doe@email.com"
@@ -37,14 +40,17 @@ const LoginForm = ({ onSubmit, submitLabel }: IProps): JSX.Element => {
         <label className="block text-grey-darker text-sm font-bold mb-2">
           Password
           {errors.password && (
-            <span className="text-sm text-red-500 font-normal italic ml-4">
+            <span
+              role="alert"
+              className="text-sm text-red-500 font-normal italic ml-4"
+            >
               * Missing password
             </span>
           )}
         </label>
         <input
           className="shadow appearance-none border border-red rounded-sm w-full py-2 px-3 text-grey-darker mb-3"
-          id="password"
+          aria-label="password-input"
           type="password"
           {...register("password", { required: true })}
           placeholder="******************"
@@ -59,6 +65,7 @@ const LoginForm = ({ onSubmit, submitLabel }: IProps): JSX.Element => {
           className="w-full"
           hoverBg="bg-indigo-700"
           label={submitLabel}
+          ariaLabel={`${submitLabel}-button`}
           type="submit"
         />
       </div>
