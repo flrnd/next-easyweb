@@ -8,7 +8,7 @@ const setup = () => {
     password: "My-Super-Secret",
   };
 
-  const mockSubmit = jest.fn((formData) => {
+  const mockSubmit = jest.fn().mockImplementation((formData) => {
     return {
       username: formData.username,
       password: formData.password,
@@ -40,9 +40,12 @@ describe("Login form", () => {
     fireEvent.submit(button);
 
     await waitFor(() => expect(screen.queryAllByRole("alert")).toHaveLength(0));
-    expect(mockSubmit).toBeCalledWith({
-      username: formData.username,
-      password: formData.password,
-    });
+    expect(mockSubmit).toBeCalledWith(
+      {
+        username: formData.username,
+        password: formData.password,
+      },
+      expect.objectContaining({ _reactName: "onSubmit" })
+    );
   });
 });
