@@ -1,4 +1,4 @@
-const SettingsForm = () => {
+const SettingsForm = (): JSX.Element => {
   return <div>Settings form</div>;
 };
 

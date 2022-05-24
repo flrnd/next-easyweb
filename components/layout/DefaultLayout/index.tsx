@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
