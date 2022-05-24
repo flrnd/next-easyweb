@@ -1,5 +1,4 @@
 import { fireEvent, render } from "@testing-library/react";
-
 import { BurgerMenu } from "..";
 
 const setup = () => {
@@ -7,13 +6,15 @@ const setup = () => {
   const utils = render(<BurgerMenu menu={menu} />);
 
   const button = utils.getByLabelText("menu-button");
-  const modal = utils.getByLabelText("modal");
+  const buttonIcon = utils.getByTitle("menu");
+  const modal = utils.getByRole("dialog", { hidden: true });
   const modalContent = utils.getByLabelText("modal-content");
   const navigationLists = utils.getAllByLabelText("navigation-list");
   const navigationItems = utils.getAllByLabelText("navigation-item");
 
   return {
     button,
+    buttonIcon,
     modal,
     modalContent,
     navigationLists,
@@ -24,15 +25,16 @@ const setup = () => {
 
 describe("Burger Menu", () => {
   it("Should render a button", () => {
-    const { button } = setup();
+    const { button, buttonIcon } = setup();
 
     expect(button).toBeInTheDocument();
+    expect(buttonIcon).toBeInTheDocument();
   });
 
   it("should render a modal on button click", () => {
     const { modal, modalContent, button } = setup();
 
-    expect(modal).toHaveClass("hidden");
+    expect(modal).toBeInTheDocument();
     fireEvent.click(button);
     expect(modal).toHaveClass("modal");
     expect(modalContent).toBeInTheDocument();

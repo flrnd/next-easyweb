@@ -38,7 +38,9 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
       </div>
 
       <motion.div
+        role="dialog"
         aria-label="modal"
+        aria-hidden={isOpen ? "false" : "true"}
         className={isOpen ? "modal" : "hidden"}
         onClick={handleClick}
         animate={isOpen ? "open" : "closed"}
