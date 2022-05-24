@@ -13,6 +13,7 @@ interface IProps {
   hover?: string;
   href?: string;
   label?: string;
+  ariaLabel?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   children?: ReactNode;
@@ -30,12 +31,14 @@ const Button = ({
   hover,
   href,
   label,
+  ariaLabel,
   type = "button",
   onClick,
   children,
 }: IProps): JSX.Element => {
   return (
     <button
+      aria-label={ariaLabel}
       type={type}
       className={classNames(
         className,

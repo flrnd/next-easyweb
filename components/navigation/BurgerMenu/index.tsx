@@ -25,7 +25,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
   return (
     <>
       <div className="burger-menu ml-auto">
-        <Button onClick={handleClick}>
+        <Button ariaLabel="menu-button" onClick={handleClick}>
           <svg
             className="fill-current h-6 w-6"
             viewBox="0 0 20 20"
@@ -38,6 +38,9 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
       </div>
 
       <motion.div
+        role="dialog"
+        aria-label="modal"
+        aria-hidden={isOpen ? "false" : "true"}
         className={isOpen ? "modal" : "hidden"}
         onClick={handleClick}
         animate={isOpen ? "open" : "closed"}
@@ -45,6 +48,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
         variants={modalVariants}
       >
         <motion.div
+          aria-label="modal-content"
           className="modal-content"
           animate={isOpen ? "open" : "closed"}
           transition={{ duration: 0.2 }}
@@ -63,7 +67,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
           </Link>
         </motion.div>
       </motion.div>
-      <div className="nav-menu">
+      <div aria-label="navigation-menu" className="nav-menu">
         <NavigationItemList list={menu} />
         <Link href="/signin" passHref>
           <a className="p-4 font-bold text-indigo-500 hover:text-indigo-800">

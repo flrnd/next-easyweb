@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
@@ -18,14 +17,6 @@ const DefaultLayout = ({ children }: Props): JSX.Element => {
   };
   return (
     <div className="layout">
-      <Head>
-        <link
-          rel="preload"
-          href="/fonts/sentient/Sentient-Variable.ttf"
-          as="font"
-          crossOrigin=""
-        />
-      </Head>
       <DefaultSeo {...SEO} />
       <Header />
       <motion.main

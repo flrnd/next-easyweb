@@ -14,7 +14,10 @@ const NavigationItemList = ({
   const navigationList = createNavigationList(list);
 
   return (
-    <ul className={classNames("flex", isVertical && "flex-col")}>
+    <ul
+      aria-label="navigation-list"
+      className={classNames("flex", isVertical && "flex-col")}
+    >
       {navigationList.map((navItem) => (
         <NavigationItem key={navItem.name} item={navItem} />
       ))}
