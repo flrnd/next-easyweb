@@ -47,22 +47,6 @@ const LoginForm = ({ onSubmit, submitLabel }: IProps): JSX.Element => {
               * Password cannot be empty
             </span>
           )}
-          {errors.password && errors.password.type === "minLength" && (
-            <span
-              role="alert"
-              className="text-sm text-red-500 font-normal italic ml-4"
-            >
-              * Password should be minimum 8 characters long
-            </span>
-          )}
-          {errors.password && errors.password.type === "pattern" && (
-            <span
-              role="alert"
-              className="text-sm text-red-500 font-normal italic ml-4"
-            >
-              {errors.password.message}
-            </span>
-          )}
         </label>
         <input
           className="shadow appearance-none border border-red rounded-sm w-full py-2 px-3 text-grey-darker mb-3"
@@ -70,12 +54,6 @@ const LoginForm = ({ onSubmit, submitLabel }: IProps): JSX.Element => {
           type="password"
           {...register("password", {
             required: true,
-            minLength: 8,
-            pattern: {
-              value:
-                /^(?=(.*[a-z]){3,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,})(?=(.*[!@#$%^&*()\-__+.]){1,})$/,
-              message: "Minimum 3 lower, 2 caps, 2 number, 1 symbol",
-            },
           })}
           placeholder="******************"
         />
