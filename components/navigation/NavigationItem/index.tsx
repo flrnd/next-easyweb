@@ -10,7 +10,7 @@ interface Props {
 
 const NavigationItem = ({ item, margin }: Props): JSX.Element => {
   return (
-    <li>
+    <li aria-label="navigation-item">
       <Link href={item.href}>
         <a className={classNames(margin)}>{item.name}</a>
       </Link>
