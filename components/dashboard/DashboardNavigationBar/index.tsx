@@ -1,35 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames";
-import { useEffect, useRef, useState } from "react";
-import { useUser } from "../../../lib/store/hooks/useUser";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { getIcon } from "../../icons";
-import { supabase } from "../../../lib/util/supabase/supabase-client";
+
 import logoIcon from "../../../public/assets/nextsites_icon.svg";
 import nextsitesLogo from "../../../public/assets/nextsites_logo.svg";
+import ProfileButton from "../ProfileButton";
 
 const DashboardNavigationBar = (): JSX.Element => {
-  const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
-  const { session } = useUser();
   const router = useRouter();
-  const mountedRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (mountedRef.current && !mountedRef.current.contains(event.target)) {
-        setMobileMenuIsOpen(false);
-        setUserMenuIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      mountedRef.current = null;
-    };
-  }, [session]);
 
   const isActiveLink = (href: string, currentPath: string): boolean => {
     if (href === "/") {
@@ -52,12 +33,14 @@ const DashboardNavigationBar = (): JSX.Element => {
   ];
 
   return (
-    <nav ref={mountedRef} className="bg-gray-200">
+    <nav className="bg-gray-200">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
               type="button"
+              role="button"
+              aria-label="burger-menu"
               className="inline-flex items-center justify-center p-2 rounded-md text-indigo-900 hover:text-white hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
@@ -137,60 +120,7 @@ const DashboardNavigationBar = (): JSX.Element => {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="ml-3 relative">
-              <div>
-                <button
-                  type="button"
-                  className="h-6 w-6 flex text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white p-1 text-indigo-900"
-                  id="user-menu-button"
-                  aria-expanded={userMenuIsOpen ? "true" : "false"}
-                  aria-haspopup="true"
-                  onClick={() => setUserMenuIsOpen(!userMenuIsOpen)}
-                >
-                  <span className="sr-only">Open user menu</span>
-
-                  {getIcon("profile")}
-                </button>
-              </div>
-
-              <div
-                className={classNames(
-                  "origin-top-right absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none",
-                  userMenuIsOpen ? "block" : "hidden"
-                )}
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-              >
-                <div className="block px-4 pt-2 pb-3 text-sm text-gray-700 border-b-2">
-                  Signed as <strong>{session?.user.email}</strong>
-                </div>
-                <Link href="/dashboard/profile" passHref>
-                  <a
-                    onClick={() => setUserMenuIsOpen(!userMenuIsOpen)}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                    id="user-menu-item-0"
-                  >
-                    Profile
-                  </a>
-                </Link>
-                <Link href="/" passHref>
-                  <a
-                    onClick={() => {
-                      supabase.auth.signOut();
-                    }}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                    id="user-menu-item-2"
-                  >
-                    Sign out
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <ProfileButton />
         </div>
       </div>
 
