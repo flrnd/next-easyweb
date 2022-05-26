@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Image from "next/image";
 interface IProps {
-  src: string | StaticImageData;
+  src: string;
   boxWidth?: string;
   margin?: string;
   padding?: string;
