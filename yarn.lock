@@ -4573,7 +4573,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:latest":
+"husky@npm:^8.0.0":
   version: 8.0.1
   resolution: "husky@npm:8.0.1"
   bin:
@@ -7707,7 +7707,7 @@ __metadata:
     eslint-plugin-react: ^7.19.0
     eslint-plugin-testing-library: ^5.0.0
     framer-motion: ^5.6.0
-    husky: latest
+    husky: ^8.0.0
     identity-obj-proxy: ^3.0.0
     jest: ^27.4.4
     jest-watch-typeahead: ^0.6.1
