@@ -12,9 +12,10 @@ const ServiceList = ({ services }: IProps): JSX.Element => {
 
   return (
     <Container>
-      <Grid columns={columns} gap="gap-2">
+      <Grid columns={columns} gap="gap-2" ariaLabel="services-list">
         {services.map((serviceItem) => (
           <ServiceItem
+            ariaLabel="services-listitem"
             key={serviceItem.name}
             name={serviceItem.name}
             text={serviceItem.description}
