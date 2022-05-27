@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import LoginForm from ".";
 import { IFormData } from "../../../lib/types";
 
@@ -46,17 +47,22 @@ describe("Login form", () => {
 
   test("It should send correct username and password", async () => {
     const { formData, mockSubmit, username, password, button } = setup();
-    fireEvent.input(username, { target: { value: formData.username } });
-    fireEvent.input(password, { target: { value: formData.password } });
-    fireEvent.submit(button);
 
-    await waitFor(() => expect(screen.queryAllByRole("alert")).toHaveLength(0));
-    expect(mockSubmit).toHaveBeenCalledWith(
-      {
-        username: formData.username,
-        password: formData.password,
-      },
-      expect.objectContaining({ _reactName: "onSubmit" })
-    );
+    act(() => {
+      fireEvent.input(username, { target: { value: formData.username } });
+      fireEvent.input(password, { target: { value: formData.password } });
+      fireEvent.submit(button);
+    });
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole("alert")).toHaveLength(0);
+      expect(mockSubmit).toHaveBeenCalledWith(
+        {
+          username: formData.username,
+          password: formData.password,
+        },
+        expect.objectContaining({ _reactName: "onSubmit" })
+      );
+    });
   });
 });
