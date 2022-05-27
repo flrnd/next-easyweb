@@ -6,6 +6,7 @@ import Heading from "../../typography/Heading";
 import Paragraph from "../../typography/Paragraph";
 
 interface IProps {
+  ariaLabel?: string;
   icon: ReactNode;
   name: string;
   text: string;
@@ -14,6 +15,7 @@ interface IProps {
 }
 
 const ServiceItem = ({
+  ariaLabel,
   icon,
   name,
   text,
@@ -22,7 +24,7 @@ const ServiceItem = ({
 }: IProps): JSX.Element => {
   return (
     <>
-      <div id={stringToId(name)} className="service">
+      <div aria-label={ariaLabel} id={stringToId(name)} className="service">
         {icon && <div className="icon icon-medium">{icon}</div>}
         <Heading level={5} size="small" weight="font-bold">
           {name}
