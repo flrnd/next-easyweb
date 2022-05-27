@@ -4,10 +4,12 @@ import { serviceList } from "../../../__mocks__/fakeData/data";
 
 describe("Service List", () => {
   it("renders a list of N services", () => {
-    render(<ServiceList services={serviceList} />);
+    const utils = render(<ServiceList services={serviceList} />);
 
-    expect(document.getElementsByClassName("service").length).toBe(
-      serviceList.length
-    );
+    const services = utils.getByLabelText("services-list");
+    const serviceItems = utils.getAllByLabelText("services-listitem");
+
+    expect(services).toBeInTheDocument();
+    expect(serviceItems.length).toBe(serviceList.length);
   });
 });
