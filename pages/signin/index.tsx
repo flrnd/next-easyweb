@@ -7,9 +7,8 @@ import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
 import { IFormData, IMessage, SignInOptions } from "../../lib/types";
 import { logotype } from "../../__mocks__/fakeData/data";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { selectUser, signInUser } from "../../lib/features/User";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
