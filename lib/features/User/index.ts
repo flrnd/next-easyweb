@@ -12,7 +12,7 @@ const initialState: UserState = {
   userLoaded: false,
 };
 
-const signInUser = createAsyncThunk(
+export const signInUser = createAsyncThunk(
   "users/login",
   async (options: SignInOptions, thunkAPI) => {
     try {
