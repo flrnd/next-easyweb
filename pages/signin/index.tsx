@@ -5,23 +5,28 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { useUser } from "../../lib/hooks/useUser";
-import { IFormData, IMessage } from "../../lib/types";
+import { IFormData, IMessage, SignInOptions } from "../../lib/types";
 import { logotype } from "../../__mocks__/fakeData/data";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectUser, signInUser } from "../../lib/features/User";
 
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
-  const { user, signIn } = useUser();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { user, errorMessage } = useSelector(selectUser);
 
   const onSubmit = async (data: IFormData) => {
-    const { error } = await signIn({
+    const options: SignInOptions = {
       email: data.username,
       password: data.password,
-    });
+    };
 
-    if (error) {
-      setMessage({ type: "error", content: error.message });
+    dispatch(signInUser(options));
+
+    if (errorMessage) {
+      setMessage({ type: "error", content: errorMessage });
     }
   };
 
