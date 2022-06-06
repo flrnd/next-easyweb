@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Session } from "@supabase/supabase-js";
 import { RootState, SignInOptions, UserState } from "../../types";
 import { supabase } from "../../util/supabase/supabase-client";
 
 const initialState: UserState = {
   session: null,
   user: null,
-  error: null,
+  errorMessage: null,
   profileDetails: null,
   siteConfig: null,
   userLoaded: false,
@@ -33,12 +34,18 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [signInUser.fulfilled.toString()]: (state: RootState, { payload }) => {
+    [signInUser.fulfilled.toString()]: (state, { payload }) => {
       state.user = payload.user;
       state.session = payload.session;
       state.userLoaded = true;
     },
+    [signInUser.rejected.toString()]: (state, { payload }) => {
+      state.errorMessage = payload.message;
+      state.userLoaded = false;
+    },
   },
 });
 
-export const selectUser = (state: RootState) => state.user;
+export const selectUser = (state: RootState): UserState => state.user;
+export const selectUserSession = (state: RootState): Session =>
+  state.user.session;
