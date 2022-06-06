@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { INotificationMessage } from "../../types";
+import { INotificationMessage } from "../types";
 
 const useNotification = (): any => {
   const [showNotification, setShowNotification] = useState(false);

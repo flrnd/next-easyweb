@@ -1,7 +1,7 @@
 import { getIcon } from "../../icons";
 import { supabase } from "../../../lib/util/supabase/supabase-client";
 import classNames from "classnames";
-import { useUser } from "../../../lib/store/hooks/useUser";
+import { useUser } from "../../../lib/hooks/useUser";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 

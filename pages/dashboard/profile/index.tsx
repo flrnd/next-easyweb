@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useUser } from "../../../lib/store/hooks/useUser";
+import { useUser } from "../../../lib/hooks/useUser";
 import ProfilePanel from "../../../components/dashboard/ProfilePanel";
 import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
 

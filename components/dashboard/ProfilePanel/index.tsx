@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabase/supabase-client";
-import { useUser } from "../../../lib/store/hooks/useUser";
+import { useUser } from "../../../lib/hooks/useUser";
 import { IChangePasswordFormData, IProfileData } from "../../../lib/types";
 import { Heading } from "../../typography";
 import { Anchor, Button } from "../../controls";
@@ -10,7 +10,7 @@ import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
 import { validatePasswordStrength } from "../../../lib/util";
-import useNotification from "../../../lib/store/hooks/useNotification";
+import useNotification from "../../../lib/hooks/useNotification";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);

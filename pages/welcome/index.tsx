@@ -3,7 +3,7 @@ import { Card } from "../../components/elements";
 import PartyFaceEmoji from "../../components/icons/emoji/PartyFace";
 import { Container } from "../../components/layout";
 import { Heading, Paragraph } from "../../components/typography";
-import { useUser } from "../../lib/store/hooks/useUser";
+import { useUser } from "../../lib/hooks/useUser";
 
 const Welcome = (): JSX.Element => {
   const { user } = useUser();
