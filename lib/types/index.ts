@@ -6,7 +6,7 @@ import { store } from "../store";
 export interface UserState {
   session: Session;
   user: User;
-  error: Error;
+  errorMessage: string;
   profileDetails: ProfileDetails;
   userLoaded: boolean;
   siteConfig: SiteConfig;
