@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabase/supabase-client";
-import { useUser } from "../../../lib/hooks/useUser";
 import { IChangePasswordFormData, IProfileData } from "../../../lib/types";
 import { Heading } from "../../typography";
 import { Anchor, Button } from "../../controls";
@@ -11,6 +10,8 @@ import router from "next/router";
 import classNames from "classnames";
 import { validatePasswordStrength } from "../../../lib/util";
 import useNotification from "../../../lib/hooks/useNotification";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../lib/features/User";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -18,7 +19,7 @@ const ProfilePanel = (): JSX.Element => {
   const [billingAddress, setBillingAddress] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [edit, setEdit] = useState(false);
-  const { user, session, getProfileDetails } = useUser();
+  const { user, session } = useSelector(selectUser);
   const [showNotification, notificationMessage, notification] =
     useNotification();
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
