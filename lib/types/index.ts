@@ -1,6 +1,19 @@
 import { Session, User, Provider } from "@supabase/supabase-js";
+import { store } from "../store";
 
 // Types.
+
+export interface UserState {
+  session: Session;
+  user: User;
+  error: Error;
+  profileDetails: ProfileDetails;
+  userLoaded: boolean;
+  siteConfig: SiteConfig;
+}
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export type UserContextType = {
   session: Session;
