@@ -59,8 +59,11 @@ const SignUp = (): JSX.Element => {
 
   useEffect(() => {
     newUser && router.replace("/welcome");
+  }, [newUser]);
+
+  useEffect(() => {
     user && router.replace("/dashboard/profile");
-  }, [newUser, user]);
+  }, [user]);
 
   if (!user) {
     return (
