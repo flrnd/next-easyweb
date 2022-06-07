@@ -9,9 +9,9 @@ import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
 import { validatePasswordStrength } from "../../../lib/util";
-import useNotification from "../../../lib/hooks/useNotification";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../lib/features/User";
+import { useNotification } from "../../../lib/hooks";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
