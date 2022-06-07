@@ -5,32 +5,43 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { useUser } from "../../lib/hooks/useUser";
-import { IFormData, IMessage } from "../../lib/types";
+import {
+  AppDispatch,
+  IFormData,
+  IMessage,
+  SignUpOptions,
+  UserState,
+} from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
 import { validatePasswordStrength } from "../../lib/util";
 import { logotype } from "../../__mocks__/fakeData/data";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, signUpUser } from "../../lib/features/User";
 
 const SignUp = (): JSX.Element => {
   const [newUser, setNewUser] = useState<User | null>(null);
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
-  const { user, signUp } = useUser();
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
+  const { user, errorMessage } = useSelector(selectUser);
 
   const onSubmit = async (data: IFormData) => {
     const passwordStrength = validatePasswordStrength(data.password);
 
     if (passwordStrength.validation) {
-      const { error, user: createdUser } = await signUp({
+      const options: SignUpOptions = {
         email: data.username,
         password: data.password,
-      });
+      };
 
-      if (error) {
-        setMessage({ type: "error", content: error.message });
+      const { payload } = await dispatch(signUpUser(options));
+      const { user } = payload as UserState;
+
+      if (errorMessage) {
+        setMessage({ type: "error", content: errorMessage });
       } else {
-        if (createdUser) {
-          setNewUser(createdUser);
+        if (user) {
+          setNewUser(user);
         } else {
           setMessage({
             type: "note",
