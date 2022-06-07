@@ -1,4 +1,4 @@
-import { Session, User, Provider } from "@supabase/supabase-js";
+import { Session, User, Provider, PostgrestError } from "@supabase/supabase-js";
 import { store } from "../store";
 
 // Types.
@@ -7,41 +7,13 @@ export interface UserState {
   session: Session;
   user: User;
   errorMessage: string;
-  profileDetails: ProfileDetails;
+  profileDetails: IProfileDetails;
   userLoaded: boolean;
-  siteConfig: SiteConfig;
+  siteConfig: ISiteConfig;
 }
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-export type UserContextType = {
-  session: Session;
-  user: User;
-  profileDetails: ProfileDetails;
-  userLoaded: boolean;
-  siteConfig: SiteConfig;
-  signIn: (options: SignInOptions) => Promise<{
-    session: Session | null;
-    user: User | null;
-    provider?: Provider;
-    url?: string | null;
-    error: Error | null;
-    data: Session | null;
-  }>;
-  signUp: (options: SignUpOptions) => Promise<{
-    user: User | null;
-    session: Session | null;
-    error: Error | null;
-    data: Session | User | null;
-  }>;
-  signOut: () => void;
-  getProfileDetails: (options: ProfileDetailsOptions) => Promise<{
-    data: ProfileDetails | null;
-    error: Error | null;
-    status: number | null;
-  }>;
-};
 
 export type ProfileDetailsOptions = {
   userId: string;
@@ -133,11 +105,10 @@ export interface IChangePasswordFormData {
   newPassword: string;
 }
 
-export interface IProfileData {
-  firstName: string;
-  lastName: string;
-  billingAddress: string;
-  avatar?: string;
+export interface IProfilePayload {
+  data: any;
+  status: number;
+  error: PostgrestError;
 }
 
 export interface IFormDataMagicMail {
@@ -154,7 +125,16 @@ export interface INotificationMessage {
   content?: string;
 }
 
-export interface ProfileDetails {
+// used for form
+export interface IProfileData {
+  firstName: string;
+  lastName: string;
+  billingAddress: string;
+  avatar?: string;
+}
+
+// sql query
+export interface IProfileDetails {
   id: string /* primary key */;
   first_name: string;
   last_name: string;
@@ -162,7 +142,7 @@ export interface ProfileDetails {
   avatar_url?: string;
 }
 
-export interface SiteConfig {
+export interface ISiteConfig {
   id: string /* primary key */;
   user_id: string;
   data: JSON;
