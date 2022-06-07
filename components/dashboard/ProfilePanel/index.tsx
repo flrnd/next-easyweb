@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabase/supabase-client";
-import { IChangePasswordFormData, IProfileData } from "../../../lib/types";
+import {
+  IChangePasswordFormData,
+  IProfileData,
+  IProfileDetails,
+} from "../../../lib/types";
 import { Heading } from "../../typography";
 import { Anchor, Button } from "../../controls";
 import { getIcon } from "../../icons";
@@ -9,9 +13,12 @@ import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
 import { validatePasswordStrength } from "../../../lib/util";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../../lib/features/User";
-import { useNotification } from "../../../lib/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNotification,
+} from "../../../lib/hooks";
+import { updateUserProfile } from "../../../lib/features/User";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -19,73 +26,30 @@ const ProfilePanel = (): JSX.Element => {
   const [billingAddress, setBillingAddress] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [edit, setEdit] = useState(false);
-  const { user, session } = useSelector(selectUser);
+  const { user, session, profileDetails } = useAppSelector(
+    (state) => state.user
+  );
   const [showNotification, notificationMessage, notification] =
     useNotification();
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (session) {
-      getProfile();
-    } else {
+    if (!session) {
       router.replace("/signin");
     }
   }, [session]);
 
-  async function getProfile() {
-    try {
-      const { data, error, status } = await getProfileDetails({
-        userId: user.id,
-      });
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setFirstName(data.first_name);
-        setLastName(data.last_name);
-        setBillingAddress(data.billing_address);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      notification({ type: "error", content: "Couldn't fetch profile." });
-      //console.error("ProfilePanel - getProfile(): ", error.message);
+  useEffect(() => {
+    if (!profileDetails) {
+      notification({ type: "error", content: "Empty profile." });
+    } else {
+      setFirstName(profileDetails.first_name);
+      setLastName(profileDetails.last_name);
+      setBillingAddress(profileDetails.billing_address);
+      setAvatarUrl(profileDetails.avatar_url);
     }
-  }
-
-  async function updateProfile({
-    first_name = firstName,
-    last_name = lastName,
-    billing_address = billingAddress,
-    avatar_url = avatarUrl,
-  }) {
-    try {
-      const user = supabase.auth.user();
-
-      const updates = {
-        id: user.id,
-        first_name,
-        last_name,
-        billing_address,
-        avatar_url,
-        updated_at: new Date(),
-      };
-
-      const { error } = await supabase
-        .from("profiles")
-        .upsert(updates, { returning: "minimal" });
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      // console.error("ProfilePanel - updateProfile(): ", error.message);
-      notification({
-        type: "error",
-        content: "Unable to update profile.",
-      });
-    }
-  }
+  }, [profileDetails]);
 
   const {
     register,
@@ -99,14 +63,16 @@ const ProfilePanel = (): JSX.Element => {
     data.billingAddress && setBillingAddress(data.billingAddress);
     data.avatar && setAvatarUrl(data.avatar);
 
-    const updates = {
+    const updates: IProfileDetails = {
+      id: user.id,
       first_name: firstName,
       last_name: lastName,
       billing_address: billingAddress,
       avatar_url: avatarUrl,
     };
 
-    updateProfile(updates);
+    dispatch(updateUserProfile(updates));
+
     notification({ type: "success", content: "Profile updated." });
     setEdit(false);
     setShowChangePasswordForm(false);
@@ -189,6 +155,7 @@ const ProfilePanel = (): JSX.Element => {
             </div>
           )}
         </div>
+
         <div className="panel max-w-lg mt-8">
           <div className="form-entry">
             <label className="form-label">
