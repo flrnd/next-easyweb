@@ -7,7 +7,7 @@ import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
 import { IFormData, IMessage, SignInOptions, UserState } from "../../lib/types";
 import { logotype } from "../../__mocks__/fakeData/data";
-import { signInUser } from "../../lib/features/User";
+import { fetchUserProfile, signInUser } from "../../lib/features/User";
 
 import { useAppDispatch, useAppSelector } from "../../lib/hooks";
 
@@ -29,6 +29,8 @@ const SignIn = (): JSX.Element => {
 
     if (!user) {
       setMessage({ type: "error", content: payload as string });
+    } else {
+      dispatch(fetchUserProfile(user.id));
     }
   };
 
