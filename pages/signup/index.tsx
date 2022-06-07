@@ -5,25 +5,19 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import {
-  AppDispatch,
-  IFormData,
-  IMessage,
-  SignUpOptions,
-  UserState,
-} from "../../lib/types";
+import { IFormData, IMessage, SignUpOptions, UserState } from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
 import { validatePasswordStrength } from "../../lib/util";
 import { logotype } from "../../__mocks__/fakeData/data";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser, signUpUser } from "../../lib/features/User";
+import { signUpUser } from "../../lib/features/User";
+import { useAppDispatch, useAppSelector } from "../../lib/hooks";
 
 const SignUp = (): JSX.Element => {
   const [newUser, setNewUser] = useState<User | null>(null);
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
   const router = useRouter();
-  const dispatch = useDispatch<AppDispatch>();
-  const { user, errorMessage } = useSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
 
   const onSubmit = async (data: IFormData) => {
     const passwordStrength = validatePasswordStrength(data.password);
@@ -36,19 +30,7 @@ const SignUp = (): JSX.Element => {
 
       const { payload } = await dispatch(signUpUser(options));
       const { user } = payload as UserState;
-
-      if (errorMessage) {
-        setMessage({ type: "error", content: errorMessage });
-      } else {
-        if (user) {
-          setNewUser(user);
-        } else {
-          setMessage({
-            type: "note",
-            content: "Check your mail for instructions.",
-          });
-        }
-      }
+      setNewUser(user);
     } else {
       setMessage({
         type: "error",
