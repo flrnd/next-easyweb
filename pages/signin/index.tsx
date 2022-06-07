@@ -5,7 +5,12 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { IFormData, IMessage, SignInOptions } from "../../lib/types";
+import {
+  AppDispatch,
+  IFormData,
+  IMessage,
+  SignInOptions,
+} from "../../lib/types";
 import { logotype } from "../../__mocks__/fakeData/data";
 import { selectUser, signInUser } from "../../lib/features/User";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { user, errorMessage } = useSelector(selectUser);
 
   const onSubmit = async (data: IFormData) => {
