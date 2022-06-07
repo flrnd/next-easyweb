@@ -5,39 +5,32 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { useUser } from "../../lib/store/hooks/useUser";
-import { IFormData, IMessage } from "../../lib/types";
+import { IFormData, IMessage, SignUpOptions, UserState } from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
 import { validatePasswordStrength } from "../../lib/util";
 import { logotype } from "../../__mocks__/fakeData/data";
+import { signUpUser } from "../../lib/features/User";
+import { useAppDispatch, useAppSelector } from "../../lib/hooks";
 
 const SignUp = (): JSX.Element => {
   const [newUser, setNewUser] = useState<User | null>(null);
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
-  const { user, signUp } = useUser();
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
 
   const onSubmit = async (data: IFormData) => {
     const passwordStrength = validatePasswordStrength(data.password);
 
     if (passwordStrength.validation) {
-      const { error, user: createdUser } = await signUp({
+      const options: SignUpOptions = {
         email: data.username,
         password: data.password,
-      });
+      };
 
-      if (error) {
-        setMessage({ type: "error", content: error.message });
-      } else {
-        if (createdUser) {
-          setNewUser(createdUser);
-        } else {
-          setMessage({
-            type: "note",
-            content: "Check your mail for instructions.",
-          });
-        }
-      }
+      const { payload } = await dispatch(signUpUser(options));
+      const { user } = payload as UserState;
+      setNewUser(user);
     } else {
       setMessage({
         type: "error",
@@ -48,8 +41,11 @@ const SignUp = (): JSX.Element => {
 
   useEffect(() => {
     newUser && router.replace("/welcome");
+  }, [newUser]);
+
+  useEffect(() => {
     user && router.replace("/dashboard/profile");
-  }, [newUser, user]);
+  }, [user]);
 
   if (!user) {
     return (

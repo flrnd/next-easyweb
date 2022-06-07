@@ -5,23 +5,32 @@ import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { useUser } from "../../lib/store/hooks/useUser";
-import { IFormData, IMessage } from "../../lib/types";
+import { IFormData, IMessage, SignInOptions, UserState } from "../../lib/types";
 import { logotype } from "../../__mocks__/fakeData/data";
+import { fetchUserProfile, signInUser } from "../../lib/features/User";
+
+import { useAppDispatch, useAppSelector } from "../../lib/hooks";
 
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
-  const { user, signIn } = useUser();
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
 
   const onSubmit = async (data: IFormData) => {
-    const { error } = await signIn({
+    const options: SignInOptions = {
       email: data.username,
       password: data.password,
-    });
+    };
 
-    if (error) {
-      setMessage({ type: "error", content: error.message });
+    const { payload } = await dispatch(signInUser(options));
+
+    const { user } = payload as UserState;
+
+    if (!user) {
+      setMessage({ type: "error", content: payload as string });
+    } else {
+      dispatch(fetchUserProfile(user.id));
     }
   };
 

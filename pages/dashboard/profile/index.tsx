@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useUser } from "../../../lib/store/hooks/useUser";
 import ProfilePanel from "../../../components/dashboard/ProfilePanel";
 import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../lib/features/User";
 
 const Profile = (): JSX.Element => {
-  const { session } = useUser();
+  const { session } = useSelector(selectUser);
 
   const router = useRouter();
 

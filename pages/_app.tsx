@@ -1,14 +1,14 @@
 import type { AppProps } from "next/app";
-import { UserContextProvider } from "../lib/store/context/UserContextProvider";
-
+import { Provider } from "react-redux";
+import { store } from "../lib/store";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
-      <UserContextProvider>
+      <Provider store={store}>
         <Component {...pageProps} />
-      </UserContextProvider>
+      </Provider>
     </>
   );
 }

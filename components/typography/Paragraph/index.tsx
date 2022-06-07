@@ -10,9 +10,7 @@ interface IProps {
   textColor?: string;
   children: React.ReactNode;
 }
-/**
- * TODO: Add tests
- */
+
 const Paragraph = ({
   margin = "mb-4",
   size,

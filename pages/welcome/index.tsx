@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { useSelector } from "react-redux";
 import { Card } from "../../components/elements";
 import PartyFaceEmoji from "../../components/icons/emoji/PartyFace";
 import { Container } from "../../components/layout";
 import { Heading, Paragraph } from "../../components/typography";
-import { useUser } from "../../lib/store/hooks/useUser";
+import { selectUser } from "../../lib/features/User";
 
 const Welcome = (): JSX.Element => {
-  const { user } = useUser();
+  const { user } = useSelector(selectUser);
 
   if (!user) {
     return (
