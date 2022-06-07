@@ -51,6 +51,28 @@ export const signUpUser = createAsyncThunk(
   }
 );
 
+export const getUserProfile = createAsyncThunk(
+  "users/getProfile",
+  async (userId: string, thunkAPI) => {
+    try {
+      const results = await supabase
+        .from("profiles")
+        .select("first_name, last_name, billing_address, avatar_url")
+        .eq("id", userId)
+        .single();
+
+      const { data, error, status } = results;
+      if (data) {
+        return { data, error, status };
+      } else {
+        return thunkAPI.rejectWithValue({ error, status, data });
+      }
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -62,6 +84,15 @@ export const userSlice = createSlice({
       state.userLoaded = true;
     },
     [signInUser.rejected.toString()]: (state, { payload }) => {
+      state.errorMessage = payload.message;
+      state.userLoaded = false;
+    },
+    [signUpUser.fulfilled.toString()]: (state, { payload }) => {
+      state.user = payload.user;
+      state.session = payload.session;
+      state.userLoaded = true;
+    },
+    [signUpUser.rejected.toString()]: (state, { payload }) => {
       state.errorMessage = payload.message;
       state.userLoaded = false;
     },
