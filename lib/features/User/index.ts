@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Session } from "@supabase/supabase-js";
+import { ApiError, Session, User } from "@supabase/supabase-js";
 import {
   IProfileDetails,
   RootState,
@@ -18,22 +18,23 @@ const initialState: UserState = {
   userLoaded: false,
 };
 
-export const signInUser = createAsyncThunk(
-  "users/signin",
-  async (options: SignInOptions, thunkAPI) => {
-    try {
-      const { user, session, error } = await supabase.auth.signIn(options);
-      if (error === null) {
-        return { user, session };
-      } else {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    } catch (error) {
-      console.error("signIn user: ", error);
-      thunkAPI.rejectWithValue(error);
+export const signInUser = createAsyncThunk<
+  { user: User; session: Session },
+  SignInOptions,
+  { rejectValue: ApiError }
+>("users/signin", async (options: SignInOptions, { rejectWithValue }) => {
+  try {
+    const { user, session, error } = await supabase.auth.signIn(options);
+    if (error === null) {
+      return { user, session };
+    } else {
+      return rejectWithValue(error);
     }
+  } catch (error) {
+    console.error("signIn user: ", error);
+    return rejectWithValue(error);
   }
-);
+});
 
 export const signUpUser = createAsyncThunk(
   "users/signup",
@@ -102,7 +103,7 @@ export const updateUserProfile = createAsyncThunk(
       }
     } catch (error) {
       console.error("updateUserProfile: ", error);
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -111,37 +112,37 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
-  extraReducers: {
-    [signInUser.fulfilled.toString()]: (state, { payload }) => {
+  extraReducers: (builder) => {
+    builder.addCase(signInUser.fulfilled, (state, { payload }) => {
       state.user = payload.user;
       state.session = payload.session;
       state.userLoaded = true;
-    },
-    [signInUser.rejected.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(signInUser.rejected, (state, { payload }) => {
       state.errorMessage = payload.message;
       state.userLoaded = false;
-    },
-    [signUpUser.fulfilled.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(signUpUser.fulfilled, (state, { payload }) => {
       state.user = payload.user;
       state.session = payload.session;
       state.userLoaded = true;
-    },
-    [signUpUser.rejected.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(signUpUser.rejected, (state, { payload }) => {
       state.errorMessage = payload.message;
       state.userLoaded = false;
-    },
-    [fetchUserProfile.fulfilled.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(fetchUserProfile.fulfilled, (state, { payload }) => {
       state.profileDetails = payload.profileDetails;
-    },
-    [fetchUserProfile.fulfilled.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(fetchUserProfile.fulfilled, (state, { payload }) => {
       state.errorMessage = payload.message;
-    },
-    [updateUserProfile.fulfilled.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(updateUserProfile.fulfilled, (state, { payload }) => {
       state.profileDetails = payload.formData;
-    },
-    [updateUserProfile.rejected.toString()]: (state, { payload }) => {
+    });
+    builder.addCase(updateUserProfile.rejected, (state, { payload }) => {
       state.errorMessage = payload.message;
-    },
+    });
   },
 });
 
