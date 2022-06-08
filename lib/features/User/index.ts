@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ApiError, Session, User } from "@supabase/supabase-js";
+import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
 import {
   IProfileDetails,
   RootState,
@@ -36,50 +36,55 @@ export const signInUser = createAsyncThunk<
   }
 });
 
-export const signUpUser = createAsyncThunk(
-  "users/signup",
-  async (options: SignUpOptions, thunkAPI) => {
-    try {
-      const { user, session, error } = await supabase.auth.signUp(options);
-      if (error === null) {
-        return { user, session };
-      } else {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    } catch (error) {
-      console.error("signUp user: ", error);
-      thunkAPI.rejectWithValue(error);
+export const signUpUser = createAsyncThunk<
+  { user: User; session: Session },
+  SignUpOptions,
+  { rejectValue: ApiError }
+>("users/signup", async (options: SignUpOptions, { rejectWithValue }) => {
+  try {
+    const { user, session, error } = await supabase.auth.signUp(options);
+    if (error === null) {
+      return { user, session };
+    } else {
+      return rejectWithValue(error);
     }
+  } catch (error) {
+    console.error("signUp user: ", error);
+    return rejectWithValue(error);
   }
-);
+});
 
-export const fetchUserProfile = createAsyncThunk(
-  "users/fetchProfile",
-  async (userId: string, thunkAPI) => {
-    try {
-      const results = await supabase
-        .from("profiles")
-        .select("first_name, last_name, billing_address, avatar_url")
-        .eq("id", userId)
-        .single();
+export const fetchUserProfile = createAsyncThunk<
+  { data: IProfileDetails; error: PostgrestError; status: number },
+  string,
+  { rejectValue: { error: PostgrestError; status: number } }
+>("users/fetchProfile", async (userId: string, { rejectWithValue }) => {
+  try {
+    const results = await supabase
+      .from("profiles")
+      .select("first_name, last_name, billing_address, avatar_url")
+      .eq("id", userId)
+      .single();
 
-      const { data, error, status } = results;
-      if (data) {
-        const profileDetails = data as IProfileDetails;
-        return { profileDetails, error, status };
-      } else {
-        return thunkAPI.rejectWithValue({ error, status, data });
-      }
-    } catch (error) {
-      console.error("fetchUserProfile: ", error);
-      thunkAPI.rejectWithValue(error);
+    const { data, error, status } = results;
+    if (data) {
+      return { data, error, status };
+    } else {
+      return rejectWithValue({ error, status });
     }
+  } catch (error) {
+    console.error("fetchUserProfile: ", error);
+    rejectWithValue(error);
   }
-);
+});
 
-export const updateUserProfile = createAsyncThunk(
+export const updateUserProfile = createAsyncThunk<
+  { formData: IProfileDetails },
+  IProfileDetails,
+  { rejectValue: PostgrestError }
+>(
   "users/updateProfile",
-  async (formData: IProfileDetails, thunkAPI) => {
+  async (formData: IProfileDetails, { rejectWithValue }) => {
     try {
       const user = supabase.auth.user();
 
@@ -97,13 +102,13 @@ export const updateUserProfile = createAsyncThunk(
         .upsert(update, { returning: "minimal" });
 
       if (error) {
-        return thunkAPI.rejectWithValue(error);
+        return rejectWithValue(error);
       } else {
         return { formData };
       }
     } catch (error) {
       console.error("updateUserProfile: ", error);
-      return thunkAPI.rejectWithValue(error);
+      return rejectWithValue(error);
     }
   }
 );
@@ -132,10 +137,10 @@ export const userSlice = createSlice({
       state.userLoaded = false;
     });
     builder.addCase(fetchUserProfile.fulfilled, (state, { payload }) => {
-      state.profileDetails = payload.profileDetails;
+      state.profileDetails = payload.data;
     });
     builder.addCase(fetchUserProfile.fulfilled, (state, { payload }) => {
-      state.errorMessage = payload.message;
+      state.errorMessage = payload.error.message;
     });
     builder.addCase(updateUserProfile.fulfilled, (state, { payload }) => {
       state.profileDetails = payload.formData;
