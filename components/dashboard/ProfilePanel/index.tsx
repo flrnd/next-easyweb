@@ -34,26 +34,37 @@ const ProfilePanel = (): JSX.Element => {
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
   const dispatch = useAppDispatch();
 
-  const onSubmit = useCallback((data: IProfileData) => {
-    data.firstName && setFirstName(data.firstName);
-    data.lastName && setLastName(data.lastName);
-    data.billingAddress && setBillingAddress(data.billingAddress);
-    data.avatar && setAvatarUrl(data.avatar);
+  const onSubmit = useCallback(
+    (data: IProfileData) => {
+      data.firstName && setFirstName(data.firstName);
+      data.lastName && setLastName(data.lastName);
+      data.billingAddress && setBillingAddress(data.billingAddress);
+      data.avatar && setAvatarUrl(data.avatar);
 
-    const updates: IProfileDetails = {
-      id: user.id,
-      first_name: firstName,
-      last_name: lastName,
-      billing_address: billingAddress,
-      avatar_url: avatarUrl,
-    };
+      const updates: IProfileDetails = {
+        id: user.id,
+        first_name: firstName,
+        last_name: lastName,
+        billing_address: billingAddress,
+        avatar_url: avatarUrl,
+      };
 
-    dispatch(updateUserProfile(updates));
+      dispatch(updateUserProfile(updates));
 
-    notification({ type: "success", content: "Profile updated." });
-    setEdit(false);
-    setShowChangePasswordForm(false);
-  }, []);
+      notification({ type: "success", content: "Profile updated." });
+      setEdit(false);
+      setShowChangePasswordForm(false);
+    },
+    [
+      user.id,
+      firstName,
+      lastName,
+      billingAddress,
+      avatarUrl,
+      dispatch,
+      notification,
+    ]
+  );
 
   useEffect(() => {
     if (!session) {
@@ -70,7 +81,7 @@ const ProfilePanel = (): JSX.Element => {
       setBillingAddress(profileDetails.billing_address);
       setAvatarUrl(profileDetails.avatar_url);
     }
-  }, [profileDetails]);
+  }, [profileDetails, notification]);
 
   const {
     register,
@@ -104,10 +115,10 @@ const ProfilePanel = (): JSX.Element => {
         }
       } catch (error) {
         notification({ type: "error", content: error.message });
-        // console.error("ChangePasswordForm - onSubmit(): ", error.message);
+        console.error("ChangePasswordForm - onSubmit(): ", error.message);
       }
     },
-    []
+    [notification]
   );
   const handleChangePassword = () =>
     setShowChangePasswordForm(!showChangePasswordForm);
