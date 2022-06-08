@@ -7,8 +7,6 @@ import {
   IProfileDetails,
 } from "../../../lib/types";
 import { Heading } from "../../typography";
-import { Anchor, Button } from "../../controls";
-import { getIcon } from "../../icons";
 import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
@@ -19,6 +17,9 @@ import {
   useNotification,
 } from "../../../lib/hooks";
 import { updateUserProfile } from "../../../lib/features/User";
+import EditButton from "../EditButton";
+import SaveCancelButtons from "../SaveCancelButtons";
+import { Button } from "../../controls";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState(null);
@@ -123,6 +124,12 @@ const ProfilePanel = (): JSX.Element => {
   const handleChangePassword = () =>
     setShowChangePasswordForm(!showChangePasswordForm);
 
+  const handleEdit = () => setEdit(!edit);
+  const handleCancelOnClick = () => {
+    setEdit(false);
+    setShowChangePasswordForm(false);
+  };
+
   return (
     <div className="mt-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -130,43 +137,12 @@ const ProfilePanel = (): JSX.Element => {
           <Heading level={4} size="medium" margin="mb-4" weight="font-bold">
             Profile
           </Heading>
-          {!edit && (
-            <div className="px-4 py-1 border-solid border-2 border-grey-100 shadow-sm hover:shadow-md rounded-md">
-              <Anchor
-                icon={getIcon("edit")}
-                size="xsmall"
-                gap="ml-1"
-                reverse={true}
-                label="Edit"
-                onClick={() => setEdit(true)}
-              />
-            </div>
-          )}
+          {!edit && <EditButton onClick={handleEdit} />}
           {edit && (
-            <div className="flex">
-              <Button
-                rounded="rounded-md"
-                shadow="shadow-sm"
-                hover="shadow-md"
-                className="px-4 border-solid border-2 border-gray-100 mr-2"
-                onClick={() => {
-                  setEdit(false);
-                  setShowChangePasswordForm(false);
-                }}
-              >
-                Cancel
-              </Button>
-              <div className="px-4 py-1 shadow-sm bg-indigo-600 text-white hover:bg-indigo-700 rounded-md">
-                <Anchor
-                  icon={getIcon("save")}
-                  size="xsmall"
-                  gap="ml-1"
-                  reverse={true}
-                  label="Save"
-                  onClick={handleSubmit(onSubmit)}
-                />
-              </div>
-            </div>
+            <SaveCancelButtons
+              handleCancel={handleCancelOnClick}
+              handleSave={handleSubmit(onSubmit)}
+            />
           )}
         </div>
 
