@@ -7,14 +7,13 @@ import { selectUser } from "../../../lib/features/User";
 
 const Profile = (): JSX.Element => {
   const { session } = useSelector(selectUser);
-
   const router = useRouter();
 
   useEffect(() => {
     if (!session) {
       router.push("/signin");
     }
-  }, [session]);
+  }, [router, session]);
 
   const SideBar = (): JSX.Element => <div></div>;
 

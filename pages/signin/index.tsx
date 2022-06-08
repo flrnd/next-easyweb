@@ -17,24 +17,27 @@ const SignIn = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 
-  const onSubmit = useCallback(async (data: IFormData) => {
-    const options: SignInOptions = {
-      email: data.username,
-      password: data.password,
-    };
+  const onSubmit = useCallback(
+    async (data: IFormData) => {
+      const options: SignInOptions = {
+        email: data.username,
+        password: data.password,
+      };
 
-    const resultAction = await dispatch(signInUser(options));
+      const resultAction = await dispatch(signInUser(options));
 
-    if (signInUser.fulfilled.match(resultAction)) {
-      dispatch(fetchUserProfile(resultAction.payload.user.id));
-    } else {
-      setMessage({ type: "error", content: resultAction.payload.message });
-    }
-  }, []);
+      if (signInUser.fulfilled.match(resultAction)) {
+        dispatch(fetchUserProfile(resultAction.payload.user.id));
+      } else {
+        setMessage({ type: "error", content: resultAction.payload.message });
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     user && router.replace("/dashboard/profile");
-  }, [user]);
+  }, [router, user]);
 
   if (!user) {
     return (

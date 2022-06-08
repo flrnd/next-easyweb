@@ -19,34 +19,37 @@ const SignUp = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 
-  const onSubmit = useCallback(async (data: IFormData) => {
-    const passwordStrength = validatePasswordStrength(data.password);
+  const onSubmit = useCallback(
+    async (data: IFormData) => {
+      const passwordStrength = validatePasswordStrength(data.password);
 
-    if (passwordStrength.validation) {
-      const options: SignUpOptions = {
-        email: data.username,
-        password: data.password,
-      };
+      if (passwordStrength.validation) {
+        const options: SignUpOptions = {
+          email: data.username,
+          password: data.password,
+        };
 
-      const resultAction = await dispatch(signUpUser(options));
-      if (signUpUser.fulfilled.match(resultAction)) {
-        setNewUser(resultAction.payload.user);
+        const resultAction = await dispatch(signUpUser(options));
+        if (signUpUser.fulfilled.match(resultAction)) {
+          setNewUser(resultAction.payload.user);
+        }
+      } else {
+        setMessage({
+          type: "error",
+          content: `Password error: ${passwordStrength.errors.join(", ")}`,
+        });
       }
-    } else {
-      setMessage({
-        type: "error",
-        content: `Password error: ${passwordStrength.errors.join(", ")}`,
-      });
-    }
-  }, []);
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     newUser && router.replace("/welcome");
-  }, [newUser]);
+  }, [newUser, router]);
 
   useEffect(() => {
     user && router.replace("/dashboard/profile");
-  }, [user]);
+  }, [router, user]);
 
   if (!user) {
     return (
