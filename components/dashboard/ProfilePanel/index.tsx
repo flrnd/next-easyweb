@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabase/supabase-client";
 import {
@@ -34,6 +34,38 @@ const ProfilePanel = (): JSX.Element => {
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
   const dispatch = useAppDispatch();
 
+  const onSubmit = useCallback(
+    (data: IProfileData) => {
+      data.firstName && setFirstName(data.firstName);
+      data.lastName && setLastName(data.lastName);
+      data.billingAddress && setBillingAddress(data.billingAddress);
+      data.avatar && setAvatarUrl(data.avatar);
+
+      const updates: IProfileDetails = {
+        id: user.id,
+        first_name: firstName,
+        last_name: lastName,
+        billing_address: billingAddress,
+        avatar_url: avatarUrl,
+      };
+
+      dispatch(updateUserProfile(updates));
+
+      notification({ type: "success", content: "Profile updated." });
+      setEdit(false);
+      setShowChangePasswordForm(false);
+    },
+    [
+      user.id,
+      firstName,
+      lastName,
+      billingAddress,
+      avatarUrl,
+      dispatch,
+      notification,
+    ]
+  );
+
   useEffect(() => {
     if (!session) {
       router.replace("/signin");
@@ -49,7 +81,7 @@ const ProfilePanel = (): JSX.Element => {
       setBillingAddress(profileDetails.billing_address);
       setAvatarUrl(profileDetails.avatar_url);
     }
-  }, [profileDetails]);
+  }, [profileDetails, notification]);
 
   const {
     register,
@@ -57,55 +89,37 @@ const ProfilePanel = (): JSX.Element => {
     formState: { errors },
   } = useForm<IProfileData>();
 
-  const onSubmit = (data: IProfileData) => {
-    data.firstName && setFirstName(data.firstName);
-    data.lastName && setLastName(data.lastName);
-    data.billingAddress && setBillingAddress(data.billingAddress);
-    data.avatar && setAvatarUrl(data.avatar);
+  const onSubmitChangePassword = useCallback(
+    async (formData: IChangePasswordFormData) => {
+      try {
+        const passwordStrength = validatePasswordStrength(formData.newPassword);
 
-    const updates: IProfileDetails = {
-      id: user.id,
-      first_name: firstName,
-      last_name: lastName,
-      billing_address: billingAddress,
-      avatar_url: avatarUrl,
-    };
-
-    dispatch(updateUserProfile(updates));
-
-    notification({ type: "success", content: "Profile updated." });
-    setEdit(false);
-    setShowChangePasswordForm(false);
-  };
-
-  const onSubmitChangePassword = async (formData: IChangePasswordFormData) => {
-    try {
-      const passwordStrength = validatePasswordStrength(formData.newPassword);
-
-      if (passwordStrength.validation) {
-        const { data, error } = await supabase.rpc("change_user_password", {
-          current_plain_password: formData.currentPassword,
-          new_plain_password: formData.newPassword,
-        });
-        if (error) throw error;
-        if (data) {
-          notification({
-            type: "success",
-            content: "Password changed successfully",
+        if (passwordStrength.validation) {
+          const { data, error } = await supabase.rpc("change_user_password", {
+            current_plain_password: formData.currentPassword,
+            new_plain_password: formData.newPassword,
           });
-          setShowChangePasswordForm(false);
+          if (error) throw error;
+          if (data) {
+            notification({
+              type: "success",
+              content: "Password changed successfully",
+            });
+            setShowChangePasswordForm(false);
+          }
+        } else {
+          notification({
+            type: "error",
+            content: passwordStrength.errors.join(", "),
+          });
         }
-      } else {
-        notification({
-          type: "error",
-          content: passwordStrength.errors.join(", "),
-        });
+      } catch (error) {
+        notification({ type: "error", content: error.message });
+        console.error("ChangePasswordForm - onSubmit(): ", error.message);
       }
-    } catch (error) {
-      notification({ type: "error", content: error.message });
-      // console.error("ChangePasswordForm - onSubmit(): ", error.message);
-    }
-  };
+    },
+    [notification]
+  );
   const handleChangePassword = () =>
     setShowChangePasswordForm(!showChangePasswordForm);
 

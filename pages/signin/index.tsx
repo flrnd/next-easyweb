@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { IFormData, IMessage, SignInOptions, UserState } from "../../lib/types";
+import { IFormData, IMessage, SignInOptions } from "../../lib/types";
 import { logotype } from "../../__mocks__/fakeData/data";
 import { fetchUserProfile, signInUser } from "../../lib/features/User";
 
@@ -17,26 +17,27 @@ const SignIn = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 
-  const onSubmit = async (data: IFormData) => {
-    const options: SignInOptions = {
-      email: data.username,
-      password: data.password,
-    };
+  const onSubmit = useCallback(
+    async (data: IFormData) => {
+      const options: SignInOptions = {
+        email: data.username,
+        password: data.password,
+      };
 
-    const { payload } = await dispatch(signInUser(options));
+      const resultAction = await dispatch(signInUser(options));
 
-    const { user } = payload as UserState;
-
-    if (!user) {
-      setMessage({ type: "error", content: payload as string });
-    } else {
-      dispatch(fetchUserProfile(user.id));
-    }
-  };
+      if (signInUser.fulfilled.match(resultAction)) {
+        dispatch(fetchUserProfile(resultAction.payload.user.id));
+      } else {
+        setMessage({ type: "error", content: resultAction.payload.message });
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     user && router.replace("/dashboard/profile");
-  }, [user]);
+  }, [router, user]);
 
   if (!user) {
     return (
