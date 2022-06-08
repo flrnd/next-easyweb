@@ -22,10 +22,9 @@ import SaveCancelButtons from "../SaveCancelButtons";
 import { Button } from "../../controls";
 
 const ProfilePanel = (): JSX.Element => {
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [billingAddress, setBillingAddress] = useState(null);
-  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [billingAddress, setBillingAddress] = useState("");
   const [edit, setEdit] = useState(false);
   const { user, session, profileDetails } = useAppSelector(
     (state) => state.user
@@ -37,17 +36,12 @@ const ProfilePanel = (): JSX.Element => {
 
   const onSubmit = useCallback(
     (data: IProfileData) => {
-      data.firstName && setFirstName(data.firstName);
-      data.lastName && setLastName(data.lastName);
-      data.billingAddress && setBillingAddress(data.billingAddress);
-      data.avatar && setAvatarUrl(data.avatar);
-
       const updates: IProfileDetails = {
         id: user.id,
-        first_name: firstName,
-        last_name: lastName,
-        billing_address: billingAddress,
-        avatar_url: avatarUrl,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        billing_address: data.billingAddress,
+        avatar_url: data.avatar,
       };
 
       dispatch(updateUserProfile(updates));
@@ -56,15 +50,7 @@ const ProfilePanel = (): JSX.Element => {
       setEdit(false);
       setShowChangePasswordForm(false);
     },
-    [
-      user.id,
-      firstName,
-      lastName,
-      billingAddress,
-      avatarUrl,
-      dispatch,
-      notification,
-    ]
+    [user.id, dispatch, notification]
   );
 
   useEffect(() => {
@@ -74,15 +60,14 @@ const ProfilePanel = (): JSX.Element => {
   }, [session]);
 
   useEffect(() => {
-    if (!profileDetails) {
-      notification({ type: "error", content: "Empty profile." });
-    } else {
-      setFirstName(profileDetails.first_name);
-      setLastName(profileDetails.last_name);
-      setBillingAddress(profileDetails.billing_address);
-      setAvatarUrl(profileDetails.avatar_url);
-    }
-  }, []);
+    setFirstName(profileDetails?.first_name);
+    setLastName(profileDetails?.last_name);
+    setBillingAddress(profileDetails?.billing_address);
+  }, [
+    profileDetails?.billing_address,
+    profileDetails?.first_name,
+    profileDetails?.last_name,
+  ]);
 
   const {
     register,
@@ -161,7 +146,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="first_name"
-              value={firstName || ""}
+              value={firstName}
               type="text"
               {...register("firstName", { required: false })}
               placeholder="Jane"
@@ -183,7 +168,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="last_name"
-              value={lastName || ""}
+              value={lastName}
               type="text"
               {...register("lastName", { required: false })}
               placeholder="Doe"
@@ -207,7 +192,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="billing_address"
-              value={billingAddress || ""}
+              value={billingAddress}
               type="text"
               {...register("billingAddress", { required: false })}
               placeholder="Sesame Street 5, corner square 44 street"
