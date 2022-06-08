@@ -139,7 +139,7 @@ export const userSlice = createSlice({
     builder.addCase(fetchUserProfile.fulfilled, (state, { payload }) => {
       state.profileDetails = payload.data;
     });
-    builder.addCase(fetchUserProfile.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchUserProfile.rejected, (state, { payload }) => {
       state.errorMessage = payload.error.message;
     });
     builder.addCase(updateUserProfile.fulfilled, (state, { payload }) => {
