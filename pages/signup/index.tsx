@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Card, Logo } from "../../components/elements";
 import LoginForm from "../../components/form/LoginForm";
 import { Container } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { IFormData, IMessage, SignUpOptions, UserState } from "../../lib/types";
+import { IFormData, IMessage, SignUpOptions } from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
 import { validatePasswordStrength } from "../../lib/util";
 import { logotype } from "../../__mocks__/fakeData/data";
@@ -19,7 +19,7 @@ const SignUp = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 
-  const onSubmit = async (data: IFormData) => {
+  const onSubmit = useCallback(async (data: IFormData) => {
     const passwordStrength = validatePasswordStrength(data.password);
 
     if (passwordStrength.validation) {
@@ -28,16 +28,17 @@ const SignUp = (): JSX.Element => {
         password: data.password,
       };
 
-      const { payload } = await dispatch(signUpUser(options));
-      const { user } = payload as UserState;
-      setNewUser(user);
+      const resultAction = await dispatch(signUpUser(options));
+      if (signUpUser.fulfilled.match(resultAction)) {
+        setNewUser(resultAction.payload.user);
+      }
     } else {
       setMessage({
         type: "error",
-        content: passwordStrength.errors.join(", "),
+        content: `Password error: ${passwordStrength.errors.join(", ")}`,
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     newUser && router.replace("/welcome");
