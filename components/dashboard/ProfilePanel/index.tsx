@@ -82,7 +82,7 @@ const ProfilePanel = (): JSX.Element => {
       setBillingAddress(profileDetails.billing_address);
       setAvatarUrl(profileDetails.avatar_url);
     }
-  }, [profileDetails, notification]);
+  }, []);
 
   const {
     register,
