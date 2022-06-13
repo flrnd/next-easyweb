@@ -38,9 +38,9 @@ const ProfilePanel = (): JSX.Element => {
     (data: IProfileData) => {
       const updates: IProfileDetails = {
         id: user.id,
-        first_name: data.firstName,
-        last_name: data.lastName,
-        billing_address: data.billingAddress,
+        first_name: data.firstName || firstName,
+        last_name: data.lastName || lastName,
+        billing_address: data.billingAddress || billingAddress,
         avatar_url: data.avatar,
       };
 
@@ -50,7 +50,7 @@ const ProfilePanel = (): JSX.Element => {
       setEdit(false);
       setShowChangePasswordForm(false);
     },
-    [user.id, dispatch, notification]
+    [user.id, firstName, lastName, billingAddress, dispatch, notification]
   );
 
   useEffect(() => {
@@ -118,6 +118,18 @@ const ProfilePanel = (): JSX.Element => {
   return (
     <div className="mt-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="notification">
+          {showNotification && notificationMessage.type === "success" && (
+            <span className="notification-green">
+              {notificationMessage.content}
+            </span>
+          )}
+          {showNotification && notificationMessage.type === "error" && (
+            <span className="notification-red">
+              {notificationMessage.content}
+            </span>
+          )}
+        </div>
         <div className="border-b-2 flex items-baseline justify-between">
           <Heading level={4} size="medium" margin="mb-4" weight="font-bold">
             Profile
@@ -236,16 +248,6 @@ const ProfilePanel = (): JSX.Element => {
                 </div>
               )}
             </div>
-          )}
-          {showNotification && notificationMessage.type === "success" && (
-            <span className="notification-green">
-              {notificationMessage.content}
-            </span>
-          )}
-          {showNotification && notificationMessage.type === "error" && (
-            <span className="notification-red">
-              {notificationMessage.content}
-            </span>
           )}
         </div>
       </div>
