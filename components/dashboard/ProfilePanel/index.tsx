@@ -38,9 +38,9 @@ const ProfilePanel = (): JSX.Element => {
     (data: IProfileData) => {
       const updates: IProfileDetails = {
         id: user.id,
-        first_name: data.firstName,
-        last_name: data.lastName,
-        billing_address: data.billingAddress,
+        first_name: data.firstName || firstName,
+        last_name: data.lastName || lastName,
+        billing_address: data.billingAddress || billingAddress,
         avatar_url: data.avatar,
       };
 
@@ -50,7 +50,7 @@ const ProfilePanel = (): JSX.Element => {
       setEdit(false);
       setShowChangePasswordForm(false);
     },
-    [user.id, dispatch, notification]
+    [user.id, firstName, lastName, billingAddress, dispatch, notification]
   );
 
   useEffect(() => {
