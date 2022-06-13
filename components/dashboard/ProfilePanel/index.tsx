@@ -119,6 +119,18 @@ const ProfilePanel = (): JSX.Element => {
     <div className="mt-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="border-b-2 flex items-baseline justify-between">
+          <div className="notification">
+            {showNotification && notificationMessage.type === "success" && (
+              <span className="notification-green">
+                {notificationMessage.content}
+              </span>
+            )}
+            {showNotification && notificationMessage.type === "error" && (
+              <span className="notification-red">
+                {notificationMessage.content}
+              </span>
+            )}
+          </div>
           <Heading level={4} size="medium" margin="mb-4" weight="font-bold">
             Profile
           </Heading>
@@ -236,16 +248,6 @@ const ProfilePanel = (): JSX.Element => {
                 </div>
               )}
             </div>
-          )}
-          {showNotification && notificationMessage.type === "success" && (
-            <span className="notification-green">
-              {notificationMessage.content}
-            </span>
-          )}
-          {showNotification && notificationMessage.type === "error" && (
-            <span className="notification-red">
-              {notificationMessage.content}
-            </span>
           )}
         </div>
       </div>
