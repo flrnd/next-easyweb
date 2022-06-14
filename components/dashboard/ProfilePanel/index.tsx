@@ -158,7 +158,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="first_name"
-              value={firstName}
+              value={firstName || "Jane"}
               type="text"
               {...register("firstName", { required: false })}
               placeholder="Jane"
@@ -180,7 +180,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="last_name"
-              value={lastName}
+              value={lastName || "Doe"}
               type="text"
               {...register("lastName", { required: false })}
               placeholder="Doe"
@@ -204,7 +204,9 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="billing_address"
-              value={billingAddress}
+              value={
+                billingAddress || "Sesame Street 5, corner square 44 street"
+              }
               type="text"
               {...register("billingAddress", { required: false })}
               placeholder="Sesame Street 5, corner square 44 street"
