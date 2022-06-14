@@ -29,7 +29,7 @@ const DashboardNavigationBar = (): JSX.Element => {
       name: "Settings",
       href: "/dashboard/settings",
     },
-    { name: "Website", href: "/" },
+    { name: "Public profile", href: "/profiles" },
   ];
 
   return (
