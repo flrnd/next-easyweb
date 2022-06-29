@@ -31,7 +31,7 @@ const SettingsPanel = (): JSX.Element => {
             />
           )}
         </div>
-        <div className="my-4"></div>
+        <div className="dashboard-panel-form-section"></div>
       </div>
     </div>
   );
