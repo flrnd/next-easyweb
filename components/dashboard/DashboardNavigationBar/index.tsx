@@ -29,7 +29,7 @@ const DashboardNavigationBar = (): JSX.Element => {
       name: "Settings",
       href: "/dashboard/settings",
     },
-    { name: "Invoices", href: "/invoices" },
+    { name: "Invoices", href: "/dashboard/invoices" },
   ];
 
   return (
