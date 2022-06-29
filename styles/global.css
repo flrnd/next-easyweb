@@ -33,11 +33,11 @@
 }
 
 .dashboard-panel {
-  @apply max-w-7xl mx-auto px-2 sm:px-6 lg:px-8
+  @apply max-w-7xl mx-auto px-2 sm:px-6 lg:px-8;
 }
 
 .dashboard-panel-main-section {
-  @apply border-b-2 flex items-baseline justify-between
+  @apply border-b-2 flex items-baseline justify-between;
 }
 
 .footer {
