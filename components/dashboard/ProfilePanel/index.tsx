@@ -24,7 +24,7 @@ import { Button } from "../../controls";
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [billingAddress, setBillingAddress] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [edit, setEdit] = useState(false);
   const { user, session, profileDetails } = useAppSelector(
     (state) => state.user
@@ -40,7 +40,7 @@ const ProfilePanel = (): JSX.Element => {
         id: user.id,
         first_name: data.firstName || firstName,
         last_name: data.lastName || lastName,
-        billing_address: data.billingAddress || billingAddress,
+        company_name: data.companyName || companyName,
         avatar_url: data.avatar,
       };
 
@@ -50,7 +50,7 @@ const ProfilePanel = (): JSX.Element => {
       setEdit(false);
       setShowChangePasswordForm(false);
     },
-    [user.id, firstName, lastName, billingAddress, dispatch, notification]
+    [user.id, firstName, lastName, companyName, dispatch, notification]
   );
 
   useEffect(() => {
@@ -62,9 +62,9 @@ const ProfilePanel = (): JSX.Element => {
   useEffect(() => {
     setFirstName(profileDetails?.first_name);
     setLastName(profileDetails?.last_name);
-    setBillingAddress(profileDetails?.billing_address);
+    setCompanyName(profileDetails?.company_name);
   }, [
-    profileDetails?.billing_address,
+    profileDetails?.company_name,
     profileDetails?.first_name,
     profileDetails?.last_name,
   ]);
@@ -158,7 +158,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="first_name"
-              value={firstName}
+              value={firstName || "Jane"}
               type="text"
               {...register("firstName", { required: false })}
               placeholder="Jane"
@@ -180,7 +180,7 @@ const ProfilePanel = (): JSX.Element => {
                 !edit && "border border-transparent"
               )}
               id="last_name"
-              value={lastName}
+              value={lastName || "Doe"}
               type="text"
               {...register("lastName", { required: false })}
               placeholder="Doe"
@@ -190,8 +190,8 @@ const ProfilePanel = (): JSX.Element => {
           </div>
           <div className="form-entry">
             <label className="form-label">
-              Billing Address
-              {errors.billingAddress && (
+              Company name
+              {errors.companyName && (
                 <span className="notification-red">
                   * Missing Billing Address
                 </span>
@@ -203,12 +203,12 @@ const ProfilePanel = (): JSX.Element => {
                 edit && "border border-gray-200 shadow",
                 !edit && "border border-transparent"
               )}
-              id="billing_address"
-              value={billingAddress}
+              id="company_name"
+              value={companyName || "ACME Industries LTD"}
               type="text"
-              {...register("billingAddress", { required: false })}
-              placeholder="Sesame Street 5, corner square 44 street"
-              onChange={(e) => setBillingAddress(e.target.value)}
+              {...register("companyName", { required: false })}
+              placeholder="ACME Industries LTD"
+              onChange={(e) => setCompanyName(e.target.value)}
               disabled={!edit}
             />
           </div>

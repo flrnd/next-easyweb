@@ -62,7 +62,7 @@ export const fetchUserProfile = createAsyncThunk<
   try {
     const results = await supabase
       .from("profiles")
-      .select("first_name, last_name, billing_address, avatar_url")
+      .select("first_name, last_name, avatar_url, company_name")
       .eq("id", userId)
       .single();
 
@@ -92,7 +92,7 @@ export const updateUserProfile = createAsyncThunk<
         id: user.id,
         first_name: formData.first_name,
         last_name: formData.last_name,
-        billing_address: formData.billing_address,
+        company_name: formData.company_name,
         avatar_url: formData.avatar_url,
         updated_at: new Date(),
       };

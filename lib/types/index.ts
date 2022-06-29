@@ -129,7 +129,7 @@ export interface INotificationMessage {
 export interface IProfileData {
   firstName: string;
   lastName: string;
-  billingAddress: string;
+  companyName: string;
   avatar?: string;
 }
 
@@ -138,7 +138,7 @@ export interface IProfileDetails {
   id: string /* primary key */;
   first_name: string;
   last_name: string;
-  billing_address: string;
+  company_name: string;
   avatar_url?: string;
 }
 

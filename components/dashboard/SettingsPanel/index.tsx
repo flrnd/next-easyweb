@@ -8,7 +8,7 @@ const SettingsPanel = (): JSX.Element => {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="border-b-2">
           <Heading level={4} size="medium" weight="font-bold">
-            {`${user && user.email} settings`}
+            {`${user && user.email} Invoice details`}
           </Heading>
         </div>
         <div className="my-4"></div>
