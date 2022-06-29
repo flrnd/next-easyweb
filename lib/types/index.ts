@@ -1,6 +1,15 @@
 import { Session, User, Provider, PostgrestError } from "@supabase/supabase-js";
 import { store } from "../store";
 
+// Enums
+
+export enum EnumAlert {
+  Success = "success",
+  Danger = "danger",
+  Warning = "warning",
+  Informative = "informative",
+}
+
 // Types.
 
 export interface UserState {
