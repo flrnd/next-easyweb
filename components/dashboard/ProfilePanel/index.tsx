@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../../lib/util/supabase/supabase-client";
 import {
+  EnumAlert,
   IChangePasswordFormData,
   IProfileData,
   IProfileDetails,
@@ -20,6 +21,7 @@ import { updateUserProfile } from "../../../lib/features/User";
 import EditButton from "../EditButton";
 import SaveCancelButtons from "../SaveCancelButtons";
 import { Button } from "../../controls";
+import AlertNotification from "../AlertNotification";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState("");
@@ -118,18 +120,6 @@ const ProfilePanel = (): JSX.Element => {
   return (
     <div className="mt-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="notification">
-          {showNotification && notificationMessage.type === "success" && (
-            <span className="notification-green">
-              {notificationMessage.content}
-            </span>
-          )}
-          {showNotification && notificationMessage.type === "error" && (
-            <span className="notification-red">
-              {notificationMessage.content}
-            </span>
-          )}
-        </div>
         <div className="border-b-2 flex items-baseline justify-between">
           <Heading level={4} size="medium" margin="mb-4" weight="font-bold">
             Profile
@@ -189,14 +179,7 @@ const ProfilePanel = (): JSX.Element => {
             />
           </div>
           <div className="form-entry">
-            <label className="form-label">
-              Company name
-              {errors.companyName && (
-                <span className="notification-red">
-                  * Missing Billing Address
-                </span>
-              )}
-            </label>
+            <label className="form-label">Company name</label>
             <input
               className={classNames(
                 "form-input",
@@ -248,6 +231,20 @@ const ProfilePanel = (): JSX.Element => {
                 </div>
               )}
             </div>
+          )}
+        </div>
+        <div className="notification">
+          {showNotification && notificationMessage.type === "success" && (
+            <AlertNotification
+              text={notificationMessage.content}
+              alertType={EnumAlert.Success}
+            />
+          )}
+          {showNotification && notificationMessage.type === "error" && (
+            <AlertNotification
+              text={notificationMessage.content}
+              alertType={EnumAlert.Danger}
+            />
           )}
         </div>
       </div>
