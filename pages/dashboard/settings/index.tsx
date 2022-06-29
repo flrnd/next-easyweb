@@ -1,4 +1,4 @@
-import SettingsPanel from "../../../components/dashboard/SettingsPanel";
+import InvoiceSettingsPanel from "../../../components/dashboard/InvoiceSettingsPanel";
 import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
 
 const SideBar = (): JSX.Element => <div></div>;
@@ -9,7 +9,7 @@ const Settings = (): JSX.Element => {
       <DashboardNavigationBar />
       <main>
         <SideBar />
-        <SettingsPanel />
+        <InvoiceSettingsPanel />
       </main>
     </div>
   );
