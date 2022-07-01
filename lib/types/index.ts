@@ -18,7 +18,7 @@ export interface UserState {
   errorMessage: string;
   profileDetails: IProfileDetails;
   userLoaded: boolean;
-  siteConfig: ISiteConfig;
+  billingDetails: IBillingDetails;
 }
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -151,8 +151,15 @@ export interface IProfileDetails {
   avatar_url?: string;
 }
 
-export interface ISiteConfig {
+export interface IBillingDetails {
   id: string /* primary key */;
-  user_id: string;
-  data: JSON;
+  nin_id: string /* National identification number id */;
+  billing_address: string;
+  postal_code: number;
+  city: string;
+  location: string;
+  phone: string;
+  is_client: boolean /* default false, intended for self data */;
+  profile_id: string /* this is the user profile id foreign key */;
+  email: string /* user registered email foreign key */;
 }
