@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
 import {
+  BillingInsertOptions,
+  IBillingDetails,
   IProfileDetails,
   RootState,
   SignInOptions,
@@ -14,7 +16,7 @@ const initialState: UserState = {
   user: null,
   errorMessage: null,
   profileDetails: null,
-  siteConfig: null,
+  billingDetails: null,
   userLoaded: false,
 };
 
@@ -113,6 +115,73 @@ export const updateUserProfile = createAsyncThunk<
   }
 );
 
+export const insertBillingDetails = createAsyncThunk<
+  { billingFormData: IBillingDetails; isClient: boolean },
+  BillingInsertOptions,
+  { rejectValue: PostgrestError }
+>(
+  "user/insertBillingDetails",
+  async (
+    { billingFormData, isClient }: BillingInsertOptions,
+    { rejectWithValue }
+  ) => {
+    try {
+      const user = supabase.auth.user();
+      const insert = {
+        nin_id: billingFormData.nin_id,
+        billing_address: billingFormData.billing_address,
+        postal_code: billingFormData.postal_code,
+        city: billingFormData.city,
+        location: billingFormData.location,
+        phone: billingFormData.phone,
+        is_client: isClient,
+        profile_id: user.id,
+        email: user.email,
+      };
+
+      const { data, error } = await supabase
+        .from("billing_details")
+        .insert([insert]);
+
+      if (error) {
+        return rejectWithValue(error);
+      } else {
+        return data[0];
+      }
+    } catch (error) {
+      console.error("insertBillingDetails: ", error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUserBillingDetails = createAsyncThunk<
+  { billingFormData: IBillingDetails },
+  IBillingDetails,
+  { rejectValue: PostgrestError }
+>(
+  "users/updateBillingDetails",
+  async (billingFormData: IBillingDetails, { rejectWithValue }) => {
+    try {
+      const update = {
+        nin_id: billingFormData.nin_id,
+      };
+
+      const { error } = await supabase
+        .from("billing_details")
+        .upsert(update, { returning: "minimal" });
+
+      if (error) {
+        return rejectWithValue(error);
+      } else {
+        return { billingFormData };
+      }
+    } catch (error) {
+      console.error("updateBillingDetails: ", error);
+      return rejectWithValue(error);
+    }
+  }
+);
 export const userSlice = createSlice({
   name: "user",
   initialState,

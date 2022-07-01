@@ -39,6 +39,11 @@ export type SignUpOptions = {
   password: string;
 };
 
+export type BillingInsertOptions = {
+  billingFormData: IBillingDetails;
+  isClient: boolean;
+};
+
 // Interfaces.
 
 export interface Item {
