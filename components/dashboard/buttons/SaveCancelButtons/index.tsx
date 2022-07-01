@@ -1,5 +1,5 @@
-import { Anchor, Button } from "../../controls";
-import { getIcon } from "../../icons";
+import { Anchor, Button } from "../../../controls";
+import { getIcon } from "../../../icons";
 
 interface IProps {
   handleCancel: () => void;

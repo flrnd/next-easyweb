@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import ProfilePanel from "../../../components/dashboard/ProfilePanel";
+import ProfilePanel from "../../../components/dashboard/panel/ProfilePanel";
 import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../lib/features/User";

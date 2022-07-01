@@ -1,5 +1,5 @@
 import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
-import InvoicesPanel from "../../../components/dashboard/InvoicesPanel";
+import InvoicesPanel from "../../../components/dashboard/panel/InvoicesPanel";
 
 const SideBar = (): JSX.Element => <div></div>;
 

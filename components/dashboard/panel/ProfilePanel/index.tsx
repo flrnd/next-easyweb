@@ -1,27 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { supabase } from "../../../lib/util/supabase/supabase-client";
+import { supabase } from "../../../../lib/util/supabase/supabase-client";
 import {
   EnumAlert,
   IChangePasswordFormData,
   IProfileData,
   IProfileDetails,
-} from "../../../lib/types";
-import { Heading } from "../../typography";
-import ChangePasswordForm from "../../form/ChangePasswordForm";
+} from "../../../../lib/types";
+import { Heading } from "../../../typography";
+import ChangePasswordForm from "../../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
-import { validatePasswordStrength } from "../../../lib/util";
+import { validatePasswordStrength } from "../../../../lib/util";
 import {
   useAppDispatch,
   useAppSelector,
   useNotification,
-} from "../../../lib/hooks";
-import { updateUserProfile } from "../../../lib/features/User";
-import EditButton from "../EditButton";
-import SaveCancelButtons from "../SaveCancelButtons";
-import { Button } from "../../controls";
-import AlertNotification from "../AlertNotification";
+} from "../../../../lib/hooks";
+import { updateUserProfile } from "../../../../lib/features/User";
+import EditButton from "../../buttons/EditButton";
+import SaveCancelButtons from "../../buttons/SaveCancelButtons";
+import { Button } from "../../../controls";
+import AlertNotification from "../../AlertNotification";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState("");

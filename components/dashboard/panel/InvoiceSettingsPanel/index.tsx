@@ -1,9 +1,9 @@
 import router from "next/router";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../lib/hooks";
-import { Heading } from "../../typography";
-import EditButton from "../EditButton";
-import SaveCancelButtons from "../SaveCancelButtons";
+import { useAppSelector } from "../../../../lib/hooks";
+import { Heading } from "../../../typography";
+import EditButton from "../../buttons/EditButton";
+import SaveCancelButtons from "../../buttons/SaveCancelButtons";
 
 const InvoiceSettingsPanel = (): JSX.Element => {
   const { session } = useAppSelector((state) => state.user);

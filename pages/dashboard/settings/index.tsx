@@ -1,4 +1,4 @@
-import InvoiceSettingsPanel from "../../../components/dashboard/InvoiceSettingsPanel";
+import InvoiceSettingsPanel from "../../../components/dashboard/panel/InvoiceSettingsPanel";
 import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
 
 const SideBar = (): JSX.Element => <div></div>;

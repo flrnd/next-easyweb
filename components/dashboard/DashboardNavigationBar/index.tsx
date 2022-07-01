@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 import logoIcon from "../../../public/assets/nextsites_icon.svg";
 import nextsitesLogo from "../../../public/assets/nextsites_logo.svg";
-import ProfileButton from "../ProfileButton";
+import ProfileButton from "../buttons/ProfileButton";
 
 const DashboardNavigationBar = (): JSX.Element => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);

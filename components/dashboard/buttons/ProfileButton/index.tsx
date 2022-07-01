@@ -1,10 +1,10 @@
-import { getIcon } from "../../icons";
-import { supabase } from "../../../lib/util/supabase/supabase-client";
+import { getIcon } from "../../../icons";
+import { supabase } from "../../../../lib/util/supabase/supabase-client";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../../lib/features/User";
+import { selectUser } from "../../../../lib/features/User";
 
 const ProfileButton = (): JSX.Element => {
   const [userMenuIsOpen, setUserMenuIsOpen] = useState(false);

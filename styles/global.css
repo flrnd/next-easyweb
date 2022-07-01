@@ -40,7 +40,7 @@
   @apply border-b-2 flex items-baseline justify-between;
 }
 
-.dashboard-panel-form-section {
+.dashboard-panel-section {
   @apply max-w-lg mt-8
 }
 

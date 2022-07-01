@@ -1,11 +1,6 @@
 import classNames from "classnames";
-import { useAppSelector } from "../../../lib/hooks";
 
-const SettingsForm = ({ isDisabled, onChange, onSubmit }): JSX.Element => {
-  const { user, session, profileDetails } = useAppSelector(
-    (state) => state.user
-  );
-
+const SettingsForm = ({ isDisabled }): JSX.Element => {
   return (
     <>
       <div className="form-entry">
@@ -17,10 +12,9 @@ const SettingsForm = ({ isDisabled, onChange, onSubmit }): JSX.Element => {
             !isDisabled && "border border-transparent"
           )}
           id=""
-          value={}
+          value=""
           type="text"
           placeholder=""
-          onChange={}
           disabled={isDisabled}
         />
       </div>

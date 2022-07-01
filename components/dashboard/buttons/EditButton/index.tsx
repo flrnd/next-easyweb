@@ -1,5 +1,5 @@
-import { Anchor } from "../../controls";
-import { getIcon } from "../../icons";
+import { Anchor } from "../../../controls";
+import { getIcon } from "../../../icons";
 
 interface IProps {
   onClick: () => void;
