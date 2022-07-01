@@ -41,7 +41,7 @@
 }
 
 .dashboard-panel-section {
-  @apply max-w-lg mt-8
+  @apply max-w-lg mt-8;
 }
 
 .footer {
