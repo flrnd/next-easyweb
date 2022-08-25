@@ -4,7 +4,7 @@ interface IProps {
   profileDetails: IProfileDetails;
 }
 
-const ProfileView = ({ profileDetails }: IProps) => {
+const ProfileView = ({ profileDetails }: IProps): JSX.Element => {
   return (
     <>
       <div className="form-entry">
