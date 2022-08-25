@@ -21,7 +21,7 @@ const InvoiceSettingsPanel = (): JSX.Element => {
     if (!session) {
       router.replace("/signin");
     }
-  }, [session]);
+  });
 
   return (
     <div className="mt-10">

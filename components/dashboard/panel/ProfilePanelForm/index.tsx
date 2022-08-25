@@ -58,7 +58,7 @@ const ProfilePanel = (): JSX.Element => {
     if (!session) {
       router.replace("/signin");
     }
-  }, [session]);
+  });
 
   useEffect(() => {
     setFirstName(profileDetails?.first_name);
