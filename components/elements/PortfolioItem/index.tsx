@@ -16,6 +16,7 @@ const PortfolioItem = ({ title, tags, cover, slug }: IProps): JSX.Element => {
           width={650}
           objectFit="cover"
           src={cover}
+          alt=""
         />
 
         <div className="overlay">

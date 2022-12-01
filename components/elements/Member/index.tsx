@@ -52,6 +52,7 @@ const Member = ({
           layout="fill"
           objectFit="cover"
           className={classNames(isRounded ? "rounded-full" : "rounded-xl")}
+          alt=""
         />
       </div>
 
