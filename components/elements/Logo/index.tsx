@@ -5,8 +5,8 @@ interface IProps {
   boxWidth?: string;
   margin?: string;
   padding?: string;
-  width: number | string;
-  height: number | string;
+  width: number;
+  height: number;
   responsive?: boolean;
 }
 

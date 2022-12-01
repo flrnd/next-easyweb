@@ -17,7 +17,12 @@ const ContactUs = (): JSX.Element => {
             />
           </Container>
           <div className="w-full mb-4 md:mb-0">
-            <Image src={clinicImage} layout="responsive" objectFit="contain" />
+            <Image
+              src={clinicImage}
+              layout="responsive"
+              objectFit="contain"
+              alt=""
+            />
           </div>
         </main>
       </DefaultLayout>
