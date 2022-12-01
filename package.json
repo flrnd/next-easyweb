@@ -18,7 +18,7 @@
     ]
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.13",
+    "@heroicons/react": "v1",
     "@reduxjs/toolkit": "^1.9.1",
     "@supabase/supabase-js": "^1.28.2",
     "@testing-library/jest-dom": "latest",
