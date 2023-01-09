@@ -31,7 +31,7 @@ const Card = ({
   children,
 }: IProps): JSX.Element => {
   return (
-    <>
+    <div className="card">
       {icon && (
         <div
           className={classNames(
@@ -58,7 +58,7 @@ const Card = ({
       >
         {children}
       </div>
-    </>
+    </div>
   );
 };
 
