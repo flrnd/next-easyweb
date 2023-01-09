@@ -21,11 +21,9 @@ describe("Anchor", () => {
 
   it("renders a button when pass onClick", () => {
     const mockOnClick = jest.fn();
-    render(
-      <Anchor a11yTitle="a button" label="a button" onClick={mockOnClick} />
-    );
+    render(<Anchor label="a button" onClick={mockOnClick} />);
 
-    const button = screen.getByRole("button");
+    const button = screen.getByRole("button", { name: /a button/ });
 
     expect(button).toBeInTheDocument();
     button.click();
