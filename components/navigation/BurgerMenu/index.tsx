@@ -23,7 +23,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
   };
 
   return (
-    <>
+    <div className="menu">
       <div className="burger-menu ml-auto">
         <Button ariaLabel="menu-button" onClick={handleClick}>
           <svg
@@ -75,7 +75,7 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
           </a>
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

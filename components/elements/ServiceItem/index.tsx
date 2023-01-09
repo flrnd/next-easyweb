@@ -23,26 +23,24 @@ const ServiceItem = ({
   linkText = "Learn more",
 }: IProps): JSX.Element => {
   return (
-    <>
-      <div aria-label={ariaLabel} id={stringToId(name)} className="service">
-        {icon && <div className="icon icon-medium">{icon}</div>}
-        <Heading level={5} size="small" weight="font-bold">
-          {name}
-        </Heading>
-        <Paragraph margin="mb-6 md:mb-8" size="small">
-          {text}
-        </Paragraph>
-        <Anchor
-          href={href}
-          margin="mt-5"
-          weight="font-semibold"
-          label={linkText}
-          gap="px-2"
-          reverse={true}
-          icon={<ArrowRightIcon />}
-        />
-      </div>
-    </>
+    <div aria-label={ariaLabel} id={stringToId(name)} className="service">
+      {icon && <div className="icon icon-medium">{icon}</div>}
+      <Heading level={5} size="small" weight="font-bold">
+        {name}
+      </Heading>
+      <Paragraph margin="mb-6 md:mb-8" size="small">
+        {text}
+      </Paragraph>
+      <Anchor
+        href={href}
+        margin="mt-5"
+        weight="font-semibold"
+        label={linkText}
+        gap="px-2"
+        reverse={true}
+        icon={<ArrowRightIcon />}
+      />
+    </div>
   );
 };
 

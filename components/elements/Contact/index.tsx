@@ -12,7 +12,7 @@ interface IProps {
 
 const Contact = ({ title, text, size, list }: IProps): JSX.Element => {
   return (
-    <>
+    <div className="contact">
       <div className="border-b-2 mb-2">
         <Heading level={2} size={size}>
           {title}
@@ -29,7 +29,7 @@ const Contact = ({ title, text, size, list }: IProps): JSX.Element => {
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 
