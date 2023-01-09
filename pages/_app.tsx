@@ -5,11 +5,9 @@ import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-    </>
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
   );
 }
 
