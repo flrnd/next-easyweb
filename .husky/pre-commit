@@ -6,8 +6,8 @@ protected_branch="main"
 policy="[POLICY]: commit is blocked in this branch. Never commit code directly to $protected_branch!"
 
 if [ "$branch" = "$protected_branch" ]; then
-  printf "%s\n" "$policy"
-  exit 1
+    printf "%s\n" "$policy"
+    exit 1
 else
-  npx lint-staged
+    pnpx lint-staged
 fi
