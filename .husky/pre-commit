@@ -9,5 +9,5 @@ if [ "$branch" = "$protected_branch" ]; then
     printf "%s\n" "$policy"
     exit 1
 else
-    pnpx lint-staged
+    pnpm dlx lint-staged
 fi
