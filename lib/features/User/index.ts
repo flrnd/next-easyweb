@@ -1,6 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
-import { SignInOptions, UserState } from "lib/types";
+import {
+  IProfileDetails,
+  RootState,
+  SignInOptions,
+  SignUpOptions,
+  UserState,
+} from "lib/types";
+import { supabase } from "lib/util/supabase/supabase-client";
 
 const initialState: UserState = {
   session: null,
