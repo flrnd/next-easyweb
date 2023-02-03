@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
+import { RootState } from "lib/store";
 import {
   IProfileDetails,
-  RootState,
   SignInOptions,
   SignUpOptions,
   UserState,
