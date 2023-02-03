@@ -1,5 +1,4 @@
 import { Session, User, Provider, PostgrestError } from "@supabase/supabase-js";
-import { store } from "../store";
 
 // Types.
 
@@ -11,9 +10,6 @@ export interface UserState {
   userLoaded: boolean;
   siteConfig: ISiteConfig;
 }
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
 
 export type ProfileDetailsOptions = {
   userId: string;
