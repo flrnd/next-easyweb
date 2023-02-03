@@ -1,9 +1,11 @@
+import { setupStore } from "lib/store";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
-import { store } from "../lib/store";
-import "../styles/global.css";
+import "styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const store = setupStore();
+
   return (
     <Provider store={store}>
       <Component {...pageProps} />
