@@ -1,6 +1,8 @@
+import Container from "components/layout/Container";
+import Grid from "components/layout/Grid";
 import { IServiceListItem } from "../../../lib/types";
 import { calculateGridColumns } from "../../../lib/util";
-import { Container, Grid } from "../../layout";
+
 import ServiceItem from "../ServiceItem";
 
 interface IProps {

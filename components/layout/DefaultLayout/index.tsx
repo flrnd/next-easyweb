@@ -1,9 +1,10 @@
 import { DefaultSeo } from "next-seo";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Footer, Header } from "..";
 
 import SEO from "../../../next-seo.config";
+import Header from "../Header";
+import Footer from "../Footer";
 
 interface Props {
   children: ReactNode;

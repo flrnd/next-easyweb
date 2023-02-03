@@ -1,16 +1,17 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
-import { Card, Logo } from "../../components/elements";
-import LoginForm from "../../components/form/LoginForm";
-import { Container } from "../../components/layout";
-import { Heading } from "../../components/typography";
-import { IFormData, IMessage, SignUpOptions } from "../../lib/types";
 import { User } from "@supabase/gotrue-js";
-import { validatePasswordStrength } from "../../lib/util";
-import { logotype } from "../../__mocks__/fakeData/data";
-import { signUpUser } from "../../lib/features/User";
-import { useAppDispatch, useAppSelector } from "../../lib/hooks";
+import Card from "components/elements/Card";
+import Logo from "components/elements/Logo";
+import LoginForm from "components/form/LoginForm";
+import Container from "components/layout/Container";
+import Heading from "components/typography/Heading";
+import { signUpUser } from "lib/features/User";
+import { useAppDispatch, useAppSelector } from "lib/hooks";
+import { IFormData, IMessage, SignUpOptions } from "lib/types";
+import { validatePasswordStrength } from "lib/util";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import { logotype } from "fakeData/data";
 
 const SignUp = (): JSX.Element => {
   const [newUser, setNewUser] = useState<User | null>(null);
@@ -61,18 +62,16 @@ const SignUp = (): JSX.Element => {
           margin="mx-auto"
           height="h-screen"
         >
-          <Link href="/" passHref>
-            <a>
-              <Logo
-                responsive={false}
-                boxWidth="w-auto"
-                margin="mx-auto"
-                padding="p-5"
-                src={logotype.src}
-                width={logotype.dimensions.width}
-                height={logotype.dimensions.height}
-              />
-            </a>
+          <Link href="/">
+            <Logo
+              responsive={false}
+              boxWidth="w-auto"
+              margin="mx-auto"
+              padding="p-5"
+              src={logotype.src}
+              width={logotype.dimensions.width}
+              height={logotype.dimensions.height}
+            />
           </Link>
           <div className="mt-8">
             <Heading level={3} margin="mb-2" size="normal">
@@ -102,16 +101,18 @@ const SignUp = (): JSX.Element => {
             <LoginForm onSubmit={onSubmit} submitLabel="Sign Up" />
           </div>
           <div className="flex items-center justify-between">
-            <Link href="/forgot-password" passHref>
-              <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
-                Forgot your Password?
-              </a>
+            <Link
+              href="/forgot-password"
+              className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800"
+            >
+              Forgot your Password?
             </Link>
             <span className="text-indigo-500">|</span>
-            <Link href="/signin" passHref>
-              <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
-                Sign In
-              </a>
+            <Link
+              href="/signin"
+              className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800"
+            >
+              Sign In
             </Link>
           </div>
         </Card>

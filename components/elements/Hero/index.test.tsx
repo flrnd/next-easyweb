@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import Button from "components/controls/Button";
 import Image from "next/image";
-import { Button } from "../../controls";
-import { Hero } from "..";
-import placeholder from "../../../public/1920x1280.png";
+import placeholder from "public/1280x1280.png";
+import Hero from ".";
 
 describe("Hero", () => {
   it("renders a heading and subheading", () => {

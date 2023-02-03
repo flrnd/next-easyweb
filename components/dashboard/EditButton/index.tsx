@@ -1,4 +1,4 @@
-import { Anchor } from "../../controls";
+import Anchor from "components/controls/Anchor";
 import { getIcon } from "../../icons";
 
 interface IProps {

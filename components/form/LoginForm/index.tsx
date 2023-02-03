@@ -1,6 +1,6 @@
+import Button from "components/controls/Button";
+import { IFormData } from "lib/types";
 import { useForm } from "react-hook-form";
-import { IFormData } from "../../../lib/types";
-import { Button } from "../../controls";
 
 interface IProps {
   onSubmit(data: IFormData): void;

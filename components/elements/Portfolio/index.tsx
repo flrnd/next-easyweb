@@ -1,6 +1,6 @@
-import { PortfolioItem } from "..";
-import { Item } from "../../../lib/types";
-import { Grid } from "../../layout";
+import Grid from "components/layout/Grid";
+import { Item } from "lib/types";
+import PortfolioItem from "../PortfolioItem";
 
 interface IProps {
   allProjects: Item[];

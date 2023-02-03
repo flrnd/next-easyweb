@@ -1,7 +1,12 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
+import { IFormData } from "lib/types";
 import LoginForm from ".";
-import { IFormData } from "../../../lib/types";
 
 const setup = () => {
   const formData: IFormData = {

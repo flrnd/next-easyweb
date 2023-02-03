@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import NavigationItem from ".";
 
-import mockUrl from "../../../__mocks__/mockUrl";
+const mockUrl = (url: string): string => `http://localhost${url}`;
 
 describe("Navigation List Item", () => {
   it("should render a <li> with link inside", () => {

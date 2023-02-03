@@ -1,7 +1,8 @@
+import Container from "components/layout/Container";
+import DefaultLayout from "components/layout/DefaultLayout";
+import { clinicImage, contactDataList } from "fakeData/data";
 import Image from "next/image";
 import Contact from "../../components/elements/Contact";
-import { Container, DefaultLayout } from "../../components/layout";
-import { clinicImage, contactDataList } from "../../__mocks__/fakeData/data";
 
 const ContactUs = (): JSX.Element => {
   return (
@@ -16,12 +17,7 @@ const ContactUs = (): JSX.Element => {
           />
         </Container>
         <div className="w-full mb-4 md:mb-0">
-          <Image
-            src={clinicImage}
-            layout="responsive"
-            objectFit="contain"
-            alt=""
-          />
+          <Image src={clinicImage} alt="" />
         </div>
       </main>
     </DefaultLayout>

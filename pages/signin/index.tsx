@@ -1,15 +1,15 @@
-import { useRouter } from "next/router";
+import Card from "components/elements/Card";
+import Logo from "components/elements/Logo";
+import LoginForm from "components/form/LoginForm";
+import Container from "components/layout/Container";
+import Heading from "components/typography/Heading";
+import { logotype } from "fakeData/data";
+import { fetchUserProfile, signInUser } from "lib/features/User";
+import { useAppDispatch, useAppSelector } from "lib/hooks";
+import { IFormData, IMessage, SignInOptions } from "lib/types";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
-import { Card, Logo } from "../../components/elements";
-import LoginForm from "../../components/form/LoginForm";
-import { Container } from "../../components/layout";
-import { Heading } from "../../components/typography";
-import { IFormData, IMessage, SignInOptions } from "../../lib/types";
-import { logotype } from "../../__mocks__/fakeData/data";
-import { fetchUserProfile, signInUser } from "../../lib/features/User";
-
-import { useAppDispatch, useAppSelector } from "../../lib/hooks";
 
 const SignIn = (): JSX.Element => {
   const [message, setMessage] = useState<IMessage>({ type: "", content: "" });
@@ -49,18 +49,16 @@ const SignIn = (): JSX.Element => {
           margin="mx-auto"
           height="h-screen"
         >
-          <Link href="/" passHref>
-            <a>
-              <Logo
-                responsive={false}
-                boxWidth="w-auto"
-                margin="mx-auto"
-                padding="p-5"
-                src={logotype.src}
-                width={logotype.dimensions.width}
-                height={logotype.dimensions.height}
-              />
-            </a>
+          <Link href="/">
+            <Logo
+              responsive={false}
+              boxWidth="w-auto"
+              margin="mx-auto"
+              padding="p-5"
+              src={logotype.src}
+              width={logotype.dimensions.width}
+              height={logotype.dimensions.height}
+            />
           </Link>
           <div className="mt-8">
             <Heading level={3} margin="mb-2" size="normal">
@@ -83,10 +81,11 @@ const SignIn = (): JSX.Element => {
           </div>
           <div className="flex items-center">
             Don&apos;t have an account yet?&nbsp;
-            <Link href="/signup" passHref>
-              <a className="inline-block align-baseline text-indigo-500 hover:text-indigo-800">
-                Register now
-              </a>
+            <Link
+              href="/signup"
+              className="inline-block align-baseline text-indigo-500 hover:text-indigo-800"
+            >
+              Register now
             </Link>
           </div>
         </Card>

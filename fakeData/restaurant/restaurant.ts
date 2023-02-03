@@ -1,4 +1,4 @@
-import logotype from "../../public/assets/gondoliere_logo.svg";
+import logotype from "public/assets/nextsites_icon.svg";
 import menu from "./menu";
 import services from "./services";
 import testimonials from "./testimonials";

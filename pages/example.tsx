@@ -1,23 +1,25 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import {
-  ImageWithParagraph,
-  Hero,
-  ServiceList,
-  Card,
-} from "../components/elements";
-import { Button } from "../components/controls";
+import DefaultLayout from "components/layout/DefaultLayout";
+import Hero from "components/elements/Hero";
 import {
   placeholderData,
   serviceList,
   teamMembers,
   wideImage,
-} from "../__mocks__/fakeData/data";
-import { Heading, Paragraph } from "../components/typography";
-import { Anchor } from "../components/controls";
-import { Container, Grid, DefaultLayout } from "../components/layout";
+} from "fakeData/data";
+import Button from "components/controls/Button";
+import ImageWithParagraph from "components/elements/ImageWithParagraph";
+import Heading from "components/typography/Heading";
+import Paragraph from "components/typography/Paragraph";
+import Anchor from "components/controls/Anchor";
+import ServiceList from "components/elements/ServiceList";
+import Container from "components/layout/Container";
 import { HomeIcon } from "@heroicons/react/outline";
-import { Member, SocialIconList } from "../components/elements";
+import Card from "components/elements/Card";
+import Grid from "components/layout/Grid";
+import Member from "components/elements/Member";
+import SocialIconList from "components/elements/SocialIconList";
 
 const Example = (): JSX.Element => {
   return (

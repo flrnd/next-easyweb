@@ -1,5 +1,5 @@
+import { IPagination } from "lib/types";
 import Link from "next/link";
-import { IPagination } from "../../../lib/types";
 
 const Pagination = ({ current, items, path }: IPagination): JSX.Element => {
   const prevPost = current - 1 >= 0 ? items[current - 1] : null;

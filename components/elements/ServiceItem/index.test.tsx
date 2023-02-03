@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import { ServiceItem } from "..";
-import { serviceItem } from "../../../__mocks__/fakeData/data";
+import { serviceItem } from "fakeData/data";
+import ServiceItem from ".";
 
 describe("ServiceItem", () => {
   it("renders an icon, heading, description and a link", () => {

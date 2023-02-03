@@ -6,7 +6,7 @@ import {
   IProfileData,
   IProfileDetails,
 } from "../../../lib/types";
-import { Heading } from "../../typography";
+
 import ChangePasswordForm from "../../form/ChangePasswordForm";
 import router from "next/router";
 import classNames from "classnames";
@@ -19,7 +19,8 @@ import {
 import { updateUserProfile } from "../../../lib/features/User";
 import EditButton from "../EditButton";
 import SaveCancelButtons from "../SaveCancelButtons";
-import { Button } from "../../controls";
+import Heading from "components/typography/Heading";
+import Button from "components/controls/Button";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState("");

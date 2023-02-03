@@ -1,14 +1,14 @@
 import {
-  CodeIcon,
-  DeviceMobileIcon,
-  DatabaseIcon,
   CloudIcon,
+  CodeIcon,
+  DatabaseIcon,
+  DeviceMobileIcon,
 } from "@heroicons/react/outline";
-import { IServiceListItem, IList } from "../../lib/types";
-import widePlaceholder from "../../public/1920x1280.png";
-import squarePlaceholder from "../../public/1280x1280.png";
-import clinicPlaceholder from "../../public/clinic.png";
-import logo from "../../public/assets/nextsites_logo.svg";
+import { IList, IServiceListItem } from "lib/types";
+import squarePlaceholder from "public/1280x1280.png";
+import widePlaceholder from "public/1920x1280.png";
+import logo from "public/assets/nextsites_logo.svg";
+import clinicPlaceholder from "public/clinic.png";
 
 /* Images */
 export const wideImage = widePlaceholder;

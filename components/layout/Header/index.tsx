@@ -1,7 +1,8 @@
+import Logo from "components/elements/Logo";
+import BurgerMenu from "components/navigation/BurgerMenu";
+import NavigationBar from "components/navigation/NavigationBar";
+import { logotype, siteMenu } from "fakeData/data";
 import Link from "next/link";
-import { logotype, siteMenu } from "../../../__mocks__/fakeData/data";
-import { Logo } from "../../elements";
-import { BurgerMenu, NavigationBar } from "../../navigation";
 
 const Header = (): JSX.Element => {
   return (
