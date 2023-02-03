@@ -55,24 +55,24 @@ const BurgerMenu = ({ menu }: IProps): JSX.Element => {
           variants={modalContentVariants}
         >
           <div className="medium font-bold mb-5">
-            <Link href="/" passHref>
-              <a>Inicio</a>
-            </Link>
+            <Link href="/">Inicio</Link>
           </div>
           <NavigationItemList list={menu} isVertical={isOpen} />
-          <Link href="/signin" passHref>
-            <a className="p-4 font-bold text-indigo-500 hover:text-indigo-800">
-              login
-            </a>
+          <Link
+            href="/signin"
+            className="p-4 font-bold text-indigo-500 hover:text-indigo-800"
+          >
+            login
           </Link>
         </motion.div>
       </motion.div>
       <div aria-label="navigation-menu" className="nav-menu">
         <NavigationItemList list={menu} />
-        <Link href="/signin" passHref>
-          <a className="p-4 font-bold text-indigo-500 hover:text-indigo-800">
-            login
-          </a>
+        <Link
+          href="/signin"
+          className="p-4 font-bold text-indigo-500 hover:text-indigo-800"
+        >
+          login
         </Link>
       </div>
     </div>

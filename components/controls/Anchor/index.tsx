@@ -43,13 +43,12 @@ const Anchor = ({
 
   if (href) {
     return (
-      <Link href={href} passHref>
-        <a
-          aria-label={a11yTitle}
-          className={classNames(color, margin, size, weight)}
-        >
-          {anchorInside}
-        </a>
+      <Link
+        href={href}
+        aria-label={a11yTitle}
+        className={classNames(color, margin, size, weight)}
+      >
+        {anchorInside}
       </Link>
     );
   } else {
