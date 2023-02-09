@@ -15,6 +15,7 @@ export type ProfileDetailsOptions = {
   userId: string;
 };
 
+// TODO: refactor these two types
 export type SignInOptions = {
   email?: string;
   password?: string;
