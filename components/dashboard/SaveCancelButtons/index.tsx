@@ -1,6 +1,6 @@
 import Anchor from "components/controls/Anchor";
 import Button from "components/controls/Button";
-import { getIcon } from "../../icons";
+import { getIcon } from "components/icons";
 
 interface IProps {
   handleCancel: () => void;
