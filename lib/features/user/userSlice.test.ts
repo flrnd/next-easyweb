@@ -1,10 +1,16 @@
 import { setupStore } from "lib/store";
 import { signInUser } from "./userSlice";
 
+const mockReturnValue = {
+  user: { id: "1" },
+  session: { access_token: "token" },
+  error: null,
+};
+
 jest.mock("lib/util/supabase/supabase-client", () => ({
   __esModule: true,
   supabase: {
-    rpc: jest.fn(),
+    auth: { signIn: jest.fn(() => mockReturnValue) },
   },
 }));
 
@@ -27,15 +33,18 @@ describe("userSlice", () => {
       expect(initialStore.getState()).toEqual(initialState);
     });
 
-    it("handles signIn", () => {
-      expect(
-        initialStore.dispatch(
-          signInUser({
-            email: "some@email.com",
-            password: "super secure pasword 12#",
-          })
-        )
+    it("handles signIn", async () => {
+      const { payload } = await initialStore.dispatch(
+        signInUser({
+          email: "some@email.com",
+          password: "super secure pasword 12#",
+        })
       );
+
+      expect(payload).toEqual({
+        session: { access_token: "token" },
+        user: { id: "1" },
+      });
     });
   });
 });
