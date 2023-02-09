@@ -2,11 +2,7 @@ import { setupStore } from "lib/store";
 import { SignInOptions, SignUpOptions } from "lib/types";
 import { signInUser, signUpUser } from "./userSlice";
 
-const mockReturnValue = {
-  user: { id: "1" },
-  session: { access_token: "token" },
-  error: null,
-};
+let mockReturnValue;
 
 jest.mock("lib/util/supabase/supabase-client", () => ({
   __esModule: true,
@@ -48,6 +44,12 @@ describe("userSlice", () => {
     });
 
     it("handles signIn", async () => {
+      mockReturnValue = {
+        user: { id: "1" },
+        session: { access_token: "token" },
+        error: null,
+      };
+
       const { payload } = await initialStore.dispatch(
         signInUser(mockSignInOptions)
       );
@@ -58,7 +60,27 @@ describe("userSlice", () => {
       });
     });
 
+    it("handles signIn error", async () => {
+      mockReturnValue = {
+        user: {},
+        session: {},
+        error: "some error",
+      };
+
+      const { payload } = await initialStore.dispatch(
+        signInUser(mockSignInOptions)
+      );
+
+      expect(payload).toEqual("some error");
+    });
+
     it("handles signUp", async () => {
+      mockReturnValue = {
+        user: { id: "1" },
+        session: { access_token: "token" },
+        error: null,
+      };
+
       const { payload } = await initialStore.dispatch(
         signUpUser(mockSingUpOptions)
       );
@@ -67,6 +89,20 @@ describe("userSlice", () => {
         session: { access_token: "token" },
         user: { id: "1" },
       });
+    });
+
+    it("handles signUp error", async () => {
+      mockReturnValue = {
+        user: {},
+        session: {},
+        error: "some error",
+      };
+
+      const { payload } = await initialStore.dispatch(
+        signUpUser(mockSingUpOptions)
+      );
+
+      expect(payload).toEqual("some error");
     });
   });
 });
