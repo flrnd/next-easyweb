@@ -16,6 +16,13 @@
     "incremental": true,
     "baseUrl": "."
   },
+  "paths": {
+    "components/*": ["./components/*"],
+    "pages/*": ["./pages/*"],
+    "styles/*": ["./styles/*"],
+    "lib/*": ["./lib/*"],
+    "fakeData/*": ["./fakeData/*"]
+  },
   "exclude": ["node_modules", ".next", "out"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
 }
