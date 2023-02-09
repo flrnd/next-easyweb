@@ -4,7 +4,7 @@ import LoginForm from "components/form/LoginForm";
 import Container from "components/layout/Container";
 import Heading from "components/typography/Heading";
 import { logotype } from "fakeData/data";
-import { fetchUserProfile, signInUser } from "lib/features/User";
+import { signInUser } from "lib/features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "lib/hooks";
 import { IFormData, IMessage, SignInOptions } from "lib/types";
 import Link from "next/link";

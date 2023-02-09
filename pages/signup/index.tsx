@@ -4,7 +4,7 @@ import Logo from "components/elements/Logo";
 import LoginForm from "components/form/LoginForm";
 import Container from "components/layout/Container";
 import Heading from "components/typography/Heading";
-import { signUpUser } from "lib/features/User";
+import { signUpUser } from "lib/features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "lib/hooks";
 import { IFormData, IMessage, SignUpOptions } from "lib/types";
 import { validatePasswordStrength } from "lib/util";
