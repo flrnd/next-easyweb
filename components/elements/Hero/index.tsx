@@ -1,7 +1,7 @@
+import Container from "components/layout/Container";
+import Heading from "components/typography/Heading";
+import Paragraph from "components/typography/Paragraph";
 import { ReactNode } from "react";
-import Heading from "../../typography/Heading";
-import Paragraph from "../../typography/Paragraph";
-import { Container } from "../../layout/";
 
 interface Props {
   heading: string;

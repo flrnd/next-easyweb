@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
+import { IProject } from "lib/types";
 import Pagination from ".";
-import { IProject } from "../../../lib/types";
 
 const path = "test-projects";
 const items: IProject[] = [

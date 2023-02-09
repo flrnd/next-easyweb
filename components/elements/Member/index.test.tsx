@@ -1,26 +1,26 @@
 import { render } from "@testing-library/react";
-import { Member, SocialIconList } from "..";
-import { teamMembers } from "../../../__mocks__/fakeData/data";
+import { teamMembers } from "fakeData/data";
+import Member from ".";
+
+const mockSocialIconList = <div data-testid="social-icon-list" />;
 
 describe("Member", () => {
   it("renders a member card with props", () => {
     const member = teamMembers[0];
-    const { getByRole, getByText } = render(
+    const { getByRole, getByText, getByTestId } = render(
       <Member
         image={member.image}
         name={member.name}
         jobTitle={member.jobTitle}
         excerpt={member.excerpt}
-        social={<SocialIconList items={member.social} />}
+        social={mockSocialIconList}
       />
     );
-
-    const socialIcons = document.querySelectorAll("svg");
 
     expect(getByRole("img")).toHaveAttribute("src", member.image);
     expect(getByText(member.name)).toBeInTheDocument();
     expect(getByText(member.jobTitle)).toBeInTheDocument();
     expect(getByText(member.excerpt)).toBeInTheDocument();
-    expect(socialIcons.length).toBe(member.social.length);
+    expect(getByTestId(/social-icon-list/)).toBeInTheDocument();
   });
 });

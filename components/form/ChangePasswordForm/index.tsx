@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
-import { IChangePasswordFormData } from "../../../lib/types";
-import { Button } from "../../controls";
+
+import Button from "components/controls/Button";
+import { IChangePasswordFormData } from "lib/types";
 
 interface IProps {
   onSubmit: (data: IChangePasswordFormData) => void;

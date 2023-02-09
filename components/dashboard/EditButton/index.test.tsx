@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Anchor } from "../../controls";
+import Anchor from "components/controls/Anchor";
 
 describe("Anchor", () => {
   it("renders an anchor link with it's props", () => {

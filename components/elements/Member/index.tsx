@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import Image from "next/image";
 import classNames from "classnames";
+import Image from "next/image";
+import { ReactNode } from "react";
 
 interface IProps {
   image: string;

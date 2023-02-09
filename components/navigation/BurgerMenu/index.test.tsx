@@ -1,5 +1,5 @@
 import { fireEvent, render } from "@testing-library/react";
-import { BurgerMenu } from "..";
+import BurgerMenu from ".";
 
 const setup = () => {
   const menu = ["services", "about", "contact us"];

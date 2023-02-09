@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { render, screen } from "@testing-library/react";
-import { ImageWithParagraph } from "..";
-import placeholder from "../../../public/1920x1280.png";
+import Image from "next/image";
+import placeholder from "public/1280x1280.png";
+import ImageWithParagraph from ".";
 
 describe("ImageWithParagraph", () => {
   it("Should render a image with content", () => {

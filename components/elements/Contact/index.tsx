@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import { IList, IListItem } from "../../../lib/types";
-import { Heading, Paragraph } from "../../typography";
-import ContactItem from "../ContactItem";
+import ContactItem from "components/elements/ContactItem";
+import Heading from "components/typography/Heading";
+import Paragraph from "components/typography/Paragraph";
+import { IList, IListItem } from "lib/types";
 
 interface IProps {
   title: string;

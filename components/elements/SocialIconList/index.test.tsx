@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { SocialIconList } from "..";
+import SocialIconList from ".";
 
 describe("SocialIconList", () => {
   it("renders a list of N Social Icons with Link", () => {

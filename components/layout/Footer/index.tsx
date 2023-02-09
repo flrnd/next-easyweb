@@ -1,6 +1,7 @@
-import { companySocial, logotype } from "../../../__mocks__/fakeData/data";
-import { Logo, SocialIconList } from "../../elements";
-import { NavigationItemList } from "../../navigation";
+import Logo from "components/elements/Logo";
+import SocialIconList from "components/elements/SocialIconList";
+import NavigationItemList from "components/navigation/NavigationItemList";
+import { companySocial, logotype } from "fakeData/data";
 
 const list = ["services", "pricing", "contact us"];
 const hours = ["Mon-Fri: 9am-5pm", "Sat: 10am-2pm", "Sun: Closed"];

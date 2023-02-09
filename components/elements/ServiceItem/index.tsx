@@ -1,9 +1,10 @@
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import { ReactNode } from "react";
-import { stringToId } from "../../../lib/util";
-import Anchor from "../../controls/Anchor";
-import Heading from "../../typography/Heading";
-import Paragraph from "../../typography/Paragraph";
+
+import Anchor from "components/controls/Anchor";
+import Heading from "components/typography/Heading";
+import Paragraph from "components/typography/Paragraph";
+import { stringToId } from "lib/util";
 
 interface IProps {
   ariaLabel?: string;

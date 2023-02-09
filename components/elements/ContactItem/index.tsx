@@ -1,4 +1,4 @@
-import { getIcon } from "../../icons";
+import { getIcon } from "components/icons";
 
 interface IProps {
   title: string;

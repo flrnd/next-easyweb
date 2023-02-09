@@ -1,6 +1,6 @@
 import { MapIcon } from "@heroicons/react/outline";
 import { render } from "@testing-library/react";
-import { Card } from "..";
+import Card from ".";
 
 describe("Card", () => {
   it("renders a card with icon", () => {

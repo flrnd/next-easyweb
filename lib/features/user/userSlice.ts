@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
+import { RootState } from "lib/store";
 import {
   IProfileDetails,
-  RootState,
   SignInOptions,
   SignUpOptions,
   UserState,
-} from "../../types";
-import { supabase } from "../../util/supabase/supabase-client";
+} from "lib/types";
+import { supabase } from "lib/util/supabase/supabase-client";
 
 const initialState: UserState = {
   session: null,
@@ -113,7 +113,7 @@ export const updateUserProfile = createAsyncThunk<
   }
 );
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
@@ -156,3 +156,5 @@ export const selectUserSession = (state: RootState): Session =>
   state.user.session;
 export const selectUserProfile = (state: RootState): IProfileDetails =>
   state.user.profileDetails;
+
+export default userSlice.reducer;

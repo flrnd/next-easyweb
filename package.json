@@ -6,7 +6,7 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "eslint_d . --ext ts --ext tsx",
     "test": "jest",
     "test-all": "pnpm lint && pnpm type-check && pnpm test",
     "postinstall": "husky install"

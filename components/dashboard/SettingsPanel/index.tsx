@@ -1,5 +1,5 @@
-import { useAppSelector } from "../../../lib/hooks";
-import { Heading } from "../../typography";
+import Heading from "components/typography/Heading";
+import { useAppSelector } from "lib/hooks";
 
 const SettingsPanel = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);

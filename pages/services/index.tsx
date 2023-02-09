@@ -1,5 +1,5 @@
+import DefaultLayout from "components/layout/DefaultLayout";
 import { NextSeo } from "next-seo";
-import { DefaultLayout } from "../../components/layout";
 
 const Services = (): JSX.Element => {
   return (

@@ -1,8 +1,8 @@
+import Button from "components/controls/Button";
+import NavigationItemList from "components/navigation/NavigationItemList";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { NavigationItemList } from "..";
-import { Button } from "../../controls";
-import { motion } from "framer-motion";
 
 interface IProps {
   menu: string[];

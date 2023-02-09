@@ -1,25 +1,21 @@
-import { useCallback, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { supabase } from "../../../lib/util/supabase/supabase-client";
+import classNames from "classnames";
+import Button from "components/controls/Button";
+import EditButton from "components/dashboard/EditButton";
+import SaveCancelButtons from "components/dashboard/SaveCancelButtons";
+import ChangePasswordForm from "components/form/ChangePasswordForm";
+import Heading from "components/typography/Heading";
+import { updateUserProfile } from "lib/features/user/userSlice";
+import { useAppDispatch, useAppSelector, useNotification } from "lib/hooks";
 import {
   IChangePasswordFormData,
   IProfileData,
   IProfileDetails,
-} from "../../../lib/types";
-import { Heading } from "../../typography";
-import ChangePasswordForm from "../../form/ChangePasswordForm";
+} from "lib/types";
+import { validatePasswordStrength } from "lib/util";
+import { supabase } from "lib/util/supabase/supabase-client";
 import router from "next/router";
-import classNames from "classnames";
-import { validatePasswordStrength } from "../../../lib/util";
-import {
-  useAppDispatch,
-  useAppSelector,
-  useNotification,
-} from "../../../lib/hooks";
-import { updateUserProfile } from "../../../lib/features/User";
-import EditButton from "../EditButton";
-import SaveCancelButtons from "../SaveCancelButtons";
-import { Button } from "../../controls";
+import { useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const ProfilePanel = (): JSX.Element => {
   const [firstName, setFirstName] = useState("");

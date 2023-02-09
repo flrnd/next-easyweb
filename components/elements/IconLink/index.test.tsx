@@ -1,6 +1,6 @@
 import { HomeIcon } from "@heroicons/react/outline";
 import { render } from "@testing-library/react";
-import { IconLink } from "..";
+import IconLink from ".";
 
 describe("IconLink", () => {
   it("renders a icon with a link", () => {

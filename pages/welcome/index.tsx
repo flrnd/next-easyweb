@@ -1,13 +1,13 @@
+import Card from "components/elements/Card";
+import PartyFaceEmoji from "components/icons/emoji/PartyFace";
+import Container from "components/layout/Container";
+import Heading from "components/typography/Heading";
+import Paragraph from "components/typography/Paragraph";
+import { useAppSelector } from "lib/hooks";
 import Link from "next/link";
-import { useSelector } from "react-redux";
-import { Card } from "../../components/elements";
-import PartyFaceEmoji from "../../components/icons/emoji/PartyFace";
-import { Container } from "../../components/layout";
-import { Heading, Paragraph } from "../../components/typography";
-import { selectUser } from "../../lib/features/User";
 
 const Welcome = (): JSX.Element => {
-  const { user } = useSelector(selectUser);
+  const { user } = useAppSelector((state) => state.user);
 
   if (!user) {
     return (
@@ -34,16 +34,18 @@ const Welcome = (): JSX.Element => {
           </div>
 
           <div className="flex items-center justify-between w-48 mx-auto mt-6">
-            <Link href="/" passHref>
-              <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
-                Go back to home
-              </a>
+            <Link
+              href="/"
+              className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800"
+            >
+              Go back to home
             </Link>
             <span className="text-indigo-500">|</span>
-            <Link href="/signin" passHref>
-              <a className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800">
-                Sign In
-              </a>
+            <Link
+              href="/signin"
+              className="inline-block align-baseline text-sm text-indigo-500 hover:text-indigo-800"
+            >
+              Sign In
             </Link>
           </div>
         </Card>
