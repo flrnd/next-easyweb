@@ -113,7 +113,7 @@ export const updateUserProfile = createAsyncThunk<
   }
 );
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
@@ -156,3 +156,5 @@ export const selectUserSession = (state: RootState): Session =>
   state.user.session;
 export const selectUserProfile = (state: RootState): IProfileDetails =>
   state.user.profileDetails;
+
+export default userSlice.reducer;
