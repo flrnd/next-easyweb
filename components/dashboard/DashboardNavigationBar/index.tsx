@@ -1,12 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
 import classNames from "classnames";
-import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
-import logoIcon from "../../../public/assets/nextsites_icon.svg";
-import nextsitesLogo from "../../../public/assets/nextsites_logo.svg";
-import ProfileButton from "../ProfileButton";
+import ProfileButton from "components/dashboard/ProfileButton";
+import logoIcon from "public/assets/nextsites_icon.svg";
+import nextsitesLogo from "public/assets/nextsites_logo.svg";
 
 const DashboardNavigationBar = (): JSX.Element => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);

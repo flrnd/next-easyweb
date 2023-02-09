@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import { ISocial } from "../../../lib/types";
-import { getIcon } from "../../icons";
-import IconLink from "../IconLink";
+import IconLink from "components/elements/IconLink";
+import { getIcon } from "components/icons";
+import { ISocial } from "lib/types";
 
 interface IProps {
   items: ISocial[];

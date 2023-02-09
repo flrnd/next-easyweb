@@ -1,5 +1,5 @@
-import SettingsPanel from "../../../components/dashboard/SettingsPanel";
-import DashboardNavigationBar from "../../../components/dashboard/DashboardNavigationBar";
+import DashboardNavigationBar from "components/dashboard/DashboardNavigationBar";
+import SettingsPanel from "components/dashboard/SettingsPanel";
 
 const SideBar = (): JSX.Element => <div></div>;
 

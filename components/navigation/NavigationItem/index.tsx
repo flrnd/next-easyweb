@@ -1,7 +1,6 @@
 import classNames from "classnames";
+import { INavigationListItem } from "lib/types";
 import Link from "next/link";
-
-import { INavigationListItem } from "../../../lib/types";
 
 interface Props {
   item: INavigationListItem;

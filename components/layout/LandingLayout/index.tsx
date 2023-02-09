@@ -1,9 +1,9 @@
-import Head from "next/head";
-import { DefaultSeo } from "next-seo";
-import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { DefaultSeo } from "next-seo";
+import Head from "next/head";
+import { ReactNode } from "react";
 
-import SEO from "../../../next-seo.config";
+import SEO from "next-seo.config";
 
 interface Props {
   children: ReactNode;

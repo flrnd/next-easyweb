@@ -1,8 +1,8 @@
+import Contact from "components/elements/Contact";
 import Container from "components/layout/Container";
 import DefaultLayout from "components/layout/DefaultLayout";
 import { clinicImage, contactDataList } from "fakeData/data";
 import Image from "next/image";
-import Contact from "../../components/elements/Contact";
 
 const ContactUs = (): JSX.Element => {
   return (

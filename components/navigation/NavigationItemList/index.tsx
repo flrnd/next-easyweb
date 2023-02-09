@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
-import { createNavigationList } from "../../../lib/util";
-import NavigationItem from "../NavigationItem";
+import NavigationItem from "components/navigation/NavigationItem";
+import { createNavigationList } from "lib/util";
 
 interface Props {
   isVertical?: boolean;
