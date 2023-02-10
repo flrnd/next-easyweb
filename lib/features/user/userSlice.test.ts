@@ -1,6 +1,7 @@
 import { setupStore } from "lib/store";
 import { SignInOptions, SignUpOptions } from "lib/types";
-import { signInUser, signUpUser } from "./userSlice";
+import userProfileQuery from "lib/util/supabase/userProfileQuery";
+import { fetchUserProfile, signInUser, signUpUser } from "./userSlice";
 
 let mockReturnValue;
 
@@ -13,6 +14,8 @@ jest.mock("lib/util/supabase/supabase-client", () => ({
     },
   },
 }));
+
+jest.mock("lib/util/supabase/userProfileQuery", () => jest.fn());
 
 const initialStore = setupStore();
 
@@ -103,6 +106,23 @@ describe("userSlice", () => {
       );
 
       expect(payload).toEqual("some error");
+    });
+
+    it("handles fetchUserProfile", async () => {
+      const userId = "userId";
+
+      const returnValue = {
+        data: { full_name: "John" },
+        error: { message: "" },
+        status: {},
+      };
+
+      const userProfileQueryMock = userProfileQuery as jest.MockedFunction<any>;
+      userProfileQueryMock.mockImplementation(() => returnValue);
+
+      const { payload } = await initialStore.dispatch(fetchUserProfile(userId));
+
+      expect(payload).toEqual(returnValue);
     });
   });
 });
