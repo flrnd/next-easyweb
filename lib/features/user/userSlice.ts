@@ -8,6 +8,7 @@ import {
   UserState,
 } from "lib/types";
 import { supabase } from "lib/util/supabase/supabase-client";
+import userProfileQuery from "lib/util/supabase/userProfileQuery";
 
 const initialState: UserState = {
   session: null,
@@ -60,13 +61,7 @@ export const fetchUserProfile = createAsyncThunk<
   { rejectValue: { error: PostgrestError; status: number } }
 >("users/fetchProfile", async (userId: string, { rejectWithValue }) => {
   try {
-    const results = await supabase
-      .from("profiles")
-      .select("first_name, last_name, avatar_url, company_name")
-      .eq("id", userId)
-      .single();
-
-    const { data, error, status } = results;
+    const { data, error, status } = await userProfileQuery({ userId });
     if (data) {
       return { data, error, status };
     } else {
