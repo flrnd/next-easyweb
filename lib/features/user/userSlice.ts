@@ -10,7 +10,7 @@ import {
 import { supabase } from "lib/util/supabase/supabase-client";
 import userProfileQuery from "lib/util/supabase/userProfileQuery";
 
-const initialState: UserState = {
+export const initialState: UserState = {
   session: null,
   user: null,
   errorMessage: null,
@@ -26,10 +26,10 @@ export const signInUser = createAsyncThunk<
 >("users/signin", async (options: SignInOptions, { rejectWithValue }) => {
   try {
     const { user, session, error } = await supabase.auth.signIn(options);
-    if (error === null) {
-      return { user, session };
-    } else {
+    if (error) {
       return rejectWithValue(error);
+    } else {
+      return { user, session };
     }
   } catch (error) {
     console.error("signIn user: ", error);
@@ -44,10 +44,10 @@ export const signUpUser = createAsyncThunk<
 >("users/signup", async (options: SignUpOptions, { rejectWithValue }) => {
   try {
     const { user, session, error } = await supabase.auth.signUp(options);
-    if (error === null) {
-      return { user, session };
-    } else {
+    if (error) {
       return rejectWithValue(error);
+    } else {
+      return { user, session };
     }
   } catch (error) {
     console.error("signUp user: ", error);
@@ -56,16 +56,16 @@ export const signUpUser = createAsyncThunk<
 });
 
 export const fetchUserProfile = createAsyncThunk<
-  { data: IProfileDetails; error: PostgrestError; status: number },
+  { data: IProfileDetails; status: number },
   string,
   { rejectValue: { error: PostgrestError; status: number } }
 >("users/fetchProfile", async (userId: string, { rejectWithValue }) => {
   try {
     const { data, error, status } = await userProfileQuery({ userId });
-    if (data) {
-      return { data, error, status };
+    if (error) {
+      return rejectWithValue(error);
     } else {
-      return rejectWithValue({ error, status });
+      return { data, status };
     }
   } catch (error) {
     console.error("fetchUserProfile: ", error);
