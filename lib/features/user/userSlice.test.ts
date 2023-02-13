@@ -1,7 +1,12 @@
 import { setupStore } from "lib/store";
 import { SignInOptions, SignUpOptions } from "lib/types";
 import userProfileQuery from "lib/util/supabase/userProfileQuery";
-import { fetchUserProfile, signInUser, signUpUser } from "./userSlice";
+import reducer, {
+  fetchUserProfile,
+  initialState,
+  signInUser,
+  signUpUser,
+} from "./userSlice";
 
 let mockReturnValue;
 
@@ -31,50 +36,40 @@ const mockSingUpOptions: SignUpOptions = {
 
 describe("userSlice", () => {
   describe("reducers", () => {
-    it("has initialState", () => {
-      const initialState = {
-        user: {
-          errorMessage: null,
-          profileDetails: null,
-          session: null,
-          siteConfig: null,
-          user: null,
-          userLoaded: false,
-        },
-      };
-
-      expect(initialStore.getState()).toEqual(initialState);
+    it("Should return the initial State", () => {
+      expect(
+        reducer(undefined, {
+          type: undefined,
+        })
+      ).toEqual(initialState);
     });
 
-    it("handles signIn", async () => {
+    it("should handle signIn", async () => {
       mockReturnValue = {
+        error: null,
         user: { id: "1" },
         session: { access_token: "token" },
-        error: null,
       };
 
-      const { payload } = await initialStore.dispatch(
-        signInUser(mockSignInOptions)
-      );
+      const result = await initialStore.dispatch(signInUser(mockSignInOptions));
+      const { user, session } = result.payload;
 
-      expect(payload).toEqual({
-        session: { access_token: "token" },
-        user: { id: "1" },
-      });
+      expect(result.type).toEqual("users/signin/fulfilled");
+      expect(user).toEqual({ id: "1" });
+      expect(session).toEqual({ access_token: "token" });
     });
 
-    it("handles signIn error", async () => {
+    it("should handle signIn errors", async () => {
       mockReturnValue = {
         user: {},
         session: {},
         error: "some error",
       };
 
-      const { payload } = await initialStore.dispatch(
-        signInUser(mockSignInOptions)
-      );
+      const result = await initialStore.dispatch(signInUser(mockSignInOptions));
 
-      expect(payload).toEqual("some error");
+      expect(result.type).toEqual("users/signin/rejected");
+      expect(result.payload).toBe("some error");
     });
 
     it("handles signUp", async () => {
@@ -113,7 +108,7 @@ describe("userSlice", () => {
 
       const returnValue = {
         data: { full_name: "John" },
-        error: { message: "" },
+        error: null,
         status: {},
       };
 
