@@ -52,7 +52,8 @@ describe("userSlice", () => {
       };
 
       const result = await initialStore.dispatch(signInUser(mockSignInOptions));
-      const { user, session } = result.payload;
+      // TODO:  using any to avoid ts compiler error.
+      const { user, session }: any = result.payload;
 
       expect(result.type).toEqual("users/signin/fulfilled");
       expect(user).toEqual({ id: "1" });
