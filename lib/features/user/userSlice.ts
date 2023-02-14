@@ -56,16 +56,16 @@ export const signUpUser = createAsyncThunk<
 });
 
 export const fetchUserProfile = createAsyncThunk<
-  { data: IProfileDetails; status: number },
+  { data: IProfileDetails },
   string,
-  { rejectValue: { error: PostgrestError; status: number } }
+  { rejectValue: { error: PostgrestError } }
 >("users/fetchProfile", async (userId: string, { rejectWithValue }) => {
   try {
-    const { data, error, status } = await userProfileQuery({ userId });
+    const { data, error } = await userProfileQuery({ userId });
     if (error) {
       return rejectWithValue(error);
     } else {
-      return { data, status };
+      return { data };
     }
   } catch (error) {
     console.error("fetchUserProfile: ", error);
