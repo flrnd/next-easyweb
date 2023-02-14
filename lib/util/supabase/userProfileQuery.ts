@@ -11,9 +11,13 @@ const userProfileQuery = async ({ userId }: IUserProfileQuery) => {
       .select("first_name, last_name, avatar_url, company_name")
       .eq("id", userId)
       .single();
-    const { data, error, status } = results;
+    const { data, error } = results;
 
-    return { data, error, status };
+    if (error) {
+      return error;
+    } else {
+      return data;
+    }
   } catch (error) {
     return error;
   }
