@@ -100,7 +100,7 @@ describe("userSlice", () => {
       expect(result.payload).toBe("some error");
     });
 
-    it("handles fetchUserProfile", async () => {
+    it("should handle fetchUserProfile", async () => {
       const userId = "userId";
 
       const returnValue = {
@@ -119,7 +119,7 @@ describe("userSlice", () => {
       });
     });
 
-    it("handles fetchUserProfile error", async () => {
+    it("should handle fetchUserProfile error", async () => {
       const userId = "userId";
       const returnValue = {
         data: {},
