@@ -29,7 +29,7 @@ const mockSignInOptions: SignInOptions = {
   password: "super Secure password 12#",
 };
 
-const mockSingUpOptions: SignUpOptions = {
+const mockSignUpOptions: SignUpOptions = {
   email: "my@email.com",
   password: "secure password",
 };
@@ -73,35 +73,31 @@ describe("userSlice", () => {
       expect(result.payload).toBe("some error");
     });
 
-    it("handles signUp", async () => {
+    it("should handle signUp", async () => {
       mockReturnValue = {
         user: { id: "1" },
         session: { access_token: "token" },
         error: null,
       };
 
-      const { payload } = await initialStore.dispatch(
-        signUpUser(mockSingUpOptions)
-      );
+      const result = await initialStore.dispatch(signUpUser(mockSignUpOptions));
+      const { user, session }: any = result.payload;
 
-      expect(payload).toEqual({
-        session: { access_token: "token" },
-        user: { id: "1" },
-      });
+      expect(result.type).toEqual("users/signup/fulfilled");
+      expect(user).toEqual({ id: "1" });
+      expect(session).toEqual({ access_token: "token" });
     });
 
-    it("handles signUp error", async () => {
+    it("should handle signUp errors", async () => {
       mockReturnValue = {
         user: {},
         session: {},
         error: "some error",
       };
+      const result = await initialStore.dispatch(signInUser(mockSignUpOptions));
 
-      const { payload } = await initialStore.dispatch(
-        signUpUser(mockSingUpOptions)
-      );
-
-      expect(payload).toEqual("some error");
+      expect(result.type).toEqual("users/signin/rejected");
+      expect(result.payload).toBe("some error");
     });
 
     it("handles fetchUserProfile", async () => {
@@ -110,15 +106,35 @@ describe("userSlice", () => {
       const returnValue = {
         data: { full_name: "John" },
         error: null,
-        status: {},
       };
 
       const userProfileQueryMock = userProfileQuery as jest.MockedFunction<any>;
       userProfileQueryMock.mockImplementation(() => returnValue);
 
-      const { payload } = await initialStore.dispatch(fetchUserProfile(userId));
+      const result = await initialStore.dispatch(fetchUserProfile(userId));
 
-      expect(payload).toEqual(returnValue);
+      expect(result.type).toEqual("users/fetchProfile/fulfilled");
+      expect(result.payload).toEqual({
+        data: { full_name: "John" },
+      });
+    });
+
+    it("handles fetchUserProfile error", async () => {
+      const userId = "userId";
+      const returnValue = {
+        data: {},
+        error: {
+          error: { message: "Internal error" },
+        },
+      };
+
+      const userProfileQueryMock = userProfileQuery as jest.MockedFunction<any>;
+      userProfileQueryMock.mockImplementation(() => returnValue);
+
+      const result = await initialStore.dispatch(fetchUserProfile(userId));
+
+      expect(result.type).toEqual("users/fetchProfile/rejected");
+      expect(result.payload).toEqual({ error: { message: "Internal error" } });
     });
   });
 });
