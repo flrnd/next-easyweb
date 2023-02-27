@@ -1,5 +1,4 @@
-# NextJS EasyWeb boilerplate
-
+# NextJS UI
 ## Work-in-progress
 
 Collection of UI components for fast site building. Dashboard and professional profiles on their way.
