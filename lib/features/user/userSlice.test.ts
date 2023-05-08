@@ -31,19 +31,21 @@ const mockSingUpOptions: SignUpOptions = {
 
 describe("userSlice", () => {
   describe("reducers", () => {
-    it("has initialState", () => {
-      const initialState = {
-        user: {
-          errorMessage: null,
-          profileDetails: null,
-          session: null,
-          siteConfig: null,
-          user: null,
-          userLoaded: false,
-        },
-      };
+    const initialState = {
+      errorMessage: null,
+      profileDetails: null,
+      session: null,
+      siteConfig: null,
+      user: null,
+      userLoaded: false,
+    };
 
-      expect(initialStore.getState()).toEqual(initialState);
+    const initialUserState = {
+      user: initialState,
+    };
+
+    it("has initialState", () => {
+      expect(initialStore.getState()).toEqual(initialUserState);
     });
 
     it("handles signIn", async () => {
@@ -58,8 +60,8 @@ describe("userSlice", () => {
       );
 
       expect(payload).toEqual({
-        session: { access_token: "token" },
-        user: { id: "1" },
+        user: mockReturnValue.user,
+        session: mockReturnValue.session,
       });
     });
 

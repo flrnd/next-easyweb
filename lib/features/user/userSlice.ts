@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
 import { RootState } from "lib/store";
 import {
@@ -10,7 +10,7 @@ import {
 import { supabase } from "lib/util/supabase/supabase-client";
 import userProfileQuery from "lib/util/supabase/userProfileQuery";
 
-const initialState: UserState = {
+export const initialUserState: UserState = {
   session: null,
   user: null,
   errorMessage: null,
@@ -110,7 +110,7 @@ export const updateUserProfile = createAsyncThunk<
 
 const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: initialUserState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(signInUser.fulfilled, (state, { payload }) => {
