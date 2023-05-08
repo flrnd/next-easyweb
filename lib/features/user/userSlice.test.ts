@@ -1,7 +1,12 @@
 import { setupStore } from "lib/store";
 import { SignInOptions, SignUpOptions } from "lib/types";
 import userProfileQuery from "lib/util/supabase/userProfileQuery";
-import { fetchUserProfile, signInUser, signUpUser } from "./userSlice";
+import {
+  fetchUserProfile,
+  initialUserState as initialState,
+  signInUser,
+  signUpUser,
+} from "./userSlice";
 
 let mockReturnValue;
 
@@ -31,15 +36,6 @@ const mockSingUpOptions: SignUpOptions = {
 
 describe("userSlice", () => {
   describe("reducers", () => {
-    const initialState = {
-      errorMessage: null,
-      profileDetails: null,
-      session: null,
-      siteConfig: null,
-      user: null,
-      userLoaded: false,
-    };
-
     const initialUserState = {
       user: initialState,
     };
