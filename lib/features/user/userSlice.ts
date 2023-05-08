@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApiError, PostgrestError, Session, User } from "@supabase/supabase-js";
 import { RootState } from "lib/store";
 import {
