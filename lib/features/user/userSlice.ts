@@ -10,7 +10,7 @@ import {
 import { supabase } from "lib/util/supabase/supabase-client";
 import userProfileQuery from "lib/util/supabase/userProfileQuery";
 
-const initialState: UserState = {
+export const initialUserState: UserState = {
   session: null,
   user: null,
   errorMessage: null,
@@ -110,7 +110,7 @@ export const updateUserProfile = createAsyncThunk<
 
 const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: initialUserState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(signInUser.fulfilled, (state, { payload }) => {
